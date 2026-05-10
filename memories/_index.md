@@ -1,48 +1,46 @@
 # Discipline Memories — Index
 
-This directory holds **cross-project discipline lessons** learned during the development of the ATU apparatus. Each memory captures a pattern of failure or success that has crossed multiple sessions and multiple projects (readers-bofm, readers-gnt, readers-tanakh).
+This directory holds **cross-project discipline lessons** captured during ATU apparatus development. Each memory is a pattern of failure or success that has been validated across multiple sessions and is generalized beyond any single corpus.
 
-Memories live here (shared across all atu-method consumers) rather than in per-repo canons because the lessons are universal: they apply to any project applying the apparatus to any corpus.
+Memories live here (shared across all atu-method consumers) rather than in per-repo canons because the lessons are universal: they apply to any project applying the apparatus to any canonical text.
 
-Per-repo canons reference memories by filename (e.g., "per `feedback_rhetoric_bandwagon`"); they do **not** restate the memory's content.
+Per-repo canons reference memories by filename (e.g., "per `feedback_rhetoric_bandwagon`"); they do **not** restate memory content.
+
+Originally accumulated in the readers-bofm session memory directory (`~/.claude/projects/.../memory/`); migrated to this shared location 2026-05-10 as part of the atu-method extraction. Continued discipline lessons learned during ongoing apparatus development should land here.
 
 ---
 
-**Status: SCAFFOLD** — to be populated by extraction from `~/.claude/projects/c--Users-bibleman-repos-readers-bofm/memory/` (the 17 captured feedback memories accumulated during BoFM development).
-
-Initial memory list (filenames will match those in the original memory directory):
-
 ## Methodology discipline
 
-- `feedback_sense_line_mission.md` — atomic thought trumps poetic structure; we expose sense-lines, not parallels; Parry is a separate layer.
-- `feedback_goldilocks_refinement.md` — container-not-originator merge applies to subordinating syntax only; coordinate/parallel members each get their own atomic beat.
-- `feedback_rhetorical_force.md` — rhetorical impact alone never justifies a split; criterion 1 (own thought?) is the test.
-- `feedback_rhetoric_bandwagon.md` — resist wholesale adoption of external formal frameworks (classical rhetoric, Hebrew parallelism); we are psycholinguistic-grounded, not parallelism-structural.
-- `feedback_principle_vs_mechanical_coverage.md` — principle-soundness ≠ mechanical coverage; if validators repeatedly miss a pattern, rule is operationally incomplete.
-- `feedback_punctuation_not_evidence.md` — punctuation is inherited overlay, not adjudication evidence.
-- `feedback_application_consistency_vs_rule_coverage.md` — consistency is prior to correctness; same-rule-applied-inconsistently is the BoFM-style failure mode.
+- [`feedback_sense_line_mission.md`](feedback_sense_line_mission.md) — atomic thought trumps poetic structure; the apparatus exposes sense-lines, not rhetorical parallels. Parry / Lowth / Kugel are separate scholarly layers that may overlap with the apparatus but are not its target.
+- [`feedback_goldilocks_refinement.md`](feedback_goldilocks_refinement.md) — container-not-originator merge applies to subordinating syntax only; coordinate/parallel members each get their own atomic beat. Run Q1/Q2 diagnostic + adversarial audit before committing merge batches.
+- [`feedback_rhetorical_force.md`](feedback_rhetorical_force.md) — rhetorical impact alone never justifies a split. The test is always: own thought? Camera-angle repositioning IS valid; aesthetic force without thought-independence is not.
+- [`feedback_rhetoric_bandwagon.md`](feedback_rhetoric_bandwagon.md) — resist wholesale adoption of external formal frameworks (classical rhetoric, Hebrew parallelism theory from Lowth/Watson/Kugel/Berlin/O'Connor). The grounding is psycholinguistic, not parallelism-structural. Adopt specific observations; reject ontological-category imports.
+- [`feedback_principle_vs_mechanical_coverage.md`](feedback_principle_vs_mechanical_coverage.md) — principle-soundness ≠ mechanical coverage. If validators repeatedly miss a pattern, "criterion 1 covers it" is not enough — the rule is operationally incomplete until a UD signature is codified.
+- [`feedback_punctuation_not_evidence.md`](feedback_punctuation_not_evidence.md) — never use commas, em-dashes, or semicolons as evidence for break/merge. Punctuation is post-canonical editorial overlay. Reasoning must rest on grammar/syntax alone.
+- [`feedback_application_consistency_vs_rule_coverage.md`](feedback_application_consistency_vs_rule_coverage.md) — the operate-side twin of over-structuring: failure mode is usually same-rule-applied-inconsistently across instances. Canonical texts' formulaic language is especially vulnerable to sedimented inconsistency; consistency is prior to correctness.
+- [`feedback_over_structuring_disposition.md`](feedback_over_structuring_disposition.md) — stable tendency to add structure the text/canon/code doesn't demand. Root cause for rule multiplication, aesthetic reasoning, wavering, default-splitting. ASK the five diagnostic questions BEFORE writing new rules or new code.
 
 ## Operational discipline
 
-- `feedback_no_fake_dilemmas.md` — when canon's mechanical test resolves a case, apply it; do not route mechanically-resolved cases through "borderline / pending judgment" framings.
-- `feedback_no_eyeball_offers.md` — after audit clears a sweep, apply it; do not manufacture "stop and let you eyeball" hedges.
-- `feedback_commit_workflow.md` — commit by default in repos with two-role workflow; Stan pushes, agent commits.
-- `feedback_decisions_in_chat_not_files.md` — pending.md is for carry-forward state only; decisions go in chat, not deposited in files.
-- `feedback_dont_over_engineer_orchestration.md` — three-question check before writing orchestration code: runs outside Claude Code? native equivalent? runbook sufficient?
-- `feedback_over_structuring_disposition.md` — stable tendency to add structure the text/canon/code doesn't demand; ask five diagnostic questions before writing new rules or code.
-- `feedback_ask_when_directive_is_ambiguous.md` — vague visual directives have multiple valid implementations; ask one direct question before changing code.
+- [`feedback_no_fake_dilemmas.md`](feedback_no_fake_dilemmas.md) — when the canon's mechanical test resolves a case, apply it. Do NOT route mechanically-resolved cases through "borderline / pending judgment / want me to also" framings. Only genuine canon-gap cases get explicit "rule X doesn't cover Y" framing.
+- [`feedback_no_eyeball_offers.md`](feedback_no_eyeball_offers.md) — after audit clears a sweep, apply it. Don't manufacture "stop and let you eyeball" hedges. Specific concerns get specific exemplars, not generic deferral.
+- [`feedback_commit_workflow.md`](feedback_commit_workflow.md) — in two-role workflows (user pushes; agent commits), the generic "never commit unless asked" default is overridden. Don't ask "want me to commit?" after a coherent task.
+- [`feedback_decisions_in_chat_not_files.md`](feedback_decisions_in_chat_not_files.md) — session pending files are for carry-forward state only, containing forward-looking items. Transcript / session-notes / decisions narratives are redundant with the JSONL session log. Decisions go in the chat window, not deposited in files.
+- [`feedback_dont_over_engineer_orchestration.md`](feedback_dont_over_engineer_orchestration.md) — before writing Python/TS that wraps an SDK, three-question check: runs outside Claude Code? native equivalent? runbook sufficient? Codification ≠ code.
+- [`feedback_ask_when_directive_is_ambiguous.md`](feedback_ask_when_directive_is_ambiguous.md) — vague visual directives ("needs a space," "looks ugly," "cleaner") have multiple valid implementations. Ask one direct question before changing code. Multiple-choice options are still guessing. "Everything else was fine" → don't touch surrounding code.
 
-## Dispatch / scaling discipline
+## Dispatch and scaling discipline
 
-- `feedback_parallel_horde_default.md` — when work decomposes, dispatch 4–8x the agent count intuition suggests; per-dimension audits, per-cluster sweeps.
-- `feedback_scripts_before_agents.md` — before dispatching agents for a corpus sweep, check if grep/sed/regex/Python can do it.
-- `feedback_check_existing_tooling.md` — before writing a new scanner/validator, check existing tooling.
-- `feedback_agent_sweep_filter.md` — parallel sweep agents return detritus alongside signal; filter each item through level/provenance/redundancy checks before codifying.
-- `feedback_sweep_when_introducing_a_window.md` — when adding a flag/window with N readers, gate ALL N at once; same-root-cause symptoms in different paths are not separate bugs.
+- [`feedback_parallel_horde_default.md`](feedback_parallel_horde_default.md) — when work decomposes, dispatch 4-8× the agent count intuition suggests. Per-dimension audits, per-cluster sweeps, pre-spawned next-wave verification.
+- [`feedback_scripts_before_agents.md`](feedback_scripts_before_agents.md) — before dispatching agents for a corpus sweep, ask if it can be done with grep/sed/regex/Python. Agents cost seconds and tokens; scripts cost nothing. Agents only when the rule requires per-item judgment the code can't encode.
+- [`feedback_check_existing_tooling.md`](feedback_check_existing_tooling.md) — before writing a new scanner/validator, check the existing validator suite, syntax-reference, or a one-line Grep. The validator suite stays focused when extensions go to existing detectors rather than fork to new ones.
+- [`feedback_agent_sweep_filter.md`](feedback_agent_sweep_filter.md) — parallel sweep agents return detritus alongside signal. Filter each item through (level / provenance / redundancy) checks before codifying.
+- [`feedback_sweep_when_introducing_a_window.md`](feedback_sweep_when_introducing_a_window.md) — when introducing a flag/window with N readers, gate ALL N at once. Same-root-cause symptoms in different code paths are not separate bugs. Third-strike rule.
 
-## Session-management discipline
+## Session management discipline
 
-- `feedback_compaction_is_session_boundary.md` — compaction is a session boundary; execute full CLAUDE.md CHECK-IN protocol on resume.
+- [`feedback_compaction_is_session_boundary.md`](feedback_compaction_is_session_boundary.md) — when resuming from a compaction summary, still execute the full CLAUDE.md CHECK-IN protocol. Compaction gives context but does not exercise the orientation muscles; silent skip is a check-in failure.
 
 ---
 
@@ -51,9 +49,20 @@ Initial memory list (filenames will match those in the original memory directory
 Each memory file is a single Markdown document with:
 
 - **Title** (short statement of the lesson)
-- **Trigger context** (what session or pattern produced the lesson)
-- **The principle** (one paragraph)
-- **Why** (the past incident or strong preference that grounded it)
-- **How to apply** (when/where this guidance fires)
+- **Frontmatter** (name / description / type)
+- **Body** with:
+  - **The principle** (one paragraph stating the rule/discipline)
+  - **Why** (the past incident, strong preference, or theoretical basis grounding it)
+  - **How to apply** (when/where this guidance fires; concrete operational triggers)
 
-Memories are short (~50–100 lines each). They are referenced by filename from per-repo canons and agent prompts.
+Memories are short (typically 50-100 lines). They are referenced by filename from per-repo canons and agent prompts; their content lives once here.
+
+## Project-specific memories
+
+Some memories are corpus-specific and remain in their respective reader repos. The BoFM project memory `project_book_specific_constructions.md` (per-book EME constructions, ~15 per-book observations) is BoFM-specific and stays in the readers-bofm memory directory. Similar per-project memories may exist in readers-gnt and readers-tanakh; they remain per-repo.
+
+## Updating this directory
+
+When a new cross-project discipline lesson is captured during apparatus development, add it here (not in a per-repo memory directory) IF it generalizes beyond a single corpus. If unsure, default to per-repo memory and promote here once the lesson has demonstrably crossed project boundaries.
+
+Per §7.3 trigger #10 (Discipline-shifting memory file additions), new memories that shape how the apparatus is operated are behaviorally-governing and require the same audit scrutiny as canon. Adding a new memory file is an audit-trigger.
