@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "atu-method"
+version = "0.1.0"
+description = "Computational colometry apparatus for revealing atomic thought units in canonical texts"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Stan the Bible Man", email = "thebibleman77@gmail.com" },
+]
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Religion",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Religion",
+    "Topic :: Text Processing :: Linguistic",
+]
+keywords = [
+    "colometry",
+    "sense-lines",
+    "digital scholarly editing",
+    "computational linguistics",
+    "universal dependencies",
+    "atomic thought unit",
+    "reading editions",
+    "biblical studies",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "mypy>=1.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/bibleman-stan/atu-method"
+Repository = "https://github.com/bibleman-stan/atu-method"
+Issues = "https://github.com/bibleman-stan/atu-method/issues"
+Documentation = "https://github.com/bibleman-stan/atu-method/tree/main/docs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["atu_method"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "RUF"]
+ignore = ["E501"]  # line-length warnings handled by formatter
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]

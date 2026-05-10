@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "ATU Method: Computational Colometry for Canonical Texts"
+authors:
+  - name: "Stan the Bible Man"
+    email: "thebibleman77@gmail.com"
+version: 0.1.0
+date-released: "2026-05-10"
+repository-code: "https://github.com/bibleman-stan/atu-method"
+url: "https://github.com/bibleman-stan/atu-method"
+license: MIT
+license-url: "https://github.com/bibleman-stan/atu-method/blob/main/LICENSE"
+abstract: >-
+  A computational apparatus for revealing atomic thought units (ATUs)
+  in canonical texts via rule-driven syntactic validation. Implements
+  a proposition-first generative principle with five structural
+  justifications and four merge-overrides, validated against Universal
+  Dependencies parse data and TEI-style editorial precedents. Provides
+  shared infrastructure (parsing primitives, parse-data adapters,
+  transaction-logged appliers, audit gates, dashboard runner) and a
+  methodology framework consumed by per-corpus reader editions of the
+  Book of Mormon (readers-bofm), Greek New Testament (readers-gnt),
+  and Hebrew Bible (readers-tanakh).
+keywords:
+  - colometry
+  - sense-lines
+  - atomic thought unit
+  - digital scholarly editing
+  - computational linguistics
+  - universal dependencies
+  - reading editions
+  - biblical studies
