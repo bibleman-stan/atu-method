@@ -3,9 +3,15 @@
 > Computational colometry apparatus for revealing atomic thought units in
 > canonical texts.
 
-**Status:** Pre-release (0.1.0) — repository scaffold established; content
-extraction in progress from the proof-of-concept implementation in
-[readers-bofm](https://github.com/bibleman-stan/readers-bofm).
+**Status:** Pre-release (0.1.0) — repository scaffold established; per-rule
+scholarship companions and Python infrastructure extracted from the
+proof-of-concept implementation in
+[readers-bofm](https://github.com/bibleman-stan/readers-bofm). Extraction
+is in progress; the package currently provides UD-parse query primitives
+(`atu_method.parsing.conllu_query`, `atu_method.parsing.line_mapping`) and
+transaction-logging infrastructure (`atu_method.infrastructure.tx_log`).
+Additional planes (adapters, applier base classes, dashboard runner) will
+follow as the BoFM apparatus stabilizes.
 
 ---
 
@@ -72,20 +78,36 @@ atu-method/
 
 ## Installation
 
-Pre-release; not yet on PyPI. Install from a local clone:
+Pre-release; not yet on PyPI. The expected layout is **sibling-checkout**:
+this repository lives alongside the per-corpus reader editions, and each
+reader edition installs `atu-method` as an editable Python package into the
+working environment.
 
 ```bash
-git clone https://github.com/bibleman-stan/atu-method.git
+# Clone alongside the reader edition(s) you intend to use.
+cd ~/repos
+git clone git@github.com:bibleman-stan/atu-method.git
+git clone git@github.com:bibleman-stan/readers-bofm.git    # (e.g.)
+
+# Install atu-method as editable -- one command, one time per env.
 cd atu-method
-pip install -e .
+python -m pip install -e .
 ```
 
-Reader editions consume the package via editable install:
+After install, any Python process in the env can import the universal
+primitives:
 
-```bash
-cd /path/to/readers-bofm
-pip install -e /path/to/atu-method
+```python
+from atu_method.parsing.conllu_query import load_conllu, Sentence, Token
+from atu_method.parsing.line_mapping import build_line_map, build_line_map_full
+from atu_method.infrastructure.tx_log import TxLog
 ```
+
+Editable mode means edits to `atu_method/` source files are picked up
+without reinstalling. Reader editions consume the package the same way; the
+per-repo modules wrap the universal primitives with corpus-specific layout
+glue (e.g., readers-bofm's `validators/parsing/line_mapping.py` adds a
+`book_paths()` resolver for the BoFM's `data/text-files/v2-mine/` layout).
 
 ## Attribution
 
@@ -108,6 +130,22 @@ under the licenses; we ask only that credit be preserved.
   MIT — see [LICENSE](LICENSE).
 - **Documentation** (`docs/`, `memories/`, `scholarship/`, all Markdown
   outside the package): CC-BY-4.0 — see [LICENSE-DOCS](LICENSE-DOCS).
+
+## Sibling-checkout convention
+
+This repository is consumed by per-corpus reader editions via sibling
+checkout, not via PyPI dependency resolution (until the package is
+published). Documents and code reference each other using relative paths
+like `../../atu-method/docs/framework.md` (from a reader edition into
+this repo) and `readers-bofm/private/01-method/colometry-canon.md` (from
+this repo into the BoFM reader edition).
+
+Practical implication: cross-references resolve when both repositories are
+cloned alongside each other under a shared parent directory. A one-repo
+clone will see broken markdown links until the sibling is also cloned.
+
+Validator/applier code in reader editions imports from `atu_method.*`
+directly. Documentation cross-references rely on relative paths.
 
 ## Contact
 
