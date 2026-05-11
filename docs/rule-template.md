@@ -74,18 +74,44 @@ Every rule entry MUST include all of the following:
 | **Rule ID** | Stable, persistent identifier | `R{N}`, `M{N}`, `J{N}`, `EP-{N}` |
 | **Title** | Short, descriptive name | Free text (max ~10 words) |
 | **Status** | Lifecycle state | Active / Proposed / Retired |
-| **Category** | Application-confidence tier | A / B / C |
-| **Decidability** | Whether the rule can fire mechanically | Surface-pattern / UD-pattern / Discourse-context-needed |
-| **Layer** | Which layer of the system | 1 (generic syntax) / 3 (editorial) |
-| **Rule** | The normative statement | One paragraph, RFC 2119 keywords |
-| **UD signature** | Machine-readable trigger | YAML block |
+| **Category** | Application-confidence tier | A / B / C, OR multi-valued split-form (see §Multi-valued-fields below) |
+| **Decidability** | Whether the rule can fire mechanically | Surface-pattern / UD-pattern / Discourse-context-needed, OR multi-valued split-form |
+| **Layer** | Which layer of the system | 1 (generic syntax) / 3 (editorial), OR multi-valued split-form for dual-Layer rules |
+| **Rule** | The normative statement | One paragraph, RFC 2119 keywords (MUST/SHALL for hard mandates; SHOULD for editorial-judgment EP-rules; MAY for true options) |
+| **UD signature** | Machine-readable trigger | YAML block — may have multiple `trigger_*:` branches per rule (see R19 cataphoric/anaphoric/REVIEW for the multi-branch pattern) |
 | **Scope** | Where the rule applies | One paragraph |
 | **Exclusions** | Closed-list carve-outs | Numbered list, each citing dominating rule |
 | **Precedence** | Reference to §3.5 | One-line reference |
-| **Examples** | Compliant + non-compliant + excluded | At minimum: 1 compliant, 1 non-compliant, 1 excluded |
-| **Implementation** | File path references | Validator, applier, audit trail, scholarship |
+| **Examples** | Compliant + non-compliant + excluded (+ ambiguous-REVIEW for editorial rules) | At minimum: 1 compliant, 1 non-compliant, 1 excluded; for Category B/C add 1 ambiguous-REVIEW |
+| **Implementation** | File path references | Validator, applier, audit trail, scholarship. When no applier exists (KEEP_WHOLE rules, Layer-1 rules, Category-B rules without auto-apply), use the convention: `Applier: (none — <reason>)` |
 
 ---
+
+## §Multi-valued-fields — rules that legitimately span multiple values
+
+Some rules have sub-branches with different operational profiles. For these, the affected field MUST use the multi-valued split-form notation:
+
+| Pattern | Example | Use when |
+|---|---|---|
+| `Layer: 1 (profile a) / 3 (profile b)` | R12 (simple AUX+V at Layer 1 + compound-verb-under-shared-aux at Layer 3) | A rule has two operational profiles at different layers |
+| `Category: A (branches X, Y) / B (branch Z)` | R19 (Category A for PROPN→MERGE and PRON/DET→SPLIT branches; Category B for NOUN→REVIEW branch) | Branch-by-branch category differs |
+| `Decidability: UD-pattern (branches X, Y) / Discourse-context-needed (branch Z)` | R19 (UD-decidable for PROPN and PRON/DET; discourse-needed for NOUN heads) | Different branches require different evidence |
+
+Multi-valued fields MUST enumerate which branch falls in which value. Multi-valued is permitted only when the rule has structurally distinct sub-branches (typically via multi-trigger UD signatures); it MUST NOT be used to evade a definite single-value classification.
+
+## §Editorial-judgment rule conventions
+
+Editorial Principle rules (EP-prefix) and other Category B rules apply with editorial judgment rather than mechanical certainty. Their template entries follow these conventions:
+
+1. **Normative keywords.** Use **SHOULD** for the editorial direction (not MUST), and reserve **MUST NOT** for absolute prohibitions (e.g., "this rule MUST NOT auto-apply"). MUST is reserved for mechanical-rule mandates.
+
+2. **Action code.** Editorial-judgment rules typically use `REVIEW` as the primary action — the UD signature surfaces candidates only, never auto-applies a direction. When a partial-mechanical direction is identified, use `REVIEW` for ambiguous cases and the appropriate MERGE_*/SPLIT_* code for the clean direction.
+
+3. **Examples.** In addition to compliant + non-compliant + excluded, editorial-judgment rules MUST include at least one **ambiguous-REVIEW** example showing what falls into the residual judgment-required space.
+
+4. **Closed lists as heuristic only.** When an editorial rule includes a closed list, the list is a heuristic indicator focusing editorial attention, NOT a decision gate. State this explicitly inline: `(heuristic — not decision-gating)`.
+
+5. **No applier.** Category B rules typically have no auto-applier (the editorial judgment cannot be mechanized). Implementation block records this as `Applier: (none — Category B / editorial-judgment rule)`.
 
 ## Forbidden in rule entries
 
@@ -179,7 +205,8 @@ The `action` field of a rule's UD signature MUST be one of these standard action
 | `SPLIT_BEFORE_RELATIVE` | Insert a line break before a relative pronoun introducing a cataphoric clause | R19 cataphoric relative |
 | `STACK_LIST_MEMBERS` | Each member of a parallel series gets its own line | J1 formally-marked parallel series |
 | `KEEP_WHOLE` | The matched span MUST NOT contain a line break | R1 AICTP, R15 vocative, R18 fixed idiom, R23 date colophon |
-| `REVIEW` | Surface the candidate to human editorial review; do NOT auto-apply | Discourse-context-needed rules; ambiguity-routed cases |
+| `STAND_OWN_LINE` | The matched span occupies its own line with line breaks both before AND after (subject-bearing participial absolutes, parenthetical authentication tags, etc.) | R21 participial absolute; *saith the Lord* parenthetical (sub-pattern under J3) |
+| `REVIEW` | Surface the candidate to human editorial review; do NOT auto-apply | Discourse-context-needed rules; ambiguity-routed cases; Category B editorial-judgment rules |
 
 Per-corpus action-code extensions (rare) MAY be added to a per-corpus canon's §5 entries when language-specific operations are required. New extensions MUST be documented at the top of the per-corpus canon's §3 quick-reference table and added to this list via a meta-template change.
 
