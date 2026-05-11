@@ -40,6 +40,7 @@ All currently-Active rules in BoFM canon §5 have scholarship companions:
 | EP-3 | [`EP-3.md`](EP-3.md) | Inverted predicate |
 | EP-4 | [`EP-4.md`](EP-4.md) | Title/role + domain |
 | EP-5 | [`EP-5.md`](EP-5.md) | Virtue/vice lists |
+| M4-BoFM-1 | [`M4-BoFM-1.md`](M4-BoFM-1.md) | Subject-orphan predicate completion |
 
 Each file follows the structure described in [`../_index.md`](../_index.md): Statement / Rationale / Grammatical grounding / Empirical evidence / Intellectual lineage / Adversarial history / Future work.
 
