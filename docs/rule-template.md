@@ -29,11 +29,16 @@ trigger:
   relation: [<deprel>, ...]
   head: { upos: <UPOS>, lemma_in: <closed-list-name> }
   mark: { lemma_in: [<lemma>, ...] }
-action: <MERGE_* | SPLIT_BEFORE_* | REVIEW>
+action: <one of the standard action codes — see §Action-Codes below>
 ~~~
 
-**Closed lists** (if applicable).
-- `<closed-list-name>`: see §<list-section> ({brief description})
+**Closed lists** (machine-readable).
+~~~yaml
+<closed-list-name>:
+  - lemma1
+  - lemma2
+  ...
+~~~
 
 **Scope.** {Operational boundary — where the rule applies. Single paragraph.}
 
@@ -41,7 +46,9 @@ action: <MERGE_* | SPLIT_BEFORE_* | REVIEW>
 1. {Description of excluded case} → R{N} | J{N} | §{X}
 2. ...
 
-**Precedence.** {Reference to §3.5 by tier. One line.} Yields to R{X}. Wins over R{Y}.
+**Precedence.** §3.5 Tier {N}. {Yields-to / Wins-over notation, one line, stable rule-IDs only.}
+
+*Note:* §3.5 is the single source of truth for cross-rule precedence. The per-rule Precedence field MUST be consistent with §3.5's tier placement and the rule's yields-to/wins-over relationships. Drift between the two is a conformance failure detectable by mechanical cross-check (see "Precedence-consistency check" below).
 
 **Examples.**
 - *Compliant:* "{example sentence as it should be on the page}"
@@ -150,6 +157,41 @@ When a rule classified as A would interact with Category C territory (e.g., R17 
 | **Surface-pattern** | Rule can fire from raw text inspection alone (regex-feasible). | Validator may use regex; UD-pattern still preferred for cross-language portability. |
 | **UD-pattern** | Rule requires UD parse (deprel + UPOS + lemma) to detect reliably. | Validator MUST use parsed corpus. |
 | **Discourse-context-needed** | Rule requires information beyond the parse (anaphora resolution, prior-entity tracking, semantic-frame disambiguation). | Validator emits REVIEW-REQUIRED; auto-apply NOT available pre-Phase-2 discourse infrastructure. |
+
+---
+
+## §Action-Codes — standard action codes for the UD-signature `action` field
+
+The `action` field of a rule's UD signature MUST be one of these standard action codes. New action codes require a meta-template change (§7.3 trigger #9 — meta-rule change to the change protocol itself).
+
+| Action code | Effect | Used by rule types |
+|---|---|---|
+| `MERGE_FORWARD` | Merge the matched token's line with the next line | Layer 1 line-final-token prohibitions (e.g., line-final CCONJ, DET) |
+| `MERGE_BACKWARD` | Merge the matched token's line with the previous line | Less common; trailing-fragment-to-predecessor cases |
+| `MERGE_HEAD_AND_DEPENDENT` | Merge the line containing the rule's `head` with the line containing the matched `dependent` | Complement-integrity rules (matrix + ccomp / xcomp) |
+| `MERGE_VERB_AND_TOPIC_PP` | Merge a speech-class verb's line with its obligatory topic-PP line | R17 topic-PP extension (BoFM speech-class verbs) |
+| `MERGE_VERB_AND_OF_PP` | Merge an experience verb's line with its obligatory of-PP line | R17 experience-of-PP extension (repent/partake/forgive) |
+| `MERGE_MATRIX_AND_COMPLEMENT` | Same effect as MERGE_HEAD_AND_DEPENDENT, specialized name for complement-integrity contexts | R17, R26 |
+| `MERGE_COORDINATE_MEMBERS` | Merge two members of a coordinate construction | M1 gorgianic pair; N=2 synonymy cases |
+| `SPLIT_BEFORE_MARK` | Insert a line break before the matched mark token | Purpose-clause rules (R7 — split before *that*) |
+| `SPLIT_BEFORE_CONJUNCTION` | Insert a line break before the matched coordinating conjunction | Polysyndetic-verb-chain split rules |
+| `SPLIT_BEFORE_SUBJECT` | Insert a line break before the matched subject NP of the matrix clause | R28 speech-act-after-frame |
+| `SPLIT_BEFORE_RELATIVE` | Insert a line break before a relative pronoun introducing a cataphoric clause | R19 cataphoric relative |
+| `STACK_LIST_MEMBERS` | Each member of a parallel series gets its own line | J1 formally-marked parallel series |
+| `KEEP_WHOLE` | The matched span MUST NOT contain a line break | R1 AICTP, R15 vocative, R18 fixed idiom, R23 date colophon |
+| `REVIEW` | Surface the candidate to human editorial review; do NOT auto-apply | Discourse-context-needed rules; ambiguity-routed cases |
+
+Per-corpus action-code extensions (rare) MAY be added to a per-corpus canon's §5 entries when language-specific operations are required. New extensions MUST be documented at the top of the per-corpus canon's §3 quick-reference table and added to this list via a meta-template change.
+
+---
+
+## §Precedence-consistency check
+
+The per-rule **Precedence** field is a redundant reference to §3.5 (the single source of cross-rule precedence). Drift between them is mechanically detectable.
+
+**Convention.** When a rule cites a tier in its Precedence field (e.g., "§3.5 Tier 3"), §3.5 MUST list that rule in that tier. When a rule's Precedence field includes "Yields to R{X}" or "Wins over R{Y}", those relationships MUST appear in §3.5's tier ordering.
+
+**Mechanical check.** A future validator (`validators/canon/check_precedence_consistency.py`) walks every §5 entry's Precedence field, parses tier and yields-to/wins-over claims, and verifies §3.5 agrees. Failures are flagged at commit time. For now (pre-validator): manual cross-check during canon edits.
 
 ---
 
