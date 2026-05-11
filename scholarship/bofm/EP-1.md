@@ -1,6 +1,6 @@
 # EP-1: "According To" Manner vs. Source — Scholarship Companion
 
-**Operational entry:** see `readers-bofm/private/01-method/colometry-canon.md §5 EP-1` (current) or this migration's proposed restructured entry at [`_drafts/EP-1-operational.md`](_drafts/EP-1-operational.md).
+**Operational entry:** see `readers-bofm/private/01-method/colometry-canon.md §5 EP-1` (current).
 
 **Status:** This is the scholarship companion documenting WHY EP-1 exists, HOW we know it is correctly framed, and what intellectual / empirical history grounds its current shape. The operational canon entry says WHAT the rule does; this document says why.
 
@@ -150,7 +150,6 @@ The 2026-03-24 *according to* punctuation-audit was a one-of-N corpus-wide audit
 *References:*
 
 - Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 EP-1` (current state)
-- Proposed restructured operational entry: [`_drafts/EP-1-operational.md`](_drafts/EP-1-operational.md)
 - Universal framework: [`../../docs/framework.md`](../../docs/framework.md) §1.10 (punctuation is not a break signal) + §2 (Category B editorial-judgment) + §1.5 J5 (substantive adjunct as own focus — interaction)
 - Historical Rule-21 codification: `readers-bofm/private/01-method/archive/colometry-canon-v1-archive-2026-04-13.md` (2026-03-24 update entry)
 - 2026-04-19 three-layer architecture restructuring: `readers-bofm/private/2026-04-19-canon-v2-and-merge-overrides/transcript.md`
