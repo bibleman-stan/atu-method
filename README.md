@@ -4,14 +4,27 @@
 > canonical texts.
 
 **Status:** Pre-release (0.1.0) — repository scaffold established; per-rule
-scholarship companions and Python infrastructure extracted from the
-proof-of-concept implementation in
-[readers-bofm](https://github.com/bibleman-stan/readers-bofm). Extraction
-is in progress; the package currently provides UD-parse query primitives
-(`atu_method.parsing.conllu_query`, `atu_method.parsing.line_mapping`) and
-transaction-logging infrastructure (`atu_method.infrastructure.tx_log`).
-Additional planes (adapters, applier base classes, dashboard runner) will
-follow as the BoFM apparatus stabilizes.
+scholarship companions and Python infrastructure extracted from
+proof-of-concept implementations in
+[readers-bofm](https://github.com/bibleman-stan/readers-bofm) and
+[readers-gnt](https://github.com/bibleman-stan/readers-gnt). The package
+currently provides:
+
+- **UD-parse query primitives** — `atu_method.parsing.conllu_query`
+  (Token / Sentence dataclasses + CoNLL-U loader),
+  `atu_method.parsing.line_mapping` (build_line_map / build_line_map_full).
+- **ATU-file format loader** — `atu_method.parsing.atu_file` (universal
+  ATU-per-line format used by v2-mine / v4-editorial / sibling layouts).
+- **Text-normalization helpers** — `atu_method.parsing.normalize`
+  (strip_punctuation, strip_accents, extensible per-corpus).
+- **Transaction-logging infrastructure** — `atu_method.infrastructure.tx_log`
+  (TxLog class for applier rollback; per-corpus tx_dir parameter).
+- **Validator-output infrastructure** — `atu_method.infrastructure.validator_output`
+  (Candidate dataclass, emit_candidate, write_candidates grouped-markdown
+  report writer).
+
+Additional planes (adapters, applier base classes, dashboard runner) follow
+as the per-corpus apparatuses stabilize.
 
 ---
 
