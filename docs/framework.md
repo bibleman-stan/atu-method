@@ -89,6 +89,26 @@ Without one of these signals, bare coordinate items merge.
 
 **M1 bonded-pair precedence inside compound lists.** When a compound-list item is itself an M1 bonded pair (§1.5), the bonded pair is the item — the pair treats as one atomic unit within the larger series. None of the four compound-list break signals reaches inside a bonded pair to split it.
 
+**Structured-item carve-out at N≥3 — when default-merge yields to N=3+ stacking.** The compound-list-break-signals default-merge above applies to **bare-noun items** only. When each list item is itself a structured unit — an M1-shape bonded pair (antithetic doublet, hendiadic pair, paired-attribute couplet), an NP-with-complement (e.g., *"the X of Y"* repeated with varied Y), or a phrase-level coordinate construction — the default-merge premise breaks down. At N≥3 of such structured items in series under a shared frame, J1's N=3+ cliff (§1.9) governs: each structured-item member earns its own beat regardless of whether one of the four bare-noun break-signals fires.
+
+**Diagnostic.** For each compound-list candidate at N≥3, ask: is each "item" a single bare lemma (or short bare NP)? OR is each item itself a structured unit (bonded pair, NP-with-complement, antithetic doublet)?
+
+- If each item is bare-noun → compound-list-break-signals applies; merge unless one of the four signals fires.
+- If each item is structured → J1 N=3+ cliff applies; STACK each member as its own line.
+
+**Canonical structured-item shapes at N≥3:**
+
+- **Repeated NP-with-complement** — e.g., *"the God of Abraham, the God of Isaac, and the God of Jacob"* (each member is `the X of <PROPN>`; each varied complement is the structural information per member). STACK.
+- **Antithetic-doublet series** — e.g., *"good or evil, life or death, joy or remorse of conscience"* (each member is an antithetic *X-or-Y* doublet bonded internally; three such doublets in series under a shared frame). STACK.
+- **Coordinate-pair series** — e.g., *"sons and daughters, fathers and mothers, husbands and wives"* (each member is an M1-shape vocative pair; three pairs in series). STACK.
+- **Material/object "and of" series at N≥3** when each "and of X" item is a substantive class label (gold, silver, copper, iron, brass, steel, ziff) rather than a single physical token. STACK.
+
+**Counterexample (bare-noun stays merged by default):** *"preach unto them repentance, and faith, and faith on the Lord"* (Mosiah 18:7) — each item is a bare lemma (or short bare NP), no internal structure beyond an attaching modifier. Compound-list-break-signals default-merge applies; J1 N=3+ cliff does NOT fire. The compound-list-break-signals (elided-aux, possessive-restart, demonstrative, attached-relative) are the only override paths for bare-noun lists.
+
+**Why this matters.** The bare-noun-only premise of compound-list-break-signals was an unstated assumption in the original framework articulation. Surfacing it makes the rule's scope explicit and prevents two failure modes:
+- (a) Over-merging structured-item series (BoFM corpus has ~15+ instances of patriarch-triads, antithetic-doublet-triads, material-object-and-of series merged on one line that should be STACK per J1).
+- (b) Under-merging bare-noun lists (no change — Mosiah 18:7-style cases continue to merge by default).
+
 ### J2 — Portrait accumulation
 
 A set of attributes building one mental picture, sharing a copular or attributive frame from context. Applies only when the stack IS the portrait, not when it is a catalogue.
