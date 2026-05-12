@@ -113,6 +113,21 @@ A fronted or trailing adjunct (temporal PP, locative PP, causal PP, etc.) that (
 
 **Exclusion: degree quantifiers.** Short PPs that modify the *degree* of a predicate do NOT pass the slot-paraphrase test — they modify how-much, not when/where/why. Treat as predicate modifiers, not slot-fillers.
 
+**Same-slot vs distinct-slot diagnostic (matrix-cumulation disambiguation).** When a short matrix predicate (≤10 words with finite verb) is followed by N≥3 adjunct lines each leading with a preposition / fixed MWPP (e.g., `even from`, `notwithstanding`, `according to`) / participial frame (`having…`, `being…`) / infinitival lead (`to declare…`), J5 surface-form risks colliding with J1 (formally-marked parallel series). The discriminator:
+
+- **Uniform-type adjuncts** (all PPs with the same preposition, or all infinitives, or all participials, with parallel surface form) → these occupy the same argument slot N times. J1 wins per the N≥3 cliff (§1.9): each member is its own beat in a formally-marked series.
+- **Mixed-type adjuncts** (different argument-frame slots: when / how / despite-what / for-what-purpose / for-whom) → these jointly qualify one act rather than enumerating peers. J5 does NOT license each on its own line; the matrix + adjuncts may form a single cognitive proposition that should cluster onto 1-2 lines.
+
+**Application.** Mixed-type matrix-cumulation does NOT mechanically force a merge — apply criterion 1 (atomic-thought test) to confirm whether the cluster reads as one claim with its qualifications or as N independent beats. The diagnostic surfaces candidates; semantic-content judgment decides.
+
+**Canonical examples (BoFM corpus, 2026-05-11):**
+- **Cluster (mixed-type):** Alma 30:32 — matrix `for behold I have labored` + temporal `from the commencement of the reign of the judges until now` + manner `with mine own hands for my support` + adversative `notwithstanding my many travels round about the land` + purpose `to declare the word of God unto my people`. Four distinct argument-frame slots; merged to 2 lines.
+- **Cluster (mixed-type):** Mosiah 29:14 — matrix `And even I myself have labored` + manner `with all the power…` + purpose `to teach…` + purpose `and to establish peace…` + result `that there should be no wars…`. Twin of Alma 30:32; merged to matrix+manner / purpose+purpose / result.
+- **Stay split (uniform-type):** 2 Nephi 16:2 (Isaiah seraphim) — `with twain he covered his face / and with twain he covered his feet / and with twain he did fly`. Three uniform `with twain`-fronted finite clauses; J1 parallel series at N=3.
+- **Stay split (uniform-type):** Alma 12:1 — `he opened his mouth and began to speak unto him / and to establish… / and to explain… / or to unfold…`. Four purpose-infinitives; J1 stack of speech-acts per N≥3 cliff.
+
+**Common false-positive (genuine Cat B):** Alma 13:3 — mixed-type adjunct surface form (participial / causal-PP / locative-participial) but each line delivers a discrete substantive doctrinal beat (ordination origin / faith-basis / agency-condition). Same-slot test surfaces it as MERGE-CANDIDATE; atomic-thought test correctly stays split. Editorial judgment required.
+
 ## §1.5 The Four Merge-Override Conditions (closed list)
 
 **Symmetric counterpart to structural justifications.** Where structural justifications describe cases where the default (merge under propositions-first) is overridden to produce a split, merge-overrides describe cases where an apparent split-trigger is itself overridden — returning the members to one line. The default is still merge; these overrides catch cases where naive application of split-triggers would fragment a unit that should stay whole.
