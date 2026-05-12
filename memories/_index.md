@@ -41,6 +41,8 @@ Originally accumulated in the readers-bofm session memory directory (`~/.claude/
 ## Session management discipline
 
 - [`feedback_compaction_is_session_boundary.md`](feedback_compaction_is_session_boundary.md) — when resuming from a compaction summary, still execute the full CLAUDE.md CHECK-IN protocol. Compaction gives context but does not exercise the orientation muscles; silent skip is a check-in failure.
+- [`feedback_endstate_first_orientation.md`](feedback_endstate_first_orientation.md) — for multi-phase / cross-corpus / migration work, lead orientation with the user-facing END-STATE picture, NOT the procedural phase list. Procedural-first orientation enables substrate-hunt rabbitholes; picture-first anchors all sub-decisions to the destination. apparatus.md belongs in CHECK-IN read-set when migration is active. Pull back to picture on ambiguity.
+- [`feedback_proactive_open_item_examination.md`](feedback_proactive_open_item_examination.md) — every "I held this back because you have to decide" item must be visible. As the method matures, periodically re-examine whether held items have become canon/code/precedent-derivable. If yes, surface "I have an answer now" rather than re-defer.
 
 ---
 
