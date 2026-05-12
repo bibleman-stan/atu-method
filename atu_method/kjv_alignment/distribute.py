@@ -15,31 +15,53 @@ Output
   verse-position order within each line. Translator-supplied (no-Strong's)
   KJV words attach to the line of their nearest claimed neighbour.
 
-Algorithm
----------
-1. Source-token loop in textual order. For each source token, find the
-   next UNCLAIMED KJV word whose Strong's set shares any base number with
-   the source token's Strong's set. Mark that KJV word with the line index
-   the source token belongs to. (First-match-wins on the KJV side, walking
-   in KJV vpos order. Source tokens without Strong's claim nothing.)
+Algorithm (Wave 7 — positional-aware monotonic matching)
+--------------------------------------------------------
+The Wave 5b algorithm walked source tokens in flat order and grabbed the
+first KJV match per Strong's number. That works when source-line order
+and KJV-vpos order march in lockstep, but breaks when (a) a source token's
+Strong's appears earlier in KJV order than is positionally natural for its
+line, or (b) source-token count > KJV count for some Strong's, so the
+earlier source line steals a match that belongs positionally to a later
+line. Gen 1:2's two Hebrew עַל preposition tokens (cola 2 and cola 3)
+competing for KJV's single Strong's-tagged "upon" (vpos 23, in cola 3's
+region) is the canonical instance — cola 2 stole vpos 23 and KJV's other
+"upon" (vpos 11, translator-supplied) attached to cola 2 via forward-look,
+duplicating the surface form "upon" onto cola 2.
 
-   When a source-token Strong's set is exhausted but other KJV words still
-   match its Strong's later, we ALSO claim those subsequent matches for the
-   same line (KJV often translates one source word into multiple English
-   words — e.g. Greek aorist ἕξει -> "shall be with child"). We achieve
-   this by, after the primary first-match-wins pass, sweeping any still-
-   unclaimed KJV word whose ONLY-Strong's matches a source token already
-   placed on a line, and attaching it to the same line.
+The Wave 7 algorithm matches by Strong's number with two-stage logic:
+1. Unambiguous Strong's (source-count <= kjv-count): monotonic 1:1.
+   Establishes "anchor" KJV positions per line.
+2. Over-supplied Strong's (source-count > kjv-count): each KJV occurrence
+   goes to the source line whose existing anchors are positionally
+   closest in KJV vpos. Falls back to monotonic if no anchors yet.
 
-2. Translator-supplied KJV words (empty Strong's): attach to the line of
-   the NEAREST non-empty-Strong's neighbour. Preference: next non-italic
-   word (forward look). Fallback: previous non-italic word. If both
-   directions are empty (entire verse unclaimed), every KJV word goes to
-   line 0.
+Pass B (synonymy sweep) and Pass C (italic attachment) become positional-
+proximity-driven rather than first-source-token-wins. Pass C also respects
+sentence-boundary punctuation (".", "!", "?") as a soft barrier when both
+forward and backward neighbours exist.
 
-3. Render: for each line, sort its assigned KJV words by vpos and join.
-   Lines with no assignments render as the empty string (caller decides
-   whether to fall back to "—" / placeholder / etc.).
+Three passes total:
+
+  A. Strong's matching (two sub-stages): claim KJV words whose Strong's
+     overlap a source token. Within a Strong's class, k-th source token
+     in flat order claims k-th KJV word in vpos order, EXCEPT when the
+     source class is over-supplied — then each KJV match goes to the
+     source line whose anchor claims are positionally nearest.
+
+  B. Synonymy sweep: any KJV word still unclaimed whose Strong's overlap
+     SOME source token's Strong's. Assign to the line whose anchors
+     (now including A's claims) are positionally nearest.
+
+  C. Translator-supplied (no-Strong's) KJV words: attach to the nearest
+     non-italic neighbour. Forward preferred. If forward-vs-backward
+     crosses a sentence boundary in one direction and not the other,
+     prefer the un-crossed direction.
+
+Strong's-tagged KJV words still unclaimed after A+B (no overlap found
+anywhere in the verse) fall through to the positional-proximity sweep
+(same logic as B but unconstrained by Strong's). The Wave 5b "park on
+last line" defensive clamp is retired — positional proximity always wins.
 
 Correctness invariants
 ----------------------
@@ -68,12 +90,72 @@ class SourceToken:
     strongs_list: tuple[str, ...] = field(default_factory=tuple)
 
 
+_SENTENCE_PUNCT = {".", "!", "?"}
+
+
 def _strongs_overlap(a: tuple[str, ...], b: tuple[str, ...]) -> bool:
     """True if a and b share any Strong's base number."""
     if not a or not b:
         return False
     sb = set(b)
     return any(x in sb for x in a)
+
+
+def _line_nearest_anchor_distance(
+    target_vpos: int,
+    line_anchors: list[int],
+) -> int:
+    """Distance from target_vpos to nearest anchor on this line.
+
+    Returns a large sentinel (10**9) when the line has no anchors yet — so
+    a line with NO claims always loses to a line with at least one claim.
+    """
+    if not line_anchors:
+        return 10**9
+    return min(abs(target_vpos - a) for a in line_anchors)
+
+
+def _pick_line_by_proximity(
+    target_vpos: int,
+    candidate_lines: list[int],
+    per_line_anchors: list[list[int]],
+    n_lines: int,
+) -> int:
+    """Pick the line in candidate_lines whose anchors are nearest to vpos.
+
+    Ties broken by: lower line-index wins (stable behaviour for symmetric
+    cases). If all candidates have no anchors, return the first candidate.
+    """
+    best_line = candidate_lines[0]
+    best_dist = _line_nearest_anchor_distance(target_vpos, per_line_anchors[best_line])
+    for line in candidate_lines[1:]:
+        d = _line_nearest_anchor_distance(target_vpos, per_line_anchors[line])
+        if d < best_dist:
+            best_dist = d
+            best_line = line
+    return best_line
+
+
+def _has_sentence_boundary_between(
+    kjv_sorted: list[KjvWord],
+    lo_idx: int,
+    hi_idx: int,
+) -> bool:
+    """True if any KJV word strictly between lo_idx and hi_idx (exclusive of
+    lo, inclusive of hi-1) carries a sentence-terminating punctuation in
+    its trailing punc. The CARRIER itself (hi-1) is included because punc
+    at the end of a word severs the next-word from this-word.
+    """
+    if hi_idx <= lo_idx + 1:
+        return False
+    # Inspect every word from lo_idx (inclusive of its trailing punc) up to
+    # but not including hi_idx.
+    for k in range(lo_idx, hi_idx):
+        punc = kjv_sorted[k].punc or ""
+        for ch in punc:
+            if ch in _SENTENCE_PUNCT:
+                return True
+    return False
 
 
 def distribute_kjv_to_atu_lines(
@@ -106,93 +188,183 @@ def distribute_kjv_to_atu_lines(
     kjv_sorted = sorted(kjv_words, key=lambda w: w.vpos)
     n_kjv = len(kjv_sorted)
 
-    # vpos -> line index assignment (None if unassigned)
+    # KJV-index -> line index assignment (None if unassigned)
     assignment: list[int | None] = [None] * n_kjv
-    # bool by KJV-index: claimed by primary pass (used to mark "anchored")
     claimed: list[bool] = [False] * n_kjv
 
-    # Flatten source tokens to (line_idx, token) in textual order so we
-    # walk the source-language pass in canonical order.
-    flat_source: list[tuple[int, SourceToken]] = []
+    # Per-line anchor list: vpos values claimed by Strong's-tagged matches.
+    # Built up over passes; used for positional-proximity decisions.
+    per_line_anchors: list[list[int]] = [[] for _ in range(n_lines)]
+
+    # Group source tokens by Strong's number with their (flat_idx, line_idx).
+    # Also keep flat ordering: source line-index per flat position.
+    src_strongs_occs: dict[str, list[tuple[int, int]]] = {}
+    flat_idx = 0
     for line_idx, tokens in enumerate(source_tokens_per_line):
         for tok in tokens:
-            flat_source.append((line_idx, tok))
+            for s in tok.strongs_list:
+                src_strongs_occs.setdefault(s, []).append((flat_idx, line_idx))
+            flat_idx += 1
 
-    # Pass A: primary first-match-wins on the KJV side.
-    # For each source token (in textual order), find the next unclaimed KJV
-    # word whose Strong's overlaps; claim it for this source token's line.
-    # We also remember, per source token, what line it placed onto for the
-    # subsequent "synonymy sweep."
-    source_token_line: list[int] = []
-    for line_idx, tok in flat_source:
-        source_token_line.append(line_idx)
-        if not tok.strongs_list:
+    # Group KJV words by Strong's number with their (kjv_idx, vpos).
+    kjv_strongs_occs: dict[str, list[tuple[int, int]]] = {}
+    for kjv_idx, kw in enumerate(kjv_sorted):
+        for s in kw.strongs_list:
+            kjv_strongs_occs.setdefault(s, []).append((kjv_idx, kw.vpos))
+
+    def _claim(kjv_idx: int, line_idx: int) -> None:
+        if claimed[kjv_idx]:
+            return
+        claimed[kjv_idx] = True
+        assignment[kjv_idx] = line_idx
+        per_line_anchors[line_idx].append(kjv_sorted[kjv_idx].vpos)
+
+    # Pass A1: Strong's with src_count <= kjv_count — monotonic 1:1.
+    # Process all such Strong's first to seed anchors with maximum
+    # confidence. Pass A2 then resolves the over-supplied cases using
+    # the anchors A1 established.
+    deferred_strongs: list[str] = []
+    for s, src_occs in src_strongs_occs.items():
+        kjv_occs = kjv_strongs_occs.get(s, [])
+        if not kjv_occs:
             continue
-        for i, kw in enumerate(kjv_sorted):
-            if claimed[i]:
+        # Filter src_occs to dedupe per-line: if the same line has
+        # multiple source tokens with the same Strong's (e.g. doubled
+        # particle), still process them independently — they may all
+        # legitimately claim distinct KJV occurrences.
+        if len(src_occs) <= len(kjv_occs):
+            # Monotonic 1:1, k-th src to k-th kjv.
+            for k, (_, line_idx) in enumerate(src_occs):
+                kjv_idx, _vpos = kjv_occs[k]
+                if not claimed[kjv_idx]:
+                    _claim(kjv_idx, line_idx)
+        else:
+            deferred_strongs.append(s)
+
+    # Pass A2: over-supplied Strong's — positional-proximity per KJV occ.
+    # For each KJV word with Strong's S, pick the source line (from those
+    # that have a src-occurrence with S) whose A1 anchors are positionally
+    # closest in KJV vpos. Ties: line nearest in source-line order.
+    for s in deferred_strongs:
+        src_occs = src_strongs_occs[s]
+        kjv_occs = kjv_strongs_occs[s]
+        # Lines that have at least one src-occurrence with this Strong's.
+        candidate_lines = sorted({li for (_, li) in src_occs})
+        # Assign each KJV occ to its positionally-nearest candidate line.
+        # We do this in vpos order so that later assignments see updated
+        # anchors. Not strictly necessary for correctness — anchors set
+        # by A1 should dominate — but stable.
+        for kjv_idx, vpos in kjv_occs:
+            if claimed[kjv_idx]:
                 continue
-            if not kw.strongs_list:
-                continue
-            if _strongs_overlap(tok.strongs_list, kw.strongs_list):
-                claimed[i] = True
-                assignment[i] = line_idx
-                break
+            line = _pick_line_by_proximity(
+                vpos, candidate_lines, per_line_anchors, n_lines
+            )
+            _claim(kjv_idx, line)
 
     # Pass B: synonymy sweep. Any KJV word still unclaimed whose Strong's
-    # overlaps SOME source token in the verse should attach to the LAST
-    # line whose source tokens carry an overlapping Strong's. This handles
-    # one-source-token -> multiple-KJV-words (e.g. ἕξει -> "shall be with
-    # child" where MetaV gives "with child" the same G1722/G1064/G2192 set
-    # that the single Greek word carries).
-    #
-    # We pick the *last* matching source-line because KJV multi-word
-    # renderings of a single source token typically stay together; the
-    # source token's line is the natural home.
-    for i, kw in enumerate(kjv_sorted):
-        if claimed[i]:
+    # overlap SOME source token in the verse. Assign by positional
+    # proximity to the line whose anchors are closest. Used for cases
+    # like Greek ἕξει -> "shall be with child" where the multi-KJV-word
+    # cluster shares one source token's Strong's set.
+    for kjv_idx, kw in enumerate(kjv_sorted):
+        if claimed[kjv_idx]:
             continue
         if not kw.strongs_list:
             continue
-        match_line: int | None = None
-        for line_idx, tok in flat_source:
-            if _strongs_overlap(tok.strongs_list, kw.strongs_list):
-                match_line = line_idx
-        if match_line is not None:
-            assignment[i] = match_line
-            claimed[i] = True
+        candidate_lines: list[int] = []
+        for s in kw.strongs_list:
+            for _, li in src_strongs_occs.get(s, []):
+                if li not in candidate_lines:
+                    candidate_lines.append(li)
+        if not candidate_lines:
+            continue  # no source overlap at all; falls to Pass D
+        line = _pick_line_by_proximity(
+            kw.vpos, sorted(candidate_lines), per_line_anchors, n_lines
+        )
+        _claim(kjv_idx, line)
 
-    # Pass C: translator-supplied (no-Strong's) KJV words attach to the
-    # nearest assigned-or-anchored neighbour. Preference: next forward in
-    # vpos order. Fallback: previous backward. Implementation: simple two-
-    # direction scan.
-    for i, kw in enumerate(kjv_sorted):
-        if assignment[i] is not None:
+    # Pass C: any KJV word still unassigned (translator-supplied OR
+    # Strong's-tagged-with-no-source-overlap) attaches to the nearest
+    # assigned neighbour. Forward preferred; if a sentence boundary
+    # (".", "!", "?") sits between this word and its forward neighbour
+    # but the backward neighbour is on the near side, prefer backward.
+    # This keeps "And the Spirit of God moved" (after a period) attached
+    # forward into the new sentence rather than backward to the prior one,
+    # AND handles Strong's-tagged words whose source token's Strong's
+    # set doesn't actually overlap any KJV row (a frequent MetaV/TAHOT
+    # divergence for Hebrew pronominal suffixes like H9033, KJV H3240).
+    for kjv_idx, kw in enumerate(kjv_sorted):
+        if assignment[kjv_idx] is not None:
             continue
         # Forward look
-        forward: int | None = None
-        for j in range(i + 1, n_kjv):
+        forward_assigned_idx: int | None = None
+        for j in range(kjv_idx + 1, n_kjv):
             if assignment[j] is not None:
-                forward = assignment[j]
+                forward_assigned_idx = j
                 break
         # Backward look
-        backward: int | None = None
-        for j in range(i - 1, -1, -1):
+        backward_assigned_idx: int | None = None
+        for j in range(kjv_idx - 1, -1, -1):
             if assignment[j] is not None:
-                backward = assignment[j]
+                backward_assigned_idx = j
                 break
-        if forward is not None:
-            assignment[i] = forward
-        elif backward is not None:
-            assignment[i] = backward
-        else:
-            # Whole verse unclaimed (no source tokens matched anything).
-            # Dump all KJV words on line 0 by default.
-            assignment[i] = 0
 
-    # Pass D: render. Group by line, preserve KJV vpos order.
+        forward_line = (
+            assignment[forward_assigned_idx]
+            if forward_assigned_idx is not None
+            else None
+        )
+        backward_line = (
+            assignment[backward_assigned_idx]
+            if backward_assigned_idx is not None
+            else None
+        )
+
+        chosen_line: int | None = None
+        if forward_line is not None and backward_line is not None:
+            # Sentence-boundary awareness: if there's a `.` / `!` / `?` in
+            # the punctuation of any word at indices [kjv_idx, forward_idx)
+            # OR [backward_idx, kjv_idx), that direction is "crossed."
+            # Prefer the un-crossed direction.
+            fwd_crosses = _has_sentence_boundary_between(
+                kjv_sorted, kjv_idx, forward_assigned_idx
+            )
+            bwd_crosses = _has_sentence_boundary_between(
+                kjv_sorted, backward_assigned_idx, kjv_idx
+            )
+            if fwd_crosses and not bwd_crosses:
+                chosen_line = backward_line
+            elif bwd_crosses and not fwd_crosses:
+                chosen_line = forward_line
+            else:
+                # Default: forward.
+                chosen_line = forward_line
+        elif forward_line is not None:
+            chosen_line = forward_line
+        elif backward_line is not None:
+            chosen_line = backward_line
+        else:
+            # No assigned neighbours anywhere — fallback line 0.
+            chosen_line = 0
+        assignment[kjv_idx] = chosen_line
+
+    # Pass D: defensive fallback. Pass C should assign every KJV word, but
+    # guard against any unassigned escapees by using global positional
+    # proximity (or line 0 if no anchors exist anywhere).
+    for kjv_idx, kw in enumerate(kjv_sorted):
+        if assignment[kjv_idx] is not None:
+            continue
+        candidate_lines = list(range(n_lines))
+        line = _pick_line_by_proximity(
+            kw.vpos, candidate_lines, per_line_anchors, n_lines
+        )
+        assignment[kjv_idx] = line
+
+    # Render: group by line, preserve KJV vpos order.
     per_line: list[list[KjvWord]] = [[] for _ in range(n_lines)]
-    for i, kw in enumerate(kjv_sorted):
-        line = assignment[i]
+    for kjv_idx, kw in enumerate(kjv_sorted):
+        line = assignment[kjv_idx]
         # Defensive clamp: if a line ref escapes due to caller weirdness,
         # park it on the last line rather than crashing.
         if line is None or line < 0 or line >= n_lines:

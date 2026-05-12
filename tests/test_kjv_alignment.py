@@ -346,6 +346,165 @@ class TestDistributeUnit(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
+# Wave 7 regression tests — positional-aware distribution
+# ----------------------------------------------------------------------
+
+
+# Hebrew source tokens for Gen 1:2 (TAHOT-equivalent, in textual order)
+# split across three cola per the v2/he file.
+GEN_1_2_COLA1 = [
+    SourceToken("וְהָאָרֶץ", ("H9002", "H776")),
+    SourceToken("הָיְתָה", ("H1961",)),
+    SourceToken("תֹהוּ", ("H8414",)),
+    SourceToken("וָבֹהוּ", ("H9002", "H922")),
+]
+GEN_1_2_COLA2 = [
+    SourceToken("וְחֹשֶׁךְ", ("H9002", "H2822")),
+    SourceToken("עַל", ("H5921",)),
+    SourceToken("פְּנֵי", ("H6440",)),
+    SourceToken("תְהוֹם", ("H8415",)),
+]
+GEN_1_2_COLA3 = [
+    SourceToken("וְרוּחַ", ("H9002", "H7307")),
+    SourceToken("אֱלֹהִים", ("H430",)),
+    SourceToken("מְרַחֶפֶת", ("H7363",)),
+    SourceToken("עַל", ("H5921",)),
+    SourceToken("פְּנֵי", ("H6440",)),
+    SourceToken("הַמָּיִם", ("H9009", "H4325")),
+]
+
+
+class TestWave7Regression(unittest.TestCase):
+    """Tests added in Wave 7 (positional-aware distribution).
+
+    The canonical bug repro is Gen 1:2 — Stan's live-site review caught
+    a trailing "upon" on cola 2 caused by the Wave 5b first-match-wins
+    pass claiming KJV vpos 23 "upon" (H5921, in cola 3's positional
+    region) for cola 2's H5921 source token before cola 3 could.
+    """
+
+    def test_gen_1_2_no_upon_leakage(self):
+        """Gen 1:2 — no cross-line `upon` leakage onto cola 2."""
+        result = align_verse(
+            "Gen", 1, 2,
+            [GEN_1_2_COLA1, GEN_1_2_COLA2, GEN_1_2_COLA3],
+            METAV_DIR,
+        )
+        self.assertEqual(len(result), 3)
+        self.assertEqual(
+            result[0],
+            "And the earth was without form, and void;",
+        )
+        # The smoking gun: cola 2 must NOT have trailing "upon".
+        self.assertEqual(
+            result[1],
+            "and darkness was upon the face of the deep.",
+        )
+        # And cola 3 must have "upon" in its expected position.
+        self.assertEqual(
+            result[2],
+            "And the Spirit of God moved upon the face of the waters.",
+        )
+
+    def test_gen_2_15_him_attaches_to_cola_2(self):
+        """Gen 2:15 — H3240 "him" (no source overlap; H9033 suffix only)
+        must attach forward to cola 2's "put", not get parked.
+        """
+        cola1 = [
+            SourceToken("וַיִּקַּח", ("H9001", "H3947")),
+            SourceToken("יְהוָה", ("H3068",)),
+            SourceToken("אֱלֹהִים", ("H430",)),
+            SourceToken("אֶת", ("H853",)),
+            SourceToken("הָאָדָם", ("H9009", "H120")),
+        ]
+        cola2 = [
+            # MetaV/TAHOT-divergent H3240-vs-H5117: src has H5117 not H3240
+            SourceToken("וַיַּנִּחֵהוּ", ("H9001", "H5117", "H9033")),
+            SourceToken("בְגַן", ("H9003", "H1588")),
+            SourceToken("עֵדֶן", ("H5731",)),
+            SourceToken("לְעָבְדָהּ", ("H9005", "H5647", "H9034")),
+        ]
+        cola3 = [
+            SourceToken("וּלְשָׁמְרָהּ", ("H9002", "H9005", "H8104", "H9034")),
+        ]
+        result = align_verse("Gen", 2, 15, [cola1, cola2, cola3], METAV_DIR)
+        self.assertEqual(len(result), 3)
+        # "him" (KJV vpos=9) must be on cola 2, between "put" and "into".
+        self.assertIn("put him into", result[1])
+        # And cola 1 must NOT end with " him".
+        self.assertFalse(result[0].endswith(" him"))
+
+    def test_sentence_boundary_attachment(self):
+        """Translator-supplied word after a `.` should attach forward,
+        not backward across the sentence boundary."""
+        # Synthetic verse: line A ends sentence; line B starts new one.
+        # KJV has "...X. And Y." where "And" is translator-supplied and
+        # sits between line A's claimed X and line B's claimed Y.
+        from atu_method.kjv_alignment.distribute import (
+            distribute_kjv_to_atu_lines,
+        )
+        from atu_method.kjv_alignment.metav_loader import KjvWord
+        kjv = [
+            KjvWord(text="X", punc=".", italic=False,
+                    strongs_list=("H1111",), vpos=0, word_id=1),
+            KjvWord(text="And", punc="", italic=False,
+                    strongs_list=(), vpos=1, word_id=2),
+            KjvWord(text="Y", punc=".", italic=False,
+                    strongs_list=("H2222",), vpos=2, word_id=3),
+        ]
+        source_lines = [
+            [SourceToken("x", ("H1111",))],
+            [SourceToken("y", ("H2222",))],
+        ]
+        result = distribute_kjv_to_atu_lines(source_lines, kjv)
+        # "And" sits after the "." of X and before Y. The forward neighbour
+        # is Y on line 1; backward is X on line 0 BUT the boundary is
+        # between "And" and X (X's trailing punc carries it). So "And"
+        # should attach forward — not "X. And" on line 0.
+        self.assertEqual(result[0], "X.")
+        self.assertEqual(result[1], "And Y.")
+
+    def test_over_supplied_strongs_positional(self):
+        """Synthetic: 2 source tokens with Strong's S; 1 KJV word with S.
+        The KJV word should go to whichever source line is positionally
+        closer to its KJV vpos, not the first-in-source-order line."""
+        from atu_method.kjv_alignment.distribute import (
+            distribute_kjv_to_atu_lines,
+        )
+        from atu_method.kjv_alignment.metav_loader import KjvWord
+        # KJV: A(vpos 0, S=H1), B(vpos 1, S=H2), C(vpos 2, S=H3),
+        #      D(vpos 3, S=H4), TARGET(vpos 4, S=H99), E(vpos 5, S=H5)
+        kjv = [
+            KjvWord(text="A", punc="", italic=False, strongs_list=("H1",),
+                    vpos=0, word_id=1),
+            KjvWord(text="B", punc="", italic=False, strongs_list=("H2",),
+                    vpos=1, word_id=2),
+            KjvWord(text="C", punc="", italic=False, strongs_list=("H3",),
+                    vpos=2, word_id=3),
+            KjvWord(text="D", punc="", italic=False, strongs_list=("H4",),
+                    vpos=3, word_id=4),
+            KjvWord(text="TARGET", punc="", italic=False,
+                    strongs_list=("H99",), vpos=4, word_id=5),
+            KjvWord(text="E", punc="", italic=False, strongs_list=("H5",),
+                    vpos=5, word_id=6),
+        ]
+        # Line 0: A, B  | Line 1: C, D, TARGET-src (H99), E
+        # But ALSO put an H99 src token on line 0 (over-supplied case).
+        source_lines = [
+            [SourceToken("a", ("H1",)), SourceToken("b", ("H2",)),
+             SourceToken("s0", ("H99",))],
+            [SourceToken("c", ("H3",)), SourceToken("d", ("H4",)),
+             SourceToken("s1", ("H99",)), SourceToken("e", ("H5",))],
+        ]
+        result = distribute_kjv_to_atu_lines(source_lines, kjv)
+        # TARGET vpos=4 should go to line 1 (anchors 2,3,5 — distance 1)
+        # not line 0 (anchors 0,1 — distance 3), despite line 0's source
+        # H99 token appearing FIRST in flat source order.
+        self.assertIn("TARGET", result[1])
+        self.assertNotIn("TARGET", result[0])
+
+
+# ----------------------------------------------------------------------
 # Entry point: allow `python tests/test_kjv_alignment.py`
 # ----------------------------------------------------------------------
 
