@@ -47,8 +47,10 @@ def normalize_strongs(raw: str) -> list[str]:
     if not raw:
         return []
     out: list[str] = []
-    # Split on slash (TAHOT compound), comma (TAGNT alt list), and whitespace
-    parts = re.split(r"[/,\s]+", raw.strip())
+    # Split on slash (TAHOT compound), backslash (TAHOT trailing meta-codes
+    # like \H9016 verse-end and \H9018 section marker), comma (TAGNT alt
+    # list), and whitespace.
+    parts = re.split(r"[/\\,\s]+", raw.strip())
     for part in parts:
         if not part:
             continue
