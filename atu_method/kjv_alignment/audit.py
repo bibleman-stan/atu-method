@@ -115,12 +115,27 @@ def audit_verse(
     cola_lines: list[str],
     metav_verse: list[KjvWord],
     book_label: str,
+    prior_verse_last_line: str | None = None,
 ) -> dict:
     """Audit one verse's cola distribution against MetaV truth.
+
+    Args:
+        verse_ref: "ch:vs" form (e.g. "3:2").
+        cola_lines: list of rendered KJV English lines for this verse.
+        metav_verse: MetaV KJV words for this verse, in vpos order.
+        book_label: OSIS book code (e.g. "Matt").
+        prior_verse_last_line: the last KJV English line of the IMMEDIATELY
+            PRECEDING verse, if any. Used to filter §5.1-fold artifacts
+            from the loss count — when v4-editorial has a cross-verse
+            marker on the prior verse's last line, KJV words from the
+            current verse's TAGNT-canonical start appear there instead
+            of on the current verse's output, producing apparent "loss"
+            flags that are actually correct cross-verse fold behavior.
 
     Returns a dict of findings keyed by check name.
     """
     findings: dict[str, list[dict]] = defaultdict(list)
+    prior_last_words = set(_extract_kjv_words(prior_verse_last_line)) if prior_verse_last_line else set()
     kjv_seq = _verse_kjv_words(metav_verse)
     kjv_count = defaultdict(int)
     for norm, _, _ in kjv_seq:
@@ -205,11 +220,26 @@ def audit_verse(
         for w, n in kjv_count.items():
             if n > 0 and out_count.get(w, 0) < n:
                 tagged_anywhere = any(is_tagged_lookup.get(w, [False]))
-                findings["loss"].append({
-                    "book": book_label, "ref": verse_ref, "word": w,
-                    "kjv_count": n, "out_count": out_count.get(w, 0),
-                    "strongs_tagged": tagged_anywhere,
-                })
+                # §5.1 cross-verse-fold filter: when v4-editorial places a
+                # superscript marker on the prior verse's last line, KJV
+                # words from THIS verse's TAGNT-canonical start get
+                # rendered on the prior verse's last line instead. The
+                # audit's per-verse loss check can't distinguish that
+                # from a real bug. Heuristic: if the lost word appears in
+                # the prior verse's last line, classify as a fold artifact
+                # — separate bucket, NOT counted in main loss.
+                if w in prior_last_words:
+                    findings["loss_fold_artifact"].append({
+                        "book": book_label, "ref": verse_ref, "word": w,
+                        "kjv_count": n, "out_count": out_count.get(w, 0),
+                        "strongs_tagged": tagged_anywhere,
+                    })
+                else:
+                    findings["loss"].append({
+                        "book": book_label, "ref": verse_ref, "word": w,
+                        "kjv_count": n, "out_count": out_count.get(w, 0),
+                        "strongs_tagged": tagged_anywhere,
+                    })
 
     # Check 3: trailing/leading italic orphans
     # Flag a line as orphan when NONE of its words map to a Strong's-tagged
@@ -228,6 +258,40 @@ def audit_verse(
                 "line_idx": li, "snippet": cola_lines[li][:80],
             })
 
+    # Build per-line Strong's sets for the inherent/actionable discriminator
+    # used in the cross-line and within-line monotonicity checks below.
+    # A flagged vpos is "actionable" (likely a real algorithm bug — the
+    # algorithm could have placed it differently) when the same Strong's
+    # has matched output on more than one line. It's "inherent" (no fix
+    # possible at this layer — the line break forces it) when only the
+    # claiming line has output for that Strong's.
+    per_line_strongs: list[set[str]] = []
+    metav_by_vpos = {w.vpos: w for w in metav_verse}
+    for words in per_line_words:
+        line_strongs: set[str] = set()
+        for _w, v in words:
+            if v is None:
+                continue
+            kw = metav_by_vpos.get(v)
+            if kw is not None:
+                for s in kw.strongs_list:
+                    line_strongs.add(s)
+        per_line_strongs.append(line_strongs)
+
+    def _classify_flag(flagged_line: int, flagged_vpos: int) -> str:
+        """Return 'inherent', 'actionable', or 'italic'."""
+        kw = metav_by_vpos.get(flagged_vpos)
+        if kw is None:
+            return "unknown"
+        if not kw.strongs_list:
+            return "italic"
+        for li, s_set in enumerate(per_line_strongs):
+            if li == flagged_line:
+                continue
+            if any(s in s_set for s in kw.strongs_list):
+                return "actionable"
+        return "inherent"
+
     # Check 4a: cross-line monotonicity. Line N's max vpos should be <
     # line N+1's min vpos. Violations are the Gen-1:2 class (a later line
     # has a word with vpos earlier than the previous line's words).
@@ -245,9 +309,12 @@ def audit_verse(
             # Find which word actually inverts.
             for (w, vpos) in per_line_words[li]:
                 if vpos is not None and vpos > nxt_min:
-                    findings["duplication"].append({
+                    cls = _classify_flag(li, vpos)
+                    bucket = "duplication" if cls == "actionable" else "duplication_inherent"
+                    findings[bucket].append({
                         "book": book_label, "ref": verse_ref,
                         "kind": "cross-line-inversion",
+                        "classification": cls,
                         "word": w, "line_idx": li,
                         "vpos": vpos, "next_line_min_vpos": nxt_min,
                     })
@@ -260,8 +327,11 @@ def audit_verse(
             if vpos is None:
                 continue
             if prev_vpos is not None and vpos < prev_vpos:
-                findings["order_inversion"].append({
+                cls = _classify_flag(li, vpos)
+                bucket = "order_inversion" if cls == "actionable" else "order_inversion_inherent"
+                findings[bucket].append({
                     "book": book_label, "ref": verse_ref, "line_idx": li,
+                    "classification": cls,
                     "word": w, "vpos": vpos, "prev_vpos": prev_vpos,
                 })
             if prev_vpos is None or vpos > prev_vpos:
@@ -296,22 +366,27 @@ def audit_book_dir(
             continue
         chapter = int(m.group(1))
         verses = _parse_eng_gloss_chapter(cf)
+        prior_last_line: str | None = None
         for ref, cola_lines in verses:
             try:
                 ch_str, vs_str = ref.split(":")
                 ch = int(ch_str)
                 vs = int(vs_str)
             except ValueError:
+                prior_last_line = cola_lines[-1] if cola_lines else None
                 continue
             metav_key = (book_id, ch, vs)
             metav_verse = metav_index.get(metav_key)
             if metav_verse is None:
+                prior_last_line = cola_lines[-1] if cola_lines else None
                 continue
             verse_findings = audit_verse(
-                ref, cola_lines, metav_verse, book_label=book_osis
+                ref, cola_lines, metav_verse, book_label=book_osis,
+                prior_verse_last_line=prior_last_line,
             )
             for k, v in verse_findings.items():
                 findings[k].extend(v)
+            prior_last_line = cola_lines[-1] if cola_lines else None
     return findings
 
 
@@ -348,7 +423,13 @@ def audit_corpus(
 
 def print_report(findings: dict, top_n: int = 10) -> None:
     """Print a human-readable summary + top-N offenders per check."""
-    checks = ["duplication", "loss", "orphan_line", "order_inversion", "empty_line"]
+    checks = [
+        "duplication", "duplication_inherent",
+        "loss", "loss_fold_artifact",
+        "orphan_line",
+        "order_inversion", "order_inversion_inherent",
+        "empty_line",
+    ]
     print("=" * 70)
     print("KJV-DISTRIBUTION AUDIT SUMMARY")
     print("=" * 70)
