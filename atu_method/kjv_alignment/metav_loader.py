@@ -54,7 +54,7 @@ OSIS_TO_BOOK_ID: dict[str, int] = {v: k for k, v in BOOK_ID_TO_OSIS.items()}
 TAGNT_TO_OSIS: dict[str, str] = {
     "Mat": "Matt", "Mrk": "Mark", "Luk": "Luke", "Jhn": "John",
     "Act": "Acts", "1Co": "1Cor", "2Co": "2Cor",
-    "Phi": "Phil", "Col": "Col",
+    "Phi": "Phil", "Php": "Phil", "Col": "Col",
     "1Th": "1Thess", "2Th": "2Thess",
     "1Ti": "1Tim", "2Ti": "2Tim",
     "Tit": "Titus", "Phm": "Phlm",
