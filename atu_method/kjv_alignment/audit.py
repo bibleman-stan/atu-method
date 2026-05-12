@@ -128,9 +128,16 @@ def audit_verse(
     # Map word -> list of vpos (in vpos order) so we can validate ordering
     vpos_lookup: dict[str, list[int]] = defaultdict(list)
     is_tagged_lookup: dict[str, list[bool]] = defaultdict(list)
+    # Per-vpos tag lookup: vpos -> is_tagged. The orphan_line check needs
+    # the SPECIFIC occurrence's tag status, not the FIRST occurrence's.
+    # E.g., 1Pet 4:4 has "of" twice — vpos 15 (italic) + vpos 19 (G987 for
+    # βλασφημοῦντες) — and is_tagged_lookup["of"][0]=False would
+    # wrongly mark line 3 as orphan when its "of" is the tagged vpos-19 one.
+    vpos_to_tagged: dict[int, bool] = {}
     for norm, is_tagged, vpos in kjv_seq:
         vpos_lookup[norm].append(vpos)
         is_tagged_lookup[norm].append(is_tagged)
+        vpos_to_tagged[vpos] = is_tagged
 
     # Tally output occurrences per word + assign each occurrence a vpos
     # (consume in vpos order from vpos_lookup as we walk the cola lines).
@@ -205,42 +212,21 @@ def audit_verse(
                 })
 
     # Check 3: trailing/leading italic orphans
-    # If a line begins or ends with a word whose vpos has NO Strong's tag
-    # AND that word is "far" (more than 1 vpos away) from the nearest
-    # tagged word on the same line, flag it.
+    # Flag a line as orphan when NONE of its words map to a Strong's-tagged
+    # vpos in MetaV. Per-vpos tag lookup (not per-word) — a repeated word
+    # may be italic at one vpos and Strong's-tagged at another.
     for li, words in enumerate(per_line_words):
         if not words:
             continue
-        tagged_vposes = [v for (_, v) in words
-                         if v is not None and any(
-                             t for t in is_tagged_lookup.get(_, [False]))]
-        # Actually safer: tagged_vposes from MetaV directly via is_tagged_lookup
-        # Re-check first and last
-        for end_pos, (w, vpos) in [("first", words[0]), ("last", words[-1])]:
-            if vpos is None:
-                continue
-            # Is this word a translator-supplied (no-Strong's) instance?
-            # Match by position in is_tagged_lookup list — we used the order
-            # from MetaV, but words can repeat. Approximate: if any
-            # instance of this word in MetaV is translator-supplied AND
-            # this output line has tagged words far away.
-            tagged_on_line = [
-                v for (other_w, v) in words
-                if v is not None and (
-                    is_tagged_lookup.get(other_w) and
-                    is_tagged_lookup[other_w][0])
-            ]
-            if not tagged_on_line:
-                # Pure orphan line of italics — flag once per line
-                if end_pos == "first":
-                    # Skip if word is Strong's-tagged itself (line is just
-                    # short, not orphan)
-                    if not any(is_tagged_lookup.get(w, [False])):
-                        findings["orphan_line"].append({
-                            "book": book_label, "ref": verse_ref,
-                            "line_idx": li, "snippet": cola_lines[li][:80],
-                        })
-                continue
+        tagged_on_line = [
+            v for (_, v) in words
+            if v is not None and vpos_to_tagged.get(v, False)
+        ]
+        if not tagged_on_line:
+            findings["orphan_line"].append({
+                "book": book_label, "ref": verse_ref,
+                "line_idx": li, "snippet": cola_lines[li][:80],
+            })
 
     # Check 4a: cross-line monotonicity. Line N's max vpos should be <
     # line N+1's min vpos. Violations are the Gen-1:2 class (a later line
