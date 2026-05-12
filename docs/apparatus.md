@@ -38,31 +38,57 @@ The apparatus produces three sibling readers sharing one design language. When c
 
 ## How the KJV-anchored English layer is produced
 
-For non-English readers (gnt, tanakh), the English layer is **not generated translation**. It is deterministically derived from the source-language token's Strong's number, looked up against the STEPBible Strong's lexicon's KJV-usage data:
+For non-English readers (gnt, tanakh), the English layer is **not generated translation**. It is KJV verbatim text distributed per source-language ATU line by Strong's-number matching:
 
 ```
-Source-language token  →  Strong's number (from TAGNT / TAHOT)
-                              ↓
-                       STEPBible Strong's lexicon
-                              ↓
-                       KJV English gloss (primary KJV-usage form)
-                              ↓
-                       Distributed per ATU line, in source-token order
-                              ↓
-                       Swap-system wraps archaic forms with data-mod
-                              ↓
-                       HTML render — modern-mode pill toggles in place
+Source-language token (TAGNT or TAHOT)  →  Strong's number(s)
+                                              ↓
+                                   ┌─────────────────────────┐
+                                   │  Match against per-KJV-  │
+                                   │  word Strong's tags in   │
+                                   │  the same verse (MetaV   │
+                                   │  KJV+Strong's database)  │
+                                   └─────────────────────────┘
+                                              ↓
+                            KJV words flow to the ATU line of their
+                            matched source-token, in KJV verse order.
+                            Italic KJV words (translator additions
+                            with no original-language backing) attach
+                            to the line of the nearest non-italic
+                            neighbor.
+                                              ↓
+                            Swap-system wraps KJV archaisms with
+                            data-mod modern equivalents.
+                                              ↓
+                            HTML render — modern-mode pill toggles
+                            archaic→modern in-place on the English
+                            row only; source-language rows unchanged.
 ```
 
-**Why this is "leverage, not invention":** STEPBible already did both halves of the alignment work — (a) tagging Greek/Hebrew tokens with Strong's numbers (TAGNT, TAHOT), and (b) compiling Strong's-number → KJV-usage lexicons (Strong's exhaustive concordance was built by indexing the KJV; the lexicon entries are that index in reusable form). The apparatus consumes both halves and renders. No statistical alignment, no per-instance editorial translation, no external KJV+Strong's data hunt — the alignment is the Strong's lexicon, and the Strong's lexicon ships with STEPBible-Data.
+**Substrate components (universal infrastructure at `atu-method/data/`):**
+- `tagnt-source/` (in readers-gnt, CC BY 4.0) / `stepbible-tahot/` (in readers-tanakh, CC BY 4.0) — STEPBible's per-source-token Strong's tagging for Greek (TAGNT) and Hebrew (TAHOT).
+- `kjv-strongs/MetaV_*.csv` (viz.bible, CC-BY-SA 3.0) — per-KJV-word Strong's tagging + `Italic` flag for translator-supplied words. STEPBible publishes per-source-token Strong's but NOT a Tagged-KJV file; viz.bible's MetaV is the KJV-side wiring.
+- `lexicons/TBESG.txt` + `TBESH.txt` (STEPBible, CC BY 4.0) — Strong's brief gloss lexicons. Used as fallback / sanity reference when MetaV has gaps.
 
-**Why bomreader's swap-system carries over directly:** the BoFM uses KJV-style archaic English by construction (Skousen 2009, *The Earliest Text*). The bomreader `.swap` class system already modernizes BoFM's KJV-derivative archaisms (`hath`, `unto`, `thee`, `betwixt`, AICTP-formula constructions). KJV NT and KJV OT use the same archaic register with one corpus-specific extension each: KJV NT adds `begat`, `wist`, `holpen`, `verily`; KJV OT adds `firmament`, `behold`, `peradventure`, plus more `begat`. Same mechanism, slightly extended swap-list per corpus.
+**Algorithm components (universal infrastructure at `atu-method/atu_method/kjv_alignment/`):**
+- `metav_loader.py` — loads MetaV CSVs once, builds `(book, ch, vs) → [KjvWord]` index. Module-level cache.
+- `strongs_normalize.py` — normalizes Strong's number formats across MetaV (`G846`), TAGNT (`G0846=V-AAI-3S`, alt-Strong's), TAHOT (`{H7225G}`, compound `H9003/H7225G`, backslash-separated meta-codes).
+- `distribute.py` — three-pass distribution: first-match-wins claim → synonymy sweep for unclaimed KJV words → nearest-neighbor attachment for italics/orphans.
+- `api.py` — `align_verse(book, ch, vs, source_atu_lines, metav_dir)` convenience entry point.
+
+**Per-corpus consumers (per-repo thin wrappers, ~50–200 lines each):**
+- `readers-gnt/scripts/regenerate_english_kjv.py` — parses TAGNT, calls `align_verse()` per verse.
+- `readers-tanakh/scripts/regenerate_english_kjv.py` — parses TAHOT (with BHS-vs-English versification offset handling), calls `align_verse()` per cola.
+
+**Why this works:** Strong's exhaustive concordance was compiled BY indexing the KJV — every Strong's number IS a pointer to a set of KJV English words. So per-source-token Strong's (STEPBible) + per-KJV-word Strong's (viz.bible MetaV) = deterministic per-source-token-to-KJV-word mapping. The KJV is the verbatim English; the Strong's index is the routing table. No statistical alignment, no editorial translation, no per-corpus retraining.
+
+**Why bomreader's swap-system carries over directly:** the BoFM uses KJV-style archaic English by construction (Skousen 2009, *The Earliest Text*). The bomreader `.swap` class system already modernizes BoFM's KJV-derivative archaisms. KJV NT (gnt-reader) and KJV OT (tanakh-reader) share most of these archaisms — `hath`, `thee`, `verily`, `unto`, `betwixt` — with one corpus-specific extension each: KJV NT adds `begat`, `wist`, `holpen`; KJV OT adds `firmament`, `behold`, `peradventure`. Universal swap-lists at `atu-method/data/swaps/` with NT/OT-specific extensions. Same `apply_swaps()` mechanism.
 
 ## What the apparatus is NOT
 
 - Not a rhetorical-parallelism analyzer. Parallelism (Lowth, Kugel, Berlin, Watson, Parry) is a separate scholarly layer that may overlap with ATU revelation but is not the apparatus's target.
 - Not a critical text-edition tool. The apparatus takes canonical text as a fixed input; textual criticism happens upstream.
-- Not a translation tool. The English layer in non-English readers is anchored to a public-domain translation (KJV via STEPBible-Data alignment) with regex-driven modernization, not generated translation.
+- Not a translation tool. The English layer in non-English readers is KJV verbatim text (1769 Cambridge edition, public domain) distributed per source-language ATU line via Strong's-number matching between STEPBible TAGNT/TAHOT and viz.bible MetaV — with swap-system modernization, not generated translation. See "How the KJV-anchored English layer is produced" above.
 - Not a deterministic prior on editorial overlays (te'amim, NA28 paragraph structure, BHS sifrei emet layout, ancient codex colometric arrangements). External editorial overlays are **calibration evidence consulted at audit time only**, never piped into the candidate-generation pipeline.
 
 ## Where to read next
