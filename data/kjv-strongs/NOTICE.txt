@@ -1,0 +1,38 @@
+KJV + Strong's Numbers Data — MetaV Database
+=============================================
+
+Source:    https://github.com/theonize/KJV-bible-database-with-metadata-MetaV-
+Mirror:    https://github.com/gusheng/MetaV
+License:   Creative Commons Attribution Share-Alike 3.0 International
+           https://creativecommons.org/licenses/by-sa/3.0/
+Copyright: 2013-2016 viz.bible (https://viz.bible/)
+
+Underlying source data:
+- King James Version (1769 Cambridge Edition) — Public Domain
+- Strong's Exhaustive Concordance — Public Domain (James Strong, d. 1894)
+- KJV word-to-Strong's alignment by viz.bible — CC-BY-SA 3.0
+- "Italic" field flags KJV translator-supplied words (no original-language
+  backing) — CC-BY-SA 3.0
+
+Files downloaded 2026-05-12 from canonical raw URLs:
+- MetaV_MainIndex.csv    — per-KJV-word index: BookID, Chapter, VerseNum,
+                            VersePos, WordID, Word, Italic, ...
+- MetaV_StrongsIndex.csv — word-to-Strong's join: (WordID, StrongsID)
+                            Multiple rows per WordID when a KJV word carries
+                            compound Strong's tags.
+- MetaV_Verses.csv       — plain KJV verse text (sanity / display source)
+- MetaV_Strongs.csv      — Strong's lexicon: ID, lemma, transliteration,
+                            pronunciation, description, POS, language
+
+Use in this project:
+- Substrate for the universal `atu_method/kjv_alignment/` module that
+  distributes KJV English per source-language ATU line, anchored by
+  Strong's matching between TAGNT/TAHOT source tokens and MetaV KJV
+  words within the same verse.
+- "Italic"-flagged KJV words (translator additions) attach to the line
+  containing the nearest non-italic neighbor.
+- Outputs (per-corpus eng-gloss-kjv/) inherit CC-BY-SA 3.0 attribution
+  via this NOTICE.
+
+Attribution required by CC-BY-SA 3.0: cite viz.bible as the data source
+in any redistribution or derivative work.
