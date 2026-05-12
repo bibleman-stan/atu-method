@@ -1,0 +1,30 @@
+STEPBible Strong's Lexicons — Attribution Notice
+=================================================
+
+Files in this directory:
+  TBESG.txt — Translators Brief lexicon of Extended Strongs for Greek
+  TBESH.txt — Translators Brief lexicon of Extended Strongs for Hebrew
+
+Source: STEPBible.org, based on work at Tyndale House, Cambridge
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+Canonical repository: https://github.com/STEPBible/STEPBible-Data
+
+Original filenames (preserved canonical URLs):
+  TBESG: https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Lexicons/TBESG%20-%20Translators%20Brief%20lexicon%20of%20Extended%20Strongs%20for%20Greek%20-%20STEPBible.org%20CC%20BY.txt
+  TBESH: https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Lexicons/TBESH%20-%20Translators%20Brief%20lexicon%20of%20Extended%20Strongs%20for%20Hebrew%20-%20STEPBible.org%20CC%20BY.txt
+
+Original files downloaded 2026-05-12.
+
+Per the CC BY 4.0 license terms and STEPBible's usage guidelines:
+  * This data is used here as Strong's-number-to-English-gloss fallback for
+    the atu-method KJV-anchored English-layer pipeline. Primary alignment
+    substrate is per-token English in TAGNT (Greek NT) and TAHOT (Hebrew OT).
+  * STEPBible.org is credited as the source of the data.
+  * The data has NOT been redistributed; it is used locally to generate
+    derived output (per-Greek-token / per-Hebrew-token English glosses
+    distributed per ATU line in reader HTML).
+  * Proposed corrections may be sent to STEPBibleATGmail.com.
+  * STEPBible.org is the canonical distribution source for the raw data.
+
+Attribution as required by STEPBible: "Data created by www.STEPBible.org
+based on work at Tyndale House Cambridge (CC BY 4.0)"
