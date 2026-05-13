@@ -84,6 +84,16 @@ Source-language token (TAGNT or TAHOT)  →  Strong's number(s)
 
 **Why bomreader's swap-system carries over directly:** the BoFM uses KJV-style archaic English by construction (Skousen 2009, *The Earliest Text*). The bomreader `.swap` class system already modernizes BoFM's KJV-derivative archaisms. KJV NT (gnt-reader) and KJV OT (tanakh-reader) share most of these archaisms — `hath`, `thee`, `verily`, `unto`, `betwixt` — with one corpus-specific extension each: KJV NT adds `begat`, `wist`, `holpen`; KJV OT adds `firmament`, `behold`, `peradventure`. Universal swap-lists at `atu-method/data/swaps/` with NT/OT-specific extensions. Same `apply_swaps()` mechanism.
 
+## Grammar constrains; atomic-thought determines
+
+**The asymmetry:** Grammar (UD deprels, syntactic categories, formula integrity, complement integrity) gives PROHIBITIONS on where ATU breaks CAN'T go — Layer 1 vetoes, head-complement bonds, indivisible idioms, restrictive-relative bonds. Grammar does NOT give PRESCRIPTIONS for where breaks SHOULD go.
+
+The DETERMINATION engine is atomic-thought: the generative principle (each proposition splits by default), the five structural justifications (J1–J5), the image/camera-angle/period tests. The force is propositional/psycholinguistic, not grammatical.
+
+This asymmetry governs closed-list extensions (e.g., `R19_OBLIGATORY_REF_NOUN_HEADS` in BoFM canon): the threshold for inclusion is "is the head referentially content-empty without the relative such that breaking here leaves a line with no atomic thought?" — the atomic-thought-failure test, applied THROUGH grammar-as-constraint. The closed-list is the operationalization of where atomic-thought-failure fires under specific grammatical conditions; it is NOT a grammatical-pattern catalog.
+
+Stan codified this verbatim 2026-05-13: *"grammar doesn't determine ATUs boundaries, but it can constrain them."* See per-corpus canon CLAUDE.md "Grammar constrains ATU boundaries" sections + the cross-project memory `feedback_grammar_constrains_not_determines` for the full discipline.
+
 ## What the apparatus is NOT
 
 - Not a rhetorical-parallelism analyzer. Parallelism (Lowth, Kugel, Berlin, Watson, Parry) is a separate scholarly layer that may overlap with ATU revelation but is not the apparatus's target.
