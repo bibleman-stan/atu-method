@@ -52,6 +52,16 @@ A proposition is the prototypical ATU — a complete predication (subject + fini
 
 The five structural justifications (§1.4) extend this rule: non-predicated units that function as atomic thoughts via formal-structural recoverability qualify as proposition-equivalents for break purposes.
 
+**Referential self-containment — the atomic-thought test is bidirectional.** "Single cognitive bite" requires the line to stand on its own *referentially*, not just *grammatically*. A line whose content is anaphoric to prior context — pronouns without antecedent on the line, deictic demonstratives (*these things*, *that day*, *the same*), discourse-anaphoric particles (*therefore*, *thus*, *לָכֵן*, *עַל־כֵּן*, causal *כִּי*) — does not satisfy atomic-thought standing alone, even when it passes forward grammatical closure. The reader's understanding dangles BACKWARD into unresolved context, not just forward into missing complements. The atomic-thought test requires referential self-containment, not merely forward grammatical closure.
+
+The test is asymmetric: **cataphoric** reference (forward-pointing, e.g., presentative *הִנֵּה* + indefinite NP introducing new content, or *thus says X:* announcing speech about to follow) does NOT fail the test, because the forward content is being *introduced*, not *depended on*. Only **anaphoric** unresolved-backward-dependence fails.
+
+Canonical example: Gen 22:1 *wayehi achar ha-devarim ha-eleh* ("and it came to pass after these things") is NOT an ATU on its own line — *ha-devarim ha-eleh* ("these things") is a deictic pointer to undefined antecedent narrative. The line as content is referentially empty without prior context. The whole construction (frame + apodosis) is one ATU because the frame is referentially anaphoric and the apodosis is what the frame opens into. This corrects a class of "fronted-temporal-as-J5" misclassifications: J5 requires *substantive* adjunct content (§1.4 J5: "answers a 'when/where/why/how' question from the matrix's own content"), and a deictic pointer to prior narrative is not substantive content.
+
+**Relationship to §1.5 merge-overrides.** This is a refinement of the §1.1 atomic-thought test itself, not a new merge-override. M3 (Bare-Governor Indivisibility) and M4 (Fragmented Atomic Thought-Unit) are §1.5 mechanisms that catch *forward*-dangling heads and *symmetric* fragmentation respectively. Backward-anaphoric failure is caught upstream of those mechanisms — at §1.1, by the atomic-thought test stated bidirectionally. A line that fails the bidirectional test fails atomic-thought, full stop; the merge is the consequence, not a separate rule. Per-corpus canons need not write a new merge-override for backward-anaphoric cases unless local diagnostic conditions warrant a closed-list operationalization.
+
+(Codified 2026-05-13 from cross-conversation refinement. See [`memories/feedback_atu_test_is_bidirectional.md`](../memories/feedback_atu_test_is_bidirectional.md).)
+
 ## §1.2 Syntax forbids splits (three closed-list ways)
 
 Syntax does not generate breaks. Syntax only vetoes them. A split that the generative principle would otherwise produce is forbidden when one of these three applies:
