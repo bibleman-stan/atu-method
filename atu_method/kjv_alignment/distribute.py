@@ -123,17 +123,28 @@ def _pick_line_by_proximity(
 ) -> int:
     """Pick the line in candidate_lines whose anchors are nearest to vpos.
 
-    Ties broken by: lower line-index wins (stable behaviour for symmetric
-    cases). If all candidates have no anchors, return the first candidate.
+    Ties broken by: prefer the line whose nearest anchor is AFTER (≥) the
+    target vpos over a line whose nearest anchor is BEFORE (<). When both
+    are forward or both backward, prefer the LATER line (higher line index)
+    — KJV reading order flows forward; ambiguous adjacency more likely
+    belongs to the line that owns the subsequent vposes. If all candidates
+    have no anchors, return the first candidate.
     """
-    best_line = candidate_lines[0]
-    best_dist = _line_nearest_anchor_distance(target_vpos, per_line_anchors[best_line])
-    for line in candidate_lines[1:]:
-        d = _line_nearest_anchor_distance(target_vpos, per_line_anchors[line])
-        if d < best_dist:
-            best_dist = d
-            best_line = line
-    return best_line
+    def _score(line: int) -> tuple[int, int, int]:
+        anchors = per_line_anchors[line]
+        if not anchors:
+            return (10**9, 0, line)
+        # Distance to nearest anchor
+        dist = min(abs(target_vpos - a) for a in anchors)
+        # Direction-of-nearest: 0 if nearest anchor is ≥ target_vpos
+        # (forward), 1 if < target_vpos (backward). Forward preferred.
+        forward_anchors = [a for a in anchors if a >= target_vpos]
+        nearest_is_forward = bool(forward_anchors) and (
+            min(forward_anchors) - target_vpos == dist
+        )
+        return (dist, 0 if nearest_is_forward else 1, -line)
+
+    return min(candidate_lines, key=_score)
 
 
 def _has_sentence_boundary_between(
@@ -263,10 +274,18 @@ def distribute_kjv_to_atu_lines(
             _claim(kjv_idx, line)
 
     # Pass B: synonymy sweep. Any KJV word still unclaimed whose Strong's
-    # overlap SOME source token in the verse. Assign by positional
-    # proximity to the line whose anchors are closest. Used for cases
-    # like Greek ἕξει -> "shall be with child" where the multi-KJV-word
-    # cluster shares one source token's Strong's set.
+    # overlap SOME source token in the verse. Used for cases like Greek
+    # ἕξει -> "shall be with child" where the multi-KJV-word cluster
+    # shares one source token's Strong's set.
+    #
+    # Candidate set: lines whose source has matching Strong's, PLUS any
+    # line with an existing anchor at vpos ±1 (adjacency signal — when
+    # the unclaimed vpos is contiguous with another line's claimed
+    # range, that line is the natural KJV-flow extension even without
+    # a Strong's source match). The adjacency-augmentation handles
+    # cases like Matt 3:16 vpos 32 ("and lighting upon him") where
+    # only one line had G2532 source but the right destination was
+    # the adjacent line that owns vpos 33+ via other Strong's.
     for kjv_idx, kw in enumerate(kjv_sorted):
         if claimed[kjv_idx]:
             continue
@@ -277,6 +296,12 @@ def distribute_kjv_to_atu_lines(
             for _, li in src_strongs_occs.get(s, []):
                 if li not in candidate_lines:
                     candidate_lines.append(li)
+        # Adjacency augmentation: any line with an anchor at vpos±1
+        for li in range(n_lines):
+            if li in candidate_lines:
+                continue
+            if any(abs(a - kw.vpos) <= 1 for a in per_line_anchors[li]):
+                candidate_lines.append(li)
         if not candidate_lines:
             continue  # no source overlap at all; falls to Pass D
         line = _pick_line_by_proximity(
