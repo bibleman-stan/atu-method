@@ -75,6 +75,61 @@ def normalize_strongs(raw: str) -> list[str]:
     return deduped
 
 
+# TAGNT vs MetaV/KJV-Strong's lemma-variant equivalences.
+# TAGNT uses the "newer" Strong's numbering for some lemmas where the
+# original Strong's tagging (used by KJV/MetaV) lists a variant. These
+# pairs name the SAME Greek word but disagree on the canonical Strong's
+# tag. Without explicit equivalence, Pass A1 exact-Strong's-match fails
+# even though the source word semantically maps to the KJV translation.
+#
+# Each entry: canonical Strong's number → set of equivalent Strong's
+# (membership is bidirectional once expanded below).
+_LEMMA_EQUIVALENTS_RAW: dict[str, set[str]] = {
+    # ἔπω / ἐρῶ / ῥέω suppletive paradigm — all "say" (Matt 21:3, etc.)
+    "G2036": {"G2046", "G4483"},
+    # πραΰτης / πραότης — meekness alternate spelling (Gal 5:23)
+    "G4240": {"G4236"},
+    # μόνος (adj) / μόνον (adv) — alone/only (Gal 6:12)
+    "G3441": {"G3440"},
+}
+
+
+def _build_lemma_equivalents() -> dict[str, frozenset[str]]:
+    """Build bidirectional equivalence map from _LEMMA_EQUIVALENTS_RAW.
+
+    Returns {strongs -> frozenset(all equivalents including self)}.
+    """
+    union: dict[str, set[str]] = {}
+    for primary, equivs in _LEMMA_EQUIVALENTS_RAW.items():
+        cluster = {primary, *equivs}
+        for s in cluster:
+            union.setdefault(s, set()).update(cluster)
+    return {s: frozenset(c) for s, c in union.items()}
+
+
+_LEMMA_EQUIVALENTS: dict[str, frozenset[str]] = _build_lemma_equivalents()
+
+
+def expand_lemma_equivalents(strongs: list[str]) -> list[str]:
+    """Expand a Strong's list with known lemma-variant equivalents.
+
+    For each Strong's number, add any registered equivalents (TAGNT vs
+    KJV/MetaV tagging divergences). Preserves input order; equivalents
+    appended after the original tag they expanded from.
+    """
+    out: list[str] = []
+    seen: set[str] = set()
+    for s in strongs:
+        if s not in seen:
+            seen.add(s)
+            out.append(s)
+        for eq in _LEMMA_EQUIVALENTS.get(s, ()):
+            if eq not in seen:
+                seen.add(eq)
+                out.append(eq)
+    return out
+
+
 def extract_strongs_from_tagnt_col(cell4: str, cell12: str = "", cell13: str = "") -> list[str]:
     """Extract Strong's from TAGNT row.
 
@@ -82,10 +137,13 @@ def extract_strongs_from_tagnt_col(cell4: str, cell12: str = "", cell13: str = "
     cell12 = primary Strong's bare         (e.g. "G1080")     [optional]
     cell13 = KJV-alternate Strong's        (e.g. "G3603, G2076") [optional]
 
-    Returns a deduplicated list of base Strong's numbers covering primary
-    and alternates. The alternates are essential for matching KJV words
-    whose Strong's tagging diverges from TAGNT's primary lemma (e.g. εἰμί
-    G1510 in TAGNT vs. KJV "is" G2076).
+    Returns a deduplicated list of base Strong's numbers covering primary,
+    alternates, and known lemma-variant equivalents (see
+    _LEMMA_EQUIVALENTS_RAW). The alternates from cell13 are essential for
+    matching KJV words whose Strong's tagging diverges from TAGNT's
+    primary lemma (e.g. εἰμί G1510 in TAGNT vs. KJV "is" G2076). The
+    lemma-equivalents handle cases where TAGNT uses one Strong's variant
+    for a lemma and KJV uses another (Matt 21:3 ἐρεῖτε G4483 vs "say" G2046).
     """
     out: list[str] = []
     seen: set[str] = set()
@@ -94,7 +152,7 @@ def extract_strongs_from_tagnt_col(cell4: str, cell12: str = "", cell13: str = "
             if s not in seen:
                 seen.add(s)
                 out.append(s)
-    return out
+    return expand_lemma_equivalents(out)
 
 
 def extract_strongs_from_tahot_col(cell5: str, cell9: str = "") -> list[str]:
