@@ -70,31 +70,37 @@ def _extract_kjv_words(line: str) -> list[str]:
 def _parse_eng_gloss_chapter(path: Path) -> list[tuple[str, list[str]]]:
     """Parse a `<book>-NN.txt` eng-gloss file.
 
-    Returns: list of (verse_ref, [line, line, ...]). Verse separator is a
-    blank line; ref form is "ch:vs" on its own line.
+    Returns: list of (verse_ref, [line, line, ...]). Verses end at the
+    next verse-ref or EOF — NOT at the first blank line. Blanks inside
+    a verse are legitimate empty content slots (when a grk ATU line
+    receives no KJV mapping). Trailing blanks at verse-close are
+    stripped (they're the verse-separator).
     """
     verses: list[tuple[str, list[str]]] = []
     current_ref: str | None = None
     current_lines: list[str] = []
+
+    def _close():
+        nonlocal current_ref, current_lines
+        if current_ref is not None:
+            # Strip trailing separator blanks
+            while current_lines and current_lines[-1].strip() == "":
+                current_lines.pop()
+            if current_lines:
+                verses.append((current_ref, current_lines))
+        current_ref = None
+        current_lines = []
+
     with path.open("r", encoding="utf-8") as f:
         for raw in f:
             line = raw.rstrip("\r\n")
             if VERSE_REF_RE.match(line.strip()):
-                if current_ref is not None and current_lines:
-                    verses.append((current_ref, current_lines))
+                _close()
                 current_ref = line.strip()
-                current_lines = []
-                continue
-            if line.strip() == "":
-                if current_ref is not None and current_lines:
-                    verses.append((current_ref, current_lines))
-                    current_ref = None
-                    current_lines = []
                 continue
             if current_ref is not None:
                 current_lines.append(line)
-    if current_ref is not None and current_lines:
-        verses.append((current_ref, current_lines))
+    _close()
     return verses
 
 
