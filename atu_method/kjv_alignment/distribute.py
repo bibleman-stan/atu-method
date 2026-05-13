@@ -296,7 +296,22 @@ def distribute_kjv_to_atu_lines(
             for _, li in src_strongs_occs.get(s, []):
                 if li not in candidate_lines:
                     candidate_lines.append(li)
+        # Range-containment augmentation: a line whose existing anchor
+        # range (min..max) BRACKETS the target vpos is a strong candidate
+        # even without a Strong's source match. KJV-flow logic — the
+        # vpos sits in territory the line already owns. Canonical case:
+        # Matt 5:32 vpos 30 G630 "divorced" — TAGNT tags ἀπολελυμένην
+        # as G620 (lemma mismatch with KJV's G630 ἀπολύω), so no line 3
+        # G630 source match, but line 3's anchors [23..32] contain vpos 30.
+        for li in range(n_lines):
+            if li in candidate_lines:
+                continue
+            anchors = per_line_anchors[li]
+            if anchors and min(anchors) <= kw.vpos <= max(anchors):
+                candidate_lines.append(li)
         # Adjacency augmentation: any line with an anchor at vpos±1
+        # (catches cases like Matt 3:16 vpos 32 where neither line has
+        # range-containment but one line's anchor at vpos 33 is adjacent).
         for li in range(n_lines):
             if li in candidate_lines:
                 continue
