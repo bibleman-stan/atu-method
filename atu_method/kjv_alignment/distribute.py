@@ -230,33 +230,64 @@ def distribute_kjv_to_atu_lines(
         assignment[kjv_idx] = line_idx
         per_line_anchors[line_idx].append(kjv_sorted[kjv_idx].vpos)
 
-    # Pass A1: Strong's with src_count <= kjv_count — monotonic 1:1.
-    # Process all such Strong's first to seed anchors with maximum
-    # confidence. Pass A2 then resolves the over-supplied cases using
-    # the anchors A1 established.
-    deferred_strongs: list[str] = []
+    # Pass A1: EXACT 1:1 matches only — same src count as kjv count.
+    # These seed anchors with maximum confidence. Both under-supplied
+    # (more kjv than src) and over-supplied (more src than kjv) cases
+    # defer to Pass A2 to resolve via positional proximity once A1's
+    # anchors are established.
+    deferred_undersup: list[str] = []  # src < kjv
+    deferred_oversup: list[str] = []   # src > kjv
     for s, src_occs in src_strongs_occs.items():
         kjv_occs = kjv_strongs_occs.get(s, [])
         if not kjv_occs:
             continue
-        # Filter src_occs to dedupe per-line: if the same line has
-        # multiple source tokens with the same Strong's (e.g. doubled
-        # particle), still process them independently — they may all
-        # legitimately claim distinct KJV occurrences.
-        if len(src_occs) <= len(kjv_occs):
-            # Monotonic 1:1, k-th src to k-th kjv.
+        if len(src_occs) == len(kjv_occs):
+            # Exact 1:1 monotonic.
             for k, (_, line_idx) in enumerate(src_occs):
                 kjv_idx, _vpos = kjv_occs[k]
                 if not claimed[kjv_idx]:
                     _claim(kjv_idx, line_idx)
+        elif len(src_occs) < len(kjv_occs):
+            deferred_undersup.append(s)
         else:
-            deferred_strongs.append(s)
+            deferred_oversup.append(s)
 
-    # Pass A2: over-supplied Strong's — positional-proximity per KJV occ.
+    # Pass A2a: under-supplied — src_count < kjv_count. For each source
+    # occurrence, claim the kjv whose vpos is nearest the line's existing
+    # A1 anchors. Falls back to flat-index ordering when the line has no
+    # A1 anchors yet. Matt 6:25 G2532 case: 1 src on line 4 (line 4 anchor
+    # at vpos 41 via A1 G1742 match), 2 kjv at vpos 15 and 37 — without
+    # this, the greedy "src[0] → kjv[0]" rule would pair line 4 with
+    # vpos 15 (far away). Proximity correctly pairs line 4 with vpos 37.
+    for s in deferred_undersup:
+        src_occs = src_strongs_occs[s]
+        kjv_occs = kjv_strongs_occs[s]
+        # For each src, pick the unclaimed kjv occ nearest the src's line.
+        # Process srcs in flat-index order; later assignments see updated
+        # state. Each src claims at most one kjv.
+        for src_flat_idx, src_line in src_occs:
+            # Among unclaimed kjv occs, pick by distance to src_line anchors.
+            available = [(kjv_idx, vpos) for kjv_idx, vpos in kjv_occs
+                         if not claimed[kjv_idx]]
+            if not available:
+                break
+            line_anchors_src = per_line_anchors[src_line]
+            if line_anchors_src:
+                # Pick the kjv whose vpos is nearest to any anchor.
+                def _dist(kv):
+                    _, vpos = kv
+                    return min(abs(vpos - a) for a in line_anchors_src)
+                kjv_idx, _vpos = min(available, key=_dist)
+            else:
+                # No anchors yet — fall back to first available.
+                kjv_idx, _vpos = available[0]
+            _claim(kjv_idx, src_line)
+
+    # Pass A2b: over-supplied Strong's — positional-proximity per KJV occ.
     # For each KJV word with Strong's S, pick the source line (from those
     # that have a src-occurrence with S) whose A1 anchors are positionally
     # closest in KJV vpos. Ties: line nearest in source-line order.
-    for s in deferred_strongs:
+    for s in deferred_oversup:
         src_occs = src_strongs_occs[s]
         kjv_occs = kjv_strongs_occs[s]
         # Lines that have at least one src-occurrence with this Strong's.
