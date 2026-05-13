@@ -104,15 +104,32 @@ def _strongs_overlap(a: tuple[str, ...], b: tuple[str, ...]) -> bool:
 def _line_nearest_anchor_distance(
     target_vpos: int,
     line_anchors: list[int],
-) -> int:
+    line_idx: int | None = None,
+    n_lines: int | None = None,
+    n_kjv: int | None = None,
+) -> float:
     """Distance from target_vpos to nearest anchor on this line.
 
-    Returns a large sentinel (10**9) when the line has no anchors yet — so
-    a line with NO claims always loses to a line with at least one claim.
+    When the line has no anchors, fall back to the line's PROPORTIONAL
+    expected vpos position — midpoint of its linearly-distributed range
+    (line_idx + 0.5) * n_kjv / n_lines. This lets anchor-less lines
+    participate in proximity-based assignment rather than losing
+    unconditionally to anchored lines. Without this, orphan-source
+    lines (where Greek source's Strong's doesn't match any KJV due to
+    TAGNT/MetaV lemma-variant tagging) end up with empty output —
+    KJV words near the line's expected position get pulled to
+    neighboring lines instead. Matt 21:3 line 1 (ἐρεῖτε G4483 vs
+    KJV "say" G2046) is the canonical case.
+
+    Returns the large sentinel (10**9) only when caller doesn't
+    provide proportional context.
     """
-    if not line_anchors:
-        return 10**9
-    return min(abs(target_vpos - a) for a in line_anchors)
+    if line_anchors:
+        return min(abs(target_vpos - a) for a in line_anchors)
+    if line_idx is not None and n_lines and n_kjv:
+        expected = (line_idx + 0.5) * n_kjv / n_lines
+        return abs(target_vpos - expected)
+    return 10**9
 
 
 def _pick_line_by_proximity(
@@ -130,14 +147,21 @@ def _pick_line_by_proximity(
     belongs to the line that owns the subsequent vposes. If all candidates
     have no anchors, return the first candidate.
     """
-    def _score(line: int) -> tuple[int, int, int]:
+    # Pass proportional context for anchor-less lines (orphan-source case).
+    n_kjv_total = sum(
+        len([a for a in row]) for row in per_line_anchors
+    ) or 1  # placeholder; refined below using max anchor + 1
+
+    def _score(line: int) -> tuple[float, int, int]:
         anchors = per_line_anchors[line]
         if not anchors:
-            return (10**9, 0, line)
-        # Distance to nearest anchor
+            # Use proportional expected position
+            expected = (line + 0.5) * (
+                max((max(a) for a in per_line_anchors if a), default=0) + 1
+            ) / n_lines
+            dist = abs(target_vpos - expected)
+            return (dist, 1, -line)  # anchor-less treated as "backward"-style
         dist = min(abs(target_vpos - a) for a in anchors)
-        # Direction-of-nearest: 0 if nearest anchor is ≥ target_vpos
-        # (forward), 1 if < target_vpos (backward). Forward preferred.
         forward_anchors = [a for a in anchors if a >= target_vpos]
         nearest_is_forward = bool(forward_anchors) and (
             min(forward_anchors) - target_vpos == dist
