@@ -92,6 +92,25 @@ class Sentence:
                     added = True
         return sorted([tok for tok in self.tokens if tok.id in ids], key=lambda x: x.id)
 
+    def subtree_non_punct(self, t: Token) -> list[Token]:
+        """Subtree of t with PUNCT tokens excluded.
+
+        Discipline helper (2026-05-13 class-fix sweep): UD parsers attach
+        punctuation tokens to nearby syntactic heads via `deprel=punct`.
+        When a validator computes a routing decision (skip/split/merge) from
+        subtree line-min, line-max, or line-set, including those PUNCT
+        tokens makes the routing decision sensitive to punctuation
+        placement — a class bug Stan flagged forcefully 2026-05-12:
+        punctuation is inherited post-1830 editorial overlay, never
+        adjudication evidence. Use this helper anywhere a subtree's *lines*
+        drive routing; use the bare `subtree()` only when PUNCT exclusion
+        is independently applied at the consumer.
+
+        See feedback_punctuation_not_evidence and apparatus.md "What the
+        apparatus is NOT" for the governing principle.
+        """
+        return [tok for tok in self.subtree(t) if tok.upos != "PUNCT"]
+
     def find(self, *,
              deprel: Optional[str] = None,
              deprel_in: Optional[set[str]] = None,
