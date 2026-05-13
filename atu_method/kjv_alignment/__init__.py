@@ -12,7 +12,9 @@ source-token data (TAGNT/TAHOT) and calls into this module.
 Substrate:
 - viz.bible MetaV CSVs (CC-BY-SA 3.0) at atu-method/data/kjv-strongs/ for
   per-KJV-word Strong's tagging and Italic flagging
-- STEPBible Strong's lexicons (TBESG/TBESH) for fallback gloss only
+- STEPBible Strong's lexicons (TBESG/TBESH) are bundled in atu-method/
+  data/lexicons/ for downstream consumer use; this module does not
+  consult them.
 
 Public API:
 - KjvWord, SourceToken: dataclasses for the two sides of the alignment

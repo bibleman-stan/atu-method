@@ -24,7 +24,11 @@ CLI
   python -m atu_method.kjv_alignment.audit \
     --eng-gloss-dir <path> \
     --metav-dir <path> \
-    --book-osis-map "Genesis=Gen,Exodus=Exod,..."
+    --corpus {tanakh,gnt} \
+    [--top N] [--json-out <path>]
+
+Book-OSIS resolution uses a hard-coded per-corpus map (TANAKH_BOOK_MAP /
+GNT_BOOK_MAP); no per-invocation override flag.
 
 Usage from each corpus's repo: run with the eng-gloss directory of that
 repo plus the central METAV_DIR. Provides a single number per check

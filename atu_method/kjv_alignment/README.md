@@ -25,29 +25,54 @@ inversion), not "With us God".
 
 ## Algorithm
 
-For each verse (run independently):
+For each verse (run independently). Current implementation is **multi-pass**
+(Wave 7) — earlier Wave 5b versions described a simpler 3-pass form; the
+authoritative pass-by-pass enumeration lives in `distribute.py`'s module
+docstring (read that for invariants and edge cases). High-level summary:
 
 1. **Load KJV side from MetaV.** Per KJV word: text, trailing punctuation,
-   list of Strong's tags. Words with no Strong's are translator-supplied
-   ("italic" in KJV print).
+   list of Strong's tags, KJV verse-position. Words with no Strong's are
+   translator-supplied ("italic" in KJV print).
 2. **Load source side from caller.** Per source token: text, list of
    Strong's tags. Already split into ATU lines by the caller.
-3. **First-match-wins claim pass.** Walk source tokens in order. For each
-   token with non-empty Strong's, find the next unclaimed KJV word whose
-   Strong's overlaps. Claim it for this token's line.
-4. **Synonymy sweep.** Any KJV word still unclaimed with non-empty
-   Strong's, but whose Strong's overlaps some source token in the verse,
-   attaches to that source token's line. (Handles "one Greek aorist →
-   multiple English words" cases like ἕξει → "shall be with child".)
-5. **Translator-supplied attachment.** KJV words with no Strong's attach
-   to the line of their nearest *forward* non-empty-Strong's neighbour
-   (fallback: previous neighbour).
-6. **Render.** Group by line, sort each line's KJV words by KJV
-   verse-position, join with spaces, append punctuation from each word.
+3. **Pass A — Strong's matching (split by supply count).** For each
+   Strong's number, walk source-side and KJV-side together:
+   - **A1 exact 1:1** — when source-count == kjv-count for a Strong's,
+     match positionally token-for-word and seed per-line anchors.
+   - **A2a under-supplied** — when source-count > kjv-count, multiple
+     source tokens compete; route by source order.
+   - **A2b over-supplied** — when kjv-count > source-count, multiple
+     KJV words map to the same source. Each KJV occurrence routes to the
+     source line whose A1 anchors are nearest in KJV verse-position
+     (positional proximity, not first-source-wins). This is the Wave 7
+     fix that resolved the Gen 1:2 "trailing upon" leakage.
+4. **Pass B — synonymy sweep with adjacency augmentation.** Any KJV word
+   still unclaimed with non-empty Strong's, whose Strong's overlaps some
+   source token, attaches to that source token's line. Pick the source
+   token whose claimed-KJV neighbourhood is nearest in KJV vpos
+   (positional proximity), not the last-source-token-with-overlap.
+   Handles "one source word → multiple English words" cases (ἕξει →
+   "shall be with child"). Lemma-equivalent overlaps (per
+   `strongs_normalize.lemma_equivalents`) are considered.
+5. **Pass C — italic / translator-supplied attachment.** KJV words with
+   no Strong's attach to the line of their nearest non-empty-Strong's
+   neighbour. Forward-preferred, but if a sentence-boundary punctuation
+   (`.`, `;`, `?`, `!`) lies between this word and its forward neighbour
+   while backward is un-crossed, prefer backward. This sentence-boundary
+   awareness is the Wave 7 fix for cross-sentence italic bleed.
+6. **Pass D — defensive positional fallback.** For any KJV word still
+   unclaimed (rare; usually only triggered by malformed input or verse
+   boundaries), attach by global positional proximity rather than parking
+   on the last line.
+7. **Render.** Group by line, sort each line's KJV words by KJV
+   verse-position, join with spaces, append per-word punctuation.
 
 Correctness invariants per verse:
 - Every KJV word appears on exactly one ATU line (no loss, no duplication).
 - KJV verse-position order is preserved within each line.
+- Tests in `tests/test_kjv_alignment.py` lock the Wave 7 behaviour
+  (`test_gen_1_2_no_upon_leakage`, `test_sentence_boundary_attachment`,
+  `test_over_supplied_strongs_positional`).
 
 ## Public API
 

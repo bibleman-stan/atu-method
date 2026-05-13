@@ -58,6 +58,19 @@ class TestStrongsNormalize(unittest.TestCase):
         # H9003 (preposition prefix) + H7225 (beginning) with G-suffix
         self.assertEqual(normalize_strongs("H9003/{H7225G}"), ["H9003", "H7225"])
 
+    def test_tahot_backslash_meta_codes(self):
+        # TAHOT trailing meta-codes use backslash separators
+        # (e.g., "H9005/{H0559}\\H9016\\H9018"). The Wave 7 fix to
+        # normalize_strongs added backslash to the split charset so that
+        # the verbal Strong's (H0559) doesn't get glued to the trailing
+        # codes. Verify the split + canonical (leading-zero-stripped) form.
+        self.assertEqual(
+            normalize_strongs("H9005/{H0559}\\H9016\\H9018"),
+            ["H9005", "H559", "H9016", "H9018"],
+        )
+        # Bare-trailing-code case:
+        self.assertEqual(normalize_strongs("H7225\\H9016"), ["H7225", "H9016"])
+
     def test_tagnt_alt_comma_list(self):
         self.assertEqual(normalize_strongs("G3603, G2076"), ["G3603", "G2076"])
 

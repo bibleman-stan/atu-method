@@ -20,10 +20,15 @@ Walk the queue periodically. For each item, ask: "Has the answer become derivabl
 
 **How to apply:**
 
-- End-of-major-task message includes a "Deferred to you" table or bullet list, even if it's "(none)".
-- pending.md head has a section "Awaiting user judgment (re-examined YYYY-MM-DD)" with last re-examination date.
+- End-of-major-task message includes a "Deferred to you" table or bullet list in **chat**, even if it's "(none)". The chat-window surface is the primary place for surfacing deferred items, per `feedback_decisions_in_chat_not_files.md` Section B (which explicitly prohibits depositing decisions in pending.md or other files).
+- pending.md may carry a **status-tracker only** ("items still open, last re-examined YYYY-MM-DD") so that fresh-session Claude knows what to re-test. This is state-tracking, NOT a decision-deposit — actual decisions surface in chat, and items close when Stan signals close in chat. Treat any pending.md entry as "still-open marker," never "Stan is expected to read this and decide here."
 - Before resurfacing an item, re-test it: read current canon §, check sibling-reader implementations, check related memories. If the answer is now derivable, apply OR surface with "this was open but I have an answer now" framing.
 - Don't sandbag: if a deferred item closes during the session, say so explicitly rather than letting it stay in the queue.
 - When a sibling-reader's implementation lands a pattern that resolves an item in another sibling's queue, propagate proactively.
 
-**Cross-cutting connection:** Related to `feedback_no_eyeball_offers.md` (don't manufacture deferrals after audit clears a sweep) and `feedback_no_fake_dilemmas.md` (don't route mechanically-resolved cases through "borderline / pending judgment" framings). This memory adds the dimension that queues themselves need active maintenance — old deferrals decay into staleness, and what was once a judgment call may have a derivable answer now.
+**Cross-cutting connections:**
+- `feedback_decisions_in_chat_not_files.md` — decisions surface in chat, not in files. This memory respects that boundary: status-tracking in pending.md is acceptable, decision-deposit is not.
+- `feedback_no_eyeball_offers.md` — don't manufacture deferrals after audit clears a sweep.
+- `feedback_no_fake_dilemmas.md` — don't route mechanically-resolved cases through "borderline / pending judgment" framings.
+
+This memory adds the dimension that queues themselves need active maintenance — old deferrals decay into staleness, and what was once a judgment call may have a derivable answer now.

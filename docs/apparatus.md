@@ -68,13 +68,13 @@ Source-language token (TAGNT or TAHOT)  →  Strong's number(s)
 **Substrate components (universal infrastructure at `atu-method/data/`):**
 - `tagnt-source/` (in readers-gnt, CC BY 4.0) / `stepbible-tahot/` (in readers-tanakh, CC BY 4.0) — STEPBible's per-source-token Strong's tagging for Greek (TAGNT) and Hebrew (TAHOT).
 - `kjv-strongs/MetaV_*.csv` (viz.bible, CC-BY-SA 3.0) — per-KJV-word Strong's tagging + `Italic` flag for translator-supplied words. STEPBible publishes per-source-token Strong's but NOT a Tagged-KJV file; viz.bible's MetaV is the KJV-side wiring.
-- `lexicons/TBESG.txt` + `TBESH.txt` (STEPBible, CC BY 4.0) — Strong's brief gloss lexicons. Used as fallback / sanity reference when MetaV has gaps.
+- `lexicons/TBESG.txt` + `TBESH.txt` (STEPBible, CC BY 4.0) — Strong's brief gloss lexicons. Bundled for downstream consumer use; not consulted by the kjv_alignment module itself.
 
 **Algorithm components (universal infrastructure at `atu-method/atu_method/kjv_alignment/`):**
 - `metav_loader.py` — loads MetaV CSVs once, builds `(book, ch, vs) → [KjvWord]` index. Module-level cache.
 - `strongs_normalize.py` — normalizes Strong's number formats across MetaV (`G846`), TAGNT (`G0846=V-AAI-3S`, alt-Strong's), TAHOT (`{H7225G}`, compound `H9003/H7225G`, backslash-separated meta-codes).
-- `distribute.py` — three-pass distribution: first-match-wins claim → synonymy sweep for unclaimed KJV words → nearest-neighbor attachment for italics/orphans.
-- `api.py` — `align_verse(book, ch, vs, source_atu_lines, metav_dir)` convenience entry point.
+- `distribute.py` — multi-pass positional-aware distribution (claim → synonymy sweep with adjacency augmentation → italic/orphan attachment with sentence-boundary awareness → defensive positional fallback). See `distribute.py` module docstring for the current enumeration.
+- `api.py` — `align_verse(book_osis, chapter, verse, source_atu_lines_with_tokens, metav_dir)` convenience entry point.
 
 **Per-corpus consumers (per-repo thin wrappers, ~50–200 lines each):**
 - `readers-gnt/scripts/regenerate_english_kjv.py` — parses TAGNT, calls `align_verse()` per verse.
