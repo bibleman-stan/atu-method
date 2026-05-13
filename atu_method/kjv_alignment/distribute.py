@@ -259,18 +259,42 @@ def distribute_kjv_to_atu_lines(
     # (more kjv than src) and over-supplied (more src than kjv) cases
     # defer to Pass A2 to resolve via positional proximity once A1's
     # anchors are established.
+    #
+    # Process Strong's in order of rarity (count ascending) — rare
+    # Strong's first. The reason: when a KJV word carries multiple
+    # Strong's tags (e.g. Luke 2:8 vpos 11 "field" = G2532+G63), the
+    # source-token-order traversal claims it via the COMMON Strong's
+    # (G2532 "and") before the unique one (G63 "abide-in-field") gets
+    # a chance. Processing rare first ensures the specific lemma claim
+    # wins, leaving the common-particle to its own kjv slots.
     deferred_undersup: list[str] = []  # src < kjv
     deferred_oversup: list[str] = []   # src > kjv
-    for s, src_occs in src_strongs_occs.items():
+    # Sort key: (rarity, min_src_flat_idx, strongs_id). Tiebreak by earliest
+    # source occurrence — when rarity ties (Luke 22:49 G2962 κύριε vs G1487 εἰ,
+    # both tagged on KJV "Lord"), the source token that appears first in the
+    # verse is the primary semantic contributor and should claim the slot.
+    # Without this tiebreak, alphanumeric Strong's-id order arbitrarily
+    # favors lower numbers (G1487 over G2962) and pulls obvious matches
+    # (κύριε → "Lord") onto the wrong line.
+    sorted_strongs = sorted(
+        src_strongs_occs.keys(),
+        key=lambda s: (
+            len(src_strongs_occs[s]) + len(kjv_strongs_occs.get(s, [])),
+            min(fi for fi, _ in src_strongs_occs[s]),
+            s,
+        ),
+    )
+    for s in sorted_strongs:
+        src_occs = src_strongs_occs[s]
         kjv_occs = kjv_strongs_occs.get(s, [])
         if not kjv_occs:
             continue
         if len(src_occs) == len(kjv_occs):
-            # Exact 1:1 monotonic.
+            # Exact 1:1 monotonic. _claim() silently no-ops on already-claimed
+            # kjv slots (a rarer Strong's already won that slot via this pass).
             for k, (_, line_idx) in enumerate(src_occs):
                 kjv_idx, _vpos = kjv_occs[k]
-                if not claimed[kjv_idx]:
-                    _claim(kjv_idx, line_idx)
+                _claim(kjv_idx, line_idx)
         elif len(src_occs) < len(kjv_occs):
             deferred_undersup.append(s)
         else:
