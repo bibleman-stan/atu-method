@@ -90,7 +90,32 @@ class SourceToken:
     strongs_list: tuple[str, ...] = field(default_factory=tuple)
 
 
-_SENTENCE_PUNCT = {".", "!", "?"}
+_SENTENCE_PUNCT = {".", "!", "?", ";", ":"}
+
+# Closed-list KJV trailing-complement words. When an orphan KJV word's
+# surface form is one of these AND its immediately-preceding KJV word is
+# anchored, force backward attachment in Pass C — these words trail their
+# governing verb's English flow (verb-complement integrity), so they must
+# stay on the verb's cola line, not jump forward to the next clause.
+# Audited 2026-05-12; see scripts/verify_kjv_distribution.py for fixture.
+# Excludes possessive pronouns (my/his/her/their/our/your/thy/etc.) which
+# attach forward to their noun-head, not backward to a verb.
+_TRAILING_COMPLEMENT = {
+    # Object pronouns
+    "him", "her", "it", "them", "me", "us", "thee", "you",
+    # Trailing prepositions (when in KJV verb-flow position).
+    # NOTE: "to" excluded — KJV uses it primarily as infinitive marker
+    # ("to fetch it") not trailing prep; backward attachment would break
+    # infinitive-of-purpose attachment. Use "unto" for prep "to".
+    "on", "in", "into", "unto", "upon", "with", "by", "from",
+    "at", "for", "of", "against", "before", "behind", "under", "over",
+    "among", "through", "about",
+}
+
+
+def _is_trailing_complement(word: str) -> bool:
+    """Lowercase-strip surface check against _TRAILING_COMPLEMENT."""
+    return word.lower().strip(",.;:!?\"'()[]") in _TRAILING_COMPLEMENT
 
 
 def _strongs_overlap(a: tuple[str, ...], b: tuple[str, ...]) -> bool:
@@ -176,15 +201,17 @@ def _has_sentence_boundary_between(
     lo_idx: int,
     hi_idx: int,
 ) -> bool:
-    """True if any KJV word strictly between lo_idx and hi_idx (exclusive of
-    lo, inclusive of hi-1) carries a sentence-terminating punctuation in
-    its trailing punc. The CARRIER itself (hi-1) is included because punc
-    at the end of a word severs the next-word from this-word.
+    """True if any KJV word in [lo_idx, hi_idx) carries a sentence-terminating
+    punctuation in its trailing punc. Punctuation at the end of word K
+    severs word K from word K+1; the carrier itself is included because
+    its trailing punc separates it from the next word.
+
+    Adjacent-word case (hi_idx == lo_idx + 1): still scan word at lo_idx —
+    its trailing punc severs lo from hi, e.g. "face;" before "for" → ";"
+    on lo crosses the boundary to hi.
     """
-    if hi_idx <= lo_idx + 1:
+    if hi_idx <= lo_idx:
         return False
-    # Inspect every word from lo_idx (inclusive of its trailing punc) up to
-    # but not including hi_idx.
     for k in range(lo_idx, hi_idx):
         punc = kjv_sorted[k].punc or ""
         for ch in punc:
@@ -456,6 +483,15 @@ def distribute_kjv_to_atu_lines(
                 chosen_line = backward_line
             elif bwd_crosses and not fwd_crosses:
                 chosen_line = forward_line
+            elif _is_trailing_complement(kw.text):
+                # Closed-list verb-complement integrity (audit-driven
+                # 2026-05-12): trailing prepositions and object pronouns
+                # ('on', 'him', 'unto', etc.) must stay on the verb's
+                # cola, not jump forward to the next clause. Fixes the
+                # "compassion / on him, and said" over-break class
+                # (~6,925 Pentateuch instances per audit). Excludes
+                # possessives, conjunctions, and clause-openers.
+                chosen_line = backward_line
             else:
                 # Default: forward.
                 chosen_line = forward_line
