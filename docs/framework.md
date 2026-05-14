@@ -60,6 +60,8 @@ Canonical example: Gen 22:1 *wayehi achar ha-devarim ha-eleh* ("and it came to p
 
 **Relationship to §1.5 merge-overrides.** This is a refinement of the §1.1 atomic-thought test itself, not a new merge-override. M3 (Bare-Governor Indivisibility) and M4 (Fragmented Atomic Thought-Unit) are §1.5 mechanisms that catch *forward*-dangling heads and *symmetric* fragmentation respectively. Backward-anaphoric failure is caught upstream of those mechanisms — at §1.1, by the atomic-thought test stated bidirectionally. A line that fails the bidirectional test fails atomic-thought, full stop; the merge is the consequence, not a separate rule. Per-corpus canons need not write a new merge-override for backward-anaphoric cases unless local diagnostic conditions warrant a closed-list operationalization.
 
+**Status — informational diagnostic, not precedence override.** The bidirectional test sits at §1.1 as an *informational diagnostic* about whether each candidate line stands as an ATU. It is **not a precedence override**: it does not adjudicate between competing rules in the §1.8 application-order step machinery, and it is not invoked to resolve intra-Layer-3 conflicts (those go through per-corpus §3.5 precedence hierarchies). It fires *upstream* of the application-order steps — at the point where the candidate ATU is being validated for atomic-thought standing. Treating it as a precedence override (e.g., "the bidirectional test trumps rule X" used to resolve a rule conflict) is a category error: precedence resolves rule conflicts among the rules in §1.4 / §1.5 / per-corpus §5; the bidirectional test resolves whether a line is an ATU at all. (Lesson surfaced by gnt-reader the hard way, 2026-05-13.)
+
 (Codified 2026-05-13 from cross-conversation refinement. See [`memories/feedback_atu_test_is_bidirectional.md`](../memories/feedback_atu_test_is_bidirectional.md).)
 
 ## §1.2 Syntax forbids splits (three closed-list ways)
@@ -78,7 +80,26 @@ These are the "unless" clauses of "split each proposition unless syntax forbids.
 
 ## §1.3 Image sharpens ambiguous proposition boundaries
 
-**Camera-angle test.** When proposition-first is ambiguous, ask: does the mind's eye reposition between candidate frames? Camera-angle shift → SPLIT. No shift → MERGE. This is a tiebreaker for ambiguous cases, not a primary generator.
+**Camera-angle test (DEPRECATED — see caveat).** When proposition-first is ambiguous, ask: does the mind's eye reposition between candidate frames? Camera-angle shift → SPLIT. No shift → MERGE.
+
+**Caveat (added 2026-05-13).** The camera-angle diagnostic is DEPRECATED in favor of the bidirectional atomic-thought test (§1.1 refinement; see [`../memories/feedback_atu_test_is_bidirectional.md`](../memories/feedback_atu_test_is_bidirectional.md)). Stan's verbatim observation: *"the more I see it at work, the less confident I am it's helpful."* When invoked, camera-angle reasoning either (a) COLLAPSES to the atomic-thought test ("each side has its own atomic content") or (b) SMUGGLES IN aesthetic-rhetorical preference (`feedback_rhetoric_bandwagon` failure mode). Camera-angle never adds independent diagnostic force. Treat invocations as a warning signal for bandwagon/aesthetic reasoning. Use the bidirectional atomic-thought test instead. See [`../memories/feedback_camera_angle_diagnostic_demote.md`](../memories/feedback_camera_angle_diagnostic_demote.md) for full discipline.
+
+## §1.3a Rhetoric and ATU — figures constrain, atomic-thought determines
+
+**Principle (added 2026-05-13).** Rhetorical figures (hendiadys, merism, parallelism, chiasm, anaphora, climax, etc.) have DEFAULT ATU dispositions that flow from their referential structure — but they never independently DETERMINE ATU boundaries. Each figure CONSTRAINS the candidate space; atomic-thought (§1.1, bidirectional) determines the answer. Same asymmetry as §1.2 (grammar constrains, atomic-thought determines): rhetoric is a second constraint layer over the same determination engine.
+
+**Default dispositions (figure → predicted disposition, not determinant):**
+
+- **Hendiadys** (synonymous doubling → one concept): MERGE under M1 (synonymy-coextension)
+- **Merism** (polar binary representing totality): MERGE under M1 (polar-totality-coextension)
+- **Parallelism** (synonymous/antithetic/synthetic): SPLIT each member per J1
+- **Chiasm** (A-B-C-B'-A' inverted mirror): NO FORCE on ATU (structural observation across multiple ATUs, not a determination within them)
+- **Anaphora / epistrophe / repetition figures**: SPLIT each member per J1 (repetition is signal, not force)
+- **Climax / gradatio**: SPLIT each member per J1
+
+**Critical:** the figure's default is a HYPOTHESIS; the atomic-thought test confirms or overrides. When they disagree, atomic-thought wins. Example: `"hardness of HEARTS / blindness of MINDS"` is formally hendiadys-shaped but each member has distinct sub-referent modifier (hearts vs minds) → atomic-thought-test passes for each → SPLIT despite hendiadys surface. Example: `"commandments of God, / and his statutes, according to the law of Moses"` is formally parallel-shaped but unified under shared framing PP → MERGE despite J1 surface (M1 hendiadys absorbs).
+
+**Stan's verbatim 2026-05-13:** *"this is a key insight: the interaction of rhetorical devices/figures of speech with ATUs."* See [`../memories/feedback_rhetoric_figures_constrain_atu.md`](../memories/feedback_rhetoric_figures_constrain_atu.md) for full discipline + cross-cutting connections.
 
 ## §1.4 The Five Structural Justifications (closed list)
 
@@ -227,7 +248,8 @@ Four structural carve-outs keep certain bare trailing participials on their own 
 | Propositions + 5 structural justifications | GENERATIVE | Default split at every proposition or justified non-proposition boundary |
 | Syntax (Layer 1 + complement-integrity + formula-integrity) | SUBTRACTIVE | Forbids some splits the generative principle would produce |
 | Merge-overrides (M1–M4) | SUBTRACTIVE | Block split-triggers when resulting fragments fail on more basic grounds |
-| Image (camera angle) | DIAGNOSTIC | Sharpens ambiguous boundaries |
+| Image (camera angle) | DIAGNOSTIC (DEPRECATED 2026-05-13 — see §1.3 caveat) | Use bidirectional atomic-thought test (§1.1) instead |
+| Rhetorical figures (hendiadys, merism, parallelism, chiasm, etc.) | CONSTRAINT | Default dispositions correlate with atomic-thought outcomes; figures never independently determine. See §1.3a. |
 
 ## §1.7 Decision procedure
 
@@ -237,7 +259,7 @@ At every candidate boundary:
 2. **Split-trigger fires** (proposition boundary OR any of J1–J5): tentative split.
 3. **Syntax veto** (Layer 1 mid-phrase prohibition; complement integrity; formula integrity): blocks the split → **merge**.
 4. **Merge-override fires** (M1 / M2 / M3 / M4): blocks the split → **merge**. **When split-trigger and merge-override both fire on the same location, merge-override wins.** The merge-override list is the mechanism that prevents split-triggers from producing non-atomic or bonded-pair fragments.
-5. **Image diagnostic** (camera angle): sharpens cases where 1–4 leave room for editorial judgment.
+5. **Bidirectional atomic-thought test** (§1.1 refinement): when 1–4 leave room for editorial judgment, run the bidirectional referential-self-containment test in both directions (forward grammatical closure + backward anaphoric resolution per [`../memories/feedback_atu_test_is_bidirectional.md`](../memories/feedback_atu_test_is_bidirectional.md)). This replaces the deprecated camera-angle diagnostic (§1.3 caveat).
 
 The framework is a default-merge with two closed lists of exceptions — five structural justifications (add splits beyond propositions) and four merge-overrides (block splits that would fragment unity) — plus the syntax-subtractive veto and the image diagnostic.
 
