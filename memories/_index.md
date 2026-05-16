@@ -48,6 +48,7 @@ Originally accumulated in the readers-bofm session memory directory (`~/.claude/
 ## Session management discipline
 
 - [`feedback_compaction_is_session_boundary.md`](feedback_compaction_is_session_boundary.md) — when resuming from a compaction summary, still execute the full CLAUDE.md CHECK-IN protocol. Compaction gives context but does not exercise the orientation muscles; silent skip is a check-in failure.
+- [`feedback_compaction_resume_protocol.md`](feedback_compaction_resume_protocol.md) — after a compaction event, FIRST action after the mandatory orientation reads is to read the last 20-30 user↔assistant back-and-forth turns from the session JSONL verbatim. Summaries preserve narrative but lose Stan's exact phrasing, minor corrections, tradeoffs weighed. Bluffing continuity from summary-memory alone fails the trust state.
 - [`feedback_endstate_first_orientation.md`](feedback_endstate_first_orientation.md) — for multi-phase / cross-corpus / migration work, lead orientation with the user-facing END-STATE picture, NOT the procedural phase list. Procedural-first orientation enables substrate-hunt rabbitholes; picture-first anchors all sub-decisions to the destination. Pull back to picture on ambiguity. (Note: the "add apparatus.md to CHECK-IN" sub-rule is a Claude-derived operationalization, marked explicitly in the memory body.)
 
 ---
