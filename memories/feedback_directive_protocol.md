@@ -75,11 +75,32 @@ Multiple directives processed in one session each get their own commit unless ti
 
 Stan reviews directives in his editor (faster than reading drafts in chat + copy-paste). Three actions available:
 
-- **Approve as written**: trigger the repo-Claude (e.g., "go process pending directives"); no edit needed
+- **Approve as written**: trigger the repo-Claude with the canonical trigger word (see "Triggering" below); no edit needed
 - **Edit in place**: modify the directive file before triggering; Stan's edits are the directive's authoritative form
 - **Reject**: delete the directive file from `pending/` before triggering; no commit needed (working-tree-only deletion)
 
 Stan can also engage any repo-Claude directly without going through a directive — this protocol is the default flow, not the only flow. Direct engagement is appropriate when a question is specific to that repo's context and doesn't need vault-Claude synthesis.
+
+## Triggering
+
+Canonical trigger word: **`directive`** (single word, lowercase, no quotes, no path).
+
+When Stan types `directive` in a repo-Claude session, the repo-Claude:
+
+1. Looks at `directives/pending/`
+2. Picks the **oldest file by filename timestamp** (filenames sort lexicographically by `YYYY-MM-DD-HHMM-` prefix → oldest first)
+3. Opens it and processes per the protocol above (read → execute → reply → move to processed/ → commit → push)
+4. If multiple pending directives exist, processes ONE per `directive` trigger unless the directive itself authorizes batch processing — keeps Stan's review cadence intact
+
+Variants:
+
+- `directive` alone → oldest pending
+- `directive <slug-fragment>` → matches the pending directive whose filename contains that fragment (e.g., `directive resolve-review` picks the one with that slug). Use when skipping ahead or processing out of order
+- `directive all` → process all pending in commit order, separate commits per directive
+
+Why a single keyword: anything longer (e.g., `go`, `process`, free-form English) slots into whatever conversation context was last on the table, which has already misfired in practice. The keyword `directive` is unambiguous regardless of prior context — it's the protocol's hot key.
+
+Anti-pattern: `go`, `proceed`, `run it`, or any phrase that depends on the last conversation turn for its referent. These are ambiguous outside the directive-queue context and have caused misfires.
 
 ## Vault-Claude protocol
 
