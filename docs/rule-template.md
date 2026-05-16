@@ -11,6 +11,19 @@ This template draws on:
 
 ---
 
+## Scope — universal shape, per-corpus vocabulary
+
+This template specifies a **universal field shape** that all per-corpus rule entries follow (Rule ID, Title, Status, Category, Decidability, Layer, Rule statement, UD signature, Scope, Exclusions, Precedence, Examples, Implementation). The **vocabulary inside the fields** is per-corpus and SHOULD remain so:
+
+- **Detector primitives** vary by corpus. Tanakh's H1 needs `verbless` as a primitive because Hebrew typologically requires verbless-clause handling; BoFM and GNT do not. Forcing the same detector primitive vocabulary across corpora either inflates entries with unused primitives or loses the typologically-required ones.
+- **Closed-list contents** vary by corpus. R17 (BoFM) lists EME verb classes; R10 (GNT) lists ὅτι-taking verb classes; H7 (Tanakh) lists Hebrew verb classes. The closed-list names may share semantics ("cognition verbs") but the lemma inventories are corpus-specific.
+- **Action codes** are universal (see §Action-Codes below); per-corpus extensions are permitted (rare) and documented in the per-corpus §3 quick-reference table.
+- **UD signature templates** are universal in shape (`trigger:`, `head:`, `mark:`, `action:`) but the specific deprels, UPOS values, and lemmas are corpus-specific.
+
+The cross-corpus rule-equivalence + non-equivalence map at [`rule-equivalence-map.md`](rule-equivalence-map.md) catalogues which rules are doing the same underlying work across corpora vs which are corpus-unique. New per-corpus instantiations should consult that map to identify which framework family they're instantiating; new corpus-unique rules should be explicitly flagged as such in their §5 entry's Scope field.
+
+---
+
 ## Template
 
 ```markdown
