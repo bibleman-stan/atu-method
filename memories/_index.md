@@ -29,6 +29,7 @@ Originally accumulated in the readers-bofm session memory directory (`~/.claude/
 
 ## Operational discipline
 
+- [`feedback_directive_protocol.md`](feedback_directive_protocol.md) — per-repo directive queue replaces paste-prompts as default cross-repo coordination. Vault-Claude writes directive files to `directives/pending/`; Stan reviews + triggers per-repo Claudes; per-repo Claudes process in commit order, write replies, move processed directives to archive. Stan retains editorial control at directive-file-review; direct engagement remains available. Codified 2026-05-16.
 - [`feedback_no_fake_dilemmas.md`](feedback_no_fake_dilemmas.md) — when the canon's mechanical test resolves a case, apply it. Do NOT route mechanically-resolved cases through "borderline / pending judgment / want me to also" framings. Only genuine canon-gap cases get explicit "rule X doesn't cover Y" framing.
 - [`feedback_no_eyeball_offers.md`](feedback_no_eyeball_offers.md) — after audit clears a sweep, apply it. Don't manufacture "stop and let you eyeball" hedges. Specific concerns get specific exemplars, not generic deferral.
 - [`feedback_proactive_open_item_examination.md`](feedback_proactive_open_item_examination.md) — every "I held this back because you have to decide" item must be visible (in chat, not deposited in files per `feedback_decisions_in_chat_not_files.md`). As the method matures, periodically re-examine whether held items have become canon/code/precedent-derivable. If yes, surface "I have an answer now" rather than re-defer.
