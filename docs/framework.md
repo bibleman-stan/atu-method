@@ -21,7 +21,7 @@ The apparatus does NOT:
 - Prescribe oral delivery
 - Adjudicate textual variants (the source text is a fixed input)
 
-The apparatus DOES format text so that a non-expert reader — student, ESL learner, child, newcomer — can take canonical scripture one atomic thought at a time.
+The apparatus DOES format text so that any reader — from ESL or child all the way to serious researcher — can take canonical scripture one atomic thought at a time.
 
 ## §0.2 Method
 

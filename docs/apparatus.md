@@ -19,7 +19,7 @@ ATU revelation, not invention. The apparatus exposes structure already present i
 
 ## Outputs
 
-- A **colometric reading edition** (one ATU per line on the page) suitable for ESL readers, students, and general audiences.
+- A **colometric reading edition** (one ATU per line on the page) usable by any reader — from ESL or child all the way to serious researcher.
 - A **transaction log** of every editorial decision made by the pipeline, supporting full rollback.
 - A **per-rule audit trail** documenting where each catalog constraint flagged a violation and how it was resolved.
 - **Reader-facing delivery** in three forms per corpus: web reading app, optional audio narration, optional study-layer overlays (e.g., archaic-word modernization).
