@@ -102,6 +102,8 @@ The LLM is the primary identifier. It reads source text and proposes ATU-segment
 
 The minimal rubric does NOT include cognitive-unity gates on parallel cola, parallelism class adjudication (synonymous / antithetic / synthetic categorization), or genre anchors as primary licenses. These are off-axis from ATU identification.
 
+**Production protocol: Opus 3-pass with agreement scoring.** Three independent passes; unanimous verdicts auto-apply; non-unanimous verdicts surface to editorial review. Empirically validated 2026-05-17 across prose and poetic content in Hebrew, Greek, and EME English. See `toolset-architecture.md` for the production tier specification and `memories/feedback_production_tier_empirical.md` for the empirical study.
+
 Output: a proposed rendering — ATU-segmented text per chapter, ready for audit.
 
 ## §2.2 Stage 2 — Constraint catalog audit

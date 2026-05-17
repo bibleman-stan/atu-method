@@ -52,6 +52,25 @@ The LLM does NOT apply: cognitive-unity gates on parallel cola; parallelism clas
 
 The output of Stage 1 is a proposed rendering — ATU-segmented text per chapter, ready for audit.
 
+**Production model tier: Opus 3-pass with agreement scoring.** Empirically validated 2026-05-17 across 5 chapters / 3 corpora / 3 languages:
+
+- 3 independent Opus passes per chapter, same prompt, same source
+- Verdict assignment per verse:
+  - **Unanimous (3/3 passes agree)**: auto-applied to final rendering (high confidence — empirically 94% accurate on prose, 100% on poetic content)
+  - **Majority (2/3 passes agree)**: surface to editorial review with majority verdict pre-filled
+  - **All-disagree (3 distinct verdicts)**: surface to editorial review as flagged-uncertain
+
+Empirical performance under this protocol:
+
+| Content type | Unanimous rate | Unanimous accuracy |
+|---|---|---|
+| Prose (legal list, narrative, epistle) | ~85% | 94% |
+| Poetic (poetic prophecy, apocalyptic) | ~60% | 100% |
+
+Sonnet 3-pass produces ~80% unanimous at 60-81% accuracy — production-grade quality requires the Opus tier. Haiku is excluded due to content-filter unreliability on biblical content and quality variance.
+
+See `memories/feedback_minimal_rubric_validated.md` and `memories/feedback_production_tier_empirical.md` for the underlying empirical study.
+
 ### Stage 2 — Constraint catalog audit
 
 The constraint catalog is a per-language inventory of syntactic constraints, each expressed as a yes/no grammatical question. Constraints AUDIT the Stage-1 proposal; they do not produce ATU rendering.
