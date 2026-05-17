@@ -1,13 +1,13 @@
 ---
 name: Grammar constrains ATU boundaries; it does not determine them
-description: Grammar (UD signatures, syntactic categories, Layer 1 rules, complement/formula/relative integrity) constrains where ATU breaks CAN'T go. It does NOT positively determine where breaks SHOULD go. The generative force is atomic-thought (propositional/psycholinguistic), not grammatical.
+description: Grammar (UD signatures, syntactic categories, syntactic constraints in catalog per Stage 2, complement/formula/relative integrity) constrains where ATU breaks CAN'T go. It does NOT positively determine where breaks SHOULD go. The generative force is atomic-thought (propositional/psycholinguistic), not grammatical.
 type: feedback
 ---
 
 **Asymmetry:** Grammar gives PROHIBITIONS, not PRESCRIPTIONS, for ATU boundaries.
 
-- **Grammar CAN'T-go signals (Layer 1 + integrity rules):** "this break is illegal under the target language's grammar" — line-final CCONJ/DET/AUX/ADP prohibitions, V+DO bond, complement integrity (matrix-VERB or matrix-ADJ valence unsatisfied), fixed-idiom integrity, restrictive-relative bonds (closed-list per corpus).
-- **Atomic-thought SHOULD-go signals (generative principle + J1–J5):** "this break is justified because the next line carries a fresh proposition / camera angle / portrait beat / speech-act announcement / classical comma / substantive adjunct as own focus." The generative force is propositional, not grammatical.
+- **Grammar CAN'T-go signals (syntactic constraints in catalog — Stage 2):** "this break is illegal under the target language's grammar" — line-final CCONJ/DET/AUX/ADP prohibitions, V+DO bond, complement integrity (matrix-VERB or matrix-ADJ valence unsatisfied), fixed-idiom integrity, restrictive-relative bonds (closed-list per corpus).
+- **Atomic-thought SHOULD-go signals (generative principle + bidirectional test affirmation per `framework.md §1.2`):** "this break is justified because the next line carries a fresh proposition / camera angle / portrait beat / speech-act announcement / classical comma / substantive adjunct as own focus." The generative force is propositional, not grammatical.
 
 **Why this asymmetry matters:** A grammatical pattern's existence does NOT automatically justify a rule. Per-corpus canon SCOPE statements codify this implicitly — e.g., BoFM R17 SCOPE says "NOUN head → out of scope (no R17-equivalent for NOUN-headed ccomp)." The NOUN-head-complement grammatical pattern exists in UD parses; ATU integrity does NOT extend there because content-emptiness (the atomic-thought-failure test), not syntactic completeness, is the principle. Hostile audit α (2026-05-12) correctly rejected a framework-extension attempt that conflated grammatical-pattern-presence with ATU-boundary-determination.
 
@@ -15,7 +15,7 @@ type: feedback
 
 **How to apply:**
 
-1. **When proposing a new rule:** ask "does this rule encode a CONSTRAINT (prohibition on illegal breaks) or a DETERMINATION (prescription of correct breaks)?" Constraints are Cat A mechanical rules grounded in Layer 1 grammar or complement/formula/relative integrity. Determinations require the atomic-thought test to fire — and that test is propositional, not grammatical. Grammar can confirm a determination is safe; grammar alone cannot generate it.
+1. **When proposing a new rule:** ask "does this rule encode a CONSTRAINT (prohibition on illegal breaks) or a DETERMINATION (prescription of correct breaks)?" Constraints are Cat A mechanical rules grounded in syntactic constraints in the catalog (Stage 2) or complement/formula/relative integrity. Determinations require the atomic-thought test to fire — and that test is propositional, not grammatical. Grammar can confirm a determination is safe; grammar alone cannot generate it.
 
 2. **When auditing audit outputs (per `feedback_audit_outputs_need_canon_check`):** if an audit recommends a SCOPE-exclusion grounded purely in "grammatical pattern X is present/absent," reject. Constraints get grounded in grammar; determinations get grounded in atomic-thought + camera-angle. The audit's reasoning must trace to the latter for any merge/split decision.
 

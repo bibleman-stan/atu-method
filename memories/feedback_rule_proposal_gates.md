@@ -40,7 +40,7 @@ Have I run both:
 - **Forward grammatical closure** — head not awaiting complement; no dangling subordinator / preposition; predication complete
 - **Backward referential self-containment** — no unresolved deictic demonstratives, anaphoric particles, pronouns without on-line antecedent
 
-Anaphoric reference FAILS. Cataphoric reference (presentative + indefinite NP, "thus says X:") PASSES. Cite `framework.md §1.1` (not M3/M4) when invoking. The bidirectional test is INFORMATIONAL DIAGNOSTIC, not precedence override — validators fire on canon-encoded UD signatures, not on bidirectional-test outcome.
+Anaphoric reference FAILS. Cataphoric reference (presentative + indefinite NP, "thus says X:") PASSES. Cite `framework.md §1.1` (not a merge-override mechanism — M3/M4 are deprecated under the bidirectional test framework, 2026-05-17) when invoking. The bidirectional test is INFORMATIONAL DIAGNOSTIC, not precedence override — validators fire on canon-encoded UD signatures, not on bidirectional-test outcome.
 
 ## If all four gates pass
 
