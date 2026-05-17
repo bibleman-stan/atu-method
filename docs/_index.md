@@ -24,6 +24,14 @@ Companion: [`../memories/_index.md`](../memories/_index.md) indexes the cross-co
 - [`change-protocol.md`](change-protocol.md) — **Canon-change discipline.** Framework authority, proposal requirements, the 12 mandatory-audit triggers, audit-skippable categories, audit-evidence in commit messages, self-test before commit, proposed-rule adoption protocol. Read before any canon change.
 - [`retraction-log-protocol.md`](retraction-log-protocol.md) — **Per-repo retraction-log specification.** File format, 3-strike promotion threshold, what counts as a retraction, cross-corpus propagation. Read when logging a retraction or running the threshold-promotion check.
 - [`canon-validator-alignment-protocol.md`](canon-validator-alignment-protocol.md) — **Structural alignment check specification.** What per-repo `validators/canon/check_canon_alignment.py` scripts implement: validator file presence, closed-list presence, encoded-question field consistency, multi-valued field branches. Verdict taxonomy: ALIGNED / NO_IMPL / DRIFT / PARTIAL / EDITORIAL_ACK. Read when implementing the per-repo script or running the alignment check.
+- [`editorial-review-protocol.md`](editorial-review-protocol.md) — **Stage 3 editorial-review surface specification.** Per-batch review-file format, editor adjudication interface, auto-apply discipline (unanimous + clean-audit verses skip review), batch granularity guidance. Read when implementing pipeline run scripts or designing the editor workflow.
+
+## Stage 1 canonical prompts (read when implementing pipeline run scripts)
+
+- [`prompts/_index.md`](prompts/_index.md) — index of per-language Stage 1 prompts
+- [`prompts/minimal_rubric_hebrew.md`](prompts/minimal_rubric_hebrew.md) — Hebrew minimal rubric (Tanakh)
+- [`prompts/minimal_rubric_eme_english.md`](prompts/minimal_rubric_eme_english.md) — EME English minimal rubric (BoFM)
+- [`prompts/minimal_rubric_koine_greek.md`](prompts/minimal_rubric_koine_greek.md) — Koine Greek minimal rubric (GNT, LXX)
 
 ## Legacy reference
 
