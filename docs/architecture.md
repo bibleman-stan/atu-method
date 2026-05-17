@@ -114,6 +114,25 @@ See [`change-protocol.md`](change-protocol.md) for the operational workflow.
 
 ---
 
+## Internal structure of the Tooling plane — cognitive-labor partitioning
+
+The four-plane model carves by **where things live** (data / spec / tooling / delivery). It does not by itself describe the internal task-type structure of the Tooling plane. As LLM-augmented operations have become load-bearing in the apparatus (R19 resolver; passage-level audit; future v1→v2 generative pass), a complementary view is needed: **what kind of cognitive work each tool does**.
+
+The Tooling plane subdivides internally into four **legs**, each fit for a different task type:
+
+1. **Mechanical floor** — UD parsing, Layer-1 prohibitions, source-text anchoring, coarse candidate-break generation. Deterministic; cheap; scales freely.
+2. **Point-rule validators (R/H stack)** — pattern-specific break-legality. Mechanical execution; §7.3-audit-gated for proposal of new rules / closed lists / sub-categories.
+3. **LLM resolver for validator-flagged residue** — per-instance judgment within bounded rule scope. Operates on REVIEW outputs; agreement-scored across runs.
+4. **LLM passage-level audit over rendered output** — holistic "is this rendering over-broken?" check. Operates over rendered v2 (not parse input). Catches what point-rules structurally cannot see.
+
+These legs differ in cost profile, auditability, discipline requirements, and failure modes — distinctions that matter for system design and that the four-plane model alone does not surface.
+
+**For the substantive description** of the four legs, the extended bidirectional test (with the cognitive-unity gate for parallel poetry), the coarse-anchor principle, the two-phase candidate-vs-adjudication processing model, and what is still missing from the toolset, see [`toolset-architecture.md`](toolset-architecture.md).
+
+The two documents are complementary, not redundant: `architecture.md` (this file) is normative for where code and data live; `toolset-architecture.md` is normative for which task type each tool is fit for.
+
+---
+
 ## Drift prevention
 
 The four-plane architecture is durable only if drift is controlled:
