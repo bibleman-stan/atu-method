@@ -13,15 +13,13 @@ ATU revelation, not invention. The apparatus exposes structure already present i
 ## Inputs
 
 - A **canonical source text** in the target language (2020 LDS Book of Mormon; SBLGNT for the Greek New Testament; Westminster Leningrad Codex for the Hebrew Bible).
-- A **parsed corpus** — Universal Dependencies (UD) annotation, Macula constituent trees, or equivalent — providing morpho-syntactic structure over the source.
-- A **language-specific constraint catalog** — grammatical yes/no questions answering whether a proposed ATU break is syntactically licensed (`docs/rule-template.md` for the template; per-repo canon §5 for the implementation).
-- A **shared methodology framework** — bidirectional atomic-thought test, three-stage pipeline, change protocol (this repository, `docs/framework.md`).
+- A **parse layer** — BHSA via Text-Fabric for Hebrew; Macula Greek for Greek; Stanza CoNLL-U for EME English. Provides clause-atom-level syntactic structure over the source.
+- A **language-specific binding-rule catalog** — feature-driven rules that merge parse-derived clauses into ATU candidate groups (`docs/binding-rules-hebrew.md` for the validated Hebrew catalog).
+- A **shared methodology framework** — bidirectional test, mechanical-first pipeline, change discipline (this repository, `docs/framework.md`).
 
 ## Outputs
 
 - A **colometric reading edition** (one ATU per line on the page) usable by any reader — from ESL or child all the way to serious researcher.
-- A **transaction log** of every editorial decision made by the pipeline, supporting full rollback.
-- A **per-rule audit trail** documenting where each catalog constraint flagged a violation and how it was resolved.
 - **Reader-facing delivery** in three forms per corpus: web reading app, optional audio narration, optional study-layer overlays (e.g., archaic-word modernization).
 
 ## What the reader sees (end-state per sibling)
@@ -87,13 +85,15 @@ Source-language token (TAGNT or TAHOT)  →  Strong's number(s)
 
 **Why BoFM's swap-system carries over directly.** The BoFM uses KJV-style archaic English by construction (Skousen 2009, *The Earliest Text*). The BoFM `.swap` class system already modernizes BoFM's KJV-derivative archaisms. KJV NT and KJV OT share most of these archaisms with one corpus-specific extension each: KJV NT adds `begat`, `wist`, `holpen`; KJV OT adds `firmament`, `behold`, `peradventure`. Universal swap-lists at `atu-method/data/swaps/` with NT/OT-specific extensions.
 
-## Cognitive identification first; syntactic constraints second
+## Mechanical-first architecture
 
-The bidirectional test is the criterion: a line is a legitimate ATU if and only if it satisfies BOTH forward grammatical closure and backward referential self-containment. This is a cognitive criterion — the test asks whether a reader can take the line in as a complete unit of meaning, not whether the line conforms to a grammatical pattern.
+The bidirectional test is the criterion: a line is a legitimate ATU if and only if it satisfies BOTH forward grammatical closure and backward referential self-containment.
 
-Syntactic rules constrain ATU well-formedness but do not produce ATU rendering. The constraint catalog (per-language) answers grammatical yes/no questions about a proposed ATU break (is this break inside a construct chain? is this `אֲשֶׁר`-clause restrictive? is this `οὖν` discourse particle bare on its line?) and flags violations for editorial review. Constraints audit; they do not generate.
+The pipeline takes parse-derived clauses (BHSA clause-atoms for Hebrew; Macula clause nodes for Greek; CoNLL-U sentences for EME English) and applies a small catalog of feature-driven binding rules to merge them into ATU candidate groups. Each binding rule fires based on parse features (clause type, head verb lemma, text-prefix) and is justified by the bidirectional test.
 
-Stan verbatim 2026-05-13: *"grammar doesn't determine ATU boundaries, but it can constrain them."* See `framework.md` for the full discipline.
+**Validated for Hebrew (Tanakh) across four chapters / four genres**: narrative+dialogue, wisdom poetic, prophetic poetic, casuistic legal. Boundary F1 against the Lexham Discourse Hebrew Bible stays in the 85-91% range; recall stays ≥ 80%. Pipeline output is an editorially-refinable draft, not a final rendering — but the editorial work shifts from hours-per-chapter to minutes-per-chapter.
+
+See `framework.md` for the methodology specification and `binding-rules-hebrew.md` for the validated 14-rule Hebrew catalog.
 
 ## What the apparatus is NOT
 
@@ -104,12 +104,11 @@ Stan verbatim 2026-05-13: *"grammar doesn't determine ATU boundaries, but it can
 
 ## Where to read next
 
-- [`architecture.md`](architecture.md) — Four-plane architectural decomposition with interface contracts between planes.
-- [`framework.md`](framework.md) — Operational framework consumed by per-corpus canons.
-- [`toolset-architecture.md`](toolset-architecture.md) — Cognitive-labor partitioning (three-stage pipeline).
-- [`rule-template.md`](rule-template.md) — Template for constraint catalog entries.
+- [`framework.md`](framework.md) — Methodology specification (bidirectional test, mechanical-first architecture).
+- [`binding-rules-hebrew.md`](binding-rules-hebrew.md) — The 14 validated Hebrew binding rules.
+- [`toolset-architecture.md`](toolset-architecture.md) — Pipeline implementation (v0→v3 stages).
+- [`methodology-position.md`](methodology-position.md) — Relationship to LDHB / discourse-grammar references.
 - [`glossary.md`](glossary.md) — Defined terms.
-- [`change-protocol.md`](change-protocol.md) — Audit-extension rules for canon changes.
 - [`../memories/`](../memories/) — Cross-project discipline lessons.
 
 ## Reference implementation
