@@ -25,6 +25,16 @@ This document specifies the relationship between the ATU apparatus and adjacent 
 
 **Resilience.** If LDHB is restricted or changed, the apparatus is unaffected. The pipeline reads parse data that is publicly licensed (BHSA: CC BY-NC 4.0; Macula: CC BY 4.0) or built from public sources.
 
+## Field positioning and theoretical grounding
+
+Three program-level framing decisions (made 2026-05-24; recorded canonically in the vault orientation docs at `vaults-nano/my_brain/10_Projects/Readers/00-ATU-research-program.md` §1/§3). They do not alter the runtime pipeline; they govern how the apparatus is described and cited in methodology-paper claims.
+
+1. **Field name — delimitation criticism (DC), generalized.** The program situates *within* Korpel & Oesch's delimitation criticism rather than coining a rival critical method, taking "delimitation" in a generalized sense that extends the founders' manuscript-marker-bound definition **forward** (cognitive constraints on unit-packaging at composition, not only the markers scribes left), **prescriptively** (designing reader editions, not only describing ancient ones), and **cross-corpus** (incl. corpora with no manuscript-marker tradition — e.g. the Book of Mormon, where there are no setumot/petuchot to read). Korpel & Oesch's manuscript work is the descriptive/scribal core; this apparatus is part of the forward/prescriptive generalization. Retires the prior internal label *structural segmentation criticism / presentation criticism*.
+
+2. **Unit — conceptual unit, operationalized as the ATU.** The ATU is this apparatus's *operationalization* — via the bidirectional atomic-thought test — of the **conceptual unit** already described in the discourse-linguistic literature, not a newly posited theoretical entity. Maps to neighbors: ≈ Chafe's idea unit minus its prosodic anchoring; ⊃ but ≠ RST's clause-bound *elementary discourse unit*; ≈ Hannay & Kroon's *basic conceptual unit* (verify). Consistent with the granularity table below: the conceptual/ATU grain is coarser than LDHB's analytical splits.
+
+3. **Cognitive grounding — Langacker + Givón primary; Chafe a foil.** The "atomic thought" claim grounds primarily in conceptualization-based cognitive linguistics (Langacker: units as conventional packagings of meaning; Givón: information flow, topic continuity), not in Chafe's prosody-anchored idea units. Rationale: the corpora are mediated *written conceptual artifacts*, not speech transcripts, so prosodic chunking under-fits; Chafe is retained as the closest prosodic-cousin foil. Again, runtime is unaffected — the pipeline reads parses and applies binding rules regardless of which cognitive literature grounds the unit.
+
 ## Where LDHB is used
 
 - **Validation comparisons** in the pilot (`v3_three_way_compare.py`): pipeline / cold-eye / LDHB three-way.
@@ -60,5 +70,8 @@ If at some future point the apparatus is to be distributed AS a Lexham-derivativ
 - Steven E. Runge, *Discourse Grammar of the Greek New Testament* (Bellingham, WA: Lexham Press, 2010).
 - van der Merwe, Naudé & Kroeze, *A Biblical Hebrew Reference Grammar* (2nd ed., Bloomsbury 2017) — discourse-linguistic Hebrew reference; same author school as LDHB.
 - Niccacci, *The Syntax of the Verb in Classical Hebrew Prose* — textlinguistic theory of Hebrew verbs; cited as influence on the wayhi macrosyntactic-frame rule (B5).
+- Korpel, Marjo C.A., and Josef M. Oesch, eds., *Delimitation Criticism: A New Tool in Biblical Scholarship* (Pericope series; Assen: Van Gorcum / Leiden: Brill, 2000–) — the founding field this program generalizes (forward/prescriptive/cross-corpus).
+- Langacker, Ronald W., *Foundations of Cognitive Grammar* (Stanford UP, 1987/1991) and "Discourse in Cognitive Grammar," *Cognitive Linguistics* 12 (2001) — primary grounding for the conceptual unit (conceptualization).
+- Givón, T., *Topic Continuity in Discourse* (Benjamins, 1983) — co-anchor (information flow, topic continuity).
 
 These references are consulted as scholarship, not embedded in the pipeline.
