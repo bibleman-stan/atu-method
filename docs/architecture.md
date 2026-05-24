@@ -24,17 +24,17 @@ This document is normative for any project consuming `atu-method`. Drift from th
 │   • Framework — shared in atu-method/docs/                       │
 │   • Glossary (universal terms) — shared in atu-method/docs/      │
 │   • Cross-project discipline memories — shared in atu-method/    │
-│   • Constraint catalog — per-repo, language-specific             │
-│   • Minimal-rubric prompt — per-repo, language-specific          │
+│   • Binding-rule catalog — per-repo, language-specific           │
+│   • (optional) v2 adjudication prompts — per-repo, narrow-task   │
 └─────────────────────────────────────────────────────────────────┘
                                 ↓
 ┌─────────────────────────────────────────────────────────────────┐
 │ TOOLING PLANE                                                    │
 │   • Source-text anchoring (Macula, TAHOT, Strong's, Skousen)     │
-│   • Parse adapters (Macula-lowfat, CoNLL-U)                      │
-│   • LLM identification stage (minimal rubric)                    │
-│   • Constraint catalog audit stage                               │
-│   • Editorial review surface                                     │
+│   • Parse adapters (BHSA / Macula-lowfat / CoNLL-U)             │
+│   • v1.5 binding-rule engine (feature-driven ATU grouping)       │
+│   • Optional v2 LLM adjudication (narrow-task, on residuals)     │
+│   • v3 editorial review surface                                  │
 │   • KJV-alignment subsystem (atu_method/kjv_alignment/)          │
 │   • Audit gates (commit hooks, baseline checks)                  │
 └─────────────────────────────────────────────────────────────────┘
@@ -49,7 +49,7 @@ This document is normative for any project consuming `atu-method`. Drift from th
 ORTHOGONAL: WORKFLOW
   Audit-then-apply discipline, mandatory-audit triggers, change
   protocol. Describes how operators use the tooling plane on the spec
-  plane against the data plane. Lives in atu-method/docs/change-protocol.md
+  plane against the data plane. Lives in atu-method/docs/framework.md §7
   plus per-repo CLAUDE.md operational sections.
 ```
 
@@ -67,11 +67,11 @@ ORTHOGONAL: WORKFLOW
 | Framework | ✓ | (referenced, not duplicated) |
 | Glossary | ✓ (universal terms) | ✓ (project-specific terms only) |
 | Discipline memories | ✓ | (referenced, not duplicated) |
-| Constraint catalog | (template + cross-corpus map) | ✓ (language-specific entries) |
-| Minimal-rubric prompt | (cross-corpus template) | ✓ (per-language specialization) |
+| Binding-rule catalog | (template + cross-corpus map) | ✓ (language-specific rules) |
+| v2 adjudication prompts (optional) | (cross-corpus template) | ✓ (per-language, narrow-task) |
 | Parse adapters | ✓ | (consumed) |
-| LLM identification stage | ✓ (orchestration) | ✓ (prompt + audit calls) |
-| Constraint catalog audit stage | ✓ (orchestration) | ✓ (concrete constraint implementations) |
+| v1.5 binding-rule engine | ✓ (orchestration) | ✓ (rule implementations) |
+| v2 LLM adjudication (optional) | ✓ (orchestration) | ✓ (per-language adjudication calls) |
 | Editorial review surface | (pattern) | ✓ (per-repo workflow) |
 | KJV-alignment subsystem | ✓ (full implementation) | (consumed via thin wrapper) |
 | Audit gates | ✓ | (wired per-repo) |
@@ -87,23 +87,24 @@ The pattern: **infrastructure and methodology framework shared; data and deliver
 
 ### Data plane → Specification plane
 
-The specification plane describes the editorial methodology and constraint catalog; it does not consume data directly. Cross-references from spec to data (e.g., "canonical case: Alma 12:26") are illustrative, not load-bearing.
+The specification plane describes the editorial methodology and binding-rule catalog; it does not consume data directly. Cross-references from spec to data (e.g., "canonical case: Alma 12:26") are illustrative, not load-bearing.
 
 ### Specification plane → Tooling plane
 
-The constraint catalog audit stage in the tooling plane consumes constraint specifications from the specification plane. The interface is:
+The v1.5 binding-rule engine in the tooling plane consumes the binding-rule catalog from the specification plane. The interface is:
 
-- **Encoded question** — the yes/no grammatical question the constraint answers (per-rule field in the catalog entry).
-- **Closed lists** — Named lemma / category sets cross-referenced from constraint entries. Audit stage loads these at start.
-- **Precedence hierarchy** — Per-repo canon section defining order of evaluation when multiple constraints fire on the same break.
+- **Trigger** — the parse-derived feature condition (clause type, head lemma, relation, text prefix) under which a binding rule fires (per-rule field in the catalog entry).
+- **Closed lists** — Named lemma / category sets cross-referenced from rule entries. The engine loads these at start.
+- **Evaluation order + same-verse guard** — Per-repo catalog section defining rule precedence and the within-verse binding boundary.
 
-Drift between the constraint description in the canon and the actual implementation is a **failure** — detected by `canon-validator-alignment-protocol.md` per-repo script.
+Drift between a binding rule as documented in the canon and its `should_bind()` implementation is a **failure** — detected by the per-repo validator baseline-check (the binding rules ARE the canon; cf. `framework.md` §7).
 
 ### Data plane ↔ Tooling plane
 
-- **LLM identification stage reads** the source text + minimal-rubric prompt; emits a proposed ATU-segmented rendering.
-- **Constraint catalog audit stage reads** the proposed rendering + the parsed corpus; emits a violation report per proposed break.
-- **Editorial review** consumes both; writes to the rendered corpus via TxLog with rollback support.
+- **v1 parse extraction reads** the source text + parse layer; emits parse-derived clause units.
+- **v1.5 binding-rule engine reads** the clause units; emits ATU candidate groups (a publishable draft on its own).
+- **v2 LLM adjudication (optional)** reads a residual clause-group + context; emits a yes/no verdict for that group only.
+- **Editorial review (v3)** consumes the mechanical output + any v2 verdicts; writes to the rendered corpus via TxLog with rollback support.
 - **Build pipeline** (delivery plane) reads the rendered corpus and produces HTML fragments.
 
 ### Workflow ↔ all planes
@@ -114,7 +115,7 @@ The audit-then-apply discipline operates across planes. It governs:
 - When constraint audit outputs (tooling plane) are application-ready vs. require manual review.
 - When data-plane mutations require baseline-check before commit.
 
-See [`change-protocol.md`](change-protocol.md) for the operational workflow.
+See [`framework.md`](framework.md) §7 for the operational workflow (change discipline scoped to binding-rule changes).
 
 ---
 
@@ -122,15 +123,18 @@ See [`change-protocol.md`](change-protocol.md) for the operational workflow.
 
 The four-plane model carves by **where things live** (data / spec / tooling / delivery). It does not by itself describe the internal task-type structure of the Tooling plane. A complementary view is needed: **what kind of cognitive work each tool does**.
 
-The Tooling plane subdivides into three stages, each fit for a different task type:
+The Tooling plane subdivides into the mechanical-first pipeline stages, each fit for a different task type:
 
-1. **LLM identification** — applies the minimal rubric (bidirectional test + restrictive-relative binding + small language-specific constraints) to source text; produces ATU-segmented proposal.
-2. **Constraint catalog audit** — applies the per-language syntactic constraint catalog to the proposed rendering; emits violation report. Mechanical execution; constraints expressed as yes/no grammatical questions.
-3. **Editorial review** — human adjudicates conflicts between proposal and constraint violations; produces final rendering.
+1. **v1 — parse extraction** — reads the per-corpus parse layer (BHSA clause-atoms / Macula clause nodes / CoNLL-U sentences) into parse-derived clause units with their linguistic features. Deterministic.
+2. **v1.5 — binding rules** — feature-driven binding rules merge the v1 clause units into ATU candidate groups. Mechanical execution; each rule grounded in the bidirectional test, firing on parse-derived features. This is the primary segmenter — it produces a publishable draft on its own.
+3. **v2 — optional LLM adjudication** — for the narrow residual cases the mechanical layer cannot decide, per-group LLM calls answer a single yes/no question (3 passes, agreement-scored). OPTIONAL and narrow; the LLM does NOT do chapter-level rendering.
+4. **v3 — editorial review** — human adjudicates between the mechanical output and any v2 verdicts, plus flagged-uncertain cases; produces the final rendering.
 
 These stages differ in cost profile, auditability, discipline requirements, and failure modes — distinctions that matter for system design and that the four-plane model alone does not surface.
 
-For the substantive description of the three stages, the bidirectional test, the coarse-anchor principle, the two-phase processing model, and the meta-discipline layer, see [`toolset-architecture.md`](toolset-architecture.md).
+> **Note (2026-05-18 reconciliation):** a short-lived 2026-05-17 design made Stage 1 an *LLM-primary* identifier (LLM proposes the whole rendering; a constraint catalog audits it). That was retired the next day in favor of the mechanical-first pipeline above (see `_index.md` and `framework.md` §3). The LLM is now an *optional, narrow-task adjudicator on residuals*, not the primary identifier.
+
+For the substantive description of the stages, the bidirectional test, and the binding-rule catalog, see [`framework.md`](framework.md) §3 and [`toolset-architecture.md`](toolset-architecture.md).
 
 The two documents are complementary: `architecture.md` (this file) is normative for where code and data live; `toolset-architecture.md` is normative for which task type each tool is fit for.
 
@@ -140,7 +144,7 @@ The two documents are complementary: `architecture.md` (this file) is normative 
 
 The four-plane architecture is durable only if drift is controlled:
 
-1. **Constraint specifications live in the canon, not the audit-stage implementation.** When a constraint changes, the canon is the source of truth; the implementation is updated to match. `canon-validator-alignment-protocol.md` provides the mechanical alignment check.
+1. **Binding rules live in the canon, not in a separate audit-stage implementation** (the binding rules ARE the canon). When a rule changes, the canon catalog is the source of truth; the `should_bind()` implementation is updated to match, and the per-repo validator baseline-check provides the mechanical alignment check.
 
 2. **Framework material lives in atu-method/docs/, not in per-repo canons.** Per-repo canons reference framework sections by stable path. They do **not** duplicate framework prose.
 

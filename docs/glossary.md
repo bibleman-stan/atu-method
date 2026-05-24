@@ -22,13 +22,13 @@ Reference convention: term names are bolded in source documents; first use in an
 - **Cataphoric introduction** — forward-pointing reference (presentative `הִνֵּה` + indefinite NP, "thus says X:" announcing speech, etc.) — does NOT fail the bidirectional test because the forward content is being introduced, not depended on.
 - **Char-offset** — the column position within a rendered line where an applier inserts a break or merges to the previous line.
 - **Coarse anchor** — the coarsest reliable signal used as the primary candidate-break source (typically versification). Finer signals (te'amim, punctuation, parse boundaries) are informational, not adjudicative. See `toolset-architecture.md`.
-- **Cognitive identification first; constraints second** — the architectural principle that ATU identification is a cognitive task done by the LLM with the minimal rubric, and syntactic constraints audit the result. Producer-style validators (rules that GENERATE ATU rendering) are forbidden.
-- **Constraint catalog** — per-language inventory of syntactic constraints expressed as yes/no grammatical questions; runs in Stage 2 of the three-stage pipeline.
+- **Cognitive identification first; constraints second** — *(RETIRED 2026-05-18)* the short-lived 2026-05-17 principle that ATU identification was a cognitive task done by the LLM (minimal rubric), with syntactic constraints auditing the result. Superseded by **mechanical-first**: binding rules are the primary segmenter; LLM adjudication is optional and narrow-task on residuals. See `framework.md` §3.
+- **Binding-rule catalog** — per-language inventory of binding rules; each fires on a parse-derived feature condition to merge clause units into ATU candidate groups (v1.5). The validated Hebrew set is B1–B14; see `binding-rules-hebrew.md`. *(Replaces the retired "constraint catalog" / Stage-2 audit concept.)*
 
 ## E
 
-- **EME English** — Early Modern English register (KJV / Skousen-edition BoFM); has its own constraint catalog distinct from modern English.
-- **Editorial review** — Stage 3 of the three-stage pipeline; human adjudicates conflicts between LLM proposal and constraint audit flags.
+- **EME English** — Early Modern English register (KJV / Skousen-edition BoFM); has its own binding-rule catalog distinct from modern English.
+- **Editorial review** — v3 of the mechanical-first pipeline; the human adjudicates between the binding-rule output and any optional v2 LLM verdicts, and inspects flagged-uncertain cases, to produce the final rendering.
 
 ## F
 
@@ -36,11 +36,11 @@ Reference convention: term names are bolded in source documents; first use in an
 
 ## L
 
-- **LLM identification stage** — Stage 1 of the three-stage pipeline; the LLM applies the minimal rubric to source text and proposes ATU-segmented rendering.
+- **LLM adjudication (v2, optional)** — narrow-task per-group LLM calls on the residual cases the binding rules cannot decide (one yes/no question per group, 3 passes, agreement-scored). The LLM does NOT do chapter-level rendering. *(Supersedes the retired "LLM identification stage", which made the LLM the primary identifier.)*
 
 ## M
 
-- **Minimal rubric** — the prompt the LLM identification stage uses: bidirectional test + restrictive-relative binding + small set of language-specific syntactic constraints + default KEEP-AS-IS. Excludes cognitive-unity gates, parallelism class adjudication, and genre anchors as primary licenses.
+- **Minimal rubric** — *(RETIRED 2026-05-18)* the LLM-primary identification prompt from the 2026-05-17 design (bidirectional test + restrictive-relative binding + small constraint set + default KEEP-AS-IS). Retired with that architecture; the optional v2 adjudication uses narrow per-group yes/no prompts instead.
 
 ## P
 
@@ -53,18 +53,18 @@ Reference convention: term names are bolded in source documents; first use in an
 
 ## S
 
-- **Stage 1 / Stage 2 / Stage 3** — the three-stage pipeline: LLM identification → constraint catalog audit → editorial review. See `toolset-architecture.md`.
+- **Pipeline stages (v0 / v1 / v1.5 / v2 / v3)** — the mechanical-first pipeline: v0 source → v1 parse-derived clauses → v1.5 binding rules (primary segmenter) → optional v2 narrow-task LLM adjudication on residuals → v3 editorial review. See `framework.md` §3 and `toolset-architecture.md`. *(Supersedes the retired Stage 1/2/3 LLM-primary scheme.)*
 
 ## T
 
-- **Three-stage pipeline** — the architecture of the apparatus: LLM identification (minimal rubric) → constraint catalog audit (syntactic yes/no questions) → editorial review (human adjudication).
+- **Mechanical-first pipeline** — the architecture of the apparatus: v0 source → v1 parse-derived clauses → v1.5 binding rules (the primary segmenter, producing a publishable draft) → optional v2 narrow-task LLM adjudication on residuals → v3 editorial review. *(Replaced the retired three-stage LLM-primary pipeline on 2026-05-18.)*
 - **TxLog** — transaction log for corpus mutations supporting rollback.
 
 ## U
 
-- **UD** — Universal Dependencies; the parsed-corpus annotation system feeding the constraint catalog audit stage.
+- **UD** — Universal Dependencies; the parsed-corpus annotation system feeding v1 parse extraction (EME English via CoNLL-U).
 
 ## V
 
 - **v2-mine / v2-he / v2-greek** — per-repo rendered-corpus directories holding the current state of the colometric edition.
-- **Violation report** — output of Stage 2 (constraint catalog audit); per-break list of constraint violations flagged for editorial review. Does NOT auto-correct.
+- **Violation report** — *(RETIRED 2026-05-18)* output of the retired Stage-2 constraint audit. In mechanical-first, the per-repo validator baseline-check plays the analogous audit-gate role: it flags deviations for editorial review and does NOT auto-correct.
