@@ -9,17 +9,18 @@ Reference convention: term names are bolded in source documents; first use in an
 ## A
 
 - **Anaphoric failure** — a line whose referents depend on prior context not present on the line (pronouns without antecedent, deictic demonstratives like "these things" / "that day," discourse-anaphoric particles like "therefore" / `לָכֵן` / causal `כִּי`); fails backward referential self-containment. See `framework.md §1.2`.
-- **ATU** (atomic thought unit) — a span of text the reader can take in as a single complete unit of meaning without needing the next line to resolve it. One ATU per line in the rendered output.
+- **ATU** (atomic thought unit) — a span of text the reader can take in as a single complete unit of meaning without needing the next line to resolve it. One ATU per line in the rendered output. A line qualifies if it satisfies EITHER the **bidirectional test** (primary) OR the **explicit-marker license** (secondary). Note: the unit is the atomic *thought*, not the atomic predication — grammatical closure is a proxy for thought, completed by the marker license where the proxy under-captures. See `framework.md §2`.
 - **Audit-then-apply discipline** — the workflow rule that distinguishes proposing a change (audit gate) from applying it (commit). See `change-protocol.md`.
 
 ## B
 
-- **Bidirectional test** — the criterion for whether a line is an ATU: BOTH forward grammatical closure AND backward referential self-containment must hold. See `framework.md §1.2`.
+- **Bidirectional test** — the PRIMARY criterion for whether a line is an ATU: BOTH forward grammatical closure AND backward referential self-containment must hold. A line that fails it may still qualify under the **explicit-marker license** (secondary). See `framework.md §2.1`.
 
 ## C
 
 - **Canon** — the project-specific operational specification of editorial rules; per-repo `private/01-method/colometry-canon.md`.
-- **Cataphoric introduction** — forward-pointing reference (presentative `הִνֵּה` + indefinite NP, "thus says X:" announcing speech, etc.) — does NOT fail the bidirectional test because the forward content is being introduced, not depended on.
+- **Cataphoric introduction** — forward-pointing reference (presentative `הִנֵּה` + indefinite NP, a **quotative** "thus says X:" / "and he said:" frame announcing distinct direct discourse) — does NOT fail the bidirectional test because the forward content is introduced, not depended on. **Narrow carve-out:** it covers a quotative *announcement* (the quote is its own ATU), NOT a performative **assertion-matrix** (a speech/assertion verb taking a `ccomp` proposition — "I say [that] X"), which binds its complement. Discriminator: direct-speech/parataxis → frame stands; `ccomp` → matrix binds. See `framework.md §2.1`.
+- **Explicit-marker license** — the SECONDARY criterion: a **break-license**, not an ATU-from-fragment rule. A colon that is already closure-eligible under the bidirectional test (often via elision-restoration of a gapped finite verb from the prior parallel clause) but which the KEEP-AS-IS default holds merged may be broken onto its own line when it opens with an author-placed token from the closed **Marker Registry** (sub-clausal asseveratives like `yea`/`or rather`; parallel subordinator-stacks like "that … that … that"). Firewall-safe by the conjunction of (a) the colon independently satisfying the test and (b) a closed discrete-lexeme list — NOT by "the token is on the page" (te'amim are on the page too, and stay banned). Does NOT cover clause-level connectives (δέ/γάρ/"for"), which already pass the primary test. See `framework.md §2.2`.
 - **Char-offset** — the column position within a rendered line where an applier inserts a break or merges to the previous line.
 - **Coarse anchor** — the coarsest reliable signal used as the primary candidate-break source (typically versification). Finer signals (te'amim, punctuation, parse boundaries) are informational, not adjudicative. See `toolset-architecture.md`.
 - **Cognitive identification first; constraints second** — *(RETIRED 2026-05-18)* the short-lived 2026-05-17 principle that ATU identification was a cognitive task done by the LLM (minimal rubric), with syntactic constraints auditing the result. Superseded by **mechanical-first**: binding rules are the primary segmenter; LLM adjudication is optional and narrow-task on residuals. See `framework.md` §3.
@@ -40,6 +41,7 @@ Reference convention: term names are bolded in source documents; first use in an
 
 ## M
 
+- **Marker Registry** — the closed, per-corpus, audited list of explicit author-placed boundary tokens that trigger the **explicit-marker license** (§2.2). A token enters only if (i) it is an explicit source lexeme, (ii) the clause it heads is propositionally complete minus the marker (or a shared element), and (iii) it is not already covered by the bidirectional test. Adding a marker is a §7.3 closed-list-extension audit trigger. See `framework.md §2.2`.
 - **Minimal rubric** — *(RETIRED 2026-05-18)* the LLM-primary identification prompt from the 2026-05-17 design (bidirectional test + restrictive-relative binding + small constraint set + default KEEP-AS-IS). Retired with that architecture; the optional v2 adjudication uses narrow per-group yes/no prompts instead.
 
 ## P

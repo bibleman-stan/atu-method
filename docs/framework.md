@@ -17,24 +17,48 @@ The apparatus reveals ATU structure already present in the text. It does NOT:
 - Reveal rhetorical parallelism (separate scholarly layer; may overlap but is not the target)
 - Add, remove, or alter words
 
-## §2 The bidirectional test (the criterion)
+## §2 The criterion — what licenses a standalone ATU
 
-A line is a legitimate standalone ATU if and only if BOTH:
+The unit is the **atomic _thought_ unit**, not the atomic predication. "Thought" is operationalized primarily by a grammatical test (§2.1) — but grammatical closure is a *proxy* for thought, and it under-captures thought at one principled boundary: an explicit authorial marker of a thought-move. So a line is a legitimate standalone ATU if it satisfies **EITHER**:
 
-1. **Forward grammatical closure** — the line is grammatically complete on its own terms in the target language. Languages with morphologically-encoded subjects (Hebrew finite verbs, Greek finite verbs, Latin finite verbs) license pro-drop. Verbless / nominal-predicate constructions count as closed when subject + predicate are juxtaposed (Hebrew, Greek). EME English requires overt copula. **Elision-restoration is permitted** — when a verb is gapped from a parallel prior clause, the elision-restored clause counts as closed.
+- **(A) the bidirectional test** (§2.1, primary), OR
+- **(B) the explicit-marker license** (§2.2, secondary — a closed registry of author-placed boundary tokens).
+
+(A) is the default and does the overwhelming majority of the work. (B) is a narrow, closed-list **break-license**, not an ATU-from-fragment rule: it does not certify an incomplete fragment as a thought — it permits a break, at an author-placed marker, between cola that are *already* closure-eligible under (A) (often via elision-restoration) but that the KEEP-AS-IS default would otherwise hold merged. See §2.2 for why that keeps the objectivity firewall intact.
+
+### §2.1 The bidirectional test (primary criterion)
+
+A line passes the bidirectional test if and only if BOTH:
+
+1. **Forward grammatical closure** — the line is grammatically complete on its own terms in the target language. Languages with morphologically-encoded subjects (Hebrew finite verbs, Greek finite verbs, Latin finite verbs) license pro-drop. Verbless / nominal-predicate constructions count as closed when subject + predicate are juxtaposed (Hebrew, Greek). EME English requires overt copula. **Elision-restoration is permitted** — when a verb is gapped from a parallel prior clause, the elision-restored clause counts as closed. *Valency note:* a transitive verb whose obligatory complement is absent from the line is NOT forward-closed (a bare assertion/speech verb — "I say to you …" — has an open content slot: "say *what?*"); it closes only via the cataphoric carve-out below, and only as a quotative announcement, not as an assertion-matrix.
 
 2. **Backward referential self-containment** — the line's referents are established in prior discourse (immediately, via chain-continuity) or self-introducing within the line. Long-range antecedent dependencies (more than one ATU back without chain-continuity) fail backward containment.
 
-A break between two adjacent lines is licensed if and only if both lines independently satisfy these two conditions.
+A break between two adjacent lines is licensed if and only if both lines independently satisfy these two conditions (or one is licensed under §2.2).
 
 **Asymmetry:**
 
 - **Anaphoric failure** (backward-dangling): pronouns without antecedent on the line, deictic demonstratives ("these things," "that day"), discourse-anaphoric particles (`לָכֵן`, `עַל־כֵּן`, causal `כִּי`, "therefore") all fail backward containment.
-- **Cataphoric introduction** (forward-pointing) does NOT fail: presentative `הִנֵּה` + indefinite NP, "thus says X:" announcing speech.
+- **Cataphoric introduction** (forward-pointing) does NOT fail — *but the carve-out is narrow, and the discriminator is **complement-vs-quote, not verb class**.* A presentative (`הִנֵּה` + indefinite NP) and a **quotative frame introducing distinct direct discourse** ("and he said:", `וַיֹּאמֶר`, `ἀμὴν λέγω ὑμῖν` before a quoted pronouncement) PASS: the frame is a complete cataphoric announcement and the quoted discourse is its *own* ATU (often a paragraph — unbindable). But a verb whose content follows as a **clausal complement** — *regardless of whether it is a cognition, perception, or speech verb* — is forward-incomplete ("know/say *what?*") and **binds** its complement into one ATU: `οἶδα ὅτι` / "I know that X", and equally "I say to you [that] it is well…". The verb's open valency is filled by the complement; it does not stand alone. **So: clausal complement → matrix binds; distinct quoted performance (third-party direct discourse, parataxis) → frame stands.** Verb identity (cognition vs. declaration) is *not* the variable — it was a proxy for complement-vs-quote.
+
+  **The performative assertion-matrix is settled by this:** a first-person performative ("I say to you," "Verily I say unto you," "I say to you that …") begs "say *what?*" identically across its surface variants and **binds** its content — it is a complement-taker, not a quotative frame. The one residual to validate per-corpus is **third-person citation-attribution** ("Moses writes that X", "the prophet testified that X"): does an attribution frame stand as a distinct attestation act, or bind like every other complement-taker? Measure across the citation formulas; default expectation is *bind* (collapsing the verb-class taxonomy to the single complement-vs-quote rule). **GNT consequence (deferred, per-corpus):** this collapses R10's cognition/declaration sort into complement-vs-quote, *pending* the citation-attribution check. **Implementation caution:** the GNT engine currently binds a complement only via the *cognition* lemma set (`merge_cognition_hoti`) and blocks recitative piercing via the speech-frame `qflag`; extending the bind to declaration/performative verbs MUST keep that quote-guard (a distinct quote is *never* bound), or the Mark 5:23 recitative pierce re-opens.
 
 **Restrictive relative clause binding** is a corollary: restrictive relatives bind to their head noun regardless of internal completeness, because removing them leaves the head not uniquely identified. Universal across Hebrew `אֲשֶׁר`, Greek `ὅς`/`ὅστις`, EME English "which"/"who"/"that".
 
-**Default action**: KEEP-AS-IS unless the bidirectional test affirmatively licenses a break. The framework does NOT include cognitive-unity gates on parallel cola, parallelism class adjudication, or genre anchors as primary licenses.
+### §2.2 The explicit-marker license (secondary criterion)
+
+A colon that is **closure-eligible under (A)** — forward-closed (often via the elision-restoration §2.1 permits: a finite verb gapped from the immediately-prior parallel clause) and backward-contained by immediate chain-continuity — but which the **KEEP-AS-IS default holds merged** (the framework does not split parallel cola on its own), may be **broken onto its own line when it opens with an explicit author-placed marker** from the closed **Marker Registry** (per-corpus, audited). The marker does NOT make a fragment into an ATU — the colon is already a legitimate unit under (A); the marker supplies the **break-license** the keep-as-is default otherwise withholds, signalling that this closure-eligible beat is a distinct authorial thought-move (escalation, restatement, enumerated parallel assertion).
+
+**This is the framework's only *productive* (break-generating) licensor, and it is deliberately quarantined.** It is distinguished from the forbidden "producer-style rule" (glossary) *only* by two preconditions, and safety rests on their conjunction — NOT on "the token is on the page" (te'amim are on the page too, and stay banned): **(a)** the colon independently satisfies (A) — closure-eligibility; **(b)** the break is keyed to a **closed list of discrete author lexemes**, never to inferred parallelism, accentuation, or genre. Drop either precondition and it collapses into the banned analyst-overlay category. The marker, in short, is permission to *break* a unit that is already self-standing — not permission to *create* a unit that is not.
+
+**Scope — what needs (B) vs. what (A) already covers.** Clause-level connectives (Hebrew waw-consecutive; Greek δέ/γάρ/μέν/οὖν; English "for") do **NOT** need (B): each heads its own finite predication and already passes (A). (B) is reserved for markers that license a split **below** the level (A) would license:
+
+- **Sub-clausal asseverative / amplificative openers** that subdivide a single predication — e.g. BoFM English `yea`, `or rather`; candidate twins: Hebrew asseverative `אַף` / `כִּי`, Greek `ναί`. ("…without stubbornness of heart, **yea**, without being brought to know the word" — the `yea` clause shares the matrix verb and so fails forward closure, but the marker opens a distinct amplification beat.)
+- **Parallel subordinator-stacks** — a stack of ≥2 coordinate indicative complement/appositive clauses, each propositionally complete once its shared subordinator is stripped, marked by a repeated subordinator (English "that … that … that"). The stack splits into enumerated assertion-beats. (Distinguish from a *single* subordinate complement, which binds under (A); and from *adverbial-purpose* "that"/`ἵνα`, which binds forward.)
+
+**Registry discipline.** Each marker is registered per-corpus with its bidirectional-test status and a worked example; adding one is a §7.3 closed-list-extension audit trigger, and the audit tests **firewall-conformance** (do conditions i–iii hold) not merely output quality. A token enters the registry ONLY if: (i) it is a **single discrete author lexeme** — not a repeated/positional pattern, and not an anaphoric element repurposed as a marker; (ii) the colon it heads is **closure-eligible under (A)** — propositionally complete minus the marker, or forward-closed by restoring a **gapped finite verb** from the immediately-prior parallel clause (a shared *finite verb* only — NOT a shared subject / object / prepositional phrase, which would re-admit the parallel-cola splitting §2 forbids); and (iii) the break is not already licensed by (A)'s asymmetry (clause-level connectives already pass — see Scope).
+
+**Default action**: KEEP-AS-IS unless (A) or (B) affirmatively licenses a break. The framework does NOT include cognitive-unity gates on parallel cola, parallelism class adjudication, te'amim hierarchy, or genre anchors as primary licenses — only the bidirectional test and the closed explicit-marker registry license a break.
 
 ## §3 Architecture — mechanical-first
 
