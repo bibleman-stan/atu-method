@@ -4,6 +4,8 @@ The ATU apparatus separates concerns into four planes, not stacked layers. Each 
 
 This document is normative for any project consuming `atu-method`. Drift from this architecture indicates either a documentation gap or a design error.
 
+> **What is actually LIVE per reader** (which layer is deployed, on what method, anchoring commits) is recorded in **[`deployment-status.md`](deployment-status.md)** — the single source of truth. Do NOT infer deployment state from a per-repo `CLAUDE.md`/README (those drift stale). All three readers run mechanical-first; the hand-edited editions were superseded and are not a "sacred" deploy oracle (the *source text* is sacred; the ATU segmentation is regenerable method output).
+
 ---
 
 ## Plane summary

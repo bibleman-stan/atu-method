@@ -3,6 +3,8 @@
 > Computational colometry apparatus for revealing atomic thought units in
 > canonical texts.
 
+> **Deployment state of record:** what is LIVE per reader edition is in [`docs/deployment-status.md`](docs/deployment-status.md) — the single source of truth (all three readers run mechanical-first; per-repo `CLAUDE.md`/READMEs drift stale).
+
 **Status:** Pre-release (0.1.0) — repository scaffold established; per-rule
 scholarship companions and Python infrastructure extracted from
 proof-of-concept implementations in

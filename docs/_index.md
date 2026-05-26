@@ -6,6 +6,10 @@ Companion: [`../memories/_index.md`](../memories/_index.md) indexes cross-corpus
 
 ---
 
+## Deployment state of record (read before asserting what's live)
+
+- [`deployment-status.md`](deployment-status.md) — **THE single source of truth for what is LIVE per reader edition** (which layer is deployed, on what method, anchoring commits; the source-text-sacred vs segmentation-regenerable distinction). Per-repo `CLAUDE.md`/READMEs drift stale and must NOT be trusted over this file.
+
 ## Methodology specification
 
 - [`framework.md`](framework.md) — **The canonical methodology specification.** Bidirectional test, mechanical-first architecture, v0→v3 pipeline, validation status across four genres. Authoritative cross-corpus body. Read first.

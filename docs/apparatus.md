@@ -104,6 +104,7 @@ See `framework.md` for the methodology specification and `binding-rules-hebrew.m
 
 ## Where to read next
 
+- [`deployment-status.md`](deployment-status.md) — **What is LIVE per reader** (single source of truth; all three run mechanical-first). Read before asserting deployment state.
 - [`framework.md`](framework.md) — Methodology specification (bidirectional test, mechanical-first architecture).
 - [`binding-rules-hebrew.md`](binding-rules-hebrew.md) — The 14 validated Hebrew binding rules.
 - [`toolset-architecture.md`](toolset-architecture.md) — Pipeline implementation (v0→v3 stages).
