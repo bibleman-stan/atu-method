@@ -61,8 +61,11 @@ acquiring existing gold (Vulgate-NT, LXX-morph were already out there, scattered
 
 BoFM is below parity (no gold treebank; Stanza mis-parses EModE). The deployed reader (bomreader.com,
 mechanical v1.5) is nonetheless **mostly correct** — the "over-split dominant ~15:1" diagnostic was
-**inflated** by counting genuine parallel cola as over-splits. Genuine residuals: protasis-severing (narrow
-mechanical), complement-severing (→ v2 LLM, needs deixis), the rare parenthetical-aside over-merge.
+**inflated** by counting genuine parallel cola as over-splits (the not-a-defect exemplar is 2 Ne 4:26 —
+distinct overt subjects per colon). Genuine residuals: independent-predication **interjections** (a
+self-contained clause interrupting a host → detach; 6 deployed via v2 overrides 2026-05-27, incl. 3 Ne 19:4,
+Alma 32:24, Alma 46:29, Ether 10:1), protasis-severing (narrow mechanical), complement-severing (→ v2 LLM,
+needs deixis).
 **Chosen fix: v2 LLM-adjudication of judgment-residuals over the mechanical v1** (not more mechanical
 rules). BoFM's own substrate upgrade = a free, no-LDC EModE treebank-build (PCEEC + EarlyPrint/MorphAdorner +
 a UD parser; PPCEME/LDC optional gold-validation) — `reference_emode_substrate`. This makes BoFM's substrate
