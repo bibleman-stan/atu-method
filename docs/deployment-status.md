@@ -16,7 +16,9 @@ Every live edition is **mechanical-first method output** (v0 → v1 clause-atoms
 
 ## Pipeline stages (framework §3) — there is NO v4
 
-`v0` source → `v1` treebank clause-atoms → `v1.5` binding rules (**the deployed mechanical-first draft**) → `v2` *optional* narrow-task LLM adjudication on residuals → `v3` editorial review. No corpus has run a real v2-LLM stage yet; mechanical-first deploy = v0→v1→v1.5. (Directory-naming has drifted per repo — see `reference_corpus_pipeline_map`; the *stage* is what this table's "built from" column normalizes against.)
+`v0` source → `v1` treebank clause-atoms → `v1.5` binding rules (**the deployed mechanical-first draft**) → `v2` narrow-task LLM adjudication on residuals → `v3` editorial review. Mechanical-first deploy (all three live readers) = v0→v1→v1.5. **No corpus has yet *deployed* a v2-LLM stage, but BoFM has formally entered it (2026-05-27):** the mechanical layer hit its ceiling, so the next BoFM deploy is **v2 LLM-adjudication of judgment-residuals** (complement-vs-quote deixis, contested parallel-cola), per `docs/substrate.md` (the Textual Fabric Doctrine — substrate-before-superstructure, the mechanical ceiling, the fabric-parity tiers). (Directory-naming has drifted per repo — see `reference_corpus_pipeline_map`; the *stage* is what this table's "built from" column normalizes against.)
+
+**2026-05-27 BoFM session record (so it isn't mis-remembered as a deploy):** zero corpus changes shipped — three mechanical rule-designs (a coordinate-splitter, a blunt corpus-wide gold-POS re-parse, a coordinate-merger) were each **reshaped or killed at the §7.3 adversarial-audit gate before any code touched the live corpus**. The "over-split dominant ~15:1" failure-mode diagnostic was found **inflated** (it miscounted genuine parallel cola — which are KEEP-AS-IS editorial v3, not defects — as over-splits). Net: the deployed reader is *mostly correct*; the genuine residuals are judgment-calls routed to v2. Also acquired (not deployed): Vulgate-NT gold treebank, LXX gold morph + mirrored at-risk CATSS, the free EModE-treebank path for BoFM (`reference_emode_substrate`).
 
 ## Why this file exists
 

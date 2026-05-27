@@ -10,6 +10,10 @@ Companion: [`../memories/_index.md`](../memories/_index.md) indexes cross-corpus
 
 - [`deployment-status.md`](deployment-status.md) — **THE single source of truth for what is LIVE per reader edition** (which layer is deployed, on what method, anchoring commits; the source-text-sacred vs segmentation-regenerable distinction). Per-repo `CLAUDE.md`/READMEs drift stale and must NOT be trusted over this file.
 
+## Doctrine (read with framework.md)
+
+- [`substrate.md`](substrate.md) — **The Textual Fabric Doctrine (substrate before superstructure).** Established 2026-05-27. The framework is a Container, not an Originator; fabric quality bounds the claims. The **mechanical ceiling** (judgment-residuals — complement-vs-quote, parallel-cola — are not rule-decidable over a weak parse → use better substrate or v2 LLM-adjudication). Fabric-parity tiers per corpus, the GIGO guardrail, the hybrid annotation pipeline, the new-corpus START gate. BoFM is the worked example (v2-adjudication chosen).
+
 ## Methodology specification
 
 - [`framework.md`](framework.md) — **The canonical methodology specification.** Bidirectional test, mechanical-first architecture, v0→v3 pipeline, validation status across four genres. Authoritative cross-corpus body. Read first.
