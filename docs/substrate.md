@@ -27,7 +27,7 @@ re-parse, and a merger — were all reshaped/killed at the §7.3 audit gate *bef
 | Corpus | Fabric | Tier | Note |
 |---|---|---|---|
 | Tanakh (Hebrew) | BHSA | **GOLD** | full morph+syntax+clause hierarchy |
-| GNT (Greek) | Macula | **ADEQUATE** | rich: `that-VP`/`sub-CL`, role, frame, `referent` |
+| GNT (Greek) | Macula-greek → **CenterBLC/N1904 TF** | **GOLD available** (don't build) | hand-built LowFat syntax trees + morph + semantic-domain + `referent`/quotation, already serialized to TF by Clear Bible/CenterBLC (same group as our LXX TF) + tonyjurg/Nestle1904LFT. ACQUIRE + validate, not convert. |
 | Vulgate NT (Latin) | UD_Latin-PROIEL | **GOLD acquired** (2026-05-27) | all 27 books, Jerome's Vulgate; OT has no gold |
 | LXX (Greek) | CenterBLC/CATSS morph + UD-PTNK syntax | **PARTIAL** | gold morph corpus-wide; gold *syntax* = Gen+Ruth only |
 | BoFM (EModE) | Stanza-parse + Carmack gold POS | **BELOW PARITY** | no gold treebank; build via free EModE stack (`reference_emode_substrate`) |
@@ -101,3 +101,23 @@ EModE-parser re-parse rewrites that layer → **v0.2** *in place*. Doctrine poin
 the originator-free Container; **the parser's held-out LAS bounds the syntax claims** (PCEEC is letters, BoFM
 is scripture-register — close, not identical; report the LAS, don't assume transfer). TF is also the right
 serialization target for LXX/Vulgate (CoNLL-U→TF is the only remaining build step there).
+
+## 8. Gates + pitfalls for a TRAINED-parser substrate (BoFM-specific; the GNT analog is acquire-not-train)
+
+BoFM is the one corpus where we *train* a parser (no gold treebank exists). Greek/Hebrew/Latin all have
+hand-built treebanks — for those the move is **acquire + serialize/validate, never train** (the GNT gold TF
+already exists: CenterBLC/N1904 + tonyjurg/Nestle1904LFT, from Macula-greek; surveyed 2026-05-27). Where we
+*do* train (BoFM), three guards apply (the first is the load-bearing one):
+
+1. **Register-decay audit before any TF-layer swap.** The held-out LAS on the *training* register (PCEEC =
+   letters) is an OPTIMISTIC ceiling for the *target* register (BoFM = archaic scripture). Before the trained
+   parser rewrites the fabric's syntax layer (v0.1→v0.2), **hand-audit its output on a gold target slice**
+   (e.g. 2 Ne 4 / Alma 32) against the bidirectional-ATU judgment, and report that decay number — do not
+   assume cross-register transfer from the held-out score.
+2. **Non-projectivity.** Scripture-register EModE has crossing arcs (extraposition, parenthetical
+   interjection — the §1 "interjection" class). A projective transition parser (spaCy) projectivizes and can
+   force wrong trees there; if the slice-audit concentrates errors in crossing arcs, switch to a **graph-based
+   parser** (biaffine/supar, the GPU route) which predicts non-projective structures natively.
+3. **Null tokens / ellipsis.** Dropping Penn traces (`*T*`, `0`) is standard UD-*basic* and is what we do; the
+   elided-subject signal (the "shared-vs-distinct subject" axis) lives in the **enhanced-UD empty-node** layer
+   — a future add only if that feature is needed, not a v0.2 blocker.
