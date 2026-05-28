@@ -121,3 +121,30 @@ already exists: CenterBLC/N1904 + tonyjurg/Nestle1904LFT, from Macula-greek; sur
 3. **Null tokens / ellipsis.** Dropping Penn traces (`*T*`, `0`) is standard UD-*basic* and is what we do; the
    elided-subject signal (the "shared-vs-distinct subject" axis) lives in the **enhanced-UD empty-node** layer
    — a future add only if that feature is needed, not a v0.2 blocker.
+
+## 9. TF-build audit dispositions + validation suite (Opus red-team, 2026-05-27)
+
+An adversarial audit of `build_tf.py` + the v0.1 fabric found flaws beyond §8. Dispositions (the
+container-hardening items are parser-INDEPENDENT → applied at the next build; the harmonization item is
+the convergence-track contract; none are "asserted-and-ignored"):
+
+| # | Flaw | Sev | Disposition | When |
+|---|---|---|---|---|
+| 1 | `head` edge dropped at sentence/ATU boundaries; sentence roots indistinguishable from dropped edges; **sentence layer destroyed** (no `sentence` node) | LOAD | emit a `sentence` node type + an `is_root` slot flag; keep cross-sentence head as edge-absent-but-flagged | builder (now) |
+| 2 | **Cross-corpus "convergence" is file-format only, not query-schema** (BoFM `pos`/`deprel` vs BHSA `sp`/`function` vs N1904 `role`/`O2CL`) | LOAD | **harmonization contract**: expose canonical `upos` + `udrel` on EVERY corpus TF; one golden cross-corpus query as a regression test | convergence track |
+| 3 | contiguous-span `atu` model breaks on **discontiguous interjection-split hosts**, nested, cross-verse; silent "last line absorbs drift" | LOAD | fail-LOUD ATU-count-identity check now; non-contiguous `atu` nodes (explicit slot-set assignment) at v0.2 | builder (now) + v0.2 |
+| 4 | `.tfx` cache serves **stale syntax** on in-place v0.1→v0.2 rewrite | LOAD | **never rewrite in place** — v0.2 = a NEW module dir (`data/tf/0.2/`), version bumped; structure stays in 0.1 as base; add a `parser` provenance value | v0.2 |
+| 5 | no per-token **provenance/confidence** (doctrine §4 mandates it) | MOD | `atu`: `boundary_source` (mechanical-v1 / v2-llm / editorial) + `confidence`; slot: `syn_source` | builder (now) |
+| 6 | punctuation-as-slots distorts proximity queries + differs from BHSA (no punct slots) | MOD | corpus-wide convention: keep punct slots but `pos=PUNCT` so queries exclude via `pos#PUNCT`; document in the harmonization contract | contract |
+| 7 | `atu` not a section/structure → can't `T.text` it; `otext` trailing-space won't reproduce the colometric lines | MOD | add TF `structureTypes`/`structureFeatures` for `atu`; round-trip-text test | builder (now) |
+| 8 | Unicode normalization unspecified (bites Hebrew/Greek/Latin cross-corpus matching) | MOD | mandate **NFC** at ingest for every corpus; assert it | builder (now) |
+| 9 | PCEEC→UD converter approximations (`ccomp`/`advcl` collapse) become the trained "gold" the binding rules depend on | MOD | measure converter **clause-type** accuracy (not just LAS) on a hand-checked PCEEC slice; release gate | v0.2 gate |
+| 10-12 | edge-direction undocumented; `lemma or form` fallback pollutes lemma; chapter-renumber unguarded | MIN | document edge direction; add `lemma_source`; per-book verse-monotonicity assertion | builder (now) |
+
+**Validation suite (the release gate — a built TF must pass ALL before deploy, beyond "it loads"):**
+(1) **round-trip** — concatenated `form` per verse == NFC v0 source (mod whitespace), not just the alnum-count
+check we have; (2) **ATU-count identity** — `atu` node count per verse == segmentation line count (fail loud,
+never absorb-into-last); (3) **edge integrity** — every non-root token has exactly one `head` edge; edge-less
+count == Stanza sentence-root count; (4) **provenance completeness** — every `atu` + syntactic feature carries
+a `*_source`; (5) **cross-corpus golden query** — one canonical UD query returns comparable hits on BoFM + ≥1
+gold corpus (the only test that exercises the convergence thesis itself).
