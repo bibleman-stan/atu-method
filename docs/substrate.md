@@ -70,3 +70,34 @@ needs deixis).
 rules). BoFM's own substrate upgrade = a free, no-LDC EModE treebank-build (PCEEC + EarlyPrint/MorphAdorner +
 a UD parser; PPCEME/LDC optional gold-validation) — `reference_emode_substrate`. This makes BoFM's substrate
 the same *kind* as Tanakh/GNT, strengthening the cross-corpus ATU-convergence thesis.
+
+## 7. BoFM build — executed (2026-05-27)
+
+The doctrine, instantiated. Two tracks ran:
+
+**(a) v2 LLM-adjudication of the complement-vs-quote class — SHIPPED to bomreader.com, gate-clean.**
+The discourse-voice axis is the residual the mechanical layer can't reach (it needs deixis). Two systematic
+sprays (not per-verse swatting), each parity-safe (text identical, only breaks move):
+- **frame|quote BREAK** (214 verdicts): detach a speech frame from a direct quote that has its own deictic
+  center. All shipped — incl. 15 initially withheld on a *genre* label ("prophetic oracle"), which is **not**
+  an ATU criterion; the bidirectional test is the sole arbiter, so they shipped once tested.
+- **cognition/speech BIND** (6): rejoin an over-split bare complement (`we know, / that he was a righteous
+  man` → one ATU). 15 proposed → **two parallel adversarial audits** (over-merge lens + atomicity lens) each
+  independently killed the same 8–9 over-merges (conditionals/oaths/fragments); only the 6 surviving both shipped.
+- **Gate:** an independent quality-meter (LLM adjudication of changed verses by arbiters not told the deploy
+  direction) returned **47 improvement / 0 regression** — the over-merge meter the canon validators can't provide.
+
+**(b) The substrate upgrade — the "bug spray" for the bulk over-split classes (parse-quality-bound, not
+discourse-bound).** Pipeline: PCEEC gold EModE constituency (`pceec_to_conllu.py`, our own PPCHE-Penn→UD
+converter — UDConverter is Icelandic-tuned and emitted 0 tokens on PCEEC) → **2.32M tokens of UD, 0 malformed
+trees** → train an in-domain EModE dependency parser → re-parse BoFM → swap its syntax into the fabric.
+
+**The unifying artifact = Text-Fabric.** BoFM now has a TF (`readers-bofm/data/tf/`, v0.1 built 2026-05-27):
+`book→chapter→verse→atu→word`, 302,624 word slots, 16,004 **atu** nodes (each spans one *deployed* ATU line,
+so the corpus is queryable **by atomic-thought-unit**). This is the BHSA-ecosystem format — the **Container**
+that makes BoFM structurally comparable to Tanakh/LXX/Vulgate (the cross-corpus convergence substrate). Its
+feature layers upgrade independently: v0.1 carries the *weak Stanza* `deprel`/`head` (provisional); the
+EModE-parser re-parse rewrites that layer → **v0.2** *in place*. Doctrine point made concrete: the fabric is
+the originator-free Container; **the parser's held-out LAS bounds the syntax claims** (PCEEC is letters, BoFM
+is scripture-register — close, not identical; report the LAS, don't assume transfer). TF is also the right
+serialization target for LXX/Vulgate (CoNLL-U→TF is the only remaining build step there).
