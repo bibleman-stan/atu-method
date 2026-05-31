@@ -444,8 +444,12 @@ def distribute_kjv_to_atu_lines(
                 _claim(kjv_idx, line)
                 continue
         # No source-S match OR all source-S lines failed the gap check.
-        # Fall back to range-containment + adjacency augmentation.
-        candidate_lines: list[int] = list(strongs_match_lines)
+        # Fall back to range-containment + adjacency augmentation ONLY —
+        # the gap-rejected source-S lines are deliberately excluded here
+        # (the gap check has already ruled them out as discontiguous
+        # destinations; re-adding them via the source-S route would defeat
+        # the rejection and produce duplications like Rom 8:14 "God God").
+        candidate_lines: list[int] = []
         # Range-containment augmentation: a line whose existing anchor
         # range (min..max) BRACKETS the target vpos is a strong candidate
         # even without a Strong's source match. KJV-flow logic — the
