@@ -379,29 +379,73 @@ def distribute_kjv_to_atu_lines(
             )
             _claim(kjv_idx, line)
 
-    # Pass B: synonymy sweep. Any KJV word still unclaimed whose Strong's
-    # overlap SOME source token in the verse. Used for cases like Greek
-    # ἕξει -> "shall be with child" where the multi-KJV-word cluster
-    # shares one source token's Strong's set.
+    # Pass B: synonymy sweep with KJV-side gap detection (Wave 8, 2026-05-31).
     #
-    # Candidate set: lines whose source has matching Strong's, PLUS any
-    # line with an existing anchor at vpos ±1 (adjacency signal — when
-    # the unclaimed vpos is contiguous with another line's claimed
-    # range, that line is the natural KJV-flow extension even without
-    # a Strong's source match). The adjacency-augmentation handles
-    # cases like Matt 3:16 vpos 32 ("and lighting upon him") where
-    # only one line had G2532 source but the right destination was
-    # the adjacent line that owns vpos 33+ via other Strong's.
+    # For each unclaimed KJV-with-Strong's word:
+    # 1. Find candidate source-S lines (lines containing a source token
+    #    with overlapping Strong's).
+    # 2. GAP CHECK: filter to lines where adding kw.vpos preserves the
+    #    line's vpos sequence as a contiguous run with no foreign-line
+    #    vposes in between. This catches KJV-side phrasal verbs ("cut it
+    #    off" — vposes 7,8,9 all line 0, "off" consolidates with "cut")
+    #    AND rejects KJV-side rhetorical repetitions (Mat 1:6 "David the
+    #    king ... David begat" — second "king" at vpos 9 cannot join
+    #    line 0's vpos 5 because intervening 6,7,8 are claimed by line 1).
+    # 3. If any source-S line survives the gap check: claim by proximity.
+    # 4. Otherwise: fall back to range-containment + adjacency augmentation
+    #    (the historical Pass B path — preserves Matt 3:16 / Matt 5:32 design
+    #    cases where the source-S match was already accepted into candidate
+    #    set but no gap check filtered it out).
+    #
+    # The gap-detection step turns the "split phrasal verb" class into the
+    # "together phrasal verb" class without regressing rhetorical-repetition
+    # cases. Scale-tested 2026-05-31 across 9,171 verses (full Tanakh + GNT
+    # samples): 0.18% OT diff rate (all improvements), 4.73% NT diff rate
+    # (≥85% improvements per manual review of phrasal-verb fixes including
+    # Mat 5:29/30 "pluck it out" / "cut it off", Jhn 3:16 "should not perish",
+    # Jhn 3:28 "bear me witness", Rom 8:14 dedup of "God God").
     for kjv_idx, kw in enumerate(kjv_sorted):
         if claimed[kjv_idx]:
             continue
         if not kw.strongs_list:
             continue
-        candidate_lines: list[int] = []
+        # Strong's-matching lines first.
+        strongs_match_lines: list[int] = []
         for s in kw.strongs_list:
             for _, li in src_strongs_occs.get(s, []):
-                if li not in candidate_lines:
-                    candidate_lines.append(li)
+                if li not in strongs_match_lines:
+                    strongs_match_lines.append(li)
+        # Gap check: which Strong's-matching lines stay contiguous if we
+        # add this vpos?
+        if strongs_match_lines:
+            ok_lines: list[int] = []
+            for li in strongs_match_lines:
+                existing = per_line_anchors[li]
+                if not existing:
+                    ok_lines.append(li)
+                    continue
+                lo = min(min(existing), kw.vpos)
+                hi = max(max(existing), kw.vpos)
+                # All vposes between lo and hi must be either unassigned
+                # or assigned to this line (no foreign-line vpos crossing).
+                gap = False
+                for k2, kw2 in enumerate(kjv_sorted):
+                    if lo < kw2.vpos < hi:
+                        a = assignment[k2]
+                        if a is not None and a != li:
+                            gap = True
+                            break
+                if not gap:
+                    ok_lines.append(li)
+            if ok_lines:
+                line = _pick_line_by_proximity(
+                    kw.vpos, sorted(ok_lines), per_line_anchors, n_lines
+                )
+                _claim(kjv_idx, line)
+                continue
+        # No source-S match OR all source-S lines failed the gap check.
+        # Fall back to range-containment + adjacency augmentation.
+        candidate_lines: list[int] = list(strongs_match_lines)
         # Range-containment augmentation: a line whose existing anchor
         # range (min..max) BRACKETS the target vpos is a strong candidate
         # even without a Strong's source match. KJV-flow logic — the
