@@ -108,6 +108,28 @@ For Hebrew, the validated catalog is **14 binding rules** (B1-B14 with B4 retire
 
 All bindings fire only **within a single verse**. The current architecture binds adjacent clauses (it does not split below clause-atom or bind across verse boundaries).
 
+### v1.6 — Cross-verse continuity (editorial Layer 3 rule)
+
+The mechanical binding fabric (v1.5) operates strictly within single verses by design — verse boundaries are versification artifacts, not parse-derivable features, so the mechanical layer cannot decide cross-verse merges without judgment input. But a real class of structural cases exists where **a single atomic thought spans a verse boundary** because LDS / MT / KJV versification chunked the source text in a way that breaks the structural thought-unit (e.g., a topic-fronted NP in verse N whose finite predication arrives in verse N+1; a subordinator at end-of-verse whose clause begins in the next).
+
+**The rule:** when an editorial decision identifies a cross-verse continuity case, **the sense-line stays intact in the EARLIER verse's block**. The versification reference for the continuation is preserved by an **inline superscript verse-number marker** rendered as a clickable anchor in the HTML output. The mechanical fabric's "no cross-verse binding" guard remains intact; this is a strictly Layer-3 editorial override.
+
+**Detection criteria (cross-corpus; per-corpus refinements in each binding-rules-*.md):**
+- Verse N ends with a token sequence lacking finite predication (NP fragment, dangling subordinator, construct-state head whose nomen rectum opens verse N+1)
+- Verse N+1 opens with an anaphoric subject pointing to verse N, a coordinator continuing a stack from verse N, or speech content following a speech-intro at end of verse N
+- Per-language paragraph markers (Hebrew petucha פ / setuma ס; Greek paragraph breaks; LDS section breaks) take precedence: never merge across an explicit author-placed break
+
+**Per-corpus implementations (live):**
+- **Tanakh**: Rule H10 (most elaborated). Validator: `readers-tanakh/validators/colometry/validate_cross_verse_continuity.py`. Triggers: bare subordinator (אֲשֶׁר / כִּי / אִם / לְמַעַן / פֶּן), waw-prefix at verse-end, construct-state with nomen rectum in N+1, speech-intro without לֵאמֹר followed by direct speech.
+- **GNT**: Inline superscript renderer `readers-gnt/scripts/build_books.py:_wrap_verse_markers()`. The merged ATU's source text embeds unicode superscript digits (²³⁴⁵...) at the verse boundary; the HTML renderer wraps them in `<sup class="verse-marker" id="v-{ch}-{n}-inline">N</sup>`.
+- **LXX**: §3.17 cross-verse-continuity-merge (per old equivalence map; current implementation TBD).
+- **BoFM**: ported (data file: `data/text-files/v2-adjudicated/cross-verse-merges.json`).
+
+**Mechanism shape (cross-corpus shared design):**
+- A per-corpus data file declares each cross-verse merge — first verse ref, the trailing text-or-token boundary in the first verse, the leading text in the next verse that fuses upward, and the inline verse-marker character to embed at the seam.
+- The corpus's renderer applies the merge at v2 generation: the merged ATU lives in the earlier verse's block; the later verse's block starts with whatever ATU content follows the merged head.
+- The HTML build step converts inline superscript digits to `<sup class="verse-marker">` anchors so the versification reference is preserved, clickable, and addressable by TOC.
+
 ### v2 — LLM adjudication (optional)
 
 For cases the mechanical layer cannot decide (typically length-dependent restrictive ʾăšer, aetiological formulas, dense parallelism), narrow per-group LLM calls answer specific yes/no questions. This is OPTIONAL — the mechanical layer alone produces a publishable draft.
