@@ -67,6 +67,15 @@ The minimum criterion is **≥2 coordinated participials each carrying its own o
 
 Minimum criterion: ≥2 coordinated/stacked circumstance clauses each carrying its own complement, each conceptualizing a distinct state-of-subject (per Langacker §methodology-position cognitive grounding). The cognitive case (an EME reader processes each prior state as its own conceptual unit before the main event lands) maps cleanly to the framework's Langacker-grounded "conventional packagings of meaning." Implementation lever-3 with adversarial atomicity + over-fragmentation audit.
 
+**Discourse-particle attribution within reported speech (refinement of frame|quote BREAK).** When a speech-frame introduces reported speech and the speech content opens with a discourse particle (yea / behold / verily / lo / amen / yes), the discourse particle **belongs with the content, not with the frame**. The break falls AFTER the speech-frame's terminal punctuation (colon, or final addressee), BEFORE the discourse particle. The content ATU begins with the discourse particle.
+
+**Rationale.** The discourse particle is the speaker's word, not the narrator's framing — the same deixis test the framework already uses for frame|quote vs cognition/speech bind. Reported "Yea" inside someone's speech has the speaker's deictic center; the framing verb has the narrator's. The particle's attribution follows deixis.
+
+**Discriminator (prevents over-fragmentation):**
+- Apply ONLY when a speech-frame terminator (colon, or final addressee + comma) is followed by a discourse particle + content
+- Particle must be from the closed list: yea, behold, verily, lo, amen, yes
+- The content following the particle must be a finite clause
+
 **Discourse-particle amplification (yea / verily / lo + non-finite content).** The existing §2.1 discourse-particle-headed-unit allowance applies primarily to discourse-marker + finite VP (R1 class: "nevertheless he did..."). The **amplification variant** extends to **discourse-particle + non-finite content (PP, NP, relative clause) that amplifies the immediately prior line under chain-continuity**. The amplification ATU borrows the prior line's subject + finite verb through chain-continuity carry-over (the same mechanism the framework uses for elision-restoration). **The discriminator is "amplification vs new content":**
 
 - **SPLIT** when "yea, X" amplifies/resumes prior-line content with no new subject or finite predicate of its own (1 Ne 11:1: "yea, into an exceedingly high mountain..." amplifies the locative of L3's "I was caught away in the Spirit of the Lord").
