@@ -148,3 +148,78 @@ never absorb-into-last); (3) **edge integrity** — every non-root token has exa
 count == Stanza sentence-root count; (4) **provenance completeness** — every `atu` + syntactic feature carries
 a `*_source`; (5) **cross-corpus golden query** — one canonical UD query returns comparable hits on BoFM + ≥1
 gold corpus (the only test that exercises the convergence thesis itself).
+
+## 10. Substrate vs. lens (vocabulary)
+
+§1's **Container, not Originator** framing entails that any number of
+*lenses* — deterministic segmentation functions over the substrate — can
+in principle live above the Container. The ATU lens is the one this
+document has been about; other lenses are possible but not yet built.
+This section names the distinction so substrate-level work that does not
+directly serve the ATU lens has shared vocabulary.
+
+### 10.1 Definitions
+
+- **Substrate** — the canonical Text-Fabric serialization of a corpus's
+  morphology + syntax + clause structure (§1 "the Container"; §2
+  per-corpus fabric-parity tiers). The substrate is lens-neutral.
+- **Lens** — a deterministic function `lens(substrate) → segments` whose
+  output is a corpus-wide rendered representation. The **ATU lens** is
+  the v0 → v1 → v1.5 (→ v2 → v3) pipeline (`framework.md` §3); the
+  bidirectional test is **the ATU lens's** sole arbiter. That sole-arbiter
+  contract belongs to the ATU lens, not to every lens.
+
+### 10.2 Catalog admission criterion
+
+A lens enters the catalog as **deployed** only when there is corpus-wide
+rendered output served from a live reader URL. A lens-candidate enters
+the appendix as **substrate-confirmed** only when the substrate-level
+signal it would consume is **already extractable** from existing fabric,
+with a verified `file:line` citation. Lens names without deployed output
+or substrate evidence are *speculative* and do not appear here.
+
+This discipline is the explicit safeguard against the failure pattern of
+the reverted `5923b98` commit, which canonized a lens catalog containing
+seven speculative entries.
+
+### 10.3 Catalog — deployed lenses
+
+| Lens | Deployment evidence |
+|---|---|
+| **ATU** | Five reader sites named in the orientation repo map at `~/.claude/CLAUDE.md:101-105` (tanakh-reader.com, bomreader.com, gnt-reader.com, lxx-reader.com, vulgate-reader.com). The single-source-of-truth file `docs/deployment-status.md:11-15` records only the first three rows; that file predates the LXX and Vulgate launches and is **stale**. Per standing rule 8 (external-state claims require fresh verification), the actual live-URL state at any given moment must be re-fetched, not inherited from this row. Open follow-up: update `deployment-status.md` to add the missing rows and remove the staleness footnote here. |
+
+### 10.4 Substrate-confirmed candidate lenses (none deployed)
+
+A naming note: each candidate below is named for the **substrate signal**
+that would feed the lens; the scholar's-name parenthetical credits the
+theoretical framework that motivates building such a lens, but the
+file-line citation supports only the existence of the substrate signal,
+not the scholar's theory. The two should not be conflated.
+
+| Candidate | Substrate-level evidence |
+|---|---|
+| **BHSA half-verse colometric** (Korpel-style, Hebrew) | BHSA exposes a `half_verse` object type whose `label` feature returns `A` / `B` / `C`. Verified at `~/repos/biblical-corpora/bhsa/docs/features/label.md:11-15`. Te'amim-derived (cantillation), not punctuation — passes the standing punctuation-zero-force exclusion. No lens prototype; no rendered output. Korpel/de Moor's colometric framework would consume this signal but the citation itself does not establish that. |
+| **Macula discontinuous-token displacement** (Wackernagel-style for δέ, Greek) | Macula sblgnt-lowfat XML attaches `discontinuous="true"` to postpositive δέ tokens. Verified at `~/repos/readers-gnt/research/macula-greek/SBLGNT/lowfat/01-matthew.xml:266-268, 362-364, 534-536`. δέ is the canonical second-position postpositive in NT Greek; `discontinuous` is a general syntactic-tree marker (not Wackernagel-specific) that happens to fire on the right tokens. No lens prototype; no rendered output. |
+
+(Verse division is *not* listed here. Verse boundaries are part of the
+substrate's coordinate system — not a downstream segmentation.)
+
+### 10.5 What this vocabulary does not license
+
+The lens framing does **not**:
+
+- **Weaken the bidirectional ATU test.** It remains sole arbiter for the
+  ATU lens. Any future lens declares its own contract; the ATU lens
+  contract is unchanged.
+- **Admit genre as an ATU criterion.** A candidate lens (e.g., Korpel
+  colometric) may be genre-aware in its own scope; that does not
+  retroactively make genre an ATU criterion. The standing rule
+  (`framework.md` and per-repo memory) holds.
+- **Admit punctuation force in any corpus.** Te'amim are not punctuation
+  — they are cantillation marks exposed as discrete BHSA features (see
+  the half-verse example). The "punctuation has zero force across all
+  corpora" rule is unchanged.
+- **License speculative catalog entries.** The §10.2 admission criterion
+  is load-bearing. The prior `5923b98` failure was a catalog of seven
+  speculative lenses; this section's catalog has one deployed entry and
+  two substrate-confirmed candidates, all with file-line citations.
