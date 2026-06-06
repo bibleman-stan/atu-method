@@ -25,7 +25,7 @@ Companion: [`../memories/_index.md`](../memories/_index.md) indexes cross-corpus
 ## Per-language binding-rule catalogs
 
 - [`binding-rules-hebrew.md`](binding-rules-hebrew.md) — **The 14 validated Hebrew binding rules** (B1-B14 with B4 retired). Each rule: trigger, justification, example, counter-example. Evaluation order and global same-verse guard.
-- Greek catalog — TODO (pending GNT pilot)
+- [`binding-rules-lxx.md`](binding-rules-lxx.md) — **LXX-Greek catalog** (parked smoke-test artifact, 2026-05-27; integration target is the projection-v1 generator not yet wired live). GNT catalog still TODO (pending GNT pilot).
 - EME English catalog — TODO (pending BoFM pilot)
 - Latin catalog — TODO (pending LXX/Vulgate consideration)
 
