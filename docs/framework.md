@@ -167,7 +167,7 @@ The mechanical binding fabric (v1.5) operates strictly within single verses by d
 **Per-corpus implementations (live):**
 - **Tanakh**: Rule H10 (most elaborated). Validator: `readers-tanakh/validators/colometry/validate_cross_verse_continuity.py`. Triggers: bare subordinator (אֲשֶׁר / כִּי / אִם / לְמַעַן / פֶּן), waw-prefix at verse-end, construct-state with nomen rectum in N+1, speech-intro without לֵאמֹר followed by direct speech.
 - **GNT**: Inline superscript renderer `readers-gnt/scripts/build_books.py:_wrap_verse_markers()`. The merged ATU's source text embeds unicode superscript digits (²³⁴⁵...) at the verse boundary; the HTML renderer wraps them in `<sup class="verse-marker" id="v-{ch}-{n}-inline">N</sup>`.
-- **LXX**: §3.17 cross-verse-continuity-merge (per old equivalence map; current implementation TBD).
+- **LXX**: cross-verse-continuity-merge per `readers-gnt/private/01-method/colometry-canon.md §3.17` (Greek-projection inherits GNT convention; current LXX implementation TBD).
 - **BoFM**: ported (data file: `data/text-files/v2-adjudicated/cross-verse-merges.json`).
 
 **Mechanism shape (cross-corpus shared design):**
