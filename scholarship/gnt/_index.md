@@ -15,7 +15,7 @@ Companion to: each rule entry in the GNT operational canon. The operational cano
 | M4-GNT-1 | [`M4-GNT-1.md`](M4-GNT-1.md) | Subject-orphan predicate completion (Greek instantiation) |
 | R18a-GNT | [`R18a-GNT.md`](R18a-GNT.md) | Patriarch-deity-triad fixed formula (Greek instantiation) |
 | R25 | [`R25.md`](R25.md) | ὥστε short-consecutive-result binding (Greek instantiation of BoFM R27) |
-| R28-ext | [`R28-ext.md`](R28-ext.md) | Speech-act announcement after adverbial frame (split; §3.6 sub-rule) |
+| R28-ext | [`R28-ext.md`](R28-ext.md) | Speech-act announcement after adverbial frame (split; GNT canon §3.6 sub-rule) |
 
 Each file follows the structure described in [`../_index.md`](../_index.md): Statement / Rationale / Grammatical grounding / Empirical evidence / Intellectual lineage / Adversarial history / Future work.
 

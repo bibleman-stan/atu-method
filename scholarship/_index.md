@@ -55,7 +55,7 @@ Cross-cutting methodology essays live in `scholarship/methodology/`:
 
 - `methodology/framework.md` — the WHY behind §1 (proposition-first, structural justifications, merge-overrides).
 - `methodology/categories.md` — the WHY behind §2 Category A/B/C.
-- `methodology/precedence.md` — the WHY behind the §3.5 precedence hierarchy.
+- `methodology/precedence.md` — the WHY behind the BoFM canon §3.5 (and analogous per-corpus precedence hierarchies).
 - `methodology/lineage.md` — Skousen / BoFM / GNT / Tanakh intellectual lineage.
 - `methodology/audit-discipline.md` — the WHY behind §7.3 mandatory-audit triggers.
 

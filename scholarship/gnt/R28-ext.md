@@ -10,7 +10,7 @@
 
 R28-ext (Speech-Act Announcement After Frame, split direction) requires that when a finite speech verb introducing direct speech co-occurs on the same v4-editorial line with a *substantive* preceding adverbial frame — temporal clause (ὡς/ὅτε/ὅταν + finite verb), causal clause, or participial absolute frame — the line MUST be split. The frame occupies line 1; the finite speech verb and its dative-object address (if any) occupy line 2, closed with the ano teleia (·) or colon (:) per R11.
 
-R28-ext is the split-direction complement of §3.6 frame-aggregation (which handles merge direction). Frame-aggregation absorbs a *structurally trivial* qualifier (bare ἐάν/ὅταν + single subjunctive, no own finite-clause body) onto the speech-verb line. R28-ext splits the reverse case: a *substantive* frame (own subject, verb, object content) that is falsely co-lineated with the speech verb that follows it.
+R28-ext is the split-direction complement of GNT canon §3.6 frame-aggregation (which handles merge direction). Frame-aggregation absorbs a *structurally trivial* qualifier (bare ἐάν/ὅταν + single subjunctive, no own finite-clause body) onto the speech-verb line. R28-ext splits the reverse case: a *substantive* frame (own subject, verb, object content) that is falsely co-lineated with the speech verb that follows it.
 
 Two Greek-specific exclusions are critical and absolute: (1) ἀπεκρίθη + ὅτι is R10-governed declarative-verb complement — R28-ext does not fire; (2) ἀπεκρίθη + λέγων is a Semitic pleonasm — a Hebraism treated as a fused speech-intro unit under R11, not a split candidate.
 
@@ -59,7 +59,7 @@ Three STRONG-SPLIT-CANDIDATE applications established the rule's operational sha
 | Heb 1:6 | ὅταν-temporal + subjunctive (εἰσαγάγῃ + full NP) | `ὅταν δὲ πάλιν εἰσαγάγῃ τὸν πρωτότοκον εἰς τὴν οἰκουμένην,` / `λέγει·` |
 | Luke 14:15 | Participial frame (ἀκούσας + object) | `Ἀκούσας δέ τις τῶν συνανακειμένων ταῦτα` / `εἶπεν αὐτῷ·` |
 
-Note: Heb 1:6 overrode a prior §3.6 merge example that had treated the ὅταν-clause as a short qualifier. The R28-ext canon entry's scope-boundary criterion (structural minimum frame vs. substantive finite-clause) correctly distinguishes these: the Heb 1:6 ὅταν-clause has its own verb + NP, disqualifying it as a trivial qualifier.
+Note: Heb 1:6 overrode a prior GNT canon §3.6 merge example that had treated the ὅταν-clause as a short qualifier. The R28-ext canon entry's scope-boundary criterion (structural minimum frame vs. substantive finite-clause) correctly distinguishes these: the Heb 1:6 ὅταν-clause has its own verb + NP, disqualifying it as a trivial qualifier.
 
 ### Phase B — Validator surface (commit 0706314, 2026-05-11)
 
@@ -95,7 +95,7 @@ R28-ext is a GNT-corpus port of BoFM R28 (Speech-Act Announcement After Frame), 
 | Participial-continuation exclusion | *, saying:* (archaic continuation marker) | λέγων Hebraism (ἀπεκρίθη+λέγων) |
 | Result-direction filter | *that, insomuch, until* following speech verb | ὅτι immediately following speech verb (R10-governed) |
 
-The rule is the **split-direction complement of §3.6 frame-aggregation**. §3.6 frame-aggregation handles the merge direction: when a trivial qualifier (bare ἐάν + single subjunctive) precedes a speech verb, it merges onto the speech-verb line because the qualifier lacks the predication-weight to stand alone. R28-ext handles the opposite case: when the qualifying frame IS predication-weight-sufficient (own verb + object + subject), it earns its own line and forces a split. Together the two rules bracket the boundary between trivial qualifier (aggregate) and substantive frame (split).
+The rule is the **split-direction complement of GNT canon §3.6 frame-aggregation**. GNT canon §3.6 frame-aggregation handles the merge direction: when a trivial qualifier (bare ἐάν + single subjunctive) precedes a speech verb, it merges onto the speech-verb line because the qualifier lacks the predication-weight to stand alone. R28-ext handles the opposite case: when the qualifying frame IS predication-weight-sufficient (own verb + object + subject), it earns its own line and forces a split. Together the two rules bracket the boundary between trivial qualifier (aggregate) and substantive frame (split).
 
 The **Lukan narrative** and **Pauline-transition** pattern appear most prominently in the corpus: Luke uses participial perception and emotion frames before speech verbs as a narrative style device (ἰδών, ἀκούσας, ὀργισθείς). Hebrews uses participial and inferential frames before OT-citation speech intros (μεμφόμενος, εἰσερχόμενος). Both patterns are high-frequency and structurally clean R28-ext triggers.
 
@@ -109,9 +109,9 @@ The GNT adaptation required identifying the two Greek-specific exclusions absent
 
 The ὅτι-complement exclusion (Exclusion 1) was added specifically for Greek: BoFM English has no structural equivalent of the verb-plus-ὅτι direct-complement pattern. R10 governs these cases in the GNT corpus; adding the exclusion ensured R28-ext would not misfire on John 3:28-style constructions.
 
-### 2. Heb 1:6 override of prior §3.6 merge example
+### 2. Heb 1:6 override of prior GNT canon §3.6 merge example
 
-The initial §3.6 frame-aggregation section had cited Heb 1:6 as a canonical merge example — the ὅταν-clause was treated as a short qualifier aggregating onto the speech verb. The adversarial audit challenged this: the Heb 1:6 ὅταν-clause contains its own verb (εἰσαγάγῃ), accusative object (τὸν πρωτότοκον εἰς τὴν οἰκουμένην), and conjunction (δέ) — it is not a bare ὅταν + single-word subjunctive. The audit concluded it met the R28-ext substantive-frame threshold and that the prior §3.6 merge example was wrong. The §3.6 scope boundary was refined to specify "bare ἐάν/ὅταν + single-word subjunctive with no substantial finite-clause body," and Heb 1:6 was moved from §3.6 merge examples to R28-ext split examples. The canon is now internally consistent on this boundary.
+The initial GNT canon §3.6 frame-aggregation section had cited Heb 1:6 as a canonical merge example — the ὅταν-clause was treated as a short qualifier aggregating onto the speech verb. The adversarial audit challenged this: the Heb 1:6 ὅταν-clause contains its own verb (εἰσαγάγῃ), accusative object (τὸν πρωτότοκον εἰς τὴν οἰκουμένην), and conjunction (δέ) — it is not a bare ὅταν + single-word subjunctive. The audit concluded it met the R28-ext substantive-frame threshold and that the prior GNT canon §3.6 merge example was wrong. The GNT canon §3.6 scope boundary was refined to specify "bare ἐάν/ὅταν + single-word subjunctive with no substantial finite-clause body," and Heb 1:6 was moved from GNT canon §3.6 merge examples to R28-ext split examples. The canon is now internally consistent on this boundary.
 
 ### 3. Short-frame minimum question (open)
 
@@ -121,7 +121,7 @@ The ≥3-token threshold in the scope definition (participial frames with own su
 
 1. **REVIEW cases (5):** Stan judgment needed on interposed-participle and short-frame minimum cases before the ≥3-token threshold can be confirmed or revised. Once confirmed, the REVIEW cases either apply mechanically (if threshold lowered) or remain excluded (if threshold confirmed).
 
-2. **Heb 1:6 split confirmation:** The override of the prior §3.6 merge example deserves Stan verification of the split preference (`ὅταν δὲ πάλιν εἰσαγάγῃ τὸν πρωτότοκον εἰς τὴν οἰκουμένην,` / `λέγει·`).
+2. **Heb 1:6 split confirmation:** The override of the prior GNT canon §3.6 merge example deserves Stan verification of the split preference (`ὅταν δὲ πάλιν εἰσαγάγῃ τὸν πρωτότοκον εἰς τὴν οἰκουμένην,` / `λέγει·`).
 
 3. **Speech-lemma closed list:** The current `SPEECH_LEMMAS_R28EXT` (λέγω, εἶπον, φημί) reflects the most common direct-speech verbs. Corpus-frequency audits may surface additional verbs (e.g., ἀποκρίνομαι in non-Hebraism constructions, κράζω, βοάω). Future expansion should be driven by REVIEW-case surfacing, not prospective enumeration.
 
@@ -138,5 +138,5 @@ The ≥3-token threshold in the scope definition (participial frames with own su
 - Validator: `readers-gnt/validators/colometry/check_r28_speech_act_frame.py`
 - Framework anchor: [`../../docs/framework.md`](../../docs/framework.md) §1.4 J3 (speech-act announcement structural justification)
 - Audit task: `a80b9f5b92c7f1125`; audit evidence in commit `f2a3676`
-- §3.6 split-direction complement: §3.6 frame-aggregation (merge direction, same section)
+- GNT canon §3.6 split-direction complement: GNT canon §3.6 frame-aggregation (merge direction, same section)
 - Precedence rules: R9 (general subordinate-clause break), R10 (ὅτι complement), R11 (speech-intro own line), R19 (genitive absolute)

@@ -63,7 +63,7 @@ This bimodal distribution is the empirical motivation for EP-5's "default-merge 
 
 ### Tier 7 ordering precedent
 
-EP-5's Tier-7 placement was confirmed during the 2026-05-10 UD-detector-framework session, alongside EP-1, EP-3, EP-4. The session formalized the §3.5 precedence hierarchy and placed all EP-rules at Tier 7 as post-hoc editorial tiebreakers. For EP-5 specifically, the Tier-7 placement has a particular interaction with J1: when a virtue/vice stack at N≥3 carries formal parallel markers, J1 (Tier 5) settles the case before EP-5 is consulted (per the §1.9 N=3+ cliff). EP-5's effective decision-space is therefore narrower than EP-1's — most clean parallel-marked cases are already settled by J1; EP-5 handles the residual where J1's formal markers are absent or weak and the stack must be classified as compound-complement vs. parallel by editorial judgment.
+EP-5's Tier-7 placement was confirmed during the 2026-05-10 UD-detector-framework session, alongside EP-1, EP-3, EP-4. The session formalized the BoFM canon §3.5 precedence hierarchy and placed all EP-rules at Tier 7 as post-hoc editorial tiebreakers. For EP-5 specifically, the Tier-7 placement has a particular interaction with J1: when a virtue/vice stack at N≥3 carries formal parallel markers, J1 (Tier 5) settles the case before EP-5 is consulted (per the §1.9 N=3+ cliff). EP-5's effective decision-space is therefore narrower than EP-1's — most clean parallel-marked cases are already settled by J1; EP-5 handles the residual where J1's formal markers are absent or weak and the stack must be classified as compound-complement vs. parallel by editorial judgment.
 
 ## Intellectual lineage
 

@@ -122,7 +122,7 @@ Adversarial pushback during codification raised:
 
 ### 2. Tier-7 precedence formalization (2026-05-10)
 
-EP-3's Tier-7 placement was confirmed during the 2026-05-10 UD-detector-framework session (see `readers-bofm/private/2026-05-10-ud-detector-framework-and-corpus-sweep/canon-3.5-draft.md`). The session formalized the §3.5 precedence hierarchy and placed all EP-rules at Tier 7 as post-hoc editorial tiebreakers. The key adversarial verification:
+EP-3's Tier-7 placement was confirmed during the 2026-05-10 UD-detector-framework session (see `readers-bofm/private/2026-05-10-ud-detector-framework-and-corpus-sweep/canon-3.5-draft.md`). The session formalized the BoFM canon §3.5 precedence hierarchy and placed all EP-rules at Tier 7 as post-hoc editorial tiebreakers. The key adversarial verification:
 
 - **Beatitude-chain ambiguity.** A 9-member beatitude chain (3 Nephi 12:3-11) could in principle be claimed by either EP-3 (per-member inverted-predicate own-line) or J1 (Tier 5 stack-uniformity at N≥3). The audit confirmed J1 wins at Tier 5 before EP-3 is consulted at Tier 7; the outcome is identical but the precedence path is J1, not EP-3.
 - **Vocative interaction.** Divine-attribute inversions in vocative context (*"O Lord God, holy is thy name"*) yield to R15. The audit confirmed R15 at Tier 2 wins before EP-3 at Tier 7.

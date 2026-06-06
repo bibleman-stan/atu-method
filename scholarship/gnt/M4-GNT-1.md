@@ -2,7 +2,7 @@
 
 **Operational entry:** see `readers-gnt/private/01-method/colometry-canon.md §3.18 M4-GNT-1`.
 
-**Codification date:** 2026-05-11. Commits: `001604d` (initial canon §3.18 entry + 11 Cat A corpus merges; audit task `a0d7d74092a145179`).
+**Codification date:** 2026-05-11. Commits: `001604d` (initial GNT canon §3.18 entry + 11 Cat A corpus merges; audit task `a0d7d74092a145179`).
 
 **Status:** This is the scholarship companion documenting WHY M4-GNT-1 exists, HOW we know it is correctly framed, and what intellectual and empirical history grounds its current shape. The operational canon entry says WHAT the rule does; this document says why.
 
@@ -188,7 +188,7 @@ Any future corpus added to the ATU apparatus (a readers-LXX, a readers-Josephus,
 
 - Operational canon entry: `readers-gnt/private/01-method/colometry-canon.md §3.18 M4-GNT-1` (codified 2026-05-11, commit `001604d`)
 - Universal framework: [`../../docs/framework.md`](../../docs/framework.md) §1.5 M4 (fragmented atomic thought-unit)
-- Sister rule (predicate→complement): operational canon §3.5 R10 (Complement Integrity / ὅτι-clause integrity)
+- Sister rule (predicate→complement): GNT canon §3.5 R10 (Complement Integrity / ὅτι-clause integrity)
 - Sister corpus rule: [`../bofm/M4-BoFM-1.md`](../bofm/M4-BoFM-1.md) (BoFM instantiation, codified 2026-05-11)
 - M4-TNK-1 deliberately NOT codified: Tanakh audit task `a535fcbcc01012e3c` confirmed Hebrew VSO+pro-drop+casus-pendens makes the subject-orphan failure mode structurally rare; no rule needed.
 - Validator: `readers-gnt/validators/colometry/check_m4_gnt_1_subject_orphan.py`

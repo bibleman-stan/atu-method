@@ -62,7 +62,7 @@ A full-corpus systematic sweep with the current rule shape has not yet been run.
 
 ### Tier 7 ordering precedent
 
-EP-1's Tier-7 placement was confirmed during the 2026-05-10 UD-detector-framework session (see `private/2026-05-10-ud-detector-framework-and-corpus-sweep/canon-3.5-draft.md`). The session formalized the §3.5 precedence hierarchy and placed all EP-rules at Tier 7 as post-hoc editorial tiebreakers — they fire only when Tiers 1-6 leave a candidate boundary unresolved. This means EP-1 NEVER overrides a J5 substantive-adjunct split (Tier 5) or an R15 vocative integrity merge (Tier 2); it operates strictly in the residual decision space.
+EP-1's Tier-7 placement was confirmed during the 2026-05-10 UD-detector-framework session (see `private/2026-05-10-ud-detector-framework-and-corpus-sweep/canon-3.5-draft.md`). The session formalized the BoFM canon §3.5 precedence hierarchy and placed all EP-rules at Tier 7 as post-hoc editorial tiebreakers — they fire only when Tiers 1-6 leave a candidate boundary unresolved. This means EP-1 NEVER overrides a J5 substantive-adjunct split (Tier 5) or an R15 vocative integrity merge (Tier 2); it operates strictly in the residual decision space.
 
 ## Intellectual lineage
 
