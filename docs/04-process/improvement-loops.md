@@ -1,6 +1,6 @@
 # The atu-method Improvement Loops
 
-**Summary**: The four feedback loops by which this repo is supposed to get better at its own work — and their actual, unequal states. Only ONE is demonstrably turning: the **canon-amendment loop** (friction → proposal → §7 gate → canon), evidenced in git. The **retraction→promotion loop** is built and stalled: 31 logged retractions across three reader repos, **zero** promotions ever recorded, all logs frozen since 2026-05-17, and no log at this hub at all. The **file-back loop** and the **audit loop** were both closed on paper on 2026-08-06 and have never run. The shape is **additive, not compounding** — closing one rule-class does not make the next cheaper — with one unmeasured channel (cross-corpus porting) that might. Whether any of this measurably improves output is **unmeasured** (see Gap).
+**Summary**: The feedback loops by which this program is supposed to get better at its own work — four internal to this repo, plus one (loop 5, Stan's framing) that spans wiki → spec → readers → wiki — and their actual, unequal states. Only ONE is demonstrably turning: the **canon-amendment loop** (friction → proposal → §7 gate → canon), evidenced in git. The **retraction→promotion loop** is built and stalled: 31 logged retractions across three reader repos, **zero** promotions ever recorded, all logs frozen since 2026-05-17, and no log at this hub at all. The **file-back loop** and the **audit loop** were both closed on paper on 2026-08-06 and have never run. The shape is **additive, not compounding** — closing one rule-class does not make the next cheaper — with one unmeasured channel (cross-corpus porting) that might. Whether any of this measurably improves output is **unmeasured** (see Gap).
 
 **Sources**: [`framework.md`](../01-normative/framework.md) §7.0–§7.9 (change discipline); [`retraction-log-protocol.md`](retraction-log-protocol.md) (3-recurrence threshold); [`../CLAUDE.md`](../CLAUDE.md) (8 standing defaults, audit tier, file-back); `git log` of this repo (108 commits) and of `readers-bofm` / `readers-gnt` / `readers-tanakh` retraction logs; the 2026-08-06 memory-loss incident recorded in [`../.archive/_WAKEUP-DIRECTIVE-2026-08-06.md`](../.archive/_WAKEUP-DIRECTIVE-2026-08-06.md). Form (per-loop frames, failure branches, explicit Gap-marking) is borrowed from the meta-wiki's `compounding-artifact.md` and `ops-improvement-loop.md`; the content is not.
 
@@ -12,7 +12,7 @@
 
 The meta-wiki's loops run on *compiled sources*: raw documents are ingested, integrated, and linted against an immutable corpus. This repo's ground truth is different in kind — the canon is **normative and authored**. A rule is true here because it survived an adversarial gate and Stan promoted it, not because it compresses a source faithfully. So there is no ingest loop and no source-fidelity lint, and the analogous disciplines land differently: "lint against raw" becomes "audit against gate results," and "the human promotes into the schema" becomes §7.1 authority.
 
-Four loops are described below because four exist, not to mirror the wiki's four. Their statuses are deliberately unequal, and three of the four are reported as broken or unproven.
+Loops 1–4 are described below because they exist, not to mirror the wiki's four. Their statuses are deliberately unequal, and three of the four are reported as broken or unproven. Loop 5 is different in kind: it spans the wiki, this repo, and the readers, and it is the only one with a plausible compounding channel.
 
 ## The whole picture at a glance
 
@@ -167,6 +167,43 @@ flowchart LR
 
 **Zero cycles completed.** Everything above about this loop is design intent. The first real test is the first weekly wake that runs it without being told to.
 
+## Loop 5 — Theory ↔ experiment (RUNS, but its return edge lands in the wrong place)
+
+Stan's framing, 2026-08-06: *"synthesis of scholarly theory/my thesis → experimentation in readers → revised synthesis of scholarly theory/my thesis → additional experimentation."* The four loops above are all internal to this repo. This one spans the organs, and it is the loop the program actually exists to run.
+
+```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true}} }%%
+flowchart LR
+    T["THEORY<br/>atu-nlp-wiki<br/>(sources + thesis)"] -->|"operationalise"| S(("SPEC<br/>atu-method<br/>framework + rules"))
+    S -->|"deploy"| E["EXPERIMENT<br/>reader editions<br/>on real text"]
+    E -->|"result revises theory"| T
+    E -.->|"observed: results land in<br/>_north_star.md as settled<br/>decisions, not as revised theory"| D["theory unchanged<br/>lesson stays tacit"]
+    D -.-> S
+    linkStyle 0,1,2 stroke:#26A69A,stroke-width:2px
+    linkStyle 3,4 stroke:#E57373,stroke-width:2px
+```
+
+```
+   THEORY (wiki) ──operationalise──▶ SPEC (atu-method) ──deploy──▶ EXPERIMENT (readers)
+        ▲                                                                │
+        └──────────────── result revises theory ─────────────────────────┘
+                                    ┊ observed short-circuit
+                                    ▼
+                     _north_star.md "settled decision"
+                     (spec updated, theory never restated)
+```
+
+**The forward arc is evidenced.** Theory becomes specification becomes deployed edition: `framework.md` §2.1's bidirectional test is operationalised as per-corpus binding rules and runs live on three reader sites (`deployment-status.md`).
+
+**The return arc runs too — but it discharges into the wrong reservoir.** Two real instances:
+
+- **The parser-training experiment.** A parser trained on PCEEC letters lost a blind two-adjudicator gate to off-the-shelf Stanza 21–6. That is a genuine experimental result that revised program belief — and it was recorded as a CLOSED ROUTE in `_north_star.md`, an operational instruction not to retry, rather than as a theoretical finding about register transfer in low-resource historical parsing (which is what it actually is, and is publishable).
+- **The "mostly correct" tempering.** Measurement against a 33-verse stratified gold yardstick returned F1 ≈ 0.67 and split the error by genre. Same pattern: it landed as a corrected operational framing, not as a revised claim about where the ATU criterion is hard to mechanise.
+
+**Why this matters more than it looks.** A settled-decision register answers "what must I not redo"; it cannot answer "what do we now believe." Those experiments produced findings about *the theory* and the theory has no page to receive them, so the revision half of the loop stays tacit — recoverable only by reading operational prose and inferring backwards. Now that `atu-nlp-wiki` exists, the return edge finally has a destination.
+
+**Type: partially evidenced, partially aspirational.** The forward arc and the experiments are evidenced. That revised synthesis will actually be *written back to the wiki* is designed and unproven — it has never happened once. **Gap:** unlike loops 1–4, this one plausibly compounds (a revised theory improves every future rule, not just the one it came from), but nothing measures that, and see the cross-corpus caution below before believing it.
+
 ## The shape — additive, with one unmeasured channel
 
 **Analysis.** This is closer to the meta-wiki's *ops* loop than its *wiki* loop: closing one error-class does not make the next cheaper, so reliability accrues without accelerating. Calling it a "compounding artifact" would be the wrong shape.
@@ -183,6 +220,7 @@ One channel might genuinely compound, and it is named here precisely so it is no
 
 ## History
 
+- [2026-08-06] Loop 5 (theory ↔ experiment) added from Stan's framing the same day. It is the loop the program exists to run and the original four all missed it, because they were drawn from *this repo's* machinery while loop 5 spans three artifacts. Its return edge is evidenced but mis-routed: experimental results discharge into `_north_star.md` as settled decisions instead of revised theory. Filed here rather than left in chat per standing default #5(c).
 - [2026-08-06] Created per the wake-up directive's study-and-author assignment, after the memory-loss incident. Written against the traps its sibling `ops-improvement-loop.md` recorded having to audit out of an earlier draft: no compound-interest analogy, no manufactured symmetry with the wiki's four loops, no "internalised habit" rung (a category error for a stateless agent), no plateau claim that assumes fixed scope. Loop statuses are deliberately unequal and three of four are reported negatively.
 
 ## Related

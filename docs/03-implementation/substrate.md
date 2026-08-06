@@ -22,6 +22,16 @@ Past the ceiling the only two levers are **(a) better substrate** (a gold/near-g
 re-hits the same wall (proven on BoFM 2026-05-27: three rule-designs — a splitter, a blunt gold-POS
 re-parse, and a merger — were all reshaped/killed at the §7.3 audit gate *before* code).
 
+### 1a. Past-ceiling levers — the three ways through, in order
+
+Relocated here 2026-08-06 from `CLAUDE.md`, where it was the only copy. Once mechanical-first has done its work, only three levers move the ceiling:
+
+- **(a) Better *real-gold* substrate.** The strongest lever and the first to consider. **CLOSED for BoFM** via the manufactured-gold / parser-bootstrap route — a PCEEC-letters-trained parser lost a blind two-adjudicator gate to off-the-shelf Stanza 21–6, and the register gap is not closed by a stronger encoder. Do not reopen without genuinely new *in-register* gold.
+- **(b) Cross-corpus convergence-projection.** BHSA → alignment → target, for Hebrew-source corpora (LXX, Vulgate-OT). This is the **FIRST mechanical move for those corpora, not a v2 defer** — the substrate already exists and only needs projecting.
+- **(c) v2 narrow-task LLM adjudication.** Last, not first: it is the judgment-residual lever, for what neither better substrate nor projection reaches.
+
+Pipeline context: `v0 source → v1 treebank clause-atoms → v1.5 binding rules → v2 narrow-task LLM adjudication (optional) → v3 editorial review → deploy`; stage detail in [`toolset-architecture.md`](toolset-architecture.md). All deployed readers run the v1.5 binding-rule stage; there is no v4 (retired 2026-05-22). Hebrew sits at F1 85–91% on boundaries with 5–25% absorption depending on genre. Live per-reader state is [`../05-status/deployment-status.md`](../05-status/deployment-status.md) — the single source of truth; never infer deploy state from a stale per-repo doc.
+
 ## 2. Fabric-parity tiers (per corpus)
 
 | Corpus | Fabric | Tier | Note |

@@ -70,21 +70,14 @@ Headlines only; full record + warrants at `_north_star.md` (mandatory orientatio
 
 **Self-report before first substantive response**: one line per mandatory file read; flag any pending items; surface red flags. Silent skip = orientation failure.
 
-## Audit tier — calendar-triggered, NOT activity-triggered
+## Skills — on-demand procedure (do NOT inline these here)
 
-**Trigger:** the first wake of any ISO week, OR any wake after >7 days with no commit in this repo. Dormancy is the danger mode — the 2026-08-06 memory-loss incident happened during a quiet stretch, and an activity-triggered check would never have fired. Run it before substantive work; it is cheap.
+Procedure invoked *sometimes* lives in `.claude/skills/`, which loads on trigger; this file loads every turn and must stay lean. When a trigger below fires, invoke the skill — its content is deliberately not duplicated here.
 
-1. **Mechanical lint.** Run `python scripts/check_broken_pointers.py` (validates cited paths AND that every `](<file.md#Heading>)` anchor still matches a real heading — link-rot is otherwise silent). Then: every memory file indexed and every index entry resolving; retraction-log present per reader repo (spokes are in scope — this is a hub and discipline-propagation is manual); anything claiming "live" but unedited >60 days flagged.
-2. **Hostile audit.** One adversarial pass, written down: are the 8 standing defaults being *enacted* in recent sessions or merely stored; is any flagged-pending item stalled (>2 weeks → surface to Stan by name); is the retraction 3-recurrence threshold actually being checked; is this file over its salience budget (~17KB) and do the layers sort for a split.
-
-**Findings convert to edits, or they recur.** A finding that ends the turn as prose is not a finding — it lands as an edit, a `_deferred_queue.md` entry, or a Stan-facing decision. The tool being *absent* was never the failure mode here: `check_broken_pointers.py` already existed and no cadence ran it.
-
-## Compaction-resume protocol
-
-On compaction ("This session is being continued..." OR `isCompactSummary: true`):
-1. FIRST tool call after orientation reads: PowerShell command to dump last 30-35 user/assistant exchanges from session JSONL verbatim (harness summary is degraded; JSONL is authoritative). Read command + JSONL path pattern in `feedback_compaction_resume_protocol.md`.
-2. `_north_star.md` is already loaded via mandatory reads above; verify state from files/git/gates per the user-wide verify-don't-recall rule (in `~/.claude/CLAUDE.md`) and do not re-litigate any item listed in Closed routes / settled tactical. Never recall a pre-compaction comparative number without re-running the gate.
-3. Named-arc resume ("continue master-blaster" etc.): pointer in `memories/operational/_named_arcs.md`; archive at `~/.claude/jsonl-archive/<namespace>/<session-id>.jsonl`.
+| Skill | Fires when |
+|---|---|
+| `atu-audit-tier` | First wake of an ISO week; any wake after >7 quiet days; "audit the repo". Mechanical lint + hostile audit; findings convert to edits or they recur. |
+| `atu-compaction-resume` | "This session is being continued…", `isCompactSummary: true`, degraded context, or "continue \<named arc\>". Read the JSONL, re-enumerate from git, don't re-litigate settled decisions. |
 
 ---
 
@@ -104,9 +97,7 @@ On compaction ("This session is being continued..." OR `isCompactSummary: true`)
 
 ## Pipeline architecture
 
-Mechanical-first per `docs/01-normative/framework.md` §3. **Live state per reader = `docs/05-status/deployment-status.md` (single source of truth).** All deployed readers run v1.5 binding-rule stage; no v4 (retired 2026-05-22). Never infer deploy state from stale per-repo docs.
-
-Stages: v0 source → v1 treebank clause-atoms → v1.5 binding rules → v2 narrow-task LLM adjudication (optional) → v3 editorial review → deploy. Hebrew F1 85-91% boundary; 5-25% absorption per genre. **Past-ceiling levers:** (a) better *real-gold* substrate [CLOSED for BoFM via manufactured/parser-bootstrap — see Closed routes], (b) cross-corpus convergence-projection (BHSA→alignment→target for Hebrew-source LXX/Vulgate-OT — FIRST mechanical move, not v2 defer), (c) v2 LLM adjudication. Full doctrine + per-corpus state + known limits (BHSA-canon-migration arc): `docs/03-implementation/substrate.md` + `_named_arcs.md`.
+Mechanical-first per `docs/01-normative/framework.md` §3. **Live state per reader = `docs/05-status/deployment-status.md` — single source of truth; never infer it from a stale per-repo doc.** Stages, ceiling figures, and the three past-ceiling levers: `docs/03-implementation/substrate.md` §1–§1a.
 
 ## Methodology keystones (cross-corpus, load-bearing)
 
