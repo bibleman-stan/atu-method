@@ -149,7 +149,7 @@ Output: one parse-derived clause per record, with linguistic features attached (
 
 A small catalog of **binding rules**, each grounded in the bidirectional test, takes the v1 clauses and merges them into ATU candidate groups. Each rule fires based on parse-derived linguistic features (clause type, head lemma, text prefix after pointing-strip).
 
-For Hebrew, the validated catalog is **14 binding rules** (B1-B14 with B4 retired); see [`binding-rules-hebrew.md`](binding-rules-hebrew.md).
+For Hebrew, the validated catalog is **14 binding rules** (B1-B14 with B4 retired); see [`binding-rules-hebrew.md`](../02-registries/binding-rules-hebrew.md).
 
 All bindings fire only **within a single verse**. The current architecture binds adjacent clauses (it does not split below clause-atom or bind across verse boundaries).
 
@@ -216,7 +216,7 @@ The framework is corpus-agnostic. Each corpus instantiates:
 
 Boundary F1 is genre-stable (85-91%). Recall is consistently ≥ 80%. Precision varies (79-100%) — pipeline is conservative on prose, over-segments in dense parallelism and legal lists. **The 14-rule mechanical layer produces ATU drafts requiring 5-25% editorial absorption depending on genre.**
 
-**Lexham Discourse Hebrew Bible (LDHB)** is consulted as a calibration reference; the pipeline does not depend on it at runtime. See [`methodology-position.md`](methodology-position.md) for the "Lexham-consulted but not utilized" framing.
+**Lexham Discourse Hebrew Bible (LDHB)** is consulted as a calibration reference; the pipeline does not depend on it at runtime. See [`methodology-position.md`](../05-status/methodology-position.md) for the "Lexham-consulted but not utilized" framing.
 
 ## §6 Known gaps
 
@@ -356,7 +356,7 @@ Adding or modifying a binding rule MUST also:
 1. Identify the BHSA (or equivalent parse-substrate) features that drive the rule
 2. Test against the validated chapter set (Gen 22 / Psalm 1 / Isaiah 53 / Lev 11) — or per-corpus equivalent
 3. Verify no regression in cold-eye-match or F1 on prior chapters
-4. Document under [`binding-rules-hebrew.md`](binding-rules-hebrew.md) (or per-language equivalent)
+4. Document under [`binding-rules-hebrew.md`](../02-registries/binding-rules-hebrew.md) (or per-language equivalent)
 
 The bidirectional test [§2](<#§2 The criterion — what licenses a standalone ATU>) is the substantive criterion. Any proposed binding must trace back to it. Rules that produce candidate boundaries WITHOUT cognitive-criterion grounding (te'amim hierarchy as primary, parallelism class as primary, aesthetic preference) are forbidden.
 
@@ -364,8 +364,8 @@ The bidirectional test [§2](<#§2 The criterion — what licenses a standalone 
 
 ## Where to read next
 
-- [`toolset-architecture.md`](toolset-architecture.md) — pipeline implementation per stage
-- [`binding-rules-hebrew.md`](binding-rules-hebrew.md) — the 14 validated Hebrew binding rules
-- [`apparatus.md`](apparatus.md) — scope statement
-- [`methodology-position.md`](methodology-position.md) — LDHB / discourse-grammar relationship
+- [`toolset-architecture.md`](../03-implementation/toolset-architecture.md) — pipeline implementation per stage
+- [`binding-rules-hebrew.md`](../02-registries/binding-rules-hebrew.md) — the 14 validated Hebrew binding rules
+- [`apparatus.md`](../03-implementation/apparatus.md) — scope statement
+- [`methodology-position.md`](../05-status/methodology-position.md) — LDHB / discourse-grammar relationship
 - [`../memories/`](../memories/) — discipline lessons

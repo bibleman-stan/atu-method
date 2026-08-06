@@ -4,7 +4,7 @@ This directory holds cross-cutting methodology essays — the defensibility, int
 
 Audience: the scholar — peer reviewer, dissertation reader, future researcher, future-Stan validating the framework's defensibility against challenges.
 
-Companion to: [`../../docs/framework.md`](../../docs/framework.md) (the operational framework specification). The framework doc contains WHAT (the methodology's normative requirements). This directory's essays contain WHY (defensibility, lineage, empirical grounding).
+Companion to: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) (the operational framework specification). The framework doc contains WHAT (the methodology's normative requirements). This directory's essays contain WHY (defensibility, lineage, empirical grounding).
 
 ---
 

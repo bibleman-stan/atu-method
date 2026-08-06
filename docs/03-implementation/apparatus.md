@@ -14,8 +14,8 @@ ATU revelation, not invention. The apparatus exposes structure already present i
 
 - A **canonical source text** in the target language (2020 LDS Book of Mormon; SBLGNT for the Greek New Testament; Westminster Leningrad Codex for the Hebrew Bible).
 - A **parse layer** — BHSA via Text-Fabric for Hebrew; Macula Greek for Greek; Stanza CoNLL-U for EME English. Provides clause-atom-level syntactic structure over the source.
-- A **language-specific binding-rule catalog** — feature-driven rules that merge parse-derived clauses into ATU candidate groups (`docs/[binding-rules-hebrew.md](binding-rules-hebrew.md)` for the validated Hebrew catalog).
-- A **shared methodology framework** — bidirectional test, mechanical-first pipeline, change discipline (this repository, `docs/[framework.md](framework.md)`).
+- A **language-specific binding-rule catalog** — feature-driven rules that merge parse-derived clauses into ATU candidate groups (`docs/[binding-rules-hebrew.md](../02-registries/binding-rules-hebrew.md)` for the validated Hebrew catalog).
+- A **shared methodology framework** — bidirectional test, mechanical-first pipeline, change discipline (this repository, `docs/[framework.md](../01-normative/framework.md)`).
 
 ## Outputs
 
@@ -93,7 +93,7 @@ The pipeline takes parse-derived clauses (BHSA clause-atoms for Hebrew; Macula c
 
 **Validated for Hebrew (Tanakh) across four chapters / four genres**: narrative+dialogue, wisdom poetic, prophetic poetic, casuistic legal. Boundary F1 against the Lexham Discourse Hebrew Bible stays in the 85-91% range; recall stays ≥ 80%. Pipeline output is an editorially-refinable draft, not a final rendering — but the editorial work shifts from hours-per-chapter to minutes-per-chapter.
 
-See [`framework.md`](framework.md) for the methodology specification and [`binding-rules-hebrew.md`](binding-rules-hebrew.md) for the validated 14-rule Hebrew catalog.
+See [`framework.md`](../01-normative/framework.md) for the methodology specification and [`binding-rules-hebrew.md`](../02-registries/binding-rules-hebrew.md) for the validated 14-rule Hebrew catalog.
 
 ## What the apparatus is NOT
 
@@ -104,12 +104,12 @@ See [`framework.md`](framework.md) for the methodology specification and [`bindi
 
 ## Where to read next
 
-- [`deployment-status.md`](deployment-status.md) — **What is LIVE per reader** (single source of truth; all three run mechanical-first). Read before asserting deployment state.
-- [`framework.md`](framework.md) — Methodology specification (bidirectional test, mechanical-first architecture).
-- [`binding-rules-hebrew.md`](binding-rules-hebrew.md) — The 14 validated Hebrew binding rules.
+- [`deployment-status.md`](../05-status/deployment-status.md) — **What is LIVE per reader** (single source of truth; all three run mechanical-first). Read before asserting deployment state.
+- [`framework.md`](../01-normative/framework.md) — Methodology specification (bidirectional test, mechanical-first architecture).
+- [`binding-rules-hebrew.md`](../02-registries/binding-rules-hebrew.md) — The 14 validated Hebrew binding rules.
 - [`toolset-architecture.md`](toolset-architecture.md) — Pipeline implementation (v0→v3 stages).
-- [`methodology-position.md`](methodology-position.md) — Relationship to LDHB / discourse-grammar references.
-- [`glossary.md`](glossary.md) — Defined terms.
+- [`methodology-position.md`](../05-status/methodology-position.md) — Relationship to LDHB / discourse-grammar references.
+- [`glossary.md`](../01-normative/glossary.md) — Defined terms.
 - [`../memories/`](../memories/) — Cross-project discipline lessons.
 
 ## Reference implementation

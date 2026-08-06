@@ -104,7 +104,7 @@ Hebrews 11:8–22 surveys the patriarchs by name in a *pistis*-catalogue that do
 *References:*
 
 - Operational canon entry: `readers-gnt/private/01-method/colometry-canon.md §8 Patriarch-deity-triad` (codified 2026-05-11, commit `3921a50`)
-- Universal framework: `atu-method/docs/framework.md §1.5` (fixed-idiom integrity / formula integrity)
+- Universal framework: `atu-method/docs/01-normative/framework.md §1.5` (fixed-idiom integrity / formula integrity)
 - Sister rule (BoFM): [`../bofm/R18a.md`](../bofm/R18a.md)
 - Validator: `readers-gnt/validators/colometry/check_r18a_patriarch_triad.py`
 - Audit task: `a24e5638aaa0e6434`

@@ -21,11 +21,11 @@ proof-of-concept implementation.
 
 ### Added — Documentation (extracted content)
 
-- `docs/apparatus.md` — High-level system overview (canonical statement of what the apparatus is, what it produces, what it is NOT).
-- `docs/architecture.md` — Four-plane architectural decomposition (Data / Specification / Tooling / Delivery) with interface contracts between planes, ownership table (shared vs per-repo), drift prevention principles, and supersession note for the prior "7-layer" framing.
+- `docs/03-implementation/apparatus.md` — High-level system overview (canonical statement of what the apparatus is, what it produces, what it is NOT).
+- `docs/03-implementation/architecture.md` — Four-plane architectural decomposition (Data / Specification / Tooling / Delivery) with interface contracts between planes, ownership table (shared vs per-repo), drift prevention principles, and supersession note for the prior "7-layer" framing.
 - `docs/rule-template.md` — MISRA-style operational rule-spec template. Required and forbidden fields specified. RFC 2119 normative-language conventions, Status / Category / Decidability semantics. Worked migration checklist.
-- `docs/framework.md` — Universal methodology framework extracted from BoFM canon §0/§1/§2/§7. Includes §0 Purpose and Stance (Mission, Method, Pragmatic stance, Scope), §1 Framework (Generative principle, Syntax forbids splits, Image, J1-J5 structural justifications, M1-M4 merge-overrides, Decision procedure, Application order, N=2 Adjudication, Punctuation/Versification not signals, Parallel-List Uniformity, Authorial Asymmetry), §2 Categories A/B/C, §7 Change Protocol (12 mandatory-audit triggers, audit-skippable categories, commit-msg discipline, self-test, proposed-rule adoption protocol). ~440 lines of operational specification.
-- `docs/glossary.md` — Universal defined terms (ATU, J1-J5, M1-M4, N=2 adjudication, char-offset, T1.1 pattern, TxLog, UD signature, etc.) plus pointers to per-corpus specific terms.
+- `docs/01-normative/framework.md` — Universal methodology framework extracted from BoFM canon §0/§1/§2/§7. Includes §0 Purpose and Stance (Mission, Method, Pragmatic stance, Scope), §1 Framework (Generative principle, Syntax forbids splits, Image, J1-J5 structural justifications, M1-M4 merge-overrides, Decision procedure, Application order, N=2 Adjudication, Punctuation/Versification not signals, Parallel-List Uniformity, Authorial Asymmetry), §2 Categories A/B/C, §7 Change Protocol (12 mandatory-audit triggers, audit-skippable categories, commit-msg discipline, self-test, proposed-rule adoption protocol). ~440 lines of operational specification.
+- `docs/01-normative/glossary.md` — Universal defined terms (ATU, J1-J5, M1-M4, N=2 adjudication, char-offset, T1.1 pattern, TxLog, UD signature, etc.) plus pointers to per-corpus specific terms.
 - `docs/change-protocol.md` — Scaffold for §7 (content currently consolidated in framework.md §7; this file reserved for future expansion if §7 grows beyond the framework doc's scope).
 
 ### Added — Memories (extracted)

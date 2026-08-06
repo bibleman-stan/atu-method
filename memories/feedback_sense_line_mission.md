@@ -18,12 +18,12 @@ originSessionId: 5e934fd5-32e0-4958-9b1e-00dd9f0e6d19
 >
 > **What still stands, in its live homes:** the determination firewall is unchanged — *rhetoric
 > constrains, atomic-thought determines*. Cite these instead of this file:
-> - [`../docs/cross-corpus-principles.md`](../docs/cross-corpus-principles.md) §0.1 — lens scope (ATU lens vs. rhetorical/discourse lens)
-> - [`../docs/cross-corpus-principles.md`](../docs/cross-corpus-principles.md) §1.3a — rhetoric figures constrain, atomic-thought determines
+> - [`../docs/01-normative/cross-corpus-principles.md`](../docs/01-normative/cross-corpus-principles.md) §0.1 — lens scope (ATU lens vs. rhetorical/discourse lens)
+> - [`../docs/01-normative/cross-corpus-principles.md`](../docs/01-normative/cross-corpus-principles.md) §1.3a — rhetoric figures constrain, atomic-thought determines
 > - [`feedback_atu_and_rhetorical_lenses_distinct.md`](feedback_atu_and_rhetorical_lenses_distinct.md) — the full lens statement
-> - [`../docs/framework.md`](../docs/framework.md) §2.1/§2.2 — what actually licenses a break
+> - [`../docs/01-normative/framework.md`](../docs/01-normative/framework.md) §2.1/§2.2 — what actually licenses a break
 >
-> **What is NOT settled by this demotion:** [`../docs/framework.md`](../docs/framework.md) §1's
+> **What is NOT settled by this demotion:** [`../docs/01-normative/framework.md`](../docs/01-normative/framework.md) §1's
 > NOT-list still reads "Produce typography or oral-delivery markup" and "Reveal rhetorical
 > parallelism (separate scholarly layer…)" — i.e. live canon still excludes the aural and
 > rhetorical lenses that Stan's correction names. Changing that is a Category B scope claim per

@@ -175,7 +175,7 @@ EP-3's territory partially overlaps the comma-prone environments where punctuati
 *References:*
 
 - Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 EP-3` (current state)
-- Universal framework: [`../../docs/framework.md`](../../docs/framework.md) §1.1 (generative principle — proposition-first) + §2 (Category B editorial-judgment) + §1.4 J1 (formally-marked parallel series — beatitude-chain interaction)
+- Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.1 (generative principle — proposition-first) + §2 (Category B editorial-judgment) + §1.4 J1 (formally-marked parallel series — beatitude-chain interaction)
 - Sister EP-rule scholarship: [`EP-1.md`](EP-1.md) (editorial-judgment EP-rule exemplar)
 - 2026-04-19 three-layer architecture restructuring: `readers-bofm/private/2026-04-19-canon-v2-and-merge-overrides/`
 - 2026-05-10 §3.5 precedence-hierarchy formalization: `readers-bofm/private/2026-05-10-ud-detector-framework-and-corpus-sweep/canon-3.5-draft.md`

@@ -24,7 +24,7 @@ Litmus first; full prose + dated warrants live in the linked memory files (don't
 
 4. **Data/treebank-first for OWN reasoning.** "Cannot / impossible / needs LLM" is the STOP signal — inventory every dataset Stan gave you before asserting it. → `feedback_mechanical_first_for_own_review.md`
 
-5. **Consult prior work before building — three granularities.** (a) Cross-corpus: "how did Tanakh/GNT/BoFM solve this?" — port, don't re-invent. (b) Same-file: before proposing a new `_is_*`/`_has_*`/`_detect_*`/`_check_*` helper, `Grep` the file for an analogous one and cite why a new one is needed. (c) **File the answer back.** When a cross-corpus consult produces a durable answer, write it to `docs/synthesis/<topic>.md` **in the same turn** and index it in `docs/_index.md` — an answer that dies in chat is re-derived by grep on every future question, which is the tax (a) exists to avoid. → `feedback_check_prior_corpora.md`
+5. **Consult prior work before building — three granularities.** (a) Cross-corpus: "how did Tanakh/GNT/BoFM solve this?" — port, don't re-invent. (b) Same-file: before proposing a new `_is_*`/`_has_*`/`_detect_*`/`_check_*` helper, `Grep` the file for an analogous one and cite why a new one is needed. (c) **File the answer back.** When a cross-corpus consult produces a durable answer, write it to `docs/synthesis/<topic>.md` **in the same turn** and index it in `docs/00-start-here.md` — an answer that dies in chat is re-derived by grep on every future question, which is the tax (a) exists to avoid. → `feedback_check_prior_corpora.md`
 
 6. **Verify empirically — inspection ≠ verification.** Source-parity (vs original USFM/TF/source) is the correctness gate; index-parity (vs HEAD) is regression-only. Run BOTH tactical (does this break?) and strategic (is this the right design?) audits before any pivot. Any **new mechanism / integration / env-flag / guard structure** triggers the §7.3 audit gate BEFORE code (substrate *consumption* is exempt; building a new integration shape over it is not). Any code-touching edit that **cites canon** (`framework.md` / `§2.x` / `binding-rules-*`) requires a fresh in-turn `Read` of cited-range + 30 lines downstream AND a verbatim firewall quote in the proposal. Pre-audit self-check: every cited `file:line` Read this turn, every governing helper observed firing via probe (not inferred), every analogous helper Grep-enumerated. → `feedback_never_skip_audit_gate.md`, `feedback_conformance_is_not_correctness.md`, `feedback_canon_citation_requires_verbatim_read.md`
 
@@ -59,10 +59,10 @@ Headlines only; full record + warrants at `_north_star.md` (mandatory orientatio
 
 | File / dir | Trigger |
 |---|---|
-| `repos/atu-method/docs/framework.md` | Any methodology / rule-design / canon-touching question |
-| `repos/atu-method/docs/binding-rules-hebrew.md` | Hebrew binding-rule catalog (B1-B14) work |
-| `repos/atu-method/docs/toolset-architecture.md` | Pipeline implementation (v0→v3 stages) |
-| `repos/atu-method/docs/apparatus.md` | English-layer work, swap-system, 4-layer integrity |
+| `repos/atu-method/docs/01-normative/framework.md` | Any methodology / rule-design / canon-touching question |
+| `repos/atu-method/docs/02-registries/binding-rules-hebrew.md` | Hebrew binding-rule catalog (B1-B14) work |
+| `repos/atu-method/docs/03-implementation/toolset-architecture.md` | Pipeline implementation (v0→v3 stages) |
+| `repos/atu-method/docs/03-implementation/apparatus.md` | English-layer work, swap-system, 4-layer integrity |
 | `repos/atu-method/memories/` | Cross-corpus methodology rules (32 files) |
 | `repos/readers-tanakh/CLAUDE.md` | Tanakh-specific data + deploy details (post-Phase-6, thin stub) |
 | `repos/readers-bofm/CLAUDE.md` | BoFM-specific data + deploy details (post-Phase-6, thin stub; Firestore-PWA code purged) |
@@ -104,9 +104,9 @@ On compaction ("This session is being continued..." OR `isCompactSummary: true`)
 
 ## Pipeline architecture
 
-Mechanical-first per `docs/framework.md` §3. **Live state per reader = `docs/deployment-status.md` (single source of truth).** All deployed readers run v1.5 binding-rule stage; no v4 (retired 2026-05-22). Never infer deploy state from stale per-repo docs.
+Mechanical-first per `docs/01-normative/framework.md` §3. **Live state per reader = `docs/05-status/deployment-status.md` (single source of truth).** All deployed readers run v1.5 binding-rule stage; no v4 (retired 2026-05-22). Never infer deploy state from stale per-repo docs.
 
-Stages: v0 source → v1 treebank clause-atoms → v1.5 binding rules → v2 narrow-task LLM adjudication (optional) → v3 editorial review → deploy. Hebrew F1 85-91% boundary; 5-25% absorption per genre. **Past-ceiling levers:** (a) better *real-gold* substrate [CLOSED for BoFM via manufactured/parser-bootstrap — see Closed routes], (b) cross-corpus convergence-projection (BHSA→alignment→target for Hebrew-source LXX/Vulgate-OT — FIRST mechanical move, not v2 defer), (c) v2 LLM adjudication. Full doctrine + per-corpus state + known limits (BHSA-canon-migration arc): `docs/substrate.md` + `_named_arcs.md`.
+Stages: v0 source → v1 treebank clause-atoms → v1.5 binding rules → v2 narrow-task LLM adjudication (optional) → v3 editorial review → deploy. Hebrew F1 85-91% boundary; 5-25% absorption per genre. **Past-ceiling levers:** (a) better *real-gold* substrate [CLOSED for BoFM via manufactured/parser-bootstrap — see Closed routes], (b) cross-corpus convergence-projection (BHSA→alignment→target for Hebrew-source LXX/Vulgate-OT — FIRST mechanical move, not v2 defer), (c) v2 LLM adjudication. Full doctrine + per-corpus state + known limits (BHSA-canon-migration arc): `docs/03-implementation/substrate.md` + `_named_arcs.md`.
 
 ## Methodology keystones (cross-corpus, load-bearing)
 
@@ -119,7 +119,7 @@ Stages: v0 source → v1 treebank clause-atoms → v1.5 binding rules → v2 nar
 
 | Decision | Standing answer |
 |---|---|
-| New binding rule | `docs/binding-rules-hebrew.md` §"Adding a rule"; retest validated set; no regression = ship. |
+| New binding rule | `docs/02-registries/binding-rules-hebrew.md` §"Adding a rule"; retest validated set; no regression = ship. |
 | Adversarial audit on non-trivial work | **Encode as `Workflow` — `parallel([lens_over_merge, lens_atomicity])`.** Hand-spawning ≥2 parallel `Agent` calls is anti-pattern. Override with `# audit-skippable: <reason>` only. |
 | Applying a BIND / merge | Over-merge = Stan's RED LINE; validators are BLIND to it. ≥2 parallel adversarial audits (over-merge + atomicity lenses) BEFORE applying — encode as `Workflow`; ship only survivors of BOTH; when in doubt KEEP separate. |
 | Apply causes regression | Revert → root-cause → fix → re-apply with integrity gate. NEVER build recovery tools first. |

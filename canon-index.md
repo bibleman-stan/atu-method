@@ -48,8 +48,8 @@ and confirmed in-turn by Lane 1 receipts. Every disposition below honors these:
 10. **Sub-anchor granularity is load-bearing.** Live citers anchor to `§1.2.1` / `§1.2.2` / `§1.2.3` directly (R1.md:106, R13a.md:49, R11.md:47, R16.md:112, R10.md:17, R17.md:19) AND to NAMED-BUT-UNNUMBERED sub-clauses: J1 "compound-list break signals" (GNT canon:56 adds 5th), M1 "asymmetric-modifier sub-clause" (BoFM canon:747), §1.9 "N=3+ cliff SCOPE" predications-vs-objects distinction (R10.md:60). Restoring the umbrella without preserving sub-clauses verbatim strands the sub-cites.
 11. **`framework.md §2` (Categories A/B/C) was MOVED to `§7.0` in Stage 1.** Citers to "framework.md §2 (Category B editorial-judgment)" now repoint to `§7.0`. Watch for old §2 conflations in pre-existing scholarship.
 12. **Stranded cites span reader-repo `scripts/` + `validators/` + `retraction-log.md` + `atu-method/memories/`.** Migration destination rules must enumerate these, not just docs.
-13. **Companion-doc pattern proven viable when indexed.** `binding-rules-hebrew.md` is cited in 28 places across 15 files including per-reader CLAUDE.mds — restoration into a new `atu-method/docs/<companion>.md` works IF added to `docs/_index.md` AND cited from per-corpus canons or their references.
-14. **`structural-licenses.md` does NOT YET exist** and would need `docs/_index.md:25-30` per-language section entry to avoid born-orphan status at the docs-index level.
+13. **Companion-doc pattern proven viable when indexed.** `binding-rules-hebrew.md` is cited in 28 places across 15 files including per-reader CLAUDE.mds — restoration into a new `atu-method/docs/<companion>.md` works IF added to `docs/00-start-here.md` AND cited from per-corpus canons or their references.
+14. **`structural-licenses.md` does NOT YET exist** and would need `docs/00-start-here.md:25-30` per-language section entry to avoid born-orphan status at the docs-index level.
 
 ---
 
@@ -106,8 +106,8 @@ and confirmed in-turn by Lane 1 receipts. Every disposition below honors these:
 | `_old/framework.md` | doc | itself | archived | `framework.md` (post-2026-05-18 rewrite) | `_old/` directory + per-concept dispositions above | n/a | Archived 2026-05-18 mechanical-first rewrite. Sole source for §0.x / §1.x bodies until migration completes. |
 | `_old/change-protocol.md` | doc | itself | archived | `framework.md §7` (Stage 1 extracted 2026-06-05, commit 93d67f5) | resolved by Stage 1 | n/a | Stage 1 §7.x migration sourced from this archived doc. |
 | `binding-rules-hebrew.md` | doc | itself | live | n/a | 28 occurrences across 15 files (proof-of-concept that companion docs survive when indexed) | n/a | Sister catalog precedent for the proposed `structural-licenses.md`. |
-| `binding-rules-lxx.md` | doc | itself | **PARKED** (committed 2026-06-06, commit ba04629; smoke-test artifact per Track A4) | n/a | docs/_index.md:28 (Track A4 fix) | n/a | Smoke-test artifact, pipeline parked 2026-05-27 per banner. |
-| `cross-corpus-principles.md` (renamed from "structural-licenses.md" 2026-06-06 per Stan) | doc | `atu-method/docs/cross-corpus-principles.md` (NEW 2026-06-06, B1; uncommitted on disk pending claudit audit) | **live (uncommitted)** | n/a | `docs/_index.md` lines 19-21 (Methodology specification section, NEW entry); `readers-tanakh/private/01-method/colometry-canon.md:13` (NEW row in filename-routing table — gitignored, local-only); per-corpus canon pointer-block updates pending B4 | n/a (created in B1) | Final name "cross-corpus-principles.md" — more accurate than "structural-licenses" because hosts §1.9 N=2 collision-adjudicator which isn't a license. Hosts §1.1 reconciled, §1.3a, §1.4 J1/J2/J4/J5, §1.5 M1/M4, §1.8 application-order, §1.9 N=2 + N=3+ cliff. EXCLUDES §1.3 camera-angle + §1.5 M3 per Stan 2026-06-06 excision rulings. |
+| `binding-rules-lxx.md` | doc | itself | **PARKED** (committed 2026-06-06, commit ba04629; smoke-test artifact per Track A4) | n/a | docs/00-start-here.md:28 (Track A4 fix) | n/a | Smoke-test artifact, pipeline parked 2026-05-27 per banner. |
+| `cross-corpus-principles.md` (renamed from "structural-licenses.md" 2026-06-06 per Stan) | doc | `atu-method/docs/01-normative/cross-corpus-principles.md` (NEW 2026-06-06, B1; uncommitted on disk pending claudit audit) | **live (uncommitted)** | n/a | `docs/00-start-here.md` lines 19-21 (Methodology specification section, NEW entry); `readers-tanakh/private/01-method/colometry-canon.md:13` (NEW row in filename-routing table — gitignored, local-only); per-corpus canon pointer-block updates pending B4 | n/a (created in B1) | Final name "cross-corpus-principles.md" — more accurate than "structural-licenses" because hosts §1.9 N=2 collision-adjudicator which isn't a license. Hosts §1.1 reconciled, §1.3a, §1.4 J1/J2/J4/J5, §1.5 M1/M4, §1.8 application-order, §1.9 N=2 + N=3+ cliff. EXCLUDES §1.3 camera-angle + §1.5 M3 per Stan 2026-06-06 excision rulings. |
 | `glossary.md` | doc | itself | live (stale per forensic audit) | n/a | framework.md, apparatus.md, architecture.md, _index.md | needs `§7.0 Categories A/B/C` reference update (claudit findings 2026-06-05) | Out of §-renumber scope for this halt; flagged for next-cycle. |
 | `methodology-position.md` | doc | itself | live | n/a | framework.md L249, apparatus.md, toolset-architecture.md, _index.md | adjacent to §0.3 disposition but NOT the §0.3 host | LDHB / discourse-grammar relationship; not the pragmatic-stance host. |
 
@@ -166,7 +166,7 @@ verbatim from archived `_old/change-protocol.md:10-103` plus §7.0 from `_old/fr
 
 ### The `cross-corpus-principles.md` companion-doc (B1 deliverable)
 
-Doc to be authored at `atu-method/docs/cross-corpus-principles.md`. **Sections** (per Stan's rulings — §1.3 and §1.5 M3 excluded):
+Doc to be authored at `atu-method/docs/01-normative/cross-corpus-principles.md`. **Sections** (per Stan's rulings — §1.3 and §1.5 M3 excluded):
 
 1. **§1.1** Generative principle (reconciled — candidate-ATU substrate, live KEEP-AS-IS default)
 2. **§1.3a** Rhetoric figures constrain (default dispositions per figure)
@@ -179,7 +179,7 @@ Doc to be authored at `atu-method/docs/cross-corpus-principles.md`. **Sections**
 9. **§1.8** Application order (adjusted — no §1.3 camera-angle Step 4 reference; M3 reference dropped)
 10. **§1.9** N=2 Adjudication + N=3+ cliff + SCOPE sub-clause (predications-vs-objects)
 
-**Index entry** to be added to `docs/_index.md` under new "Cross-corpus principles" section. **Tanakh canon:11-16** filename-routing table gets one row added. Subject to §7.3 trigger #1 adversarial audit before commit.
+**Index entry** to be added to `docs/00-start-here.md` under new "Cross-corpus principles" section. **Tanakh canon:11-16** filename-routing table gets one row added. Subject to §7.3 trigger #1 adversarial audit before commit.
 
 ### Per-corpus dispositions (§1.12, §1.13)
 
@@ -248,7 +248,7 @@ Stan ruled all four CONTESTED concepts. Execution plan:
 
 | Batch | Scope | Audit gate | Halt for Stan? |
 |---|---|---|---|
-| **B1** | Author `cross-corpus-principles.md` + add `docs/_index.md` entry + add Tanakh canon:11-16 row | §7.3 trigger #1 (new canon doc) — adversarial audit required | YES — review doc content + §1.1 reconciliation paragraph before commit |
+| **B1** | Author `cross-corpus-principles.md` + add `docs/00-start-here.md` entry + add Tanakh canon:11-16 row | §7.3 trigger #1 (new canon doc) — adversarial audit required | YES — review doc content + §1.1 reconciliation paragraph before commit |
 | **B2** | Excise camera-angle: drop `no camera shift` condition from BoFM R27 + GNT R25 + scholarship + canon (TIER 7 / R27 condition 3 / R25 conditions) + demote-memory cleanup | §7.3 trigger #6 (mechanical signature change under settled rule) | YES — decide condition-3 disposition (drop entirely / replace with §2.1 backward-containment / other) + sanity-check on rule output delta |
 | **B3** | Excise M3: drop M3 framing from BoFM canon:152/1581 + GNT canon:237/245 + scholarship; resolve 4-carve-out disposition (fold into §2.1 / per-corpus rename / drop) | §7.3 trigger #6 | YES — decide 4-carve-out disposition |
 | **B4** | Pointer-block updates across all three per-corpus canons (BoFM:22-28 §0→§1, BoFM:34 §1 block rewrite, GNT:25-43 + :48 same shape, Tanakh:11-16 add row); clean repoints for §0.x straggler + §1.2.x + §1.4 J3 + §1.5 M2 + §1.7 + §1.11 + §1.12 + §1.13 | §7.4 audit-skippable (cross-reference updates) — partly; some entries are claim repoints that go through §7.3 | Probably NOT (mechanical) |

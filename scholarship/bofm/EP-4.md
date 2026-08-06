@@ -171,7 +171,7 @@ The two rules operate on different structural elements and should not conflict, 
 *References:*
 
 - Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 EP-4` (current state)
-- Universal framework: [`../../docs/framework.md`](../../docs/framework.md) §1.5 M3 (bare-governor indivisibility — structural sibling principle) + §1.4 J5 (substantive adjunct as own focus — interaction) + §2 (Category B editorial-judgment)
+- Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.5 M3 (bare-governor indivisibility — structural sibling principle) + §1.4 J5 (substantive adjunct as own focus — interaction) + §2 (Category B editorial-judgment)
 - Sibling EP-tier rule: [`EP-1.md`](EP-1.md) (editorial-judgment EP-rule pattern)
 - 2026-04-19 three-layer architecture restructuring: `readers-bofm/private/2026-04-19-canon-v2-and-merge-overrides/transcript.md`
 - 2026-05-10 §3.5 precedence-hierarchy formalization: `readers-bofm/private/2026-05-10-ud-detector-framework-and-corpus-sweep/canon-3.5-draft.md`

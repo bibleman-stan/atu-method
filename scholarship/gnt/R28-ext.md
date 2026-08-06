@@ -136,7 +136,7 @@ The ≥3-token threshold in the scope definition (participial frames with own su
 - Operational canon entry: `readers-gnt/private/01-method/colometry-canon.md §3.6 R28-ext` (current state)
 - Sister rule (BoFM): [`../bofm/R28.md`](../bofm/R28.md) — Speech-Act Announcement After Frame (BoFM corpus instantiation)
 - Validator: `readers-gnt/validators/colometry/check_r28_speech_act_frame.py`
-- Framework anchor: [`../../docs/framework.md`](../../docs/framework.md) §1.4 J3 (speech-act announcement structural justification)
+- Framework anchor: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.4 J3 (speech-act announcement structural justification)
 - Audit task: `a80b9f5b92c7f1125`; audit evidence in commit `f2a3676`
 - GNT canon §3.6 split-direction complement: GNT canon §3.6 frame-aggregation (merge direction, same section)
 - Precedence rules: R9 (general subordinate-clause break), R10 (ὅτι complement), R11 (speech-intro own line), R19 (genitive absolute)

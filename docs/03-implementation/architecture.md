@@ -4,7 +4,7 @@ The ATU apparatus separates concerns into four planes, not stacked layers. Each 
 
 This document is normative for any project consuming `atu-method`. Drift from this architecture indicates either a documentation gap or a design error.
 
-> **What is actually LIVE per reader** (which layer is deployed, on what method, anchoring commits) is recorded in **[`deployment-status.md`](deployment-status.md)** — the single source of truth. Do NOT infer deployment state from a per-repo `CLAUDE.md`/README (those drift stale). All three readers run mechanical-first; the hand-edited editions were superseded and are not a "sacred" deploy oracle (the *source text* is sacred; the ATU segmentation is regenerable method output).
+> **What is actually LIVE per reader** (which layer is deployed, on what method, anchoring commits) is recorded in **[`deployment-status.md`](../05-status/deployment-status.md)** — the single source of truth. Do NOT infer deployment state from a per-repo `CLAUDE.md`/README (those drift stale). All three readers run mechanical-first; the hand-edited editions were superseded and are not a "sacred" deploy oracle (the *source text* is sacred; the ATU segmentation is regenerable method output).
 
 ---
 
@@ -51,7 +51,7 @@ This document is normative for any project consuming `atu-method`. Drift from th
 ORTHOGONAL: WORKFLOW
   Audit-then-apply discipline, mandatory-audit triggers, change
   protocol. Describes how operators use the tooling plane on the spec
-  plane against the data plane. Lives in atu-method/docs/framework.md §7
+  plane against the data plane. Lives in atu-method/docs/01-normative/framework.md §7
   plus per-repo CLAUDE.md operational sections.
 ```
 
@@ -99,7 +99,7 @@ The v1.5 binding-rule engine in the tooling plane consumes the binding-rule cata
 - **Closed lists** — Named lemma / category sets cross-referenced from rule entries. The engine loads these at start.
 - **Evaluation order + same-verse guard** — Per-repo catalog section defining rule precedence and the within-verse binding boundary.
 
-Drift between a binding rule as documented in the canon and its `should_bind()` implementation is a **failure** — detected by the per-repo validator baseline-check (the binding rules ARE the canon; cf. [`framework.md` §7](<framework.md#§7 Change discipline>)).
+Drift between a binding rule as documented in the canon and its `should_bind()` implementation is a **failure** — detected by the per-repo validator baseline-check (the binding rules ARE the canon; cf. [`framework.md` §7](<../01-normative/framework.md#§7 Change discipline>)).
 
 ### Data plane ↔ Tooling plane
 
@@ -117,7 +117,7 @@ The audit-then-apply discipline operates across planes. It governs:
 - When constraint audit outputs (tooling plane) are application-ready vs. require manual review.
 - When data-plane mutations require baseline-check before commit.
 
-See [`framework.md`](framework.md) §7 for the operational workflow (change discipline scoped to binding-rule changes).
+See [`framework.md`](../01-normative/framework.md) §7 for the operational workflow (change discipline scoped to binding-rule changes).
 
 ---
 
@@ -134,9 +134,9 @@ The Tooling plane subdivides into the mechanical-first pipeline stages, each fit
 
 These stages differ in cost profile, auditability, discipline requirements, and failure modes — distinctions that matter for system design and that the four-plane model alone does not surface.
 
-> **Note (2026-05-18 reconciliation):** a short-lived 2026-05-17 design made Stage 1 an *LLM-primary* identifier (LLM proposes the whole rendering; a constraint catalog audits it). That was retired the next day in favor of the mechanical-first pipeline above (see [`_index.md`](_index.md) and [`framework.md` §3](<framework.md#§3 Architecture — mechanical-first>)). The LLM is now an *optional, narrow-task adjudicator on residuals*, not the primary identifier.
+> **Note (2026-05-18 reconciliation):** a short-lived 2026-05-17 design made Stage 1 an *LLM-primary* identifier (LLM proposes the whole rendering; a constraint catalog audits it). That was retired the next day in favor of the mechanical-first pipeline above (see [`_index.md`](../00-start-here.md) and [`framework.md` §3](<../01-normative/framework.md#§3 Architecture — mechanical-first>)). The LLM is now an *optional, narrow-task adjudicator on residuals*, not the primary identifier.
 
-For the substantive description of the stages, the bidirectional test, and the binding-rule catalog, see [`framework.md`](framework.md) §3 and [`toolset-architecture.md`](toolset-architecture.md).
+For the substantive description of the stages, the bidirectional test, and the binding-rule catalog, see [`framework.md`](../01-normative/framework.md) §3 and [`toolset-architecture.md`](toolset-architecture.md).
 
 The two documents are complementary: [`architecture.md`](architecture.md) (this file) is normative for where code and data live; [`toolset-architecture.md`](toolset-architecture.md) is normative for which task type each tool is fit for.
 

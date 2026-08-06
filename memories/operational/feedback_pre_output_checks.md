@@ -149,7 +149,7 @@ If any is missing → the proposal does NOT get sent to a §7.3 audit. The propo
 - rule-design / file-edit shapes: `new binding rule`, `new §2\.[12] rule`, `amplificative split`, `split.*conjunct`, `Edit.*bofm_v1_fabric\.py`, `Edit.*tanakh_v1_fabric\.py`, `Edit.*gnt_v1_fabric\.py`, `overrides\.json.*add`, `cross-verse-merges\.json.*add`
 
 **Gate:** If matched → confirm THIS TURN contains ALL of:
-(a) a `Read` tool call against `~/repos/atu-method/docs/framework.md` covering AT MINIMUM the cited section AND the next 30 lines beyond it (firewalls live downstream of license-statements; §2.2 license lines ~103-111, firewall lines ~113-117);
+(a) a `Read` tool call against `~/repos/atu-method/docs/01-normative/framework.md` covering AT MINIMUM the cited section AND the next 30 lines beyond it (firewalls live downstream of license-statements; §2.2 license lines ~103-111, firewall lines ~113-117);
 (b) a verbatim block quote in the draft of the firewall / Registry discipline / "(ii)" sub-clause of the cited section — NOT a summary, NOT a paraphrase, the literal characters;
 (c) a one-line explicit statement of form `"The firewall says <verbatim quote>; my mechanism does not violate it because <Z>"` OR `"The proposed mechanism's <X> matches the firewall's permitted-case <Y> because <Z>"`.
 
@@ -173,7 +173,7 @@ If any of (a)/(b)/(c) is missing → the rule does NOT get written to disk, NOT 
 
 **Gate:** If BOTH match → the next sequence of tool calls MUST be (in order):
 1. `Read` the cited verse + ±2 verses from `readers-bofm/data/text-files/v2/` (or the corpus-appropriate live source file)
-2. `Read` `~/repos/atu-method/docs/framework.md` covering §2.1 + §2.2 + Registry discipline firewall (lines 80-150 minimum)
+2. `Read` `~/repos/atu-method/docs/01-normative/framework.md` covering §2.1 + §2.2 + Registry discipline firewall (lines 80-150 minimum)
 3. A response containing a literal block beginning `Bidirectional walkthrough:` with line-by-line forward-closure + backward-containment assessments and VERBATIM block-quote (`> ` prefixed) of the §2.1 / §2.2 / firewall clauses invoked
 
 **Anti-bypass:** This gate fires REGARDLESS of whether any draft / proposed Edit / commit message cites canon. A rule shipped with no canon citation in its comment slips gate 10 entirely; gate 11 fires on the upstream user-turn shape, not on the downstream code shape, closing that hole.

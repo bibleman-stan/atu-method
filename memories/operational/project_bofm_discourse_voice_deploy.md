@@ -55,4 +55,4 @@ substrate doctrine. See [[reference_emode_substrate]] and [[feedback_no_fly_swat
   not epochs (patience=3 → instant early-stop; set patience=0).
 - **Next**: train converges → re-parse BoFM (`bofm_toparse.conllu`, existing tokenization) → rewrite TF
   deprel/head → **v0.2** → run binding rules on good syntax → the bulk over-split classes. Canon now in
-  `atu-method/docs/substrate.md` §7. Stan's standing ask: the TF pays off long-term (cross-corpus queries).
+  `atu-method/docs/03-implementation/substrate.md` §7. Stan's standing ask: the TF pays off long-term (cross-corpus queries).

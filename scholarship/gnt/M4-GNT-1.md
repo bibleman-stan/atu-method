@@ -187,7 +187,7 @@ Any future corpus added to the ATU apparatus (a readers-LXX, a readers-Josephus,
 *References:*
 
 - Operational canon entry: `readers-gnt/private/01-method/colometry-canon.md §3.18 M4-GNT-1` (codified 2026-05-11, commit `001604d`)
-- Universal framework: [`../../docs/framework.md`](../../docs/framework.md) §1.5 M4 (fragmented atomic thought-unit)
+- Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.5 M4 (fragmented atomic thought-unit)
 - Sister rule (predicate→complement): GNT canon §3.5 R10 (Complement Integrity / ὅτι-clause integrity)
 - Sister corpus rule: [`../bofm/M4-BoFM-1.md`](../bofm/M4-BoFM-1.md) (BoFM instantiation, codified 2026-05-11)
 - M4-TNK-1 deliberately NOT codified: Tanakh audit task `a535fcbcc01012e3c` confirmed Hebrew VSO+pro-drop+casus-pendens makes the subject-orphan failure mode structurally rare; no rule needed.

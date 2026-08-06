@@ -143,7 +143,7 @@ The `PREDICATE_LEAD_LEMMAS` list in the UD signature is explicitly marked "augme
 *References:*
 
 - Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 M4-BoFM-1` (codified 2026-05-11, commits `fb82c55` → `e20a4b9` → `45ff06b`)
-- Universal framework: [`../../docs/framework.md`](../../docs/framework.md) §1.5 M4 (fragmented atomic thought-unit)
+- Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.5 M4 (fragmented atomic thought-unit)
 - Sister rule (predicate→complement): [`R17.md`](R17.md)
 - Sister rule (triad-formula integrity, post-promotion scope): [`R18a.md`](R18a.md)
 - Validator: `readers-bofm/validators/colometry/validate_m4_bofm_1_subject_orphan.py`

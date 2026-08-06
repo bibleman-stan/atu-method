@@ -150,7 +150,7 @@ The 2026-03-24 *according to* punctuation-audit was a one-of-N corpus-wide audit
 *References:*
 
 - Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 EP-1` (current state)
-- Universal framework: [`../../docs/framework.md`](../../docs/framework.md) §2.1 (punctuation has zero force) + §7.0 (Category B editorial-judgment) + §1.5 J5 (substantive adjunct as own focus — interaction)
+- Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §2.1 (punctuation has zero force) + §7.0 (Category B editorial-judgment) + §1.5 J5 (substantive adjunct as own focus — interaction)
 - Historical Rule-21 codification: `readers-bofm/private/01-method/archive/colometry-canon-v1-archive-2026-04-13.md` (2026-03-24 update entry)
 - 2026-04-19 three-layer architecture restructuring: `readers-bofm/private/2026-04-19-canon-v2-and-merge-overrides/transcript.md`
 - 2026-05-10 §3.5 precedence-hierarchy formalization: `readers-bofm/private/2026-05-10-ud-detector-framework-and-corpus-sweep/canon-3.5-draft.md`

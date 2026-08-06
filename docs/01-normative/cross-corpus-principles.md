@@ -400,9 +400,9 @@ as of 2026-06-06).
 
 - [`framework.md`](framework.md) — the criterion (bidirectional test + explicit-marker license) +
   architecture (§3) + change discipline (§7)
-- [`binding-rules-hebrew.md`](binding-rules-hebrew.md) — Hebrew per-corpus binding-rule catalog
-- [`binding-rules-lxx.md`](binding-rules-lxx.md) — LXX-Greek binding-rule catalog (PARKED)
-- [`apparatus.md`](apparatus.md) — scope statement
+- [`binding-rules-hebrew.md`](../02-registries/binding-rules-hebrew.md) — Hebrew per-corpus binding-rule catalog
+- [`binding-rules-lxx.md`](../02-registries/binding-rules-lxx.md) — LXX-Greek binding-rule catalog (PARKED)
+- [`apparatus.md`](../03-implementation/apparatus.md) — scope statement
 - [`canon-index.md`](../canon-index.md) — navigation index for every §-anchor + sub-clause + concept
 - Per-corpus colometry-canons: `readers-bofm/private/01-method/colometry-canon.md`,
   `readers-gnt/private/01-method/colometry-canon.md`,

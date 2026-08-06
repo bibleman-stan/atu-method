@@ -4,11 +4,11 @@ Catalog of the 14 mechanical binding rules that transform BHSA clause-atoms into
 
 Each rule:
 - Fires based on BHSA-derived features (clause type, head verb lemma, text-prefix after pointing-strip)
-- Is justified by the bidirectional test ([`framework.md` §2](<framework.md#§2 The criterion — what licenses a standalone ATU>))
+- Is justified by the bidirectional test ([`framework.md` §2](<../01-normative/framework.md#§2 The criterion — what licenses a standalone ATU>))
 - Operates only within a single verse (global safety guard in `should_bind()`)
 - Is evaluated in order; the first matching rule wins
 
-The catalog was validated across four chapters spanning four genres (Gen 22 / Psalm 1 / Isaiah 53 / Lev 11). See [`framework.md` §5](<framework.md#§5 Validation status>) for validation numbers.
+The catalog was validated across four chapters spanning four genres (Gen 22 / Psalm 1 / Isaiah 53 / Lev 11). See [`framework.md` §5](<../01-normative/framework.md#§5 Validation status>) for validation numbers.
 
 ---
 
@@ -129,7 +129,7 @@ Order matters when multiple rules could fire on the same clause pair. The curren
 
 ## Validation results
 
-Per [`framework.md` §5](<framework.md#§5 Validation status>): 85-91% boundary F1 vs LDHB across four chapters / four genres. Pipeline catches ≥ 80% of LDHB boundaries (recall) and draws boundaries that are present in LDHB ≥ 79% of the time (precision). The specific failure modes (length-dependent ʾăšer, sub-clause gapping, BHSA-fine subject-predicate split) are documented in [`framework.md` §6](<framework.md#§6 Known gaps>).
+Per [`framework.md` §5](<../01-normative/framework.md#§5 Validation status>): 85-91% boundary F1 vs LDHB across four chapters / four genres. Pipeline catches ≥ 80% of LDHB boundaries (recall) and draws boundaries that are present in LDHB ≥ 79% of the time (precision). The specific failure modes (length-dependent ʾăšer, sub-clause gapping, BHSA-fine subject-predicate split) are documented in [`framework.md` §6](<../01-normative/framework.md#§6 Known gaps>).
 
 ## Adding a rule
 

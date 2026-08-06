@@ -2,7 +2,7 @@
 
 **Summary**: The four feedback loops by which this repo is supposed to get better at its own work — and their actual, unequal states. Only ONE is demonstrably turning: the **canon-amendment loop** (friction → proposal → §7 gate → canon), evidenced in git. The **retraction→promotion loop** is built and stalled: 31 logged retractions across three reader repos, **zero** promotions ever recorded, all logs frozen since 2026-05-17, and no log at this hub at all. The **file-back loop** and the **audit loop** were both closed on paper on 2026-08-06 and have never run. The shape is **additive, not compounding** — closing one rule-class does not make the next cheaper — with one unmeasured channel (cross-corpus porting) that might. Whether any of this measurably improves output is **unmeasured** (see Gap).
 
-**Sources**: [`framework.md`](framework.md) §7.0–§7.9 (change discipline); [`retraction-log-protocol.md`](retraction-log-protocol.md) (3-recurrence threshold); [`../CLAUDE.md`](../CLAUDE.md) (8 standing defaults, audit tier, file-back); `git log` of this repo (108 commits) and of `readers-bofm` / `readers-gnt` / `readers-tanakh` retraction logs; the 2026-08-06 memory-loss incident recorded in [`../.archive/_WAKEUP-DIRECTIVE-2026-08-06.md`](../.archive/_WAKEUP-DIRECTIVE-2026-08-06.md). Form (per-loop frames, failure branches, explicit Gap-marking) is borrowed from the meta-wiki's `compounding-artifact.md` and `ops-improvement-loop.md`; the content is not.
+**Sources**: [`framework.md`](../01-normative/framework.md) §7.0–§7.9 (change discipline); [`retraction-log-protocol.md`](retraction-log-protocol.md) (3-recurrence threshold); [`../CLAUDE.md`](../CLAUDE.md) (8 standing defaults, audit tier, file-back); `git log` of this repo (108 commits) and of `readers-bofm` / `readers-gnt` / `readers-tanakh` retraction logs; the 2026-08-06 memory-loss incident recorded in [`../.archive/_WAKEUP-DIRECTIVE-2026-08-06.md`](../.archive/_WAKEUP-DIRECTIVE-2026-08-06.md). Form (per-loop frames, failure branches, explicit Gap-marking) is borrowed from the meta-wiki's `compounding-artifact.md` and `ops-improvement-loop.md`; the content is not.
 
 **Last updated**: 2026-08-06
 
@@ -179,7 +179,7 @@ One channel might genuinely compound, and it is named here precisely so it is no
 
 **Gap 2 — three of four loops have no track record at all.** Loops 3 and 4 are one day old; loop 2 has a track record and it is a record of not running. Only loop 1 has evidence of turning, and even there the evidence is *procedural* (audit declarations present in commits), not *outcome* evidence.
 
-**Gap 3 — whether the four are the right four.** They are the loops that exist, drawn from real machinery. Nothing establishes that they are sufficient, and one candidate is deliberately absent: there is no loop that improves the *substrate* (parse quality), which [`substrate.md`](substrate.md) argues is the actual ceiling on output quality. That may be the most important missing loop in this document.
+**Gap 3 — whether the four are the right four.** They are the loops that exist, drawn from real machinery. Nothing establishes that they are sufficient, and one candidate is deliberately absent: there is no loop that improves the *substrate* (parse quality), which [`substrate.md`](../03-implementation/substrate.md) argues is the actual ceiling on output quality. That may be the most important missing loop in this document.
 
 ## History
 
@@ -187,7 +187,7 @@ One channel might genuinely compound, and it is named here precisely so it is no
 
 ## Related
 
-- [`framework.md`](framework.md) §7 — the change discipline loop 1 runs on
+- [`framework.md`](../01-normative/framework.md) §7 — the change discipline loop 1 runs on
 - [`retraction-log-protocol.md`](retraction-log-protocol.md) — the mechanism loop 2 stalled on
 - [`../CLAUDE.md`](../CLAUDE.md) — audit tier (loop 4) and standing default #5c (loop 3)
-- [`substrate.md`](substrate.md) — the substrate ceiling named in Gap 3
+- [`substrate.md`](../03-implementation/substrate.md) — the substrate ceiling named in Gap 3

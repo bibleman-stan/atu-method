@@ -1,6 +1,6 @@
 # Toolset Architecture — Mechanical-First Pipeline
 
-This document specifies the pipeline implementation. The framework spec ([`framework.md` §3](<framework.md#§3 Architecture — mechanical-first>)) defines the v0→v3 stages; this document specifies WHAT each stage runs.
+This document specifies the pipeline implementation. The framework spec ([`framework.md` §3](<../01-normative/framework.md#§3 Architecture — mechanical-first>)) defines the v0→v3 stages; this document specifies WHAT each stage runs.
 
 The pipeline is **mechanical-first**: parse-derived clause units are merged into ATU candidate groups by feature-driven binding rules. LLM adjudication is OPTIONAL and narrow-task. Editorial review handles residuals.
 
@@ -49,7 +49,7 @@ A small catalog of binding rules merges adjacent v1 clauses into ATU candidate g
 - Is justified by the bidirectional test
 - Operates only within a single verse (no cross-verse binding)
 
-For Hebrew, see [`binding-rules-hebrew.md`](binding-rules-hebrew.md) for the 14 validated rules (B1-B14, with B4 retired).
+For Hebrew, see [`binding-rules-hebrew.md`](../02-registries/binding-rules-hebrew.md) for the 14 validated rules (B1-B14, with B4 retired).
 
 Output: JSONL with one record per ATU candidate group + binding-history per group.
 
@@ -129,7 +129,7 @@ These are engineering moves, not methodology moves. The methodology is settled.
 
 ## Cross-references
 
-- [`framework.md`](framework.md) — methodology specification
-- [`binding-rules-hebrew.md`](binding-rules-hebrew.md) — the 14 Hebrew binding rules
+- [`framework.md`](../01-normative/framework.md) — methodology specification
+- [`binding-rules-hebrew.md`](../02-registries/binding-rules-hebrew.md) — the 14 Hebrew binding rules
 - [`apparatus.md`](apparatus.md) — scope statement
-- [`methodology-position.md`](methodology-position.md) — LDHB relationship
+- [`methodology-position.md`](../05-status/methodology-position.md) — LDHB relationship

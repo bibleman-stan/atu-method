@@ -17,7 +17,7 @@ Web reading app for the Book of Mormon at bomreader.com. Repo at C:\Users\biblem
 **How to apply:** Always read CLAUDE.md and handoffs/ before any substantive work. The handoffs are the authoritative state of the project.
 
 Key constraints:
-- The v0 SOURCE TEXT is sacred (never alter words/punctuation/verse-refs). The `v2` ATU **segmentation** is now the deployed **mechanical-first method output** (`bofm_generate.py`; it replaced the old hand-edits 2026-05-22, commit `1a980bf`) — regenerable, NOT a hand-edit to protect. *(This whole memory is 60+ days stale; for live state see `atu-method/docs/deployment-status.md`.)*
+- The v0 SOURCE TEXT is sacred (never alter words/punctuation/verse-refs). The `v2` ATU **segmentation** is now the deployed **mechanical-first method output** (`bofm_generate.py`; it replaced the old hand-edits 2026-05-22, commit `1a980bf`) — regenerable, NOT a hand-edit to protect. *(This whole memory is 60+ days stale; for live state see `atu-method/docs/05-status/deployment-status.md`.)*
 - Stan pushes to GitHub; Claude cannot push (403 proxy error)
 - Service worker cache version must be bumped with every CSS/JS/HTML change
 - All colometry decisions: propose only, Stan approves

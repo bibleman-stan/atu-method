@@ -105,9 +105,9 @@ Concretely:
 
 ## Aligns with
 
-- [[../docs/framework.md §1 Purpose]] (NOT-list already names "Reveal rhetorical parallelism" as a separate scholarly layer; this memory expands on the principle)
-- [[../docs/cross-corpus-principles.md §0.1]] (lens scope statement in the canonical companion)
-- [[../docs/cross-corpus-principles.md §1.3a]] (rhetoric figures constrain, atomic-thought determines)
-- [[../docs/framework.md §2.2:116]] (parallelism class adjudication excluded as primary break-license — the firewall the lens distinction operationalizes)
-- [[../docs/framework.md §2.1 final paragraph]] (punctuation has zero force — same shape: editorial overlay is its own lens, not the ATU determinant)
-- [[../docs/methodology-position.md]] (LDHB / discourse-grammar relationship — the framing here generalizes the position from a single named precedent to the principle)
+- [[../docs/01-normative/framework.md §1 Purpose]] (NOT-list already names "Reveal rhetorical parallelism" as a separate scholarly layer; this memory expands on the principle)
+- [[../docs/01-normative/cross-corpus-principles.md §0.1]] (lens scope statement in the canonical companion)
+- [[../docs/01-normative/cross-corpus-principles.md §1.3a]] (rhetoric figures constrain, atomic-thought determines)
+- [[../docs/01-normative/framework.md §2.2:116]] (parallelism class adjudication excluded as primary break-license — the firewall the lens distinction operationalizes)
+- [[../docs/01-normative/framework.md §2.1 final paragraph]] (punctuation has zero force — same shape: editorial overlay is its own lens, not the ATU determinant)
+- [[../docs/05-status/methodology-position.md]] (LDHB / discourse-grammar relationship — the framing here generalizes the position from a single named precedent to the principle)

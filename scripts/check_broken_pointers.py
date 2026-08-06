@@ -45,6 +45,7 @@ SCAN_GLOBS = [
     "README.md",
     "canon-index.md",
     "docs/*.md",
+    "docs/*/*.md",
     "memories/*.md",
     "scholarship/*.md",
     "scholarship/*/*.md",
@@ -91,7 +92,9 @@ SKIP_PREFIXES = (
 
 # Memory files are cited bare by filename across the canon; they live in
 # memories/ or memories/operational/ and resolve() finds them there.
-SEARCH_SUBDIRS = ["", "docs", "memories", "memories/operational", "scripts",
+SEARCH_SUBDIRS = ["", "docs", "docs/01-normative", "docs/02-registries",
+                  "docs/03-implementation", "docs/04-process", "docs/05-status",
+                  "memories", "memories/operational", "scripts",
                   "scholarship", "scholarship/bofm", "scholarship/gnt",
                   "scholarship/methodology", "data", "atu_method", "tests"]
 
@@ -130,7 +133,7 @@ def is_skip(ref: str) -> bool:
 def resolve(ref: str, source: Path):
     rel = ref.replace("\\", "/")
     # Canon cites this repo's own files with the repo name attached
-    # ("atu-method/docs/substrate.md") as often as bare; both are correct.
+    # ("atu-method/docs/03-implementation/substrate.md") as often as bare; both are correct.
     for prefix in ("repos/atu-method/", "atu-method/", "./"):
         if rel.startswith(prefix):
             rel = rel[len(prefix):]

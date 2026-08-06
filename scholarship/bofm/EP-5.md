@@ -171,7 +171,7 @@ The EP-5 corpus's virtue/vice stacks frequently appear with comma-separated memb
 *References:*
 
 - Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 EP-5` (current state)
-- Universal framework: [`../../docs/framework.md`](../../docs/framework.md) §1.4 J1 (formally-marked parallel series — the parallel-stacking interaction) + §1.9 N=2 Adjudication Principle and N=3+ cliff + §2 (Category B editorial-judgment)
+- Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.4 J1 (formally-marked parallel series — the parallel-stacking interaction) + §1.9 N=2 Adjudication Principle and N=3+ cliff + §2 (Category B editorial-judgment)
 - Sibling EP-rules: [`EP-1.md`](EP-1.md) (according-to manner vs. source) — the canonical exemplar of an editorial-judgment EP-rule with REVIEW-routing
 - 2026-04-19 three-layer architecture restructuring: `readers-bofm/private/2026-04-19-canon-v2-and-merge-overrides/transcript.md`
 - 2026-05-10 §3.5 precedence-hierarchy formalization: `readers-bofm/private/2026-05-10-ud-detector-framework-and-corpus-sweep/canon-3.5-draft.md`

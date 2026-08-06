@@ -26,4 +26,4 @@ When Stan proposes an ATU split (or a BIND or a structural rearrangement), his i
 - When the proposed split SITS on a framework allowance (casuistic protasis, pro-drop apodosis, parallel cola with distinct subjects), CITE the allowance and confirm.
 - When the validator flags an override Stan shipped, treat the validator as DATA, not as the arbiter. Re-apply the bidirectional test honestly. If the validator is right, Stan wants to know.
 
-Related: [[feedback_hand_edit_is_a_datapoint]] (a human hand-edit is one triangulation data point, never definitive weight) — and the framework canon at `~/repos/atu-method/docs/framework.md` §2.1.
+Related: [[feedback_hand_edit_is_a_datapoint]] (a human hand-edit is one triangulation data point, never definitive weight) — and the framework canon at `~/repos/atu-method/docs/01-normative/framework.md` §2.1.

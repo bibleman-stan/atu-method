@@ -17,7 +17,7 @@ Companion to: each rule entry in the GNT operational canon. The operational cano
 | R25 | [`R25.md`](R25.md) | ὥστε short-consecutive-result binding (Greek instantiation of BoFM R27) |
 | R28-ext | [`R28-ext.md`](R28-ext.md) | Speech-act announcement after adverbial frame (split; GNT canon §3.6 sub-rule) |
 
-Each file follows the structure described in [`../_index.md`](../_index.md): Statement / Rationale / Grammatical grounding / Empirical evidence / Intellectual lineage / Adversarial history / Future work.
+Each file follows the structure described in [`../_index.md`](../../docs/00-start-here.md): Statement / Rationale / Grammatical grounding / Empirical evidence / Intellectual lineage / Adversarial history / Future work.
 
 ## Cross-references
 
