@@ -15,7 +15,7 @@ a parse cannot reliably make:
   absent on thin substrates.
 - **parallel-cola-vs-overspilt** — coordinate cola with distinct subjects are separate ATUs (KEEP-AS-IS,
   editorial v3), NOT mechanical defects to fuse.
-- **shared-vs-distinct subject** in coordinate chains — elision is a grammatical fact, not an ATU verdict.
+- **shared-vs-distinct subject** in coordinate chains — ellipsis is a grammatical fact, not an ATU verdict.
 
 Past the ceiling the only two levers are **(a) better substrate** (a gold/near-gold treebank) and
 **(b) v2 narrow-task LLM adjudication** on the residuals. Adding more mechanical rules over a weak parse
