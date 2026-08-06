@@ -1,13 +1,13 @@
 # Cross-Corpus Principles — companion to framework.md
 
-**Canonical companion to `framework.md`.** Hosts the cross-corpus universal principles that are not
-break-licensors (so they are not in the scope of `framework.md` §2.1 / §2.2) but operate at the
+**Canonical companion to [`framework.md`](framework.md).** Hosts the cross-corpus universal principles that are not
+break-licensors (so they are not in the scope of [`framework.md` §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>) / §2.2) but operate at the
 methodology layer ABOVE per-corpus rule catalogs. Per-corpus canons (`readers-bofm` /
 `readers-gnt` / `readers-tanakh` `private/01-method/colometry-canon.md`) INSTANTIATE these principles
 in corpus-specific rule entries; they do NOT duplicate the prose here.
 
 Per-corpus canons reference this document by stable section ID
-(`cross-corpus-principles.md §1.1`, `§1.4 J1`, etc.). They MUST NOT inline this companion's prose.
+(`[cross-corpus-principles.md §1.1](<cross-corpus-principles.md#§1.1 Generative principle — candidate-ATU substrate>)`, `[§1.4](<#§1.4 Five Structural Justifications (J1, J2, J4, J5 — closed list; J3 lives at `framework.md §2.1`)>) J1`, etc.). They MUST NOT inline this companion's prose.
 
 Normative keywords (MUST, MUST NOT, SHALL, SHOULD, MAY) follow RFC 2119.
 
@@ -18,19 +18,19 @@ Normative keywords (MUST, MUST NOT, SHALL, SHOULD, MAY) follow RFC 2119.
 ### §0.1 Lens scope — ATU vs. rhetorical/discourse structure
 
 The apparatus's primary criterion is the **ATU lens**: the smallest cognitive unit the reader can
-process before needing the next. ATUs are determined by `framework.md §2.1`'s bidirectional test
-and `framework.md §2.2`'s explicit-marker license.
+process before needing the next. ATUs are determined by `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`'s bidirectional test
+and `[framework.md §2.2](<framework.md#§2.2 The explicit-marker license (secondary criterion)>)`'s explicit-marker license.
 
 The apparatus ALSO recognizes a **rhetorical/discourse lens**: how the author organizes argument,
 contrast, climax, parallelism, periodic structure, chiasmus, etc. Rhetorical structure is a
-**constraint** layer over ATU determination (§1.3a below) — it has default dispositions but it
+**constraint** layer over ATU determination ([§1.3a](<#§1.3a Rhetoric figures constrain — figures CONSTRAIN, atomic-thought DETERMINES>) below) — it has default dispositions but it
 NEVER independently determines ATU boundaries. The rhetorical observation is valid as such; it does
 not license an ATU split by itself.
 
 **These lenses sometimes overlap. They often don't.** A rhetorical period may be one ATU or
 several. A chiastic center may align with an ATU boundary or sit inside an ATU. A parallel triplet
 may render as three ATUs or as one. Naming the lens distinction explicitly — and choosing ATU as
-the primary criterion, with rhetoric as a constraint (§1.3a) not a determinant — is itself a
+the primary criterion, with rhetoric as a constraint ([§1.3a](<#§1.3a Rhetoric figures constrain — figures CONSTRAIN, atomic-thought DETERMINES>)) not a determinant — is itself a
 methodology contribution. See
 [`../memories/feedback_atu_and_rhetorical_lenses_distinct.md`](../memories/feedback_atu_and_rhetorical_lenses_distinct.md)
 for the full statement + future-paper framing.
@@ -38,25 +38,25 @@ for the full statement + future-paper framing.
 ### §0.2 What this document HOSTS / DOES NOT HOST
 
 **This document HOSTS:**
-- The candidate-ATU substrate (§1.1) on which all per-corpus rules operate
-- The closed-list of structural justifications J1–J5 that license break-treatment beyond the bidirectional test (J3 delegated to `framework.md §2.1`; J1/J2/J4/J5 here)
-- The closed-list of merge-overrides M1–M4 (M2 delegated to `framework.md §2.1`; M3 retired 2026-06-06; M1/M4 here)
-- The cross-cutting principles §1.3a (rhetoric figures constrain), §1.8 (application order), §1.9 (N=2 adjudication + N=3+ cliff)
+- The candidate-ATU substrate ([§1.1](<#§1.1 Generative principle — candidate-ATU substrate>)) on which all per-corpus rules operate
+- The closed-list of structural justifications J1–J5 that license break-treatment beyond the bidirectional test (J3 delegated to `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`; J1/J2/J4/J5 here)
+- The closed-list of merge-overrides M1–M4 (M2 delegated to `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`; M3 retired 2026-06-06; M1/M4 here)
+- The cross-cutting principles [§1.3a](<#§1.3a Rhetoric figures constrain — figures CONSTRAIN, atomic-thought DETERMINES>) (rhetoric figures constrain), [§1.8](<#§1.8 Application order — explicit step-by-step>) (application order), [§1.9](<#§1.9 N=2 Adjudication Principle + N=3+ cliff>) (N=2 adjudication + N=3+ cliff)
 
 **This document DOES NOT HOST** (live in their authoritative homes elsewhere):
-- The bidirectional test (forward closure + backward containment): `framework.md §2.1`
-- The explicit-marker license (closed-registry author-placed tokens): `framework.md §2.2`
-- Complement-integrity / M2 (clausal complement → matrix binds): `framework.md §2.1` paragraph 4
-- Speech-act announcement / J3 (quotative frame stands as own ATU): `framework.md §2.1` paragraph 4
-- Punctuation-not-a-signal: `framework.md §2.1` final paragraph
-- Versification-not-a-signal: `framework.md §3` v1.6 cross-verse continuity
+- The bidirectional test (forward closure + backward containment): `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`
+- The explicit-marker license (closed-registry author-placed tokens): `[framework.md §2.2](<framework.md#§2.2 The explicit-marker license (secondary criterion)>)`
+- Complement-integrity / M2 (clausal complement → matrix binds): `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` paragraph 4
+- Speech-act announcement / J3 (quotative frame stands as own ATU): `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` paragraph 4
+- Punctuation-not-a-signal: `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` final paragraph
+- Versification-not-a-signal: `[framework.md §3](<framework.md#§3 Architecture — mechanical-first>)` v1.6 cross-verse continuity
 - Authorial asymmetry (§1.13 old): per-corpus — `BoFM canon §1` Tier 0 + `GNT canon §3.7` R28
 - Parallel-List Uniformity (§1.12 old): per-corpus — `BoFM canon §1` Tier 0 (Moroni 10:8-17 canonical case)
-- Categories A/B/C: `framework.md §7.0`
+- Categories A/B/C: `[framework.md §7.0](<framework.md#§7.0 Categories A / B / C>)`
 
 **This document DOES NOT HOST** (retired 2026-06-06):
 - Camera-angle test (§1.3 old) — RETIRED. See `canon-index.md` Stan's rulings.
-- Bare-governor indivisibility / M3 (§1.5 M3 old) — RETIRED. See `canon-index.md` Stan's rulings.
+- Bare-governor indivisibility / M3 ([§1.5](<#§1.5 Merge-Override Conditions (M1, M4 — closed list; M2 lives at `framework.md §2.1`; M3 retired 2026-06-06)>) M3 old) — RETIRED. See `canon-index.md` Stan's rulings.
 
 ---
 
@@ -64,14 +64,14 @@ for the full statement + future-paper framing.
 
 **Every complete predication is a CANDIDATE ATU.** A complete predication is the prototypical unit
 of cognitive content the methodology operates on: subject + finite verb + obligatory complement
-(with pro-drop, ellipsis-restoration, and verbless-predicate cases handled per `framework.md §2.1`).
+(with pro-drop, ellipsis-restoration, and verbless-predicate cases handled per `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`).
 
-The live default for adjacent candidate predications is **KEEP-AS-IS** (`framework.md §2.2:116`).
+The live default for adjacent candidate predications is **KEEP-AS-IS** (`[framework.md §2.2](<framework.md#§2.2 The explicit-marker license (secondary criterion)>):116`).
 A break between adjacent candidate predications is licensed only by:
 
-- **(A)** the bidirectional test (`framework.md §2.1`) — both lines independently pass forward
+- **(A)** the bidirectional test (`[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`) — both lines independently pass forward
   grammatical closure AND backward referential self-containment;
-- **(B)** the explicit-marker license (`framework.md §2.2`) — the colon opens with a registered
+- **(B)** the explicit-marker license (`[framework.md §2.2](<framework.md#§2.2 The explicit-marker license (secondary criterion)>)`) — the colon opens with a registered
   author-placed boundary token from the per-corpus Marker Registry.
 
 The methodology's rule families operate on the candidate-predication substrate:
@@ -79,7 +79,7 @@ The methodology's rule families operate on the candidate-predication substrate:
 - **§2.1-license-identifier rules** (per-corpus R-rules / J-justifications) identify cases where
   adjacent candidate predications DO satisfy (A) and break is licensed. The candidate-predication
   framing names what these rules are operating on.
-- **Merge-direction rules** (M-series this companion, §1.9 N=2 collision-adjudication, the
+- **Merge-direction rules** (M-series this companion, [§1.9](<#§1.9 N=2 Adjudication Principle + N=3+ cliff>) N=2 collision-adjudication, the
   per-corpus tier hierarchies) identify cases where adjacent candidate predications BIND despite
   satisfying (A) — bonded-pair semantics, syntactic floor that defeats independent closure, etc.
 
@@ -94,8 +94,8 @@ substrate, not to import a default direction.
 **Principle.** Rhetorical figures (hendiadys, merism, parallelism, chiasm, anaphora, climax, etc.)
 have DEFAULT ATU dispositions that flow from their referential structure — but they NEVER
 independently DETERMINE ATU boundaries. Each figure CONSTRAINS the candidate space; the
-bidirectional test (`framework.md §2.1`) determines the answer. This is the same asymmetry as
-`framework.md §2.1`'s grammar-constrains framing: rhetoric is a second constraint layer over the
+bidirectional test (`[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`) determines the answer. This is the same asymmetry as
+`[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`'s grammar-constrains framing: rhetoric is a second constraint layer over the
 same determination engine.
 
 **Default dispositions (figure → predicted disposition, not determinant):**
@@ -126,14 +126,14 @@ Non-predicated units that function as atomic thoughts via formal-structural reco
 reader reconstructs "who did what" because formal markers in the text make the missing predicate
 recoverable.
 
-The list is extensible only by worked corpus example + adversarial validation under `framework.md
+The list is extensible only by worked corpus example + adversarial validation under `[framework.md](framework.md)
 §7.3`. A proposed sixth justification MUST demonstrate (a) that it is a genuinely distinct instance
 of the same generating principle, and (b) that it survives adversarial challenge.
 
 **Closed-list integrity note.** The historical "five structural justifications" preserves J1, J2,
-J4, J5 here; J3 (speech-act announcement) is now at `framework.md §2.1` paragraph 4 (quotative-frame
+J4, J5 here; J3 (speech-act announcement) is now at `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` paragraph 4 (quotative-frame
 cataphoric announcement). Per-corpus citers may refer to "J3" — that citation resolves to
-`framework.md §2.1`.
+`[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`.
 
 ### §1.4 J1 — Formally-marked parallel series
 
@@ -158,7 +158,7 @@ compound list is justified only when one of these signals is present:
 Without one of these signals, bare coordinate items merge.
 
 **M1 bonded-pair precedence inside compound lists.** When a compound-list item is itself an M1
-bonded pair (§1.5 M1), the bonded pair is the item — the pair treats as one atomic unit within the
+bonded pair ([§1.5](<#§1.5 Merge-Override Conditions (M1, M4 — closed list; M2 lives at `framework.md §2.1`; M3 retired 2026-06-06)>) M1), the bonded pair is the item — the pair treats as one atomic unit within the
 larger series. None of the compound-list break signals reaches inside a bonded pair to split it.
 
 ### §1.4 J2 — Portrait accumulation
@@ -196,14 +196,14 @@ preposition / fixed MWPP (e.g., `even from`, `notwithstanding`, `according to`) 
 
 - **Uniform-type adjuncts** (all PPs with the same preposition, or all infinitives, or all
   participials, with parallel surface form) → these occupy the same argument slot N times. J1 wins
-  per the N≥3 cliff (§1.9): each member is its own beat in a formally-marked series.
+  per the N≥3 cliff ([§1.9](<#§1.9 N=2 Adjudication Principle + N=3+ cliff>)): each member is its own beat in a formally-marked series.
 - **Mixed-type adjuncts** (different argument-frame slots: when / how / despite-what /
   for-what-purpose / for-whom) → these jointly qualify one act rather than enumerating peers. J5
   does NOT license each on its own line; the matrix + adjuncts may form a single cognitive
   proposition that should cluster onto 1–2 lines.
 
 **Application.** Mixed-type matrix-cumulation does NOT mechanically force a merge — apply the
-bidirectional test (`framework.md §2.1`) to confirm whether the cluster reads as one claim with its
+bidirectional test (`[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`) to confirm whether the cluster reads as one claim with its
 qualifications or as N independent beats. The diagnostic surfaces candidates; semantic-content
 judgment decides.
 
@@ -212,7 +212,7 @@ judgment decides.
 ## §1.5 Merge-Override Conditions (M1, M4 — closed list; M2 lives at `framework.md §2.1`; M3 retired 2026-06-06)
 
 **Symmetric counterpart to structural justifications.** Where J1–J5 describe cases where the
-default (KEEP-AS-IS per `framework.md §2.2:116`) is overridden to produce a split, merge-overrides
+default (KEEP-AS-IS per `[framework.md §2.2](<framework.md#§2.2 The explicit-marker license (secondary criterion)>):116`) is overridden to produce a split, merge-overrides
 describe cases where an apparent split-trigger is itself overridden — returning the members to one
 line. The default is still KEEP-AS-IS; these overrides catch cases where naive application of
 split-triggers would fragment a unit that should stay whole.
@@ -224,17 +224,17 @@ atomic thought, or the cognitive prong itself fails.
 
 **Strict-application caveat — rejection ≠ split license.** When a merge-override does NOT apply to
 a given case, that does NOT automatically mean the case should split. It just means THAT override
-doesn't fire. The default behavior is still KEEP-AS-IS and is determined by `framework.md §2.1`'s
+doesn't fire. The default behavior is still KEEP-AS-IS and is determined by `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`'s
 bidirectional test and other applicable rules.
 
 **Closed-list integrity note.** The historical "four merge-overrides" preserves M1 and M4 here. M2
-(verb-object clause-nucleus bond) is at `framework.md §2.1` paragraph 4 — per-corpus rules
-implementing complement integrity (BoFM R17, GNT R8, Tanakh H7) cite `framework.md §2.1` as their
+(verb-object clause-nucleus bond) is at `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` paragraph 4 — per-corpus rules
+implementing complement integrity (BoFM R17, GNT R8, Tanakh H7) cite `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` as their
 universal anchor. M3 (bare-governor indivisibility) was retired 2026-06-06; the general
-bare-governor case is subsumed by `framework.md §2.1`'s bidirectional test. Per-corpus citers
+bare-governor case is subsumed by `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`'s bidirectional test. Per-corpus citers
 referring to "M3" must update — see `canon-index.md`.
 
-The list is extensible only by worked corpus example + adversarial validation under `framework.md
+The list is extensible only by worked corpus example + adversarial validation under `[framework.md](framework.md)
 §7.3`.
 
 ### §1.5 M1 — Gorgianic bonded pair
@@ -248,7 +248,7 @@ shared rhetorical weight without independent predicative force?
 
 **N=2-only caveat.** M1 fires ONLY on N=2 coordinate pairs. It does NOT fire on:
 
-- N=3+ chains (J1 wins per the N=3+ cliff, §1.9)
+- N=3+ chains (J1 wins per the N=3+ cliff, [§1.9](<#§1.9 N=2 Adjudication Principle + N=3+ cliff>))
 - Mixed-class coordinates (one finite + one participial, or one verb + one noun)
 - Re-naming appositives (covered by language-specific apposition rules, not by M1)
 
@@ -260,7 +260,7 @@ hendiadys (one act named twice for emphasis). It does NOT cover:
 - **Distinct speech acts** — two different communicative actions even when thematically related.
 - **Rhetorical/thematic clustering** that names sequential or distinct actions.
 
-Sequential distinct actions split per the candidate-ATU substrate (§1.1) even when they form a
+Sequential distinct actions split per the candidate-ATU substrate ([§1.1](<#§1.1 Generative principle — candidate-ATU substrate>)) even when they form a
 recognizable rhetorical figure.
 
 **Tie-breaker when M1 and J1 both fire on the same N=2 pair:**
@@ -270,7 +270,7 @@ recognizable rhetorical figure.
 - Bonded-pair nouns/adjectives with unified rhetorical weight → M1 wins (MERGE).
 
 This tie-breaker is the canonical specific case of the cross-cutting **N=2 Adjudication Principle**
-(§1.9).
+([§1.9](<#§1.9 N=2 Adjudication Principle + N=3+ cliff>)).
 
 **Asymmetric-modifier sub-clause.** When an M1-candidate pair has one member carrying a PP modifier
 or relative clause the other lacks, M1 still wins → MERGE if the modifier attaches semantically to
@@ -308,8 +308,8 @@ cognitive prong does NOT fail. Specifically:
 - **J5 substantive adjuncts** (year-formulas, proper-noun entities, institutional bodies) earn own
   lines. M4 does NOT fire on J5 cases.
 
-**Unified principle.** Merge-overrides (M1, M4 here; M2 at `framework.md §2.1`) block split-triggers
-ONLY when splitting would produce true atomic-thought failure under `framework.md §2.1`. Fragments
+**Unified principle.** Merge-overrides (M1, M4 here; M2 at `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`) block split-triggers
+ONLY when splitting would produce true atomic-thought failure under `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`. Fragments
 that pass via a structural justification's cognitive prong are not merge-override fragments; the
 structural justification wins.
 
@@ -321,36 +321,36 @@ Completion) in `readers-gnt/scholarship/M4-GNT-1.md` + GNT canon §3.18.
 
 ## §1.8 Application order — explicit step-by-step
 
-The decision procedure at every candidate boundary is fully determined by `framework.md §2` (the
+The decision procedure at every candidate boundary is fully determined by `[framework.md §2](<framework.md#§2 The criterion — what licenses a standalone ATU>)` (the
 bidirectional test + explicit-marker license). This section makes the rule-firing order
 deterministic so two appliers following the canon converge on the same output regardless of which
 rule they check first within a step.
 
-**Step 0 — Input filter.** Punctuation is never a break signal (`framework.md §2.1` final
-paragraph). Versification is never a break signal (`framework.md §3` v1.6). Per-corpus authorial
+**Step 0 — Input filter.** Punctuation is never a break signal (`[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` final
+paragraph). Versification is never a break signal (`[framework.md §3](<framework.md#§3 Architecture — mechanical-first>)` v1.6). Per-corpus authorial
 asymmetry rules (BoFM canon §1 Tier 0; GNT canon §3.7 R28) govern batch-sweep discipline — they
 filter what counts as a candidate signal *before* generative evaluation begins. None operate within
 the per-location procedure; they operate upstream of it.
 
 **Step 1 — Syntax veto.** Layer 1 mid-phrase prohibitions (per-corpus break-legality tables) +
-Layer 3 complement integrity (`framework.md §2.1` paragraph 4 = M2) + Layer 3 formula integrity
+Layer 3 complement integrity (`[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` paragraph 4 = M2) + Layer 3 formula integrity
 (per-corpus closed-list formulae). At most one fires per location. When both a Layer 1 and a Layer
 3 rule could apply, Layer 1 wins. Intra-Layer-3 precedence conflicts are adjudicated by per-corpus
 canon §3.5 precedence hierarchies.
 
-**Step 2 — Split-trigger (generative).** Bidirectional-test license (`framework.md §2.1` =
+**Step 2 — Split-trigger (generative).** Bidirectional-test license (`[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` =
 proposition boundary + each line passes both directions), plus structural justifications J1, J2,
-J4, J5 (this companion); J3 → `framework.md §2.1` paragraph 4 (quotative frame). **Multiple
+J4, J5 (this companion); J3 → `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` paragraph 4 (quotative frame). **Multiple
 justifications firing are co-compatible — they all agree on SPLIT; no adjudication needed.** N=2
-Adjudication Principle governs coordinate-pair cases (§1.9). The N=3+ cliff governs N≥3 (J1 wins
+Adjudication Principle governs coordinate-pair cases ([§1.9](<#§1.9 N=2 Adjudication Principle + N=3+ cliff>)). The N=3+ cliff governs N≥3 (J1 wins
 over merge-rules at N≥3 for coordinate predications).
 
-**Step 3 — Merge-override (subtractive).** M1 + M4 (this companion); M2 → `framework.md §2.1`
+**Step 3 — Merge-override (subtractive).** M1 + M4 (this companion); M2 → `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`
 paragraph 4; per-corpus specialized merge rules. **Multiple merge-overrides firing are co-compatible
 — they all agree on MERGE; no adjudication needed.** M4's precedence refinements govern M4 vs. J1
 N≥3 and M4 vs. J5. Step 3 wins over Step 2 when both fire on the same location.
 
-**Step 4 — Final arbiter.** When Steps 1–3 leave ambiguity, the bidirectional test (`framework.md
+**Step 4 — Final arbiter.** When Steps 1–3 leave ambiguity, the bidirectional test (`[framework.md](framework.md)
 §2.1`) is the final arbiter. The diagnostic question: does each candidate line independently pass
 forward grammatical closure AND backward referential self-containment? If yes → SPLIT licensed. If
 no → KEEP-AS-IS holds.
@@ -370,7 +370,7 @@ same N=2 coordinate construction:
   single unified image, action, or proposition under one cognitive chunk.
 - **Distinct non-synonymous → split wins.** Each member is its own atomic beat per J1.
 
-**Diagnostic.** Apply the M1 verb-synonymy test (§1.5 M1): *can the two members be paraphrased as a
+**Diagnostic.** Apply the M1 verb-synonymy test ([§1.5](<#§1.5 Merge-Override Conditions (M1, M4 — closed list; M2 lives at `framework.md §2.1`; M3 retired 2026-06-06)>) M1): *can the two members be paraphrased as a
 single unified image or proposition without loss of content?* If yes → merge. If the paraphrase
 requires dropping semantic content unique to one member → split.
 

@@ -165,7 +165,7 @@ directly serve the ATU lens has shared vocabulary.
   per-corpus fabric-parity tiers). The substrate is lens-neutral.
 - **Lens** — a deterministic function `lens(substrate) → segments` whose
   output is a corpus-wide rendered representation. The **ATU lens** is
-  the v0 → v1 → v1.5 (→ v2 → v3) pipeline (`framework.md` §3); the
+  the v0 → v1 → v1.5 (→ v2 → v3) pipeline ([`framework.md` §3](<framework.md#§3 Architecture — mechanical-first>)); the
   bidirectional test is **the ATU lens's** sole arbiter. That sole-arbiter
   contract belongs to the ATU lens, not to every lens.
 
@@ -186,7 +186,7 @@ seven speculative entries.
 
 | Lens | Deployment evidence |
 |---|---|
-| **ATU** | Five reader sites named in the orientation repo map at `~/.claude/CLAUDE.md:101-105` (tanakh-reader.com, bomreader.com, gnt-reader.com, lxx-reader.com, vulgate-reader.com). The single-source-of-truth file `docs/deployment-status.md:11-15` records only the first three rows; that file predates the LXX and Vulgate launches and is **stale**. Per standing rule 8 (external-state claims require fresh verification), the actual live-URL state at any given moment must be re-fetched, not inherited from this row. Open follow-up: update `deployment-status.md` to add the missing rows and remove the staleness footnote here. |
+| **ATU** | Five reader sites named in the orientation repo map at `~/.claude/CLAUDE.md:101-105` (tanakh-reader.com, bomreader.com, gnt-reader.com, lxx-reader.com, vulgate-reader.com). The single-source-of-truth file `docs/deployment-status.md:11-15` records only the first three rows; that file predates the LXX and Vulgate launches and is **stale**. Per standing rule 8 (external-state claims require fresh verification), the actual live-URL state at any given moment must be re-fetched, not inherited from this row. Open follow-up: update [`deployment-status.md`](deployment-status.md) to add the missing rows and remove the staleness footnote here. |
 
 ### 10.4 Substrate-confirmed candidate lenses (none deployed)
 
@@ -214,7 +214,7 @@ The lens framing does **not**:
 - **Admit genre as an ATU criterion.** A candidate lens (e.g., Korpel
   colometric) may be genre-aware in its own scope; that does not
   retroactively make genre an ATU criterion. The standing rule
-  (`framework.md` and per-repo memory) holds.
+  ([`framework.md`](framework.md) and per-repo memory) holds.
 - **Admit punctuation force in any corpus.** Te'amim are not punctuation
   — they are cantillation marks exposed as discrete BHSA features (see
   the half-verse example). The "punctuation has zero force across all

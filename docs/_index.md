@@ -17,7 +17,7 @@ Companion: [`../memories/_index.md`](../memories/_index.md) indexes cross-corpus
 ## Methodology specification
 
 - [`framework.md`](framework.md) — **The canonical methodology specification.** Bidirectional test, mechanical-first architecture, v0→v3 pipeline, validation status across four genres. Authoritative cross-corpus body. Read first.
-- [`cross-corpus-principles.md`](cross-corpus-principles.md) — **Cross-corpus universal principles companion.** Candidate-ATU substrate (§1.1), structural justifications J1/J2/J4/J5, merge-overrides M1/M4, application order (§1.8), N=2 Adjudication + N=3+ cliff (§1.9), rhetoric-figures-constrain (§1.3a). NOT break-licensors (those live at `framework.md §2.1`/§2.2); this is the methodology layer above per-corpus rule catalogs.
+- [`cross-corpus-principles.md`](cross-corpus-principles.md) — **Cross-corpus universal principles companion.** Candidate-ATU substrate (§1.1), structural justifications J1/J2/J4/J5, merge-overrides M1/M4, application order (§1.8), N=2 Adjudication + N=3+ cliff (§1.9), rhetoric-figures-constrain (§1.3a). NOT break-licensors (those live at `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`/§2.2); this is the methodology layer above per-corpus rule catalogs.
 - [`apparatus.md`](apparatus.md) — **Scope statement.** What the apparatus is and what it produces. The KJV-anchored English layer (a separate concern from ATU segmentation). Cross-sibling end-state UX description.
 - [`toolset-architecture.md`](toolset-architecture.md) — **Pipeline implementation per stage.** Per-corpus parse layers, v1.5 binding-rule application, optional v2 LLM adjudication, v3 editorial review. Reference to the pilot scripts at `readers-tanakh/research/atu-pilot-mechanical-first/`.
 - [`architecture.md`](architecture.md) — **Four-plane technical architecture** (data / specification / tooling / delivery). Plane ownership: shared vs per-repo. Interface contracts.
@@ -50,9 +50,9 @@ Companion: [`../memories/_index.md`](../memories/_index.md) indexes cross-corpus
 
 The following were tied to the legacy Stage 1 / Stage 2 / Stage 3 LLM-primary architecture with a 26-entry constraint catalog. Replaced by the mechanical-first pipeline + 14-rule binding catalog:
 
-- `change-protocol.md` — replaced by `framework.md` §7 (shorter, scoped to binding-rule changes)
+- `change-protocol.md` — replaced by [`framework.md` §7](<framework.md#§7 Change discipline>) (shorter, scoped to binding-rule changes)
 - `canon-validator-alignment-protocol.md` — no longer needed; binding rules ARE the canon
 - `editorial-review-protocol.md` — replaced by the pilot's v3 comparison framework
-- `rule-template.md` — replaced by `binding-rules-hebrew.md` format
+- `rule-template.md` — replaced by [`binding-rules-hebrew.md`](binding-rules-hebrew.md) format
 - `rule-equivalence-map.md` — TODO when Greek/EME/Latin catalogs land
 - `prompts/` — Stage 1 LLM rubrics; optional v2 may resurrect a narrow-task variant later
