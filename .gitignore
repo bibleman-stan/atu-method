@@ -56,3 +56,12 @@ desktop.ini
 # Local scratch
 scratch/
 tmp/
+
+# Obsidian vault — volatile state only; stable config (app.json, appearance.json,
+# core-plugins.json, hotkeys.json, community plugin configs) stays tracked
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+.obsidian/cache/
+.obsidian/plugins/*/data.json
+.trash/
