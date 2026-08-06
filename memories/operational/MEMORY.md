@@ -1,3 +1,5 @@
+> **RECOVERED INDEX** (2026-08-06, state as of 2026-06-15 @v44) — namespace-deletion recovery; entries may be stale; provenance in `.archive/recovery-2026-08-06/RECOVERY-MANIFEST.md`.
+
 > **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (`87af68a0-0291-4910-962f-d0913b5722e6/5eee468b0b9a82fd@v44`); state as of 2026-06-15 (snapshot mtime); possibly stale — re-verify before relying.
 
 # Memory index — user-home unified orchestrator

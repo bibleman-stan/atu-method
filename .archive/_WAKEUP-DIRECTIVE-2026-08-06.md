@@ -58,3 +58,12 @@ Stan wants you to understand — and then document — your own improvement loop
 - When A–D are executed or explicitly queued with Stan, archive this directive (e.g., into `.archive/`) with a one-line disposition note — don't leave it at root.
 
 *Assembled 2026-08-06 by the meta-wiki session from: your CLAUDE.md + repo state, reader-repo retraction logs, Dropbox backup tarballs, and Claude Code file-history. Every path named above was live-verified at assembly time; re-verify at execution time.*
+
+---
+
+## DISPOSITION (2026-08-06, atu-method session)
+
+- **A — EXECUTED.** All directive claims verified true. Full recovery: 52 full + 5 marked stubs (all 57 index targets accounted for), landed at `memories/operational/`; broken-pointer script at `scripts/check_broken_pointers.py`; CLAUDE.md dead paths repointed; provenance + method archive at `.archive/recovery-2026-08-06/`. Unrecoverable: project_session_durability, project_wallace_summaries, feedback_canon_citation_requires_verbatim_read, feedback_preserve_formatting, feedback_read_source_carefully (stubs carry the surviving index one-liners).
+- **B — PROPOSED** to Stan (audit-tier graft: calendar-triggered mechanical lint + hostile audit); awaiting ratification.
+- **C — PROPOSED** to Stan (file-back to `docs/synthesis/`); awaiting ratification.
+- **D — QUEUED** (read meta-wiki loop docs, author `docs/improvement-loops.md`) after B/C land.

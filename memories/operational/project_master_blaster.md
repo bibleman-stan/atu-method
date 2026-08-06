@@ -7,6 +7,9 @@ metadata:
   originSessionId: 87af68a0-0291-4910-962f-d0913b5722e6
 ---
 
+> **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (newest 1dc9e8f397d2c122@vN, state ~2026-06); possibly stale — re-verify before relying.
+
+
 # project: master-blaster — vault unification migration
 
 **Status (2026-05-19)**: STRUCTURAL MIGRATION COMPLETE. Phases 0/2/3/4/5/6/8 done; pushed to private `bibleman-orchestration` (HEAD `ec44ba9`). Deferred: Phase 1 (→ BHSA-canon-migration arc) + Phase 7 (binding-engine extraction). The verbatim-recall mechanism was validated live by a "continue master-blaster" wake on this date.

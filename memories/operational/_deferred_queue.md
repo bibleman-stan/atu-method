@@ -7,6 +7,9 @@ metadata:
   originSessionId: 87af68a0-0291-4910-962f-d0913b5722e6
 ---
 
+> **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (newest 01f7ecc9f948752f@vN, state ~2026-06); possibly stale — re-verify before relying.
+
+
 **The tracked queue of deferred/parked work.** Update as items start (move to in-flight) or land (delete). In-flight work is NOT here. Live deploy state = `atu-method/docs/deployment-status.md`.
 
 ## Named arcs (big, explicitly deferred)

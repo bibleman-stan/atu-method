@@ -7,6 +7,9 @@ metadata:
   originSessionId: 87af68a0-0291-4910-962f-d0913b5722e6
 ---
 
+> **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (newest b8adeede15761c57@vN, state ~2026-06); possibly stale — re-verify before relying.
+
+
 The first two SYSTEMATIC ATU class-fixes (not per-verse swatting) shipped to bomreader.com on
 2026-05-27, both from the discourse-voice / complement-vs-quote axis:
 

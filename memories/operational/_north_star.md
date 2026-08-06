@@ -7,6 +7,9 @@ metadata:
   originSessionId: 87af68a0-0291-4910-962f-d0913b5722e6
 ---
 
+> **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (455e2f1f-…/918117a5ceb3cffb@v4, state 2026-06-01); possibly stale — re-verify before relying.
+
+
 # North-star — SETTLED. Do not re-derive after compaction. (Stan, 2026-05-28)
 
 The high doctrine survives compaction; this tactical/decision layer historically did NOT — Claude

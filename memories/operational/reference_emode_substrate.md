@@ -7,6 +7,9 @@ metadata:
   originSessionId: 87af68a0-0291-4910-962f-d0913b5722e6
 ---
 
+> **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (newest bfef1e2a34597e82@vN, state ~2026-06); possibly stale — re-verify before relying.
+
+
 The off-the-shelf path to a real **Book-of-Mormon dependency treebank** (the substrate-build that [[project_bofm_substrate_quality]] named as the true fix; the "build-our-own-v1" [[project_corpus_v1_substitutes]] predicted). Surveyed 2026-05-27. Confirms the BoFM does NOT need the Stanza-on-modern-English grind — EModE-specific gold + tooling already exist.
 
 ## The four ingredients (all off-the-shelf)
