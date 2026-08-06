@@ -57,11 +57,15 @@ desktop.ini
 scratch/
 tmp/
 
-# Obsidian vault — volatile state only; stable config (app.json, appearance.json,
-# core-plugins.json, hotkeys.json, community plugin configs) stays tracked
+# Obsidian vault. Tracked: the config that makes the vault reproducible —
+# app.json, appearance.json, core-plugins.json, community-plugins.json (which
+# plugins to install), hotkeys.json. Ignored: view state that churns every
+# session, and third-party code re-installable from community-plugins.json.
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .obsidian/workspaces.json
+.obsidian/graph.json
 .obsidian/cache/
-.obsidian/plugins/*/data.json
+.obsidian/plugins/
+.obsidian/themes/
 .trash/
