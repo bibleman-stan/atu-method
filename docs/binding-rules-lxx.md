@@ -21,7 +21,7 @@ of clause-atom groups (each group = a contiguous run of Greek tokens).
 Each rule:
 - Fires based on Greek surface features (lemma after diacritic-strip, POS, prefix tokens)
   and/or projection-trace metadata (the Hebrew clause-atom each LXX line projected from)
-- Is justified by the bidirectional test (`framework.md` §2)
+- Is justified by the bidirectional test ([`framework.md` §2](<framework.md#§2 The criterion — what licenses a standalone ATU>))
 - Operates only within a single verse (global safety guard in `should_bind()`)
 - Is evaluated in order; the first matching rule wins
 
@@ -90,7 +90,7 @@ syntax treebank in existence as of 2026-05-30). 1547 scored verses.
 | Trigger (v2, morph-gated) | curr line's first token has CenterBLC TF morph code beginning with `RR` (=`pronoun, relative`). This cleanly admits ὅς / ὅστις / ὅσπερ in any case-number-gender and cleanly excludes (a) the article ὁ (`RA.*`), (b) the conjunction ὡς (lex='os', morph `C`), and (c) the adverb οὗ "where" (lex='os', morph `D`) — all of which lex-only or surface-only triggers wrongly admit. |
 | Trigger (v1 backstop, no morph available) | curr line's first token (after diacritic-strip + lowercase) is in `{ος, ον, ο, οι, η, αι, ων, ω, ους, οις, ας, αις, ης, ηι, ωι}` (forms of relative pronoun ὅς) OR in `{οστις, οντινα, ωτινι, ηντινα, αιτινες, οιτινες, ητις}` (ὅστις). NOTE: this v1 form has documented collisions and is retained only as fallback. |
 | Action | BIND backward |
-| Justification | Direct port of Hebrew B3 (אֲשֶׁר → bind). Restrictive relative clauses bind to their head noun regardless of internal completeness — removing them leaves the head not uniquely identified (`framework.md` §2.1, "Restrictive relative clause binding"). Universal across Hebrew אֲשֶׁר / Greek ὅς-ὅστις / EME English which-who-that. |
+| Justification | Direct port of Hebrew B3 (אֲשֶׁר → bind). Restrictive relative clauses bind to their head noun regardless of internal completeness — removing them leaves the head not uniquely identified ([`framework.md` §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>), "Restrictive relative clause binding"). Universal across Hebrew אֲשֶׁר / Greek ὅς-ὅστις / EME English which-who-that. |
 | Provenance | Hebrew B3 (restrictive ʾăšer binds backward) |
 | Confidence | MEDIUM — heads the same known limitation as B3 (length-dependent over-binding on propositionally weighty relatives). LXX adds a second risk: Greek often uses ὅς for non-restrictive relatives too, which are NOT bindable. The morph gate (RR) eliminates the homograph noise but cannot distinguish restrictive vs. non-restrictive use; that residual is deferred to v2 LLM. |
 | Risk lens | **Over-merge risk: medium** for long ὅς clauses. The Hebrew known-gap applies; the Greek non-restrictive ὅς extends it. Morph gating REMOVED the v1 article-ὁ / conjunction-ὡς / adverb-οὗ false-positive class entirely. |
@@ -128,7 +128,7 @@ syntax treebank in existence as of 2026-05-30). 1547 scored verses.
 |---|---|
 | Trigger | prev line ends with a participial speech verb (`λεγων`, `λεγουσα`, `λεγοντες`, `λεγουσαι`, `λεγουσιν`) or a single-token finite speech verb (`ειπεν`, `ειπαν`, `ειπον`, `ελαλησεν`, `εκαλεσεν`) AND prev line is ≤ 3 Greek tokens |
 | Action | BIND forward only if the *Hebrew source atom* of the speech-frame line is the same as the *Hebrew source atom* of the curr line — this is effectively a refinement of LXX-B0 on the speech-frame edge. |
-| Justification | Cross-references `framework.md` §2.1: "Speech-margin (`וַיֹּאמֶר`) is its own ATU IF AND ONLY IF the following speech can stand alone by the bidirectional test." Greek speech frames behave identically. A *bare single-token* `εἶπεν` or trailing `λέγων` is closer to a single-token wayyiqtol (Hebrew B7 pattern) and tends to bind into the speech act. When Hebrew said it's one atom, we follow. |
+| Justification | Cross-references [`framework.md` §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>): "Speech-margin (`וַיֹּאמֶר`) is its own ATU IF AND ONLY IF the following speech can stand alone by the bidirectional test." Greek speech frames behave identically. A *bare single-token* `εἶπεν` or trailing `λέγων` is closer to a single-token wayyiqtol (Hebrew B7 pattern) and tends to bind into the speech act. When Hebrew said it's one atom, we follow. |
 | Provenance | Hybrid: Hebrew B7 (bare wayyiqtol pair) for the single-token-prev signal + LXX-B0 atom-trace for the safety check. NOT a port of Hebrew B4 (which was retired). |
 | Confidence | MEDIUM — Stan's red line is over-merge of speech-frame + content (the framework §2.1 carve-out). Strictly gated on LXX-B0 trace. |
 | Risk lens | **Over-merge risk: HIGH** if applied without the LXX-B0 atom-trace gate. With the gate, risk drops to the LXX-B0 risk profile. |
@@ -165,8 +165,8 @@ syntax treebank in existence as of 2026-05-30). 1547 scored verses.
 |---|---|
 | Trigger | curr line begins with `δε`, `γαρ`, `μεν`, `ουν` |
 | Action | **NO-OP — never bind on this trigger alone.** |
-| Justification | Per `framework.md` §2.2 Scope: clause-level connectives (Greek δέ/γάρ/μέν/οὖν; English "for") do NOT need explicit-marker (B). Each heads its own finite predication and already passes the bidirectional test. The KEEP-AS-IS default applies. This rule is documented to **prevent** a future implementer from adding a misguided "δέ/γάρ binds backward" rule. |
-| Provenance | `framework.md` §2.2 (negative rule — explicit prohibition) |
+| Justification | Per [`framework.md` §2.2](<framework.md#§2.2 The explicit-marker license (secondary criterion)>) Scope: clause-level connectives (Greek δέ/γάρ/μέν/οὖν; English "for") do NOT need explicit-marker (B). Each heads its own finite predication and already passes the bidirectional test. The KEEP-AS-IS default applies. This rule is documented to **prevent** a future implementer from adding a misguided "δέ/γάρ binds backward" rule. |
+| Provenance | [`framework.md` §2.2](<framework.md#§2.2 The explicit-marker license (secondary criterion)>) (negative rule — explicit prohibition) |
 | Confidence | HIGH (this is doctrine) |
 | Test cases | N/A — this rule never fires by design. |
 
@@ -403,7 +403,7 @@ near-flat (−0.0012, vs v1 −0.008 and vs the absolute target ≥ 0).
 Per the Hebrew-catalog discipline:
 
 1. Identify the Greek feature(s) that drive the rule (post-pointing/diacritic-strip surface, lemma, POS, or projection-trace).
-2. Have a one-paragraph justification tracing to the bidirectional test (§2 of framework.md).
+2. Have a one-paragraph justification tracing to the bidirectional test (§2 of [framework.md](framework.md)).
 3. State the Hebrew-rule provenance (or "Greek-original" if not a port).
 4. State the over-merge risk lens explicitly.
 5. Have at least one canonical positive example from Gen or Ruth (the validated LXX gold).

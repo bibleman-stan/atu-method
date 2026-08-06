@@ -99,7 +99,7 @@ The v1.5 binding-rule engine in the tooling plane consumes the binding-rule cata
 - **Closed lists** — Named lemma / category sets cross-referenced from rule entries. The engine loads these at start.
 - **Evaluation order + same-verse guard** — Per-repo catalog section defining rule precedence and the within-verse binding boundary.
 
-Drift between a binding rule as documented in the canon and its `should_bind()` implementation is a **failure** — detected by the per-repo validator baseline-check (the binding rules ARE the canon; cf. `framework.md` §7).
+Drift between a binding rule as documented in the canon and its `should_bind()` implementation is a **failure** — detected by the per-repo validator baseline-check (the binding rules ARE the canon; cf. [`framework.md` §7](<framework.md#§7 Change discipline>)).
 
 ### Data plane ↔ Tooling plane
 
@@ -134,11 +134,11 @@ The Tooling plane subdivides into the mechanical-first pipeline stages, each fit
 
 These stages differ in cost profile, auditability, discipline requirements, and failure modes — distinctions that matter for system design and that the four-plane model alone does not surface.
 
-> **Note (2026-05-18 reconciliation):** a short-lived 2026-05-17 design made Stage 1 an *LLM-primary* identifier (LLM proposes the whole rendering; a constraint catalog audits it). That was retired the next day in favor of the mechanical-first pipeline above (see `_index.md` and `framework.md` §3). The LLM is now an *optional, narrow-task adjudicator on residuals*, not the primary identifier.
+> **Note (2026-05-18 reconciliation):** a short-lived 2026-05-17 design made Stage 1 an *LLM-primary* identifier (LLM proposes the whole rendering; a constraint catalog audits it). That was retired the next day in favor of the mechanical-first pipeline above (see [`_index.md`](_index.md) and [`framework.md` §3](<framework.md#§3 Architecture — mechanical-first>)). The LLM is now an *optional, narrow-task adjudicator on residuals*, not the primary identifier.
 
 For the substantive description of the stages, the bidirectional test, and the binding-rule catalog, see [`framework.md`](framework.md) §3 and [`toolset-architecture.md`](toolset-architecture.md).
 
-The two documents are complementary: `architecture.md` (this file) is normative for where code and data live; `toolset-architecture.md` is normative for which task type each tool is fit for.
+The two documents are complementary: [`architecture.md`](architecture.md) (this file) is normative for where code and data live; [`toolset-architecture.md`](toolset-architecture.md) is normative for which task type each tool is fit for.
 
 ---
 

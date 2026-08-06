@@ -4,7 +4,7 @@ This document specifies the format and threshold protocol for retraction-precede
 
 ## Where the log lives
 
-- **Protocol specification:** this file at `atu-method/docs/retraction-log-protocol.md`
+- **Protocol specification:** this file at `atu-method/docs/[retraction-log-protocol.md](retraction-log-protocol.md)`
 - **Per-repo logs:** `<reader-repo>/retraction-log.md` at repo root, tracked in git
 
 Rationale for repo-root + tracked: discipline-propagation across siblings is manual. A tracked log file means new clones inherit the log; sibling-repo Claudes can grep across siblings; the codification trigger is visible to anyone reviewing the repo.

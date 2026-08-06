@@ -8,11 +8,11 @@ This document specifies the relationship between the ATU apparatus and adjacent 
 
 **LDHB and LDGNT are consulted as calibration references; the apparatus does not depend on them at runtime.**
 
-- The pipeline reads BHSA / Macula / CoNLL-U parses and applies the binding rules of `binding-rules-hebrew.md`. It does NOT read LDHB tags.
+- The pipeline reads BHSA / Macula / CoNLL-U parses and applies the binding rules of [`binding-rules-hebrew.md`](binding-rules-hebrew.md). It does NOT read LDHB tags.
 - LDHB is used POST-HOC to verify that the apparatus's output is in the same discourse-linguistic neighborhood as published scholarship.
 - Where the apparatus's output diverges from LDHB, the divergence is either:
   - **Methodological** — the apparatus chooses a different granularity than LDHB intentionally (e.g., absorbing speech-margin + vocative into one ATU where LDHB tags two SENTENCEs)
-  - **Architectural** — a known gap (`framework.md` §6) that future v2 LLM adjudication or editorial review handles
+  - **Architectural** — a known gap ([`framework.md` §6](<framework.md#§6 Known gaps>)) that future v2 LLM adjudication or editorial review handles
   - **Calibration** — LDHB surfaces a case the apparatus had missed, and the apparatus is refined (e.g., B8 hineh-presentative + ZQt0 attribute was added after LDHB tagging revealed the pattern)
 
 ## Why this position

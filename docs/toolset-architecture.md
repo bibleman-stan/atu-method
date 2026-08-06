@@ -1,6 +1,6 @@
 # Toolset Architecture — Mechanical-First Pipeline
 
-This document specifies the pipeline implementation. The framework spec (`framework.md` §3) defines the v0→v3 stages; this document specifies WHAT each stage runs.
+This document specifies the pipeline implementation. The framework spec ([`framework.md` §3](<framework.md#§3 Architecture — mechanical-first>)) defines the v0→v3 stages; this document specifies WHAT each stage runs.
 
 The pipeline is **mechanical-first**: parse-derived clause units are merged into ATU candidate groups by feature-driven binding rules. LLM adjudication is OPTIONAL and narrow-task. Editorial review handles residuals.
 

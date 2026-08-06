@@ -19,12 +19,12 @@ The apparatus reveals ATU structure already present in the text. It does NOT:
 
 ## §2 The criterion — what licenses a standalone ATU
 
-The unit is the **atomic _thought_ unit**, not the atomic predication. "Thought" is operationalized primarily by a grammatical test (§2.1) — but grammatical closure is a *proxy* for thought, and it under-captures thought at one principled boundary: an explicit authorial marker of a thought-move. So a line is a legitimate standalone ATU if it satisfies **EITHER**:
+The unit is the **atomic _thought_ unit**, not the atomic predication. "Thought" is operationalized primarily by a grammatical test ([§2.1](<#§2.1 The bidirectional test (primary criterion)>)) — but grammatical closure is a *proxy* for thought, and it under-captures thought at one principled boundary: an explicit authorial marker of a thought-move. So a line is a legitimate standalone ATU if it satisfies **EITHER**:
 
-- **(A) the bidirectional test** (§2.1, primary), OR
-- **(B) the explicit-marker license** (§2.2, secondary — a closed registry of author-placed boundary tokens).
+- **(A) the bidirectional test** ([§2.1](<#§2.1 The bidirectional test (primary criterion)>), primary), OR
+- **(B) the explicit-marker license** ([§2.2](<#§2.2 The explicit-marker license (secondary criterion)>), secondary — a closed registry of author-placed boundary tokens).
 
-(A) is the default and does the overwhelming majority of the work. (B) is a narrow, closed-list **break-license**, not an ATU-from-fragment rule: it does not certify an incomplete fragment as a thought — it permits a break, at an author-placed marker, between cola that are *already* closure-eligible under (A) (often via ellipsis-restoration) but that the KEEP-AS-IS default would otherwise hold merged. See §2.2 for why that keeps the objectivity firewall intact.
+(A) is the default and does the overwhelming majority of the work. (B) is a narrow, closed-list **break-license**, not an ATU-from-fragment rule: it does not certify an incomplete fragment as a thought — it permits a break, at an author-placed marker, between cola that are *already* closure-eligible under (A) (often via ellipsis-restoration) but that the KEEP-AS-IS default would otherwise hold merged. See [§2.2](<#§2.2 The explicit-marker license (secondary criterion)>) for why that keeps the objectivity firewall intact.
 
 ### §2.1 The bidirectional test (primary criterion)
 
@@ -34,7 +34,7 @@ A line passes the bidirectional test if and only if BOTH:
 
 2. **Backward referential self-containment** — the line's referents are established in prior discourse (immediately, via chain-continuity) or self-introducing within the line. Long-range antecedent dependencies (more than one ATU back without chain-continuity) fail backward containment.
 
-A break between two adjacent lines is licensed if and only if both lines independently satisfy these two conditions (or one is licensed under §2.2).
+A break between two adjacent lines is licensed if and only if both lines independently satisfy these two conditions (or one is licensed under [§2.2](<#§2.2 The explicit-marker license (secondary criterion)>)).
 
 **Asymmetry:**
 
@@ -49,7 +49,7 @@ A break between two adjacent lines is licensed if and only if both lines indepen
 
   2. **Deixis test (indirect complement vs. re-performed direct discourse), among `that-VP` complements.** **Bind** when the complement is the matrix's own propositional content — *shared deictic center* (Rom 8:16 `συμμαρτυρεῖ ὅτι ἐσμὲν τέκνα θεοῦ`, 1st-pl, Paul's own assertion). **Stand** when it is a re-performed utterance with its *own* deictic center — a speaker/addressee shift (Rom 9:17 `λέγει ἡ γραφὴ τῷ Φαραὼ ὅτι Εἰς αὐτὸ τοῦτο ἐξήγειρά σε` — God-to-Pharaoh, "I/you"). This is why Gal 3:8's two ὅτι split differently: the first (`ἡ γραφὴ … ὅτι ἐκ πίστεως δικαιοῖ … ὁ θεός`, 3rd-person reported, shared deixis) **binds**; the second (`ὅτι Ἐνευλογηθήσονται ἐν σοί`, 2nd-person address to Abraham) **stands**. A verbatim re-performed citation therefore **stands** on its own deixis — not because it is "a quote," but because by the bidirectional test it is its own ATU. **Person morphology alone cannot carry this** (1st-singular = "stand" in Rom 9:17 but "bind" in 2Thess 2:5); it requires participant tracking — Macula's `subjref`/`referent`. The recitative quote-guard (Mark 5:23 `λέγων ὅτι Τὸ θυγάτριόν μου …` must never be pierced) is the same test: a re-performed quote has a distinct deictic center.
 
-  **Status (2026-05-26):** the earlier hand-counted "citation-attribution COLLAPSE-CLEAN, 14/15 bind" claim is **superseded** — it pre-dated the deixis test and the Macula re-sourcing, and over-bound the re-performed verbatim citations (Rom 9:17, John 15:25) that should stand. The bind/stand rates must be **re-measured mechanically** off Macula's `rule`/`role`/`person`/`referent` features, not eyeballed. Engine implication: the GNT binding decision should source these features from **Macula Greek** (`readers-gnt/research/macula-greek/`), where it currently reads the thinner `sblgnt-lowfat`; the lemma-list generalization of `merge_cognition_hoti` attempted 2026-05-26 produced causal over-binds (Matt 5:36, John 2:18, 1Cor 3:13) precisely because it lacked the `that-VP`/`sub-CL` signal. The one regression-free piece of that attempt — the `_junction_same_verse` guard (no silent cross-verse ὅτι merge, framework §3) — is independently ship-worthy.
+  **Status (2026-05-26):** the earlier hand-counted "citation-attribution COLLAPSE-CLEAN, 14/15 bind" claim is **superseded** — it pre-dated the deixis test and the Macula re-sourcing, and over-bound the re-performed verbatim citations (Rom 9:17, John 15:25) that should stand. The bind/stand rates must be **re-measured mechanically** off Macula's `rule`/`role`/`person`/`referent` features, not eyeballed. Engine implication: the GNT binding decision should source these features from **Macula Greek** (`readers-gnt/research/macula-greek/`), where it currently reads the thinner `sblgnt-lowfat`; the lemma-list generalization of `merge_cognition_hoti` attempted 2026-05-26 produced causal over-binds (Matt 5:36, John 2:18, 1Cor 3:13) precisely because it lacked the `that-VP`/`sub-CL` signal. The one regression-free piece of that attempt — the `_junction_same_verse` guard (no silent cross-verse ὅτι merge, framework [§3](<#§3 Architecture — mechanical-first>)) — is independently ship-worthy.
 
 **Restrictive relative clause binding** is a corollary: restrictive relatives bind to their head noun regardless of internal completeness, because removing them leaves the head not uniquely identified. Universal across Hebrew `אֲשֶׁר`, Greek `ὅς`/`ὅστις`, EME English "which"/"who"/"that".
 
@@ -78,7 +78,7 @@ Minimum criterion: ≥2 coordinated/stacked circumstance clauses each carrying i
 - Particle must be from the closed list: yea, behold, verily, lo, amen, yes
 - The content following the particle must be a finite clause
 
-**Discourse-particle amplification (yea / verily / lo + non-finite content).** The existing §2.1 discourse-particle-headed-unit allowance applies primarily to discourse-marker + finite VP (R1 class: "nevertheless he did..."). The **amplification variant** extends to **discourse-particle + non-finite content (PP, NP, relative clause) that amplifies the immediately prior line under chain-continuity**. The amplification ATU borrows the prior line's subject + finite verb through chain-continuity carry-over (the same mechanism the framework uses for ellipsis-restoration). **The discriminator is "amplification vs new content":**
+**Discourse-particle amplification (yea / verily / lo + non-finite content).** The existing [§2.1](<#§2.1 The bidirectional test (primary criterion)>) discourse-particle-headed-unit allowance applies primarily to discourse-marker + finite VP (R1 class: "nevertheless he did..."). The **amplification variant** extends to **discourse-particle + non-finite content (PP, NP, relative clause) that amplifies the immediately prior line under chain-continuity**. The amplification ATU borrows the prior line's subject + finite verb through chain-continuity carry-over (the same mechanism the framework uses for ellipsis-restoration). **The discriminator is "amplification vs new content":**
 
 - **SPLIT** when "yea, X" amplifies/resumes prior-line content with no new subject or finite predicate of its own (1 Ne 11:1: "yea, into an exceedingly high mountain..." amplifies the locative of L3's "I was caught away in the Spirit of the Lord").
 - **KEEP-AS-IS** when "yea, X" introduces new finite predication (in which case the standard discourse-particle-headed allowance applies, not this variant).
@@ -102,7 +102,7 @@ Minimum criterion: prior line has a finite VP, the "yea, X" content carries the 
 
 ### §2.2 The explicit-marker license (secondary criterion)
 
-A colon that is **closure-eligible under (A)** — forward-closed (often via the ellipsis-restoration §2.1 permits: a finite verb gapped from the immediately-prior parallel clause) and backward-contained by immediate chain-continuity — but which the **KEEP-AS-IS default holds merged** (the framework does not split parallel cola on its own), may be **broken onto its own line when it opens with an explicit author-placed marker** from the closed **Marker Registry** (per-corpus, audited). The marker does NOT make a fragment into an ATU — the colon is already a legitimate unit under (A); the marker supplies the **break-license** the keep-as-is default otherwise withholds, signalling that this closure-eligible beat is a distinct authorial thought-move (escalation, restatement, enumerated parallel assertion).
+A colon that is **closure-eligible under (A)** — forward-closed (often via the ellipsis-restoration [§2.1](<#§2.1 The bidirectional test (primary criterion)>) permits: a finite verb gapped from the immediately-prior parallel clause) and backward-contained by immediate chain-continuity — but which the **KEEP-AS-IS default holds merged** (the framework does not split parallel cola on its own), may be **broken onto its own line when it opens with an explicit author-placed marker** from the closed **Marker Registry** (per-corpus, audited). The marker does NOT make a fragment into an ATU — the colon is already a legitimate unit under (A); the marker supplies the **break-license** the keep-as-is default otherwise withholds, signalling that this closure-eligible beat is a distinct authorial thought-move (escalation, restatement, enumerated parallel assertion).
 
 **This is the framework's only *productive* (break-generating) licensor, and it is deliberately quarantined.** It is distinguished from the forbidden "producer-style rule" (glossary) *only* by two preconditions, and safety rests on their conjunction — NOT on "the token is on the page" (te'amim are on the page too, and stay banned): **(a)** the colon independently satisfies (A) — closure-eligibility; **(b)** the break is keyed to a **closed list of discrete author lexemes**, never to inferred parallelism, accentuation, or genre. Drop either precondition and it collapses into the banned analyst-overlay category. The marker, in short, is permission to *break* a unit that is already self-standing — not permission to *create* a unit that is not.
 
@@ -111,7 +111,7 @@ A colon that is **closure-eligible under (A)** — forward-closed (often via the
 - **Sub-clausal asseverative / amplificative openers** that subdivide a single predication — e.g. BoFM English `yea`, `or rather`; candidate twins: Hebrew asseverative `אַף` / `כִּי`, Greek `ναί`. ("…without stubbornness of heart, **yea**, without being brought to know the word" — the `yea` clause shares the matrix verb and so fails forward closure, but the marker opens a distinct amplification beat.)
 - **Parallel subordinator-stacks** — a stack of ≥2 coordinate indicative complement/appositive clauses, each propositionally complete once its shared subordinator is stripped, marked by a repeated subordinator (English "that … that … that"). The stack splits into enumerated assertion-beats. (Distinguish from a *single* subordinate complement, which binds under (A); and from *adverbial-purpose* "that"/`ἵνα`, which binds forward.)
 
-**Registry discipline.** Each marker is registered per-corpus with its bidirectional-test status and a worked example; adding one is a §7.3 closed-list-extension audit trigger, and the audit tests **firewall-conformance** (do conditions i–iii hold) not merely output quality. A token enters the registry ONLY if: (i) it is a **single discrete author lexeme** — not a repeated/positional pattern, and not an anaphoric element repurposed as a marker; (ii) the colon it heads is **closure-eligible under (A)** — propositionally complete minus the marker, or forward-closed by restoring a **gapped finite verb** from the immediately-prior parallel clause (a shared *finite verb* only — NOT a shared subject / object / prepositional phrase, which would re-admit the parallel-cola splitting §2 forbids); and (iii) the break is not already licensed by (A)'s asymmetry (clause-level connectives already pass — see Scope).
+**Registry discipline.** Each marker is registered per-corpus with its bidirectional-test status and a worked example; adding one is a [§7.3](<#§7.3 Mandatory-audit triggers (12 categories)>) closed-list-extension audit trigger, and the audit tests **firewall-conformance** (do conditions i–iii hold) not merely output quality. A token enters the registry ONLY if: (i) it is a **single discrete author lexeme** — not a repeated/positional pattern, and not an anaphoric element repurposed as a marker; (ii) the colon it heads is **closure-eligible under (A)** — propositionally complete minus the marker, or forward-closed by restoring a **gapped finite verb** from the immediately-prior parallel clause (a shared *finite verb* only — NOT a shared subject / object / prepositional phrase, which would re-admit the parallel-cola splitting [§2](<#§2 The criterion — what licenses a standalone ATU>) forbids); and (iii) the break is not already licensed by (A)'s asymmetry (clause-level connectives already pass — see Scope).
 
 **Default action**: KEEP-AS-IS unless (A) or (B) affirmatively licenses a break. The framework does NOT include cognitive-unity gates on parallel cola, parallelism class adjudication, te'amim hierarchy, or genre anchors as primary licenses — only the bidirectional test and the closed explicit-marker registry license a break.
 
@@ -216,7 +216,7 @@ The framework is corpus-agnostic. Each corpus instantiates:
 
 Boundary F1 is genre-stable (85-91%). Recall is consistently ≥ 80%. Precision varies (79-100%) — pipeline is conservative on prose, over-segments in dense parallelism and legal lists. **The 14-rule mechanical layer produces ATU drafts requiring 5-25% editorial absorption depending on genre.**
 
-**Lexham Discourse Hebrew Bible (LDHB)** is consulted as a calibration reference; the pipeline does not depend on it at runtime. See `methodology-position.md` for the "Lexham-consulted but not utilized" framing.
+**Lexham Discourse Hebrew Bible (LDHB)** is consulted as a calibration reference; the pipeline does not depend on it at runtime. See [`methodology-position.md`](methodology-position.md) for the "Lexham-consulted but not utilized" framing.
 
 ## §6 Known gaps
 
@@ -232,7 +232,7 @@ All three are appropriate cases for optional v2 LLM adjudication or editorial re
 
 The change protocol governs: when a canon change requires hostile audit; what audit-evidence must appear in the commit message; how the commit-msg gate enforces compliance; the self-test, self-consistency audit trigger, and proposed-rule adoption protocol.
 
-The bidirectional test §2 is the substantive criterion any binding rule traces back to. The change discipline below governs HOW canon changes (rule additions, scope claims, closed-list extensions) are proposed, audited, and committed.
+The bidirectional test [§2](<#§2 The criterion — what licenses a standalone ATU>) is the substantive criterion any binding rule traces back to. The change discipline below governs HOW canon changes (rule additions, scope claims, closed-list extensions) are proposed, audited, and committed.
 
 ### §7.0 Categories A / B / C
 
@@ -252,7 +252,7 @@ Every proposed change falls into one of three categories:
 - A closed-list extension (adding a verb class, a named category, a SCOPE-exclusion item)
 - A named-category carve-out (introducing a new gating category)
 
-This diagnostic catches the failure mode where a canon change is self-framed as "documenting existing practice" or "scope clarification" but substantively asserts a new judgment. §7 operationalizes this diagnostic for commit-time discipline.
+This diagnostic catches the failure mode where a canon change is self-framed as "documenting existing practice" or "scope clarification" but substantively asserts a new judgment. [§7](<#§7 Change discipline>) operationalizes this diagnostic for commit-time discipline.
 
 ### §7.1 Authority
 
@@ -264,7 +264,7 @@ Proposals to change an existing rule, add a new rule, or retire a rule MUST:
 
 1. **State the target-language syntactic fact.** Cite the UD label and traditional-grammar vocabulary. If no such fact can be cited, the proposal is insufficient.
 2. **Provide corpus evidence.** Worked examples from the actual text — not hypotheticals.
-3. **Survive adversarial audit** (when any mandatory-audit trigger fires; see §7.3).
+3. **Survive adversarial audit** (when any mandatory-audit trigger fires; see [§7.3](<#§7.3 Mandatory-audit triggers (12 categories)>)).
 4. **Apply uniformly.** If the rule fires in one place, run the validator or equivalent sweep to catch every instance. Sedimented inconsistency is the primary failure mode.
 5. **Defensibility capture.** Every new rule, sub-rule, or merge-override added to the canon MUST carry three elements:
    - **WHY** — the editorial reason the rule exists.
@@ -287,7 +287,7 @@ For proposals matching ANY of the following triggers, an adversarial audit (host
 6. **Mechanical signature / validator changes under settled rules** — adding a verb class, refining a UD trigger, changing validator conditions silently expands or contracts rule coverage.
 7. **Corpus sweeps ≥5 instances under a settled rule** — the collective scope-claim needs audit even when individual instances are Category A.
 8. **Canonical example additions to settled rules** — examples shape rule interpretation.
-9. **Meta-rule changes to §7 Change Protocol itself.**
+9. **Meta-rule changes to [§7](<#§7 Change discipline>) Change Protocol itself.**
 10. **Discipline-shifting memory file additions** — new memory files that shape how the apparatus is operated are behaviorally-governing.
 11. **Cross-project imports or recoveries from retired canon** — provenance from a sibling project or older version is not validation; the imported claim MUST have target-corpus evidence independent of its source.
 12. **Corpus-fit verification — post-codification AND post-detection.**
@@ -309,7 +309,7 @@ All of the following MUST hold for a proposal to bypass audit:
 
 Every commit message that touches a per-corpus canon MUST declare audit-status explicitly:
 
-- `Audit-skippable per §7.3 ([reason])` with the reason citing one of §7.4 categories; OR
+- `Audit-skippable per [§7.3](<#§7.3 Mandatory-audit triggers (12 categories)>) ([reason])` with the reason citing one of [§7.4](<#§7.4 Audit-skippable categories>) categories; OR
 - `Audit dispatched: [evidence]` with concrete reference (parallel-agent verdicts, prior-commit pointer).
 
 Omission is itself a discipline failure — visible at a glance in `git log`. The mechanical commit-msg gate detects extension patterns and requires an audit-evidence keyword; the explicit declaration is the editor-side discipline that front-loads (and complements) the gate.
@@ -330,7 +330,7 @@ When a session adds ≥2 new canon subsections, rules, or merge-overrides, run a
 
 - All new cross-references resolve.
 - No new rule contradicts an existing rule.
-- All three defensibility elements (WHY / HOW WE KNOW / SCOPE per §7.2) are captured for each addition (in the scholarship companion, not the canon).
+- All three defensibility elements (WHY / HOW WE KNOW / SCOPE per [§7.2](<#§7.2 Proposal requirements>)) are captured for each addition (in the scholarship companion, not the canon).
 
 Short pass; catches stale cross-refs and incompatibilities cheaply.
 
@@ -343,7 +343,7 @@ A rule labeled *proposed* is a rule awaiting corpus verification. "Proposed" is 
 **Sweep-then-decide workflow.**
 1. Write validator implementing the rule's conditions.
 2. Run against full corpus.
-3. If clean ≥80% → apply clean decisions mechanically (Category A per §7.0), remove "proposed" label; capture the adoption evidence (sweep counts, audit verdicts) in the commit message.
+3. If clean ≥80% → apply clean decisions mechanically (Category A per [§7.0](<#§7.0 Categories A / B / C>)), remove "proposed" label; capture the adoption evidence (sweep counts, audit verdicts) in the commit message.
 4. If clean <80% → identify the ambiguity pattern, refine the rule with an explicit sub-clause, re-run.
 5. Repeat until clean ≥80%, then adopt.
 
@@ -358,7 +358,7 @@ Adding or modifying a binding rule MUST also:
 3. Verify no regression in cold-eye-match or F1 on prior chapters
 4. Document under [`binding-rules-hebrew.md`](binding-rules-hebrew.md) (or per-language equivalent)
 
-The bidirectional test §2 is the substantive criterion. Any proposed binding must trace back to it. Rules that produce candidate boundaries WITHOUT cognitive-criterion grounding (te'amim hierarchy as primary, parallelism class as primary, aesthetic preference) are forbidden.
+The bidirectional test [§2](<#§2 The criterion — what licenses a standalone ATU>) is the substantive criterion. Any proposed binding must trace back to it. Rules that produce candidate boundaries WITHOUT cognitive-criterion grounding (te'amim hierarchy as primary, parallelism class as primary, aesthetic preference) are forbidden.
 
 ---
 

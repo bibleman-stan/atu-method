@@ -12,6 +12,13 @@ metadata:
 
 **The tracked queue of deferred/parked work.** Update as items start (move to in-flight) or land (delete). In-flight work is NOT here. Live deploy state = `atu-method/docs/deployment-status.md`.
 
+## Docs interlinking — remainder (2026-08-06)
+`scripts/link_canon_refs.py` converted plain-text canon cross-references into clickable markdown links across the 9 git-clean docs (verified: unwrapping every link reproduces HEAD byte-for-byte; every destination resolves). Remaining:
+- **4 docs skipped because they carry uncommitted in-flight prose** — `docs/_index.md`, `docs/glossary.md`, `docs/substrate.md` (modified), `docs/cross-corpus-principles.md` (untracked; the largest win at 53 lines). Run `python scripts/link_canon_refs.py --apply --files _index.md glossary.md substrate.md cross-corpus-principles.md` once that work is committed, so link edits don't entangle with Stan's prose.
+- **2 DEAD section-IDs surfaced, deliberately NOT repointed** (silent repointing is the failure the canon-xref arc exists to fix): `glossary.md:11` cites `framework.md §1.2` and `glossary.md:54` cites `framework.md §1.3` — live framework §1 is "Purpose" with no sub-sections. Same phantom class [[canon-index]] tracks; needs a Stan ruling on the correct live successor.
+- **`memories/**` not linked** — that layer uses `[[wikilink]]` convention, not markdown links; deliberate scope split, revisit only if the two conventions cause friction in the vault.
+- **`scripts/check_broken_pointers.py` is retargeting-stale** — recovered 2026-08-06 but written for a reader-repo layout (`REPO_ROOT=parents[2]`, scans `private/01-method/`, `handoffs/`); it does not scan this hub's `docs/` at all. Retarget + add anchor-resolution checking (every `](<file.md#heading>)` destination matches a real heading) so link-rot is detected, not silent. Feeds the audit-tier mandate.
+
 ## Named arcs (big, explicitly deferred)
 - **BHSA-canon-migration** (Tanakh, master-blaster Phase 1) — swap the word-FORM source TAHOT→BHSA (823-verse / 3.5% mismatch). ATU breaks already shipped; this is forms only. JSONL pointer in [[_named_arcs]].
 - **Binding-engine extraction** (Phase 7) — pull the shared engine into `atu-method/atu_method/bindings/`.
