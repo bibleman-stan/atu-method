@@ -2,9 +2,35 @@
 name: Sense-line mission and atomic-thought primacy
 description: The colometric prioritization Stan settled on 2026-04-12 — atomic thought is the only non-negotiable criterion, sense-lines are not a poetry-layout exercise, and Parry overlap is incidental not intentional
 type: feedback
+status: demoted
 originSessionId: 5e934fd5-32e0-4958-9b1e-00dd9f0e6d19
 ---
-**Three propositions, in priority order, that govern every colometric decision in the BOM Reader project:**
+
+> **DEMOTED 2026-08-06 (Stan) — retained as historical record, NOT deleted.**
+>
+> **What is demoted:** this file's standing as the apparatus's *mission statement*. Stan's
+> 2026-08-06 correction: "the whole point of colometry is to SHOW how the different types of cola
+> (rhetorical, aural, cognitive) reveal the meaning and sense" — which proposition 2's "poetic
+> structure is incidental to that goal" understates. The three propositions below were written
+> 2026-04-12 for the BoFM reader specifically (note "the BOM Reader project", "Rule 13", and a
+> citation to `handoffs/10-colometry.md`, a file that no longer exists), and they predate both the
+> bidirectional test and the lens vocabulary that now carries this ground more precisely.
+>
+> **What still stands, in its live homes:** the determination firewall is unchanged — *rhetoric
+> constrains, atomic-thought determines*. Cite these instead of this file:
+> - [`../docs/cross-corpus-principles.md`](../docs/cross-corpus-principles.md) §0.1 — lens scope (ATU lens vs. rhetorical/discourse lens)
+> - [`../docs/cross-corpus-principles.md`](../docs/cross-corpus-principles.md) §1.3a — rhetoric figures constrain, atomic-thought determines
+> - [`feedback_atu_and_rhetorical_lenses_distinct.md`](feedback_atu_and_rhetorical_lenses_distinct.md) — the full lens statement
+> - [`../docs/framework.md`](../docs/framework.md) §2.1/§2.2 — what actually licenses a break
+>
+> **What is NOT settled by this demotion:** [`../docs/framework.md`](../docs/framework.md) §1's
+> NOT-list still reads "Produce typography or oral-delivery markup" and "Reveal rhetorical
+> parallelism (separate scholarly layer…)" — i.e. live canon still excludes the aural and
+> rhetorical lenses that Stan's correction names. Changing that is a Category B scope claim per
+> §7.0 and awaits Stan's ruling; nothing here preempts it. Until then this demotion is grounded on
+> supersession-by-vocabulary and staleness, not on a decision that the NOT-list is wrong.
+
+**Three propositions, in priority order, that governed every colometric decision in the BOM Reader project (2026-04-12; see demotion banner above):**
 
 1. **Atomic thoughts trump rhetorical considerations.** A line that fails the atomic-thought test is wrong, regardless of how beautifully it preserves a Hebrew bicolon, an English parallelism, a chiastic structure, or any rhetorical figure. The four-criteria hierarchy (atomic thought > image > breath > source-language syntax) collapses to "atomic thought wins" whenever criteria collide.
 

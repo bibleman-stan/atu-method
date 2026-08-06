@@ -12,6 +12,13 @@ metadata:
 
 **The tracked queue of deferred/parked work.** Update as items start (move to in-flight) or land (delete). In-flight work is NOT here. Live deploy state = `atu-method/docs/deployment-status.md`.
 
+## Pointer-integrity findings — first run of the retargeted checker (2026-08-06)
+`scripts/check_broken_pointers.py` retargeted from its reader-repo layout to this hub + taught to validate link anchors. First run: 86 files, **0 broken anchors**, **57 broken doc paths**, 80 advisory non-`.md` (reader-repo scripts, not failures). Not fixed this turn — several sit inside Stan's in-flight `canon-index.md`. Ranked:
+- **`change-protocol.md` (7 citers) — the real one.** `docs/_index.md:53`, `docs/glossary.md:13`, `docs/retraction-log-protocol.md:56` + 4 more cite it, but the only copy is `docs/_old/change-protocol.md`; §7 change-discipline was extracted into `framework.md` §7.0–§7.9 by commit 93d67f5. Citers need repointing to `framework.md §7.x`.
+- **`structural-licenses.md` (15 citers, all in `canon-index.md`)** — known-not-yet-existing per that file's own hard-constraint #14; resolves when the §-renumber migration lands, not before.
+- **`feedback_taskmaster_propagation.md` (2 citers)** — cited by `memories/feedback_compaction_is_session_boundary.md:8` and `memories/feedback_dont_over_engineer_orchestration.md:8`; exists nowhere. Possibly a casualty of the namespace deletion that the recovered `MEMORY.md` index never listed — check file-history before assuming it was renamed.
+- **`R17-poc-operational.md` (4)**, **`retraction-log.md` (3, reader-repo)** — lower priority.
+
 ## Docs interlinking — remainder (2026-08-06)
 `scripts/link_canon_refs.py` converted plain-text canon cross-references into clickable markdown links across the 9 git-clean docs (verified: unwrapping every link reproduces HEAD byte-for-byte; every destination resolves). Remaining:
 - **4 docs skipped because they carry uncommitted in-flight prose** — `docs/_index.md`, `docs/glossary.md`, `docs/substrate.md` (modified), `docs/cross-corpus-principles.md` (untracked; the largest win at 53 lines). Run `python scripts/link_canon_refs.py --apply --files _index.md glossary.md substrate.md cross-corpus-principles.md` once that work is committed, so link edits don't entangle with Stan's prose.

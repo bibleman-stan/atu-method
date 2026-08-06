@@ -24,7 +24,7 @@ Litmus first; full prose + dated warrants live in the linked memory files (don't
 
 4. **Data/treebank-first for OWN reasoning.** "Cannot / impossible / needs LLM" is the STOP signal — inventory every dataset Stan gave you before asserting it. → `feedback_mechanical_first_for_own_review.md`
 
-5. **Consult prior work before building — two granularities.** (a) Cross-corpus: "how did Tanakh/GNT/BoFM solve this?" — port, don't re-invent. (b) Same-file: before proposing a new `_is_*`/`_has_*`/`_detect_*`/`_check_*` helper, `Grep` the file for an analogous one and cite why a new one is needed. → `feedback_check_prior_corpora.md`
+5. **Consult prior work before building — three granularities.** (a) Cross-corpus: "how did Tanakh/GNT/BoFM solve this?" — port, don't re-invent. (b) Same-file: before proposing a new `_is_*`/`_has_*`/`_detect_*`/`_check_*` helper, `Grep` the file for an analogous one and cite why a new one is needed. (c) **File the answer back.** When a cross-corpus consult produces a durable answer, write it to `docs/synthesis/<topic>.md` **in the same turn** and index it in `docs/_index.md` — an answer that dies in chat is re-derived by grep on every future question, which is the tax (a) exists to avoid. → `feedback_check_prior_corpora.md`
 
 6. **Verify empirically — inspection ≠ verification.** Source-parity (vs original USFM/TF/source) is the correctness gate; index-parity (vs HEAD) is regression-only. Run BOTH tactical (does this break?) and strategic (is this the right design?) audits before any pivot. Any **new mechanism / integration / env-flag / guard structure** triggers the §7.3 audit gate BEFORE code (substrate *consumption* is exempt; building a new integration shape over it is not). Any code-touching edit that **cites canon** (`framework.md` / `§2.x` / `binding-rules-*`) requires a fresh in-turn `Read` of cited-range + 30 lines downstream AND a verbatim firewall quote in the proposal. Pre-audit self-check: every cited `file:line` Read this turn, every governing helper observed firing via probe (not inferred), every analogous helper Grep-enumerated. → `feedback_never_skip_audit_gate.md`, `feedback_conformance_is_not_correctness.md`, `feedback_canon_citation_requires_verbatim_read.md`
 
@@ -69,6 +69,15 @@ Headlines only; full record + warrants at `_north_star.md` (mandatory orientatio
 | `repos/readers-gnt/CLAUDE.md` | GNT-specific data + deploy details (post-Phase-6, thin stub) |
 
 **Self-report before first substantive response**: one line per mandatory file read; flag any pending items; surface red flags. Silent skip = orientation failure.
+
+## Audit tier — calendar-triggered, NOT activity-triggered
+
+**Trigger:** the first wake of any ISO week, OR any wake after >7 days with no commit in this repo. Dormancy is the danger mode — the 2026-08-06 memory-loss incident happened during a quiet stretch, and an activity-triggered check would never have fired. Run it before substantive work; it is cheap.
+
+1. **Mechanical lint.** Run `python scripts/check_broken_pointers.py` (validates cited paths AND that every `](<file.md#Heading>)` anchor still matches a real heading — link-rot is otherwise silent). Then: every memory file indexed and every index entry resolving; retraction-log present per reader repo (spokes are in scope — this is a hub and discipline-propagation is manual); anything claiming "live" but unedited >60 days flagged.
+2. **Hostile audit.** One adversarial pass, written down: are the 8 standing defaults being *enacted* in recent sessions or merely stored; is any flagged-pending item stalled (>2 weeks → surface to Stan by name); is the retraction 3-recurrence threshold actually being checked; is this file over its salience budget (~17KB) and do the layers sort for a split.
+
+**Findings convert to edits, or they recur.** A finding that ends the turn as prose is not a finding — it lands as an edit, a `_deferred_queue.md` entry, or a Stan-facing decision. The tool being *absent* was never the failure mode here: `check_broken_pointers.py` already existed and no cadence ran it.
 
 ## Compaction-resume protocol
 
