@@ -1,0 +1,33 @@
+---
+name: reference_emode_substrate
+description: "EModE treebank-build resources for BoFM (PPCEME, benepar-PPCEME parser, UDConverter, MorphAdorner, WordCruncher/Carmack export routes) + the minimal recipe"
+metadata: 
+  node_type: memory
+  type: reference
+  originSessionId: 87af68a0-0291-4910-962f-d0913b5722e6
+---
+
+The off-the-shelf path to a real **Book-of-Mormon dependency treebank** (the substrate-build that [[project_bofm_substrate_quality]] named as the true fix; the "build-our-own-v1" [[project_corpus_v1_substitutes]] predicted). Surveyed 2026-05-27. Confirms the BoFM does NOT need the Stanza-on-modern-English grind — EModE-specific gold + tooling already exist.
+
+## The four ingredients (all off-the-shelf)
+- **PPCEME** — Penn-Helsinki Parsed Corpus of Early Modern English. Gold, hand-parsed constituency treebank, **1500–1712** (squarely Carmack's dated BoFM register ~1540–90), ~1.7M words, Penn phrase-structure scheme. Access (verified 2026-05-27): the older **free Release-3 download is GONE** — maintainer (Santorini) pulled the corpora from GitHub/Penn because public posting conflicted with LDC distribution rights; Penn serves only the *docs*, the `.psd` data was never on Wayback, the GitHub mirror is `data-see-README` (withheld). Now **LDC2025T09 only**: membership $2,400 OR free student/scholar **data-scholarship w/ advisor letter** (Stan's Amridge affiliation likely qualifies — credentialed request, his action). **Workaround CHECKED & FAILED (2026-05-27):** benepar-PPCEME trained-model weights are NOT published (no HuggingFace/GitHub copy; authors built it in the paper but didn't release weights — likely because LDC-trained). So there's no off-the-shelf EModE parser; a trained-parser substrate needs PPCEME (to train our own) via the LDC scholarship. HOWEVER the dominant deployed defect — over-SPLIT — is fixable via a BINDING LAYER using the Carmack type-level POS we ALREADY hold + LLM-adjudication, WITHOUT PPCEME. So: PPCEME (LDC scholarship, Stan's credentialed action) = later gold-substrate upgrade; the binding-layer over-split fix proceeds now on current substrate. Sibling corpora same scheme: PPCME2 (Middle Eng), PPCMBE2 (Modern Brit), PCEEC (EModE letters).
+- **benepar-PPCEME** — Berkeley Neural Parser already TRAINED on PPCEME (Kulick/Ryant/Santorini, arXiv 2112.08532, NAACL-Findings 2022). An EModE parser already exists; don't build from scratch. (Exact F1 unverified — WebFetch was blocked.)
+- **UDConverter** (thorunna, Apache-2.0) — converts PPCHE-scheme trees → UD. Proven on Icelandic IcePaHC/FarPaHC (same scheme), LAS ~83. Solves the Penn-phrase-structure-vs-UD gap so PPCEME plugs into the BHSA/Macula-style tooling. (Not yet run on PPCEME specifically — expect one tuning pass.)
+- **Carmack gold POS** — already held at TYPE level (`readers-bofm/research/carmack-pos/wordwheel-fine.tsv`, 245 fine tags). Token-level (verse+offset, context-resolved) is extractable from WordCruncher only via per-tag KWIC "Copy All" (~245 exports, clipboard-only, context untagged) — laborious; the efficient route is a direct data request to `wordcruncher@byu.edu` (BYU has the raw tagged text + a Python POS tagger on GitHub) or Carmack/Skousen for the tagged source XML (ETAX, inline `word_POSCODE` — but only the compiled .WCBU is public). After PPCEME, token-level Carmack is a BONUS/cross-check, not the linchpin (PPCEME-trained parsing does the context disambiguation the token-tags would provide).
+- **MorphAdorner** (Northwestern) — EModE spelling-normalization + POS/lemma front-end; normalize BoFM orthography to PPCEME-era forms before parsing.
+
+## Minimal recipe (sequenced)
+1. Acquire PPCEME (free mirror first; else LDC scholarship). 2. MorphAdorner-normalize BoFM orthography. 3. UDConvert PPCEME → gold UD-EModE seed. 4. Parse BoFM with EModE-trained parser (benepar-PPCEME, or fine-tune Trankit/supar on converted PPCEME), POS-seeded by Carmack gold. 5. **LLM-adjudicate residuals ONLY** (Opus, v2 layer). 6. Human + bidirectional-test gate.
+
+## Why treebank-build > LLM-adjudication-only (they combine, not compete)
+Parser = reproducible, auditable, per-token v1 substrate → LLM adjudicates residual → human+test gate. Mirrors the Hebrew/Greek pipeline (real v1, LLM as v2). LLM-only gives ATU output but no inspectable substrate → can't run the mechanical-first clause-atom/frame queries, and WEAKENS the cross-corpus convergence thesis (BoFM should have the SAME kind of treebank substrate as Tanakh/GNT).
+
+## FREE PATH — no LDC required (verified 2026-05-27)
+The binding-layer over-split fix needs finiteness/subordination/coordination = POS/morphology + closed-class cues, NOT deep gold syntax → a fully-free, no-LDC stack carries it; **PPCEME/LDC demoted to optional gold-VALIDATION upgrade.**
+- **PCEEC** (Parsed Corpus of Early English Correspondence) — FREE gold EModE *parsed* treebank, ~2.2M words, Penn-scheme gold syntax, via Oxford Text Archive (non-commercial academic, no-redistribute — use in-house, don't embed in deploy). EModE *letters* register (caveat). Convert to UD via UDConverter (Apache-2.0).
+- **EarlyPrint** = MorphAdorner-tagged EEBO-TCP — FREE token-level EModE NUPOS POS + lemma + spelling-normalization at scale (CC BY-NC 3.0, downloadable, earlyprint.org/download). EEBO-TCP Phase I itself = CC0 public domain.
+- **MorphAdorner** tool (NCSA-permissive) — 350k-variant EModE→modern spelling standardizer = a far richer version of our existing `archaic_normalize`. **IMMEDIATE FREE WIN:** normalize BoFM comprehensively → a MODERN parser (Stanza/UD-EWT) then works far better; closes the register gap WITHOUT an EModE parser or licensed corpus. Extends machinery we already have (archaic_normalize).
+- Recommended free stack: Carmack POS (held) + EarlyPrint/MorphAdorner normalization → UD parser (free UD-English-EWT CC-BY-SA, optionally PCEEC→UD adapted) over normalized BoFM → binding rules on finiteness/subord/coord → LLM-adjudicate residuals. PPCEME via LDC scholarship OR emailing **Seth Kulick (skulick@ldc.upenn.edu)** for the benepar-PPCEME model = opportunistic later gold-validation, NOT critical path.
+
+## Direction this serves
+The 2026-05-27 genre diagnostic: BoFM deployed v2 is **over-SPLIT ~15:1 over over-merge, every genre**; the real fix is a BINDING layer (re-merge forward-incomplete coordinate/protasis/complement dependents), NOT a splitter. A real EModE treebank gives the reliable finiteness/subordination/coordination signals that binding layer needs. (Alma 32:24 is NOT a defect — punctuation-zero-force; 3 Ne 19:4 is the rare parenthetical-aside over-merge → targeted override.)
