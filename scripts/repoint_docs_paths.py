@@ -2,8 +2,8 @@
 """Rewrite PROSE path references after the docs/ restructure.
 
 restructure_docs.py fixed markdown link destinations. This fixes the other half:
-paths named in prose, backticks, tables, and code comments — `docs/01-normative/framework.md`,
-`atu-method/docs/01-normative/framework.md`, `../../docs/01-normative/framework.md`. Any path ending in
+paths named in prose, backticks, tables, and code comments — `1-method/framework.md`,
+`atu-method/1-method/framework.md`, `../../1-method/framework.md`. Any path ending in
 `docs/<name>.md` gains its tier; `_index.md` becomes `00-start-here.md`.
 
 Runs over this repo AND the sibling reader repos, which cite atu-method canon by

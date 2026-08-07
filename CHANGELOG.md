@@ -21,11 +21,11 @@ proof-of-concept implementation.
 
 ### Added — Documentation (extracted content)
 
-- `docs/03-implementation/apparatus.md` — High-level system overview (canonical statement of what the apparatus is, what it produces, what it is NOT).
-- `docs/03-implementation/architecture.md` — Four-plane architectural decomposition (Data / Specification / Tooling / Delivery) with interface contracts between planes, ownership table (shared vs per-repo), drift prevention principles, and supersession note for the prior "7-layer" framing.
+- `3-implementation/apparatus.md` — High-level system overview (canonical statement of what the apparatus is, what it produces, what it is NOT).
+- `3-implementation/architecture.md` — Four-plane architectural decomposition (Data / Specification / Tooling / Delivery) with interface contracts between planes, ownership table (shared vs per-repo), drift prevention principles, and supersession note for the prior "7-layer" framing.
 - `docs/rule-template.md` — MISRA-style operational rule-spec template. Required and forbidden fields specified. RFC 2119 normative-language conventions, Status / Category / Decidability semantics. Worked migration checklist.
-- `docs/01-normative/framework.md` — Universal methodology framework extracted from BoFM canon §0/§1/§2/§7. Includes §0 Purpose and Stance (Mission, Method, Pragmatic stance, Scope), §1 Framework (Generative principle, Syntax forbids splits, Image, J1-J5 structural justifications, M1-M4 merge-overrides, Decision procedure, Application order, N=2 Adjudication, Punctuation/Versification not signals, Parallel-List Uniformity, Authorial Asymmetry), §2 Categories A/B/C, §7 Change Protocol (12 mandatory-audit triggers, audit-skippable categories, commit-msg discipline, self-test, proposed-rule adoption protocol). ~440 lines of operational specification.
-- `docs/01-normative/glossary.md` — Universal defined terms (ATU, J1-J5, M1-M4, N=2 adjudication, char-offset, T1.1 pattern, TxLog, UD signature, etc.) plus pointers to per-corpus specific terms.
+- `1-method/framework.md` — Universal methodology framework extracted from BoFM canon §0/§1/§2/§7. Includes §0 Purpose and Stance (Mission, Method, Pragmatic stance, Scope), §1 Framework (Generative principle, Syntax forbids splits, Image, J1-J5 structural justifications, M1-M4 merge-overrides, Decision procedure, Application order, N=2 Adjudication, Punctuation/Versification not signals, Parallel-List Uniformity, Authorial Asymmetry), §2 Categories A/B/C, §7 Change Protocol (12 mandatory-audit triggers, audit-skippable categories, commit-msg discipline, self-test, proposed-rule adoption protocol). ~440 lines of operational specification.
+- `1-method/glossary.md` — Universal defined terms (ATU, J1-J5, M1-M4, N=2 adjudication, char-offset, T1.1 pattern, TxLog, UD signature, etc.) plus pointers to per-corpus specific terms.
 - `docs/change-protocol.md` — Scaffold for §7 (content currently consolidated in framework.md §7; this file reserved for future expansion if §7 grows beyond the framework doc's scope).
 
 ### Added — Memories (extracted)
@@ -40,11 +40,11 @@ proof-of-concept implementation.
 
 ### Added — Scholarship (PoC structure)
 
-- `scholarship/_index.md` — Scholarship-companion directory organization, audience, file format (Statement / Rationale / Grammatical grounding / Empirical evidence / Intellectual lineage / Adversarial history / Future work).
-- `scholarship/bofm/_index.md` — Per-rule companion index for BoFM rules.
-- `scholarship/methodology/_index.md` — Universal methodology essays index (planned essays defending framework, categories, precedence, intellectual lineage, audit discipline).
-- `scholarship/bofm/R17.md` — Proof-of-concept scholarship companion for R17 Complement Integrity. ~250 lines: Statement, Rationale, Grammatical grounding (CGEL Ch. 11/14/16), Empirical evidence (Phase-1 audit 2026-04-23: 265:10 merged:split ratio for topic-PP; Wave 6 audit 2026-05-10 defects A/B/C), Intellectual lineage (CGEL / Macula-Greek / Vaticanus / sister instantiations in readers-gnt R8 and readers-tanakh H7), Adversarial history (4 audit cycles + doctrinal-weight enumerated-list retirement), Future work.
-- `scholarship/bofm/R17-poc-operational.md` — Proposed restructured operational entry for R17 in the MISRA-without-Rationale template. ~55 operational lines down from current ~75 mixed-content. Demonstrates the migration pattern with full template-conformance checklist.
+- `2-evidence/scholarship/_index.md` — Scholarship-companion directory organization, audience, file format (Statement / Rationale / Grammatical grounding / Empirical evidence / Intellectual lineage / Adversarial history / Future work).
+- `2-evidence/scholarship/bofm/_index.md` — Per-rule companion index for BoFM rules.
+- `2-evidence/scholarship/methodology/_index.md` — Universal methodology essays index (planned essays defending framework, categories, precedence, intellectual lineage, audit discipline).
+- `2-evidence/scholarship/bofm/R17.md` — Proof-of-concept scholarship companion for R17 Complement Integrity. ~250 lines: Statement, Rationale, Grammatical grounding (CGEL Ch. 11/14/16), Empirical evidence (Phase-1 audit 2026-04-23: 265:10 merged:split ratio for topic-PP; Wave 6 audit 2026-05-10 defects A/B/C), Intellectual lineage (CGEL / Macula-Greek / Vaticanus / sister instantiations in readers-gnt R8 and readers-tanakh H7), Adversarial history (4 audit cycles + doctrinal-weight enumerated-list retirement), Future work.
+- `2-evidence/scholarship/bofm/R17-poc-operational.md` — Proposed restructured operational entry for R17 in the MISRA-without-Rationale template. ~55 operational lines down from current ~75 mixed-content. Demonstrates the migration pattern with full template-conformance checklist.
 
 ### Not yet added (deferred to subsequent releases)
 
@@ -52,7 +52,7 @@ proof-of-concept implementation.
 - Remaining BoFM scholarship companions (~24 more rules: R1, R5, R6, R7, R10, R15, R16, R18, R19, R20, R21, R22, R23, R26, R27, R28 + EP-1/3/4/5 + M1-M4 universal companions).
 - Per-rule audit-trail files in `readers-bofm/private/audit-trail/` (parallel to scholarship migration).
 - GNT and Tanakh canon migrations to the operational template.
-- Methodology essays in `scholarship/methodology/` (framework defense, categories defense, intellectual-lineage essay, audit-discipline essay).
+- Methodology essays in `2-evidence/scholarship/methodology/` (framework defense, categories defense, intellectual-lineage essay, audit-discipline essay).
 - GitHub remote + Zenodo DOI minting.
 
 ### Status

@@ -72,7 +72,7 @@ The memory file holds decisions; the JSONL holds verbatim recent state. Read BOT
 5. Pipeline rewiring + retire/repurpose `propagate_editorial_layers.py` (~1-2 hours)
 6. Full Tanakh re-build + spot-check + deploy (~1-2 hours)
 
-**Why deferred**: Bigger than a side-quest in master-blaster's architecture migration. Natural fit for Phase 7 binding-engine-extraction work in atu-method. Live tanakh-reader.com unaffected — the deployed `v2/heb` **mechanical-first ATU breaks** (37 books, published 2026-05-22) continue; this arc only swaps the word-FORM source TAHOT→BHSA, not the segmentation. (See `atu-method/docs/05-status/deployment-status.md`.)
+**Why deferred**: Bigger than a side-quest in master-blaster's architecture migration. Natural fit for Phase 7 binding-engine-extraction work in atu-method. Live tanakh-reader.com unaffected — the deployed `v2/heb` **mechanical-first ATU breaks** (37 books, published 2026-05-22) continue; this arc only swaps the word-FORM source TAHOT→BHSA, not the segmentation. (See `atu-method/2-evidence/deployment-status.md`.)
 
 **Multi-corpus benefit**: Once BHSA-as-canon lands, every corpus uses its native treebank (BHSA Tanakh, PROIEL GNT, Stanza BoFM). Uniform architecture across corpora.
 

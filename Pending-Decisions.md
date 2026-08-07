@@ -16,7 +16,7 @@ Resolved entries move to the bottom with their date and outcome.
 
 ### [2026-08-07] Framework §1's NOT-list — do the aural and rhetorical lenses stay excluded?
 
-`docs/01-normative/framework.md` §1 says the apparatus does NOT "produce typography or oral-delivery markup" and does NOT "reveal rhetorical parallelism." Stan's 2026-08-06 correction — *"the whole point of colometry is to SHOW how the different types of cola (rhetorical, aural, cognitive) reveal the meaning and sense"* — names both of those as in scope.
+`1-method/framework.md` §1 says the apparatus does NOT "produce typography or oral-delivery markup" and does NOT "reveal rhetorical parallelism." Stan's 2026-08-06 correction — *"the whole point of colometry is to SHOW how the different types of cola (rhetorical, aural, cognitive) reveal the meaning and sense"* — names both of those as in scope.
 
 **Recommendation:** amend the NOT-list to distinguish *what the apparatus reveals* from *what licenses a break*.
 
@@ -30,7 +30,7 @@ Resolved entries move to the bottom with their date and outcome.
 
 **Stan's ruling (2026-08-07): allow restoring a shared subject and modal, not only a gapped finite verb.**
 
-This governs the §2.1 reconstruction in `docs/04-process/proposal-2026-08-06-criterion-reconstruction.md`: three of six allowances fail forward-closure only because non-finite material cannot be restored under the current §2.2(ii) wording.
+This governs the §2.1 reconstruction in `4-process/proposal-2026-08-06-criterion-reconstruction.md`: three of six allowances fail forward-closure only because non-finite material cannot be restored under the current §2.2(ii) wording.
 
 **What must happen before any canon edit** — not optional, and not yet done:
 1. A §7.3 adversarial audit (over-merge and atomicity lenses, dispatched as a Workflow). Retiring or rewriting live allowances is trigger #5; the register extension is trigger #1/#4.

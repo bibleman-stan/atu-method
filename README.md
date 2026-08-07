@@ -3,7 +3,7 @@
 > Computational colometry apparatus for revealing atomic thought units in
 > canonical texts.
 
-> **Deployment state of record:** what is LIVE per reader edition is in [`docs/05-status/deployment-status.md`](docs/05-status/deployment-status.md) — the single source of truth (all three readers run mechanical-first; per-repo `CLAUDE.md`/READMEs drift stale).
+> **Deployment state of record:** what is LIVE per reader edition is in [`2-evidence/deployment-status.md`](2-evidence/deployment-status.md) — the single source of truth (all three readers run mechanical-first; per-repo `CLAUDE.md`/READMEs drift stale).
 
 **Status:** Pre-release (0.1.0) — repository scaffold established; per-rule
 scholarship companions and Python infrastructure extracted from
@@ -66,7 +66,7 @@ Four planes, separated by concern (not stacked by abstraction level):
 | **Tooling plane** | Shared in this repo: parsing primitives, parse-data adapters, applier base classes, transaction logging, dashboard runner, parity-test framework, audit-extension hooks. |
 | **Delivery plane** | Per-repo: build pipelines, reader web UIs, audio/morph/study overlays. |
 
-See [`docs/03-implementation/architecture.md`](docs/03-implementation/architecture.md) for the full
+See [`3-implementation/architecture.md`](3-implementation/architecture.md) for the full
 decomposition with interface contracts between planes.
 
 ## Repository structure
@@ -87,7 +87,7 @@ atu-method/
 │   ├── rule-template.md     Operational-canon rule-spec template
 │   └── change-protocol.md   §7.3 mandatory-audit triggers, audit-evidence rules
 ├── memories/                Cross-project discipline lessons (~17 captured patterns)
-├── scholarship/             Per-rule rationale and grammatical-grounding companions
+├── 2-evidence/scholarship/             Per-rule rationale and grammatical-grounding companions
 └── tests/                   Unit tests for the Python package
 ```
 
@@ -143,7 +143,7 @@ under the licenses; we ask only that credit be preserved.
 
 - **Code** (the `atu_method/` package, `tests/`, configuration files):
   MIT — see [LICENSE](LICENSE).
-- **Documentation** (`docs/`, `memories/`, `scholarship/`, all Markdown
+- **Documentation** (`docs/`, `memories/`, `2-evidence/scholarship/`, all Markdown
   outside the package): CC-BY-4.0 — see [LICENSE-DOCS](LICENSE-DOCS).
 
 ## Sibling-checkout convention
@@ -151,7 +151,7 @@ under the licenses; we ask only that credit be preserved.
 This repository is consumed by per-corpus reader editions via sibling
 checkout, not via PyPI dependency resolution (until the package is
 published). Documents and code reference each other using relative paths
-like `../../atu-method/docs/01-normative/framework.md` (from a reader edition into
+like `../../atu-method/1-method/framework.md` (from a reader edition into
 this repo) and `readers-bofm/1-method/colometry-canon.md` (from
 this repo into the BoFM reader edition).
 

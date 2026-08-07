@@ -13,7 +13,7 @@ to perform the move:
 
 Deliberately NOT moved: canon-index.md stays at repo root. It is a top-level
 index whose 119 `file:line` receipts are written relative to the root; relocating
-it would invalidate their context for no navigation gain. docs/_old/ is retired
+it would invalidate their context for no navigation gain. _old/ is retired
 canon and stays frozen.
 
 Run with no args for a dry run. --apply to execute.
@@ -42,7 +42,7 @@ RENAMES = {"_index.md": "00-start-here.md"}
 
 LINK_RE = re.compile(r"(?<!\!)\[([^\]\n]*)\]\((<[^>\n]*>|[^)\s\n]*)\)")
 SCAN_GLOBS = ["*.md", "docs/*.md", "docs/*/*.md", "memories/*.md",
-              "memories/operational/*.md", "scholarship/*.md", "scholarship/*/*.md"]
+              "memories/operational/*.md", "2-evidence/scholarship/*.md", "2-evidence/scholarship/*/*.md"]
 SKIP_DIRS = {"_old", ".archive", "__pycache__"}
 
 

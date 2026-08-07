@@ -29,7 +29,7 @@ When a transcript from another LLM enters the vault synthesis pipeline:
 
 1. **Read for the three signatures** above.
 2. **Test authority citations.** Does the cited author actually hold the position attributed? Are they *supporting* the framework or merely *adjacent*? Hopper's Emergent Grammar, for example, supports primacy-of-cognition but not operational-grammar — citing him as wholesale support is the bandwagon failure mode.
-3. **Check for §0.3 violations.** `atu-method/docs/01-normative/framework.md` §0.3 (Pragmatic stance) disclaims cognitive-theory grounding. Other LLMs sometimes re-introduce cognitive-theoretic claims through the back door (e.g., "mathematically isolating the boundaries of human thought formulation"). Catch these.
+3. **Check for §0.3 violations.** `atu-method/1-method/framework.md` §0.3 (Pragmatic stance) disclaims cognitive-theory grounding. Other LLMs sometimes re-introduce cognitive-theoretic claims through the back door (e.g., "mathematically isolating the boundaries of human thought formulation"). Catch these.
 4. **Surface candidates for Stan-judgment review, don't auto-propagate.** A transcript that records Stan accepting a framing in conversation is *not* a Stan-validated commitment to the orientation docs. Re-check at synthesis time.
 
 ## What this memory is NOT

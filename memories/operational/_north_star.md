@@ -71,6 +71,6 @@ real gold?* If no → it stays parked.
   Take what each lever reaches; accept the mechanical ceiling on what none does.
 - **Maintain the real-gold TFs.** Do not open a new corpus front without clearing the keystone logic
   first (real gold? if no → parked).
-- The doctrine canon stays at `~/repos/atu-method/docs/03-implementation/substrate.md`; this file is the *decision*
+- The doctrine canon stays at `~/repos/atu-method/3-implementation/substrate.md`; this file is the *decision*
   layer that complements it. Linked: [[project_bofm_discourse_voice_deploy]],
   [[project_bofm_substrate_quality]], [[feedback_no_fly_swatting]].

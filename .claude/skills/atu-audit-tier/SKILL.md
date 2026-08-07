@@ -27,7 +27,7 @@ Then check, in order:
 
 - **Every memory file is indexed and every index entry resolves** — `memories/_index.md` and `memories/operational/MEMORY.md` against the actual directory contents, both directions.
 - **Retraction-log liveness across ALL reader repos** — the spokes are in scope; this is a hub and discipline-propagation is manual by design. Measured 2026-08-06: bofm 16 entries, gnt 10, tanakh 5, **zero `DISCIPLINE PROMOTED` blocks in any log**, all frozen 2026-05-17, and no log at this hub or in the other four repos. If that is still true, the retraction→promotion loop is still stalled — say so plainly rather than re-discovering it.
-- **Staleness** — anything claiming to be "live" but unedited >60 days gets flagged, especially `docs/05-status/deployment-status.md`.
+- **Staleness** — anything claiming to be "live" but unedited >60 days gets flagged, especially `2-evidence/deployment-status.md`.
 
 ## 2. Hostile audit
 
@@ -42,8 +42,8 @@ One adversarial pass, written down — not vibes:
 
 **Findings convert to edits, or they recur.** A finding that ends the turn as prose is not a finding. It lands as an edit, as a `memories/operational/_deferred_queue.md` entry, or as a named Stan-facing decision. Nothing else counts.
 
-**Every audit revises `docs/04-process/improvement-loops.md`** (Stan, 2026-08-07: *"i expect that these audits, etc. inform a revised/more accurate improvement-loops document"*). That document is the standing account of which loops work; an audit that finds a loop is weaker, stronger, or differently-shaped than recorded and leaves the document unchanged has produced a private observation, not a correction. Update the loop's status line, add a dated History entry naming what was accepted and what was refused, and state the evidence. Statuses may move in either direction — Loop 5 was upgraded on 2026-08-07 after completing its first cycle, and Loops 1 and 4 were downgraded the same day.
+**Every audit revises `4-process/improvement-loops.md`** (Stan, 2026-08-07: *"i expect that these audits, etc. inform a revised/more accurate improvement-loops document"*). That document is the standing account of which loops work; an audit that finds a loop is weaker, stronger, or differently-shaped than recorded and leaves the document unchanged has produced a private observation, not a correction. Update the loop's status line, add a dated History entry naming what was accepted and what was refused, and state the evidence. Statuses may move in either direction — Loop 5 was upgraded on 2026-08-07 after completing its first cycle, and Loops 1 and 4 were downgraded the same day.
 
 **Record the audit mark.** After a full audit, `touch` `.loop-audit-last-full` in the repo root — that is what `loop_health.py`'s move-count trigger reads to know when the next one comes due (threshold: 20 moves across the tracked repos, or 7 days).
 
-Related: `docs/04-process/improvement-loops.md` (loop 4 is this loop, and records that it has completed zero cycles).
+Related: `4-process/improvement-loops.md` (loop 4 is this loop, and records that it has completed zero cycles).

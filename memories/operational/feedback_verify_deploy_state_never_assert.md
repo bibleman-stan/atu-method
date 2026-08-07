@@ -1,6 +1,6 @@
 ---
 name: feedback-verify-deploy-state-never-assert
-description: "Never assert deployment/architecture state from docs, memory, or an agent's claim — verify against git log of the live dir + atu-method/docs/05-status/deployment-status.md"
+description: "Never assert deployment/architecture state from docs, memory, or an agent's claim — verify against git log of the live dir + atu-method/2-evidence/deployment-status.md"
 metadata: 
   node_type: memory
   type: feedback
@@ -9,7 +9,7 @@ metadata:
 
 > **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (`bdb0f65c-d87a-4887-94b8-0f8e6422aa6d/0ed788a7a37f17b9@v2`); state as of 2026-05-26 (snapshot mtime); possibly stale — re-verify before relying.
 
-**Never state what is deployed/live, or a corpus's architecture, from a per-repo `CLAUDE.md`/README, a memory, or an agent's relayed claim.** Those drift stale. **Ground truth = (1) `atu-method/docs/05-status/deployment-status.md` (the single source of truth), and (2) the `git log` of the live corpus directory** (`git log -- <live-path>`). Verify BEFORE asserting.
+**Never state what is deployed/live, or a corpus's architecture, from a per-repo `CLAUDE.md`/README, a memory, or an agent's relayed claim.** Those drift stale. **Ground truth = (1) `atu-method/2-evidence/deployment-status.md` (the single source of truth), and (2) the `git log` of the live corpus directory** (`git log -- <live-path>`). Verify BEFORE asserting.
 
 **Why:** 2026-05-26 I asserted "BoFM v2 is hand-edited/sacred, not method output" — patently false (the pure-method edition replaced the hand-edits 2026-05-22, commit `1a980bf`; bomreader serves `bofm_generate.py` output). Then got Tanakh wrong too. It was the THIRD recurrence of the **hand-edit-as-oracle reflex** ([[feedback_hand_edit_is_a_datapoint]]) — Stan had caught it twice on 2026-05-22. Root cause: stale repo docs + post-compaction memory loss + echoing an agent that read the same stale doc. The incomplete cascade (I fixed the canon but not the orientation docs) is what left the stale line that misled me.
 

@@ -28,7 +28,7 @@ verb; **genitive absolutes may NOT be merged into the chain** — they stand alo
 concrete mechanical consequence — genitive absolutes always get their own line — is
 already codified as **R19 (genitive absolute own line)** in
 `atu-method/atu_method/infrastructure/validator_output.py` and as **LXX-B6** in
-`atu-method/docs/02-registries/binding-rules-lxx.md`. This note preserves the *rationale* behind
+`atu-method/1-method/binding-rules-lxx.md`. This note preserves the *rationale* behind
 R19, not the rule itself. Connects to [[feedback_external_unit_is_not_atu]] (gold/
 external units are candidate-sources, never ATU criteria).
 
@@ -37,4 +37,4 @@ claude-consolidation cleanup (2026-06-01). readers-nt was the first GNT colometr
 reader, since renamed/superseded to readers-gnt (the GitHub repo
 `bibleman-stan/readers-nt` 301-redirects to `readers-gnt`); its in-repo method handoff
 doc was removed in the transition, so this rationale survived only in that orphaned
-note. Ideal long-term home is `atu-method/docs/01-normative/framework.md` §ATU definition._
+note. Ideal long-term home is `atu-method/1-method/framework.md` §ATU definition._

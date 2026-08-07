@@ -44,11 +44,15 @@ SCAN_GLOBS = [
     "CLAUDE.md",
     "README.md",
     "canon-index.md",
-    "docs/*.md",
-    "docs/*/*.md",
+    "Pending-Decisions.md",
+    "00-start-here.md",
+    "1-method/*.md",
+    "2-evidence/*.md",
+    "3-implementation/*.md",
+    "4-process/*.md",
     "memories/*.md",
-    "scholarship/*.md",
-    "scholarship/*/*.md",
+    "2-evidence/scholarship/*.md",
+    "2-evidence/scholarship/*/*.md",
 ]
 
 # memories/operational/ is deliberately NOT path-linted. It is the recovered
@@ -56,7 +60,7 @@ SCAN_GLOBS = [
 # reader-repo scripts, and ~/.claude paths that this repo neither owns nor can
 # resolve, so linting it reports noise rather than rot.
 
-# docs/_old/ is retired canon kept as a historical receipt; its internal pointers
+# _old/ is retired canon kept as a historical receipt; its internal pointers
 # are frozen artifacts of the state they were archived in, so linting them would
 # report rot that is intentional.
 EXCLUDE_PARTS = {"_old", ".archive", "__pycache__"}
@@ -84,6 +88,7 @@ SKIP_PATHS = {
 SKIP_PREFIXES = (
     "C:/", "c:/", "/", "~",
     "readers-", "biblical-corpora/", "rev-reader/",   # sibling repos
+    "atu-nlp-wiki/",                                  # the theory vault (work/, not repos/)
     "private/",                                       # gitignored per-repo substrate
     "handoffs/",                                      # reader-repo convention
     "archive/", ".archive/",
@@ -92,11 +97,11 @@ SKIP_PREFIXES = (
 
 # Memory files are cited bare by filename across the canon; they live in
 # memories/ or memories/operational/ and resolve() finds them there.
-SEARCH_SUBDIRS = ["", "docs", "docs/01-normative", "docs/02-registries",
-                  "docs/03-implementation", "docs/04-process", "docs/05-status",
+SEARCH_SUBDIRS = ["", "1-method", "2-evidence", "3-implementation", "4-process",
                   "memories", "memories/operational", "scripts",
-                  "scholarship", "scholarship/bofm", "scholarship/gnt",
-                  "scholarship/methodology", "data", "atu_method", "tests"]
+                  "2-evidence/scholarship", "2-evidence/scholarship/bofm",
+                  "2-evidence/scholarship/gnt", "2-evidence/scholarship/methodology",
+                  "data", "atu_method", "tests"]
 
 
 def slugify(h: str) -> str:
@@ -133,7 +138,7 @@ def is_skip(ref: str) -> bool:
 def resolve(ref: str, source: Path):
     rel = ref.replace("\\", "/")
     # Canon cites this repo's own files with the repo name attached
-    # ("atu-method/docs/03-implementation/substrate.md") as often as bare; both are correct.
+    # ("atu-method/3-implementation/substrate.md") as often as bare; both are correct.
     for prefix in ("repos/atu-method/", "atu-method/", "./"):
         if rel.startswith(prefix):
             rel = rel[len(prefix):]

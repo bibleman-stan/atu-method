@@ -9,7 +9,7 @@ Link form follows the house style already in these docs — markdown links, not
 wikilinks: ``[`framework.md`](framework.md)`` (40 pre-existing instances). Section
 anchors use angle-bracket destinations so heading text stays readable in raw
 markdown: ``[`framework.md §2.1`](<framework.md#§2.1 The bidirectional test ...>)``.
-Wikilinks were rejected: they resolve by bare filename, and `docs/_old/framework.md`
+Wikilinks were rejected: they resolve by bare filename, and `_old/framework.md`
 would make every `[[framework]]` ambiguous.
 
 Anchor styles:

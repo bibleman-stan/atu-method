@@ -21,7 +21,7 @@ Do this even when the summary looks complete — the failure mode is a summary t
 
 ## 2. Re-enumerate state from ground truth, never from recall
 
-- **Deploy state** → `docs/05-status/deployment-status.md` plus the git log of the live directory. Never infer it from a per-repo README or from memory; those drift.
+- **Deploy state** → `2-evidence/deployment-status.md` plus the git log of the live directory. Never infer it from a per-repo README or from memory; those drift.
 - **In-flight work** → `git status --short` and `git log --oneline -10` in the repo *and* in the relevant reader repo.
 - **Parked work** → `memories/operational/_deferred_queue.md`.
 - **Never recall a pre-compaction comparative number** (an F1, a pass rate, a diff count) without re-running the gate that produced it. If re-running is impractical, say the number is unverified rather than repeating it.

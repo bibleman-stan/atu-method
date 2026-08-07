@@ -11,7 +11,7 @@ metadata:
 
 The canonical ATU method is the same across corpora; the per-repo **directory naming has drifted** and must not be trusted to line up. This pins the map.
 
-## Framework abstract stages (atu-method/docs/01-normative/framework.md §3)
+## Framework abstract stages (atu-method/1-method/framework.md §3)
 
 `v0` source → `v1` treebank clause-atoms → `v1.5` binding rules (primary segmenter) → `v2` *optional* narrow LLM adjudication on residuals → `v3` editorial review. **There is no `v4` stage in the canonical scheme** — the binding-rule output (v1.5) is itself a publishable draft.
 

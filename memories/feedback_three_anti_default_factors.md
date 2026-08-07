@@ -30,6 +30,6 @@ Pattern 3 (backward-anaphoric blindness). `framework.md §1.1` was stated forwar
 
 ## How to apply
 
-The three factors operationalize as four pre-proposal gates documented in [`feedback_rule_proposal_gates.md`](feedback_rule_proposal_gates.md). The retraction-precedent log at `atu-method/docs/04-process/retraction-log-protocol.md` catalogues new sub-patterns under each factor and promotes them at the 3-strike threshold.
+The three factors operationalize as four pre-proposal gates documented in [`feedback_rule_proposal_gates.md`](feedback_rule_proposal_gates.md). The retraction-precedent log at `atu-method/4-process/retraction-log-protocol.md` catalogues new sub-patterns under each factor and promotes them at the 3-strike threshold.
 
 Codified 2026-05-16 from the readiness-arc retrospective + operational-floor draft adversarial audit. The 7-to-3 compression unblocks the rule-proposal gates protocol and reveals that no new shared "operational floor" document is needed — the existing memory system already does the work, organized via this compression.
