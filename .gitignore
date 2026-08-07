@@ -69,3 +69,6 @@ tmp/
 .obsidian/plugins/
 .obsidian/themes/
 .trash/
+
+# loop_health run stamp (local timing signal, not shared state)
+.loop-health-last-run

@@ -152,6 +152,42 @@ def check_queue() -> list:
              else "deferred queue age unknown")]
 
 
+STAMP = REPO / ".loop-health-last-run"
+
+
+def check_dormancy() -> list:
+    """How long was the silence before this run?
+
+    A SessionStart hook fires only when something is happening, so it is NOT the
+    calendar trigger Loop 4 requires — during the six-week dormancy that lost the
+    memory namespace it would have fired zero times (verified: zero commits in
+    July 2026 across atu-method and all three active reader repos).
+
+    This does not fix that. What it does is make the silence VISIBLE at the
+    moment it ends: the first session back learns how long nothing was checked,
+    which is the signal that was missing in June-July. A true calendar trigger
+    needs an out-of-session scheduler.
+    """
+    out = []
+    now = _dt.datetime.now()
+    if STAMP.exists():
+        prev = _dt.datetime.fromtimestamp(STAMP.stat().st_mtime)
+        gap = (now - prev).days
+        flag = "FAIL" if gap > 30 else ("WARN" if gap > 7 else "ok")
+        out.append((flag, f"{gap} days since the last loop-health run "
+                          f"(previous: {prev:%Y-%m-%d})"
+                          + (" — a dormancy window this long is exactly when "
+                             "drift accumulates unseen" if gap > 30 else "")))
+    else:
+        out.append(("WARN", "no prior run recorded — first run, or the stamp "
+                            "was cleared"))
+    try:
+        STAMP.touch()
+    except OSError:
+        pass
+    return out
+
+
 def check_pointers() -> list:
     script = REPO / "scripts" / "check_broken_pointers.py"
     if not script.exists():
@@ -172,6 +208,7 @@ def main() -> int:
     args = ap.parse_args()
 
     sections = [
+        ("dormancy since last check", check_dormancy),
         ("retraction -> promotion loop", check_retraction_logs),
         ("validator baselines", check_baselines),
         ("outcome instrument (gold yardstick)", check_yardstick),
