@@ -42,4 +42,8 @@ One adversarial pass, written down — not vibes:
 
 **Findings convert to edits, or they recur.** A finding that ends the turn as prose is not a finding. It lands as an edit, as a `memories/operational/_deferred_queue.md` entry, or as a named Stan-facing decision. Nothing else counts.
 
+**Every audit revises `docs/04-process/improvement-loops.md`** (Stan, 2026-08-07: *"i expect that these audits, etc. inform a revised/more accurate improvement-loops document"*). That document is the standing account of which loops work; an audit that finds a loop is weaker, stronger, or differently-shaped than recorded and leaves the document unchanged has produced a private observation, not a correction. Update the loop's status line, add a dated History entry naming what was accepted and what was refused, and state the evidence. Statuses may move in either direction — Loop 5 was upgraded on 2026-08-07 after completing its first cycle, and Loops 1 and 4 were downgraded the same day.
+
+**Record the audit mark.** After a full audit, `touch` `.loop-audit-last-full` in the repo root — that is what `loop_health.py`'s move-count trigger reads to know when the next one comes due (threshold: 20 moves across the tracked repos, or 7 days).
+
 Related: `docs/04-process/improvement-loops.md` (loop 4 is this loop, and records that it has completed zero cycles).

@@ -47,8 +47,11 @@ STALE_YARDSTICK_DAYS = 45
 
 def _git(repo: Path, *args) -> str:
     try:
+        # encoding must be explicit: commit messages here carry §, em-dashes and
+        # Greek, and Windows' default cp1252 decode raises on them.
         return subprocess.run(["git", *args], cwd=repo, capture_output=True,
-                              text=True, timeout=20).stdout.strip()
+                              text=True, encoding="utf-8", errors="replace",
+                              timeout=20).stdout.strip()
     except (OSError, subprocess.SubprocessError):
         return ""
 
@@ -67,13 +70,16 @@ def check_retraction_logs() -> list:
         repo = REPO.parent / name
         if not repo.exists():
             continue
-        # Repo-root was the original convention; readers-bofm moved its log to
-        # docs/ on 2026-08-07. Look in both rather than reporting a false
-        # "missing log" — a checker that cries wolf gets ignored, which is the
-        # failure mode this whole script exists to prevent.
-        log = next((p for p in (repo / "retraction-log.md",
-                                repo / "docs" / "retraction-log.md")
-                    if p.exists()), None)
+        # The log's home keeps moving as repos reorganize: repo root originally,
+        # docs/ on 2026-08-07 morning, 2-evidence/ by that afternoon. Hardcoding
+        # locations produced a false "missing log" within hours, and a checker
+        # that cries wolf gets ignored — the exact failure this script exists to
+        # prevent. Search shallowly instead.
+        log = next((p for p in sorted(repo.glob("*/retraction-log.md"))
+                    if "_archive" not in p.parts and ".git" not in p.parts),
+                   None)
+        if (repo / "retraction-log.md").exists():
+            log = repo / "retraction-log.md"
         if log is None:
             out.append(("WARN", f"{name}: no retraction-log.md"))
             continue
@@ -153,6 +159,57 @@ def check_queue() -> list:
 
 
 STAMP = REPO / ".loop-health-last-run"
+AUDIT_STAMP = REPO / ".loop-audit-last-full"
+
+# A "move" is one commit in any tracked repo. The full hostile audit comes due on
+# whichever arrives first: MOVES_DUE accumulated changes, or DAYS_DUE elapsed.
+MOVES_DUE = 20
+DAYS_DUE = 7
+
+
+def check_audit_due() -> list:
+    """Move-count trigger for the full audit (Stan's call, 2026-08-07).
+
+    Preferred over an out-of-session scheduler. A scheduled task firing into
+    genuine dormancy produces reports nobody reads until someone returns — at
+    which point check_dormancy() surfaces the gap anyway. The scheduler buys an
+    earlier timestamp, not earlier action. Counting moves instead fires in
+    proportion to accumulated risk, needs no system-state change outside git,
+    and is inspectable.
+
+    The known limit, stated rather than hidden: like any activity trigger this
+    cannot fire during silence. check_dormancy() is the other half of the pair.
+    """
+    since = None
+    if AUDIT_STAMP.exists():
+        since = _dt.datetime.fromtimestamp(AUDIT_STAMP.stat().st_mtime)
+    moves, per_repo = 0, []
+    for name in ["atu-method"] + SIBLINGS:
+        repo = REPO.parent / name if name != "atu-method" else REPO
+        if not repo.exists():
+            continue
+        args = ["log", "--oneline"]
+        if since:
+            args += [f"--since={since:%Y-%m-%dT%H:%M:%S}"]
+        else:
+            args += ["-30"]
+        n = len([l for l in _git(repo, *args).splitlines() if l.strip()])
+        if n:
+            per_repo.append(f"{name} {n}")
+            moves += n
+    days = (_dt.datetime.now() - since).days if since else None
+    due = moves >= MOVES_DUE or (days is not None and days >= DAYS_DUE)
+    if since is None:
+        return [("WARN", f"full audit never recorded; {moves} recent moves "
+                         f"({', '.join(per_repo) or 'none'}) — run the "
+                         f"atu-audit-tier skill to set the mark")]
+    detail = f"{moves} moves since the last full audit ({days}d ago)"
+    if per_repo:
+        detail += f" [{', '.join(per_repo)}]"
+    if due:
+        return [("FAIL", f"AUDIT DUE — {detail}; threshold is {MOVES_DUE} moves "
+                         f"or {DAYS_DUE} days. Run the atu-audit-tier skill.")]
+    return [("ok", detail)]
 
 
 def check_dormancy() -> list:
@@ -193,7 +250,8 @@ def check_pointers() -> list:
     if not script.exists():
         return [("WARN", "check_broken_pointers.py missing")]
     r = subprocess.run([sys.executable, str(script)], cwd=REPO,
-                       capture_output=True, text=True, timeout=120)
+                       capture_output=True, text=True, encoding="utf-8",
+                       errors="replace", timeout=120)
     m = re.search(r"broken anchors:\s+(\d+)", r.stdout or "")
     anchors = m.group(1) if m else "?"
     m2 = re.search(r"broken doc paths:\s+(\d+)", r.stdout or "")
@@ -209,6 +267,7 @@ def main() -> int:
 
     sections = [
         ("dormancy since last check", check_dormancy),
+        ("full-audit due? (move-count trigger)", check_audit_due),
         ("retraction -> promotion loop", check_retraction_logs),
         ("validator baselines", check_baselines),
         ("outcome instrument (gold yardstick)", check_yardstick),

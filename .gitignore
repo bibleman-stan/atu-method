@@ -72,3 +72,4 @@ tmp/
 
 # loop_health run stamp (local timing signal, not shared state)
 .loop-health-last-run
+.loop-audit-last-full
