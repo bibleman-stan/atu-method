@@ -273,7 +273,9 @@ flowchart LR
 
 **And there is now a convergence worth recording.** Stan independently flagged **1 Nephi 3:4** as obviously needing a break at each predication. The Marschall instrument independently flags **the same verse** as the chapter's worst violation, at 42 syllables against a 35-syllable Law. Two instruments that could not have influenced one another selected the same line. That is the convergence argument this program accepts elsewhere, and it was nearly lost to conversation; it survives only because it is now in `F-001`.
 
-**Status: MISSING, and it is the loop whose absence costs most.** The substrate loop (Gap 3 below) governs how good the parse *can* be; this one governs whether the product is doing its job. Building it need not be elaborate — a durable place to record reader-side observations against verse references, so that n=1 can become n=many, would be a start and does not exist today.
+**Status update 2026-08-07 — capture edge OPENED.** [`../2-evidence/reader-observations.md`](../2-evidence/reader-observations.md) now exists and holds the first two entries, both Stan's: long AICTP passages reading as wrong, and 1 Ne 3:4 wanting a break at each predication. Four instruments that do not read — Skousen, cross-corpus words-per-line, Marschall's bands, our own Hebrew Isaiah — agree in direction with the one that does. The **return edge is still open**: nothing converts a cluster of observations into a rule proposal, and nothing measures whether a change improved the reading. That is the same shape Loop 5 was in before its first cycle.
+
+**Why it still counts as the loop whose absence costs most.** The substrate loop (Gap 3 below) governs how good the parse *can* be; this one governs whether the product is doing its job. Building it need not be elaborate — a durable place to record reader-side observations against verse references, so that n=1 can become n=many, would be a start and does not exist today.
 
 ## The shape — additive, with one unmeasured channel
 
