@@ -1,6 +1,6 @@
 # EP-4: Title/Role Stays With Its Domain — Scholarship Companion
 
-**Operational entry:** see `readers-bofm/private/01-method/colometry-canon.md §5 EP-4` (current).
+**Operational entry:** see `readers-bofm/1-method/colometry-canon.md §5 EP-4` (current).
 
 **Status:** This is the scholarship companion documenting WHY EP-4 exists, HOW we know it is correctly framed, and what intellectual / empirical history grounds its current shape. The operational canon entry says WHAT the rule does; this document says why.
 
@@ -170,7 +170,7 @@ The two rules operate on different structural elements and should not conflict, 
 
 *References:*
 
-- Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 EP-4` (current state)
+- Operational canon entry: `readers-bofm/1-method/colometry-canon.md §5 EP-4` (current state)
 - Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.5 M3 (bare-governor indivisibility — structural sibling principle) + §1.4 J5 (substantive adjunct as own focus — interaction) + §2 (Category B editorial-judgment)
 - Sibling EP-tier rule: [`EP-1.md`](EP-1.md) (editorial-judgment EP-rule pattern)
 - 2026-04-19 three-layer architecture restructuring: `readers-bofm/private/2026-04-19-canon-v2-and-merge-overrides/transcript.md`

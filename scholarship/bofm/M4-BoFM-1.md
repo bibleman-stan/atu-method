@@ -1,6 +1,6 @@
 # M4-BoFM-1: Subject-Orphan Predicate Completion — Scholarship Companion
 
-**Operational entry:** see `readers-bofm/private/01-method/colometry-canon.md §5 M4-BoFM-1`.
+**Operational entry:** see `readers-bofm/1-method/colometry-canon.md §5 M4-BoFM-1`.
 
 **Codification date:** 2026-05-11. Commits: `fb82c55` (initial R18a sub-clause) → `e20a4b9` (parallel-consistency extension) → `45ff06b` (promotion to standalone rule; 25 Cat A corpus merges).
 
@@ -142,7 +142,7 @@ The `PREDICATE_LEAD_LEMMAS` list in the UD signature is explicitly marked "augme
 
 *References:*
 
-- Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 M4-BoFM-1` (codified 2026-05-11, commits `fb82c55` → `e20a4b9` → `45ff06b`)
+- Operational canon entry: `readers-bofm/1-method/colometry-canon.md §5 M4-BoFM-1` (codified 2026-05-11, commits `fb82c55` → `e20a4b9` → `45ff06b`)
 - Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.5 M4 (fragmented atomic thought-unit)
 - Sister rule (predicate→complement): [`R17.md`](R17.md)
 - Sister rule (triad-formula integrity, post-promotion scope): [`R18a.md`](R18a.md)

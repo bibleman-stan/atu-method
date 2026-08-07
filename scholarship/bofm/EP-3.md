@@ -1,6 +1,6 @@
 # EP-3: Inverted Predicate — Scholarship Companion
 
-**Operational entry:** see `readers-bofm/private/01-method/colometry-canon.md §5 EP-3` (current).
+**Operational entry:** see `readers-bofm/1-method/colometry-canon.md §5 EP-3` (current).
 
 **Status:** This is the scholarship companion documenting WHY EP-3 exists, HOW we know it is correctly framed, and what intellectual / empirical history grounds its current shape. The operational canon entry says WHAT the rule does; this document says why.
 
@@ -174,7 +174,7 @@ EP-3's territory partially overlaps the comma-prone environments where punctuati
 
 *References:*
 
-- Operational canon entry: `readers-bofm/private/01-method/colometry-canon.md §5 EP-3` (current state)
+- Operational canon entry: `readers-bofm/1-method/colometry-canon.md §5 EP-3` (current state)
 - Universal framework: [`../../docs/01-normative/framework.md`](../../docs/01-normative/framework.md) §1.1 (generative principle — proposition-first) + §2 (Category B editorial-judgment) + §1.4 J1 (formally-marked parallel series — beatitude-chain interaction)
 - Sister EP-rule scholarship: [`EP-1.md`](EP-1.md) (editorial-judgment EP-rule exemplar)
 - 2026-04-19 three-layer architecture restructuring: `readers-bofm/private/2026-04-19-canon-v2-and-merge-overrides/`

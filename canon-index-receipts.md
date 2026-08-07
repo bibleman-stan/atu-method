@@ -66,7 +66,7 @@ workflow's five parallel scopes.
   → Already repointed to `§1` in Batch A1; no `§0.1` token at this line.
 - `scholarship/bofm/R20.md:126`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1 (atomic-thought mission), §1.1 (generative principle — each proposition splits by default), §1.4 J1-J5 (the five structural justifications — referenced by Exemption 4), §1.5 M3 (bare-governor indivisibility — related "fragment fails atomic-thought" failure mode)`
   → Already repointed to `§1`; no `§0.1` token at this line.
-- `readers-bofm/private/01-method/colometry-canon.md:26` (the §0 pointer-block, spanning canon-index's referenced :22-28): `**Pointer to framework.** Universal mission, method (sense-driven mission + syntax-constrained method), pragmatic stance, and scope statements are codified at [`atu-method/docs/01-normative/framework.md §0`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
+- `readers-bofm/1-method/colometry-canon.md:26` (the §0 pointer-block, spanning canon-index's referenced :22-28): `**Pointer to framework.** Universal mission, method (sense-driven mission + syntax-constrained method), pragmatic stance, and scope statements are codified at [`atu-method/docs/01-normative/framework.md §0`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
 - `readers-gnt/private/01-method/colometry-canon.md:29` (the §0 pointer-block, spanning canon-index's referenced :25-43): `**Pointer to framework.** Universal mission, method (sense-driven mission + syntax-constrained method), pragmatic stance, and scope statements are codified at [`atu-method/docs/01-normative/framework.md §0`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
 
 **Consumers (FLAGGED):**
@@ -85,7 +85,7 @@ workflow's five parallel scopes.
 **Live-successor:** null — `docs/01-normative/framework.md` has no `§0.2` heading (verified by grep for `^## §0\.|^### §0\.` against full live framework.md returning no matches). Live §2 introduces "thought operationalized by a grammatical test … grammatical closure is a proxy for thought" (framework.md:22) but does NOT carry the sense-driven mission vs syntax-constrained method asymmetry explicitly. Canon-index disposition `fold→§1 Purpose` is consistent with the absence.
 
 **Consumers (verified):**
-- `readers-bofm/private/01-method/colometry-canon.md:26` (pointer block within :22-28): same `§0` cite line as §0.1 above (the pointer block covers mission + method + stance + scope as a single `framework.md §0` reference).
+- `readers-bofm/1-method/colometry-canon.md:26` (pointer block within :22-28): same `§0` cite line as §0.1 above (the pointer block covers mission + method + stance + scope as a single `framework.md §0` reference).
 - `readers-gnt/private/01-method/colometry-canon.md:29` (pointer block within :25-43): same `§0` cite line as above.
 
 **Consumers (FLAGGED):**
@@ -103,7 +103,7 @@ workflow's five parallel scopes.
 **Consumers (verified):**
 - `atu-method/memories/feedback_rhetoric_bandwagon.md:13`: `Our theoretical foundation is **psycholinguistic / cognitive**, not rhetorical or parallelism-structural. See `feedback_sense_line_mission.md` for the grounding principle: atomic thought trumps poetic structure; we expose sense-lines, not parallels; Parry is a separate layer we may overlap with but do not target.`
   → Conceptual cite — does NOT use `§0.3` token. Most thematically-aligned line; same family but it asserts the OPPOSITE framing ("psycholinguistic / cognitive" = a theoretical foundation, vs §0.3's "not derived from a cognitive theory; no such claim is asserted"). Flagged below.
-- `readers-bofm/private/01-method/colometry-canon.md:26` and `readers-gnt/private/01-method/colometry-canon.md:29` — same umbrella `§0` pointer-block lines verified under §0.1 above (these are the "BoFM canon:22-28 + GNT canon:25-43 pointer blocks" cited by canon-index).
+- `readers-bofm/1-method/colometry-canon.md:26` and `readers-gnt/private/01-method/colometry-canon.md:29` — same umbrella `§0` pointer-block lines verified under §0.1 above (these are the "BoFM canon:22-28 + GNT canon:25-43 pointer blocks" cited by canon-index).
 
 **Consumers (FLAGGED):**
 - `atu-method/memories/feedback_rhetoric_bandwagon.md` — canon-index says "(1 cite)" but a `§0.3` Grep returns no matches in this file. The conceptual link goes through `feedback_sense_line_mission.md` referenced at line 13. **More importantly:** the memory's framing ("Our theoretical foundation is psycholinguistic / cognitive") is in semantic *tension* with §0.3's "not derived from a cognitive theory; no such claim is asserted" — the canon-index disposition `fold→§1 Purpose` glosses this tension. Surface to Stan.
@@ -125,7 +125,7 @@ workflow's five parallel scopes.
 **Consumers (verified):**
 - `scholarship/bofm/R23.md:61`: `The BoFM's distinctive *"forty and second"* / *"twenty and seventh"* compound-ordinal pattern (number-word + *and* + ordinal) is preserved as part of the formula's lexicalized form. The UD validator (`validate_rule_23_ud.py` lines 99-117) explicitly allows the compound-ordinal sub-pattern inside the formula's anchor span. The compound form is not editorially modernized to *"forty-second"* — punctuation and word-content are inherited from the source per the universal preservation principle (`framework.md §1`).`
   → Already repointed to `§1` (Batch A1); no `§0.4` token at this line.
-- `readers-bofm/private/01-method/colometry-canon.md:26` and `readers-gnt/private/01-method/colometry-canon.md:29` — same umbrella `§0` pointer-block lines as above.
+- `readers-bofm/1-method/colometry-canon.md:26` and `readers-gnt/private/01-method/colometry-canon.md:29` — same umbrella `§0` pointer-block lines as above.
 
 **Consumers (FLAGGED):**
 - `scholarship/bofm/R23.md:61` — same shape as R20: cites `§1`, not `§0.4`. Post-repoint state; the canon-index annotation "(repointed in Batch A1 to §1)" is faithful. No live `§0.4` token on disk in any consumer.
@@ -496,7 +496,7 @@ All §1.2.x consumers verified. Now I have all the receipts needed. Let me produ
 - `memories/feedback_grammar_constrains_not_determines.md:14`: `**Why this memory exists:** Stan codified the principle verbatim 2026-05-13: ... Codified at framework §1.2's tail ("Constraint vs. determination — the asymmetry between §1.1 and §1.2").`
 - `memories/feedback_rhetoric_figures_constrain_atu.md:8`: `**Principle.** Rhetorical figures of speech are CONSTRAINTS on the candidate-space of ATU breaks, NOT DETERMINANTS. Each figure has a default disposition that flows from its referential structure, but the atomic-thought test (§1.1, bidirectional) is the determination engine. ...`
 - `memories/feedback_rhetoric_figures_constrain_atu.md:45`: `- Symmetric counterpart to [[grammar-constrains-not-determines]]: ... The §1.1 generative principle is the determination engine; §1.2 (grammar/formula integrity) and rhetoric-figures (this memory) are the two constraint layers.`
-- `readers-bofm/private/01-method/colometry-canon.md:34` (BoFM pointer block): `**Pointer to framework.** The framework specification — generative principle (each proposition splits by default); three closed-list ways syntax forbids splits ...` — verified, pointer block at line 34.
+- `readers-bofm/1-method/colometry-canon.md:34` (BoFM pointer block): `**Pointer to framework.** The framework specification — generative principle (each proposition splits by default); three closed-list ways syntax forbids splits ...` — verified, pointer block at line 34.
 - `readers-gnt/private/01-method/colometry-canon.md:48` (GNT pointer block): `**Pointer to framework.** The framework specification — generative principle (each proposition splits by default); ...` — verified, pointer block at line 48.
 - `readers-gnt/scripts/audit_anaphoric_gen_abs_macula.py:6`: `bidirectional ATU test (framework §1.1, GNT canon §1).`
 
@@ -521,7 +521,7 @@ All §1.2.x consumers verified. Now I have all the receipts needed. Let me produ
 - `scholarship/bofm/R10.md:132`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.2 (syntax forbids splits — Layer 1 mid-phrase prohibitions), §1.4 J1 (compound-list-break-signals sub-rule — governs coordinate-object exclusion), §1.5 M1 (asymmetric-modifier sub-clause — governs Mosiah 18:7 third-item modifier), §1.9 (N=2 Adjudication / N=3+ cliff scope to predications, not objects)`
 - `memories/feedback_grammar_constrains_not_determines.md:10`: `- **Atomic-thought SHOULD-go signals (generative principle + bidirectional test affirmation per `framework.md §1.2`):** "this break is justified because the next line carries a fresh proposition / camera angle / portrait beat / speech-act announcement / classical comma / substantive adjunct as own focus." The generative force is propositional, not grammatical.`
 - `memories/feedback_grammar_constrains_not_determines.md:14`: `**Why this memory exists:** ... Codified at framework §1.2's tail ("Constraint vs. determination — the asymmetry between §1.1 and §1.2").`
-- `readers-bofm/private/01-method/colometry-canon.md:34` (BoFM pointer block): verified — pointer block at line 34 enumerates "three closed-list ways syntax forbids splits (Layer 1 mid-phrase prohibitions, complement integrity, formula integrity)".
+- `readers-bofm/1-method/colometry-canon.md:34` (BoFM pointer block): verified — pointer block at line 34 enumerates "three closed-list ways syntax forbids splits (Layer 1 mid-phrase prohibitions, complement integrity, formula integrity)".
 - `readers-gnt/private/01-method/colometry-canon.md:48` (GNT pointer block): verified — same pointer block prose at line 48.
 - `readers-tanakh/scripts/archive/apply_formula_integrity_merge.py:2`: line 2 reads `# -*- coding: utf-8 -*-`. The §1.2 token does not appear there; the file content (formula-integrity merge) is conceptually §1.2.3-aligned but the canon-index citation `:2` is the file's encoding declaration, not a §1.2 reference. FLAGGED (line-number wrong OR conceptual-only cite without literal §-token).
 
@@ -614,9 +614,9 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - `scholarship/bofm/R27.md:105`: `Three-condition merge test (word count ≤8, subject continuity, no camera-angle shift), with the default direction SPLIT. The rule was codified as **proposed** pending corpus-wide sweep verification (framework §7.8 — adoption requires ≥80% clean categorization).`
 - `scholarship/bofm/R27.md:172`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.1 (generative principle), §1.3 (camera-angle test), §1.4 (J1, J5), §7.8 (proposed-rule adoption protocol); BoFM canon §3.5 Tier 5 (R7 yields-to R27), §3.5.1 (*that*-cluster precedence)`
 - `scholarship/gnt/R25.md:131`: `The 3-condition merge test itself, the word-count threshold (≤8), the subject-continuity condition, and the camera-angle condition were all verified adversarially against Phase A candidates before application. No additional carve-outs or threshold adjustments were required by the audit.`
-- `readers-bofm/private/01-method/colometry-canon.md:34`: `**Pointer to framework.** The framework specification … image diagnostic (camera-angle test); five structural justifications J1–J5 …` [full line at offset 34]
-- `readers-bofm/private/01-method/colometry-canon.md:201`: `- Single-image / camera-angle diagnostic (image-test)`
-- `readers-bofm/private/01-method/colometry-canon.md:1959`: `**Rule.** A consecutive-result clause … (3) no camera-angle shift occurs across the boundary (single-image diagnostic passes). …`
+- `readers-bofm/1-method/colometry-canon.md:34`: `**Pointer to framework.** The framework specification … image diagnostic (camera-angle test); five structural justifications J1–J5 …` [full line at offset 34]
+- `readers-bofm/1-method/colometry-canon.md:201`: `- Single-image / camera-angle diagnostic (image-test)`
+- `readers-bofm/1-method/colometry-canon.md:1959`: `**Rule.** A consecutive-result clause … (3) no camera-angle shift occurs across the boundary (single-image diagnostic passes). …`
 - `readers-gnt/private/01-method/colometry-canon.md:48`: `**Pointer to framework.** … image diagnostic (camera-angle test); five structural justifications J1–J5 …`
 - `readers-gnt/private/01-method/colometry-canon.md:1171`: `3. **No camera shift** — no new scene participant or viewpoint pivot is introduced by the result clause.`
 - `readers-gnt/private/01-method/colometry-canon.md:1181`: `    no_camera_shift: true`
@@ -645,7 +645,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - `atu-method/memories/feedback_rhetoric_figures_constrain_atu.md` (audit row claims **6 cites** to §1.3a): full file Read returns ZERO occurrences of `§1.3a`. The file cites `framework.md §1.1` (line 8 references §1.1) and `framework.md §1.2` (lines 12, 13, 16) — never §1.3a. Six §1.2 / §1.1 cites exist; the audit row appears to misattribute these to §1.3a.
 - `atu-method/memories/feedback_rule_proposal_gates.md`: NO match for `§1.3a`. Closest content (line 11): `Am I citing a surface feature (UD signature, rhetorical figure, punctuation, lexical pattern) as evidence?` — a generic rhetoric-as-surface-feature mention, NOT a §1.3a cite.
 - `atu-method/memories/feedback_no_fake_dilemmas.md`: NO match for `§1.3a`. Closest (line 36): `- `feedback_rhetoric_bandwagon.md` — meta-audit failure mode (judgment-handoff smuggling section)` — pointer to the bandwagon memory, NOT a §1.3a cite.
-- `readers-bofm/private/01-method/colometry-canon.md` Tier 0 mentions: not located by direct Grep within the offsets exercised; flagged as not ground-truthed in this verification pass (no specific line was supplied for the Tier 0 claim, and a Grep for `§1.3a` against the canon would be required to confirm).
+- `readers-bofm/1-method/colometry-canon.md` Tier 0 mentions: not located by direct Grep within the offsets exercised; flagged as not ground-truthed in this verification pass (no specific line was supplied for the Tier 0 claim, and a Grep for `§1.3a` against the canon would be required to confirm).
 
 ---
 
@@ -661,13 +661,13 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 **Consumers (verified):**
 - `scholarship/bofm/R20.md:126`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1 (atomic-thought mission), §1.1 (generative principle — each proposition splits by default), §1.4 J1-J5 (the five structural justifications — referenced by Exemption 4), §1.5 M3 (bare-governor indivisibility — related "fragment fails atomic-thought" failure mode)`
 - `scholarship/bofm/R27.md:172`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.1 (generative principle), §1.3 (camera-angle test), §1.4 (J1, J5), §7.8 (proposed-rule adoption protocol); BoFM canon §3.5 Tier 5 (R7 yields-to R27), §3.5.1 (*that*-cluster precedence)`
-- `readers-bofm/private/01-method/colometry-canon.md:34`: `**Pointer to framework.** … five structural justifications J1–J5 (formally-marked parallel series, portrait accumulation, speech-act announcement, classical commata, substantive adjunct) …`
+- `readers-bofm/1-method/colometry-canon.md:34`: `**Pointer to framework.** … five structural justifications J1–J5 (formally-marked parallel series, portrait accumulation, speech-act announcement, classical commata, substantive adjunct) …`
 - `readers-gnt/private/01-method/colometry-canon.md:48`: `**Pointer to framework.** … five structural justifications J1–J5 …`
-- `readers-bofm/private/01-method/colometry-canon.md:487`: `4. *Or*-coordinations functioning as compound objects under a shared verb or preposition (J1 compound-list members) → §1.4 J1 governs the head-and-object analysis; if the compound list reads as J1 series, R5 yields. The N=3+ cliff (§1.9) does not engage R5 because R5 fires only on N=2 *or*-pairs.`
-- `readers-bofm/private/01-method/colometry-canon.md:1581`: `1. Bare participial without its own subject (subject-inheriting from matrix) — out of scope; routes to M3 (bare-governor indivisibility, framework §1.5 M3) including M3's bare-trailing-participial extension.` — NOTE: this line cites §1.5 M3, NOT §1.4. The audit's BoFM-canon:1581 cite as §1.4 consumer is mis-attributed.
-- `readers-bofm/private/01-method/colometry-canon.md:2056`: `3. Result-clause internal structure firing J5 substantive adjunct or J1 parallel series — those breaks fire INSIDE the merged unit and are NOT excluded from R27; R27's outer-boundary verdict (merge) stands → framework `§1.4``
-- `readers-bofm/private/01-method/colometry-canon.md:2653`: `**Framework anchor:** Corpus-specific operational instantiation of framework M4 (fragmented atomic thought-unit; see [`atu-method/docs/01-normative/framework.md §1.5`](docs/01-normative/framework.md)).` — NOTE: cites §1.5 M4, NOT §1.4. Mis-attributed in audit row.
-- `readers-bofm/private/01-method/colometry-canon.md:2727`: `2. **J1 stacked-coordinate-subject tail.** When line A is the final element of a parallel-series stack of coordinate subjects (per framework J1), the parallel-series convention wins. M4-BoFM-1 yields per the §1.5 M4 scope discipline (M4 is prospective, not retroactive against J1 series).`
+- `readers-bofm/1-method/colometry-canon.md:487`: `4. *Or*-coordinations functioning as compound objects under a shared verb or preposition (J1 compound-list members) → §1.4 J1 governs the head-and-object analysis; if the compound list reads as J1 series, R5 yields. The N=3+ cliff (§1.9) does not engage R5 because R5 fires only on N=2 *or*-pairs.`
+- `readers-bofm/1-method/colometry-canon.md:1581`: `1. Bare participial without its own subject (subject-inheriting from matrix) — out of scope; routes to M3 (bare-governor indivisibility, framework §1.5 M3) including M3's bare-trailing-participial extension.` — NOTE: this line cites §1.5 M3, NOT §1.4. The audit's BoFM-canon:1581 cite as §1.4 consumer is mis-attributed.
+- `readers-bofm/1-method/colometry-canon.md:2056`: `3. Result-clause internal structure firing J5 substantive adjunct or J1 parallel series — those breaks fire INSIDE the merged unit and are NOT excluded from R27; R27's outer-boundary verdict (merge) stands → framework `§1.4``
+- `readers-bofm/1-method/colometry-canon.md:2653`: `**Framework anchor:** Corpus-specific operational instantiation of framework M4 (fragmented atomic thought-unit; see [`atu-method/docs/01-normative/framework.md §1.5`](docs/01-normative/framework.md)).` — NOTE: cites §1.5 M4, NOT §1.4. Mis-attributed in audit row.
+- `readers-bofm/1-method/colometry-canon.md:2727`: `2. **J1 stacked-coordinate-subject tail.** When line A is the final element of a parallel-series stack of coordinate subjects (per framework J1), the parallel-series convention wins. M4-BoFM-1 yields per the §1.5 M4 scope discipline (M4 is prospective, not retroactive against J1 series).`
 - `readers-gnt/private/01-method/colometry-canon.md:56`: `- **J1 compound-list break signals — GNT extension: marked-coordinator climactic emphasis (5th signal).** Framework §1.4 J1 lists four compound-list-break signals …`
 - `readers-gnt/private/01-method/colometry-canon.md:130`: `- **J3 named patterns (speech-act announcement) — GNT instantiations.** Direct speech introduction: `καὶ ἔλεγεν αὐτοῖς:` / `καὶ εἶπεν αὐτῷ:` — each is a complete speech-act predication. See §3.6 (R11) for the full treatment.`
 - `readers-gnt/private/01-method/colometry-canon.md:132`: `- **J5 substantive adjunct — GNT canonical cases.**`
@@ -675,8 +675,8 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - `readers-gnt/private/01-method/colometry-canon.md:227-259`: this range spans the M1/M2/M3/M4 GNT-cases blocks (lines 227-258 captured above). These cite §1.5 M-overrides, NOT §1.4 J-justifications — verbatim line 227: `### M1 — Gorgianic Bonded Pair: GNT Cases`. The audit row's claim that 227-259 are a §1.4 consumer block is mis-attributed (this is the §1.5 M-override block).
 
 **Consumers (FLAGGED):**
-- `readers-bofm/private/01-method/colometry-canon.md:1581`: cites §1.5 M3, not §1.4. Mis-attributed.
-- `readers-bofm/private/01-method/colometry-canon.md:2653`: cites §1.5 M4, not §1.4. Mis-attributed.
+- `readers-bofm/1-method/colometry-canon.md:1581`: cites §1.5 M3, not §1.4. Mis-attributed.
+- `readers-bofm/1-method/colometry-canon.md:2653`: cites §1.5 M4, not §1.4. Mis-attributed.
 - `readers-gnt/private/01-method/colometry-canon.md:227-259`: this is the M1-M4 GNT-cases block (§1.5 territory), not §1.4. Mis-attributed.
 
 ---
@@ -693,7 +693,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 **Consumers (verified):**
 - `scholarship/bofm/R10.md:132`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.2 (syntax forbids splits — Layer 1 mid-phrase prohibitions), §1.4 J1 (compound-list-break-signals sub-rule — governs coordinate-object exclusion), §1.5 M1 (asymmetric-modifier sub-clause — governs Mosiah 18:7 third-item modifier), §1.9 (N=2 Adjudication / N=3+ cliff scope to predications, not objects)`
 - `scholarship/bofm/EP-5.md:174`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.4 J1 (formally-marked parallel series — the parallel-stacking interaction) + §1.9 N=2 Adjudication Principle and N=3+ cliff + §2 (Category B editorial-judgment)`
-- `readers-bofm/private/01-method/colometry-canon.md:487`: `4. *Or*-coordinations functioning as compound objects under a shared verb or preposition (J1 compound-list members) → §1.4 J1 governs the head-and-object analysis; if the compound list reads as J1 series, R5 yields. The N=3+ cliff (§1.9) does not engage R5 because R5 fires only on N=2 *or*-pairs.`
+- `readers-bofm/1-method/colometry-canon.md:487`: `4. *Or*-coordinations functioning as compound objects under a shared verb or preposition (J1 compound-list members) → §1.4 J1 governs the head-and-object analysis; if the compound list reads as J1 series, R5 yields. The N=3+ cliff (§1.9) does not engage R5 because R5 fires only on N=2 *or*-pairs.`
 - `readers-gnt/private/01-method/colometry-canon.md:56`: `- **J1 compound-list break signals — GNT extension: marked-coordinator climactic emphasis (5th signal).** Framework §1.4 J1 lists four compound-list-break signals (elided auxiliary + stacked participles / possessive restart / new demonstrative / attached relative clause). GNT adds a **fifth: marked-coordinator climactic emphasis on a final list-member**. …`
 - `scholarship/bofm/R20.md:126`: (same line cited under §1.4 umbrella above) — verified.
 
@@ -712,7 +712,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 **Live-successor:** null.
 
 **Consumers (verified):**
-- `readers-bofm/private/01-method/colometry-canon.md:487`: cited verbatim above — appeals to J1 compound-list governance (does not enumerate the 4 signals at this line, but invokes the rule).
+- `readers-bofm/1-method/colometry-canon.md:487`: cited verbatim above — appeals to J1 compound-list governance (does not enumerate the 4 signals at this line, but invokes the rule).
 - `readers-gnt/private/01-method/colometry-canon.md:56`: enumerates the 4 signals verbatim then adds a 5th: `Framework §1.4 J1 lists four compound-list-break signals (elided auxiliary + stacked participles / possessive restart / new demonstrative / attached relative clause). GNT adds a **fifth: marked-coordinator climactic emphasis on a final list-member** …`
 - `scholarship/bofm/R10.md:132`: cited verbatim above — `§1.4 J1 (compound-list-break-signals sub-rule — governs coordinate-object exclusion)`.
 
@@ -747,7 +747,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 **Live-successor:** null.
 
 **Consumers (verified):**
-- `readers-bofm/private/01-method/colometry-canon.md:40`: `- **J3 named patterns** (operational sub-rules under speech-act announcement):` [followed by Verily-formula + saith-the-Lord sub-bullets at :41-42]
+- `readers-bofm/1-method/colometry-canon.md:40`: `- **J3 named patterns** (operational sub-rules under speech-act announcement):` [followed by Verily-formula + saith-the-Lord sub-bullets at :41-42]
 - `readers-gnt/private/01-method/colometry-canon.md:130`: `- **J3 named patterns (speech-act announcement) — GNT instantiations.** Direct speech introduction: `καὶ ἔλεγεν αὐτοῖς:` / `καὶ εἶπεν αὐτῷ:` — each is a complete speech-act predication. See §3.6 (R11) for the full treatment.`
 
 **Consumers (FLAGGED):**
@@ -781,7 +781,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 **Live-successor:** null.
 
 **Consumers (verified):**
-- `readers-bofm/private/01-method/colometry-canon.md:43`: `- **J5 substantive-adjunct canonical case:** Alma 52:18 year-formula temporal PP (15-word filling of AICTP "when" slot). See §5 R23 (Date Colophon) for the year-formula operational signature.`
+- `readers-bofm/1-method/colometry-canon.md:43`: `- **J5 substantive-adjunct canonical case:** Alma 52:18 year-formula temporal PP (15-word filling of AICTP "when" slot). See §5 R23 (Date Colophon) for the year-formula operational signature.`
 - `readers-gnt/private/01-method/colometry-canon.md:132`: `- **J5 substantive adjunct — GNT canonical cases.**`
 - `readers-gnt/private/01-method/colometry-canon.md:133`: `  - *(Genitive absolute REMOVED from J5 — REVISED 2026-05-20: a gen abs is half an ATU and binds forward to its governing matrix per R19 §3.10a; it is not a J5 own-focus adjunct. Acts 1:9 `βλεπόντων αὐτῶν` binds into `ἐπήρθη`.)*`
 - `readers-gnt/private/01-method/colometry-canon.md:134-136`: prep-catena / FEF periodic frame / John 1:1 fronted-temporal — all are J5 GNT instantiations.
@@ -845,9 +845,9 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - `scholarship/bofm/EP-1.md:153`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §2.1 (punctuation has zero force) + §7.0 (Category B editorial-judgment) + §1.5 J5 (substantive adjunct as own focus — interaction)` — **NOTE: cites "§1.5 J5" but J5 is in §1.4, not §1.5** (likely a typo / cross-section reference)
 - `scholarship/bofm/R12.md:149`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.2 (syntax forbids splits), §1.5 M1 (Gorgianic bonded pair / verb-synonymy test), §1.9 (N=2 Adjudication Principle)`
 - `scholarship/bofm/R20.md:126`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1 (atomic-thought mission), §1.1 (generative principle — each proposition splits by default), §1.4 J1-J5 (the five structural justifications — referenced by Exemption 4), §1.5 M3 (bare-governor indivisibility — related "fragment fails atomic-thought" failure mode)`
-- BoFM canon:34 pointer block: `readers-bofm/private/01-method/colometry-canon.md:34` → `**Pointer to framework.** The framework specification — generative principle...; four merge-overrides M1–M4 (Gorgianic bonded pair, verb-object clause-nucleus bond, bare-governor indivisibility, fragmented atomic thought-unit)...is codified at [`atu-method/docs/01-normative/framework.md §1`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
+- BoFM canon:34 pointer block: `readers-bofm/1-method/colometry-canon.md:34` → `**Pointer to framework.** The framework specification — generative principle...; four merge-overrides M1–M4 (Gorgianic bonded pair, verb-object clause-nucleus bond, bare-governor indivisibility, fragmented atomic thought-unit)...is codified at [`atu-method/docs/01-normative/framework.md §1`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
 - GNT canon:48 pointer block: `readers-gnt/private/01-method/colometry-canon.md:48` → `**Pointer to framework.** The framework specification...four merge-overrides M1–M4...is codified at [`atu-method/docs/01-normative/framework.md §1`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
-- BoFM canon:148-156 (TIER 4 block): `readers-bofm/private/01-method/colometry-canon.md:148` → `**TIER 4 — Default-merge precedence over split-triggers (M-overrides)**` (followed by M1-M4 enumeration through line 156)
+- BoFM canon:148-156 (TIER 4 block): `readers-bofm/1-method/colometry-canon.md:148` → `**TIER 4 — Default-merge precedence over split-triggers (M-overrides)**` (followed by M1-M4 enumeration through line 156)
 - GNT canon:111-128 (M1 paraphrase-test scope block at 113-128): `readers-gnt/private/01-method/colometry-canon.md:113` → `- **M1 paraphrase-test scope: hendiadys AND merism (codified 2026-05-13).** Framework §1.5 M1 defines a bonded pair as N=2 coordinate members where the pair functions as "a single unified hendiadys or bonded rhetorical image."...`
 - GNT canon:227-259 (M1/M2/M3/M4 cases blocks): `readers-gnt/private/01-method/colometry-canon.md:227` → `### M1 — Gorgianic Bonded Pair: GNT Cases` (sections through M4 at 251-258)
 
@@ -870,7 +870,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - `scholarship/bofm/EP-5.md:50`: `- **N=2 virtue pairs** — *faith and hope*, *meek and lowly*, *chastity and virtue*, *faith and patience*. ~20-30 instances corpus-wide. N=2 routes to §1.9 N=2 Adjudication Principle (M1 synonymy test) before reaching EP-5; most resolve to M1 merge as cognate / bonded pairs.`
 - `scholarship/bofm/EP-5.md:108`: `- **Risk: the rule could over-fire on N=2 cognate pairs.** Resolution: explicit interaction with §1.9 N=2 Adjudication Principle — N=2 pairs route to M1 synonymy test before EP-5 is consulted; EP-5 fires only on N≥3 stacks or on N=2 cases that M1 leaves unresolved.`
 - `scholarship/bofm/R22.md:168`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.5 M1 (appositional constructions explicitly outside M1's N=2 scope), §1.9 (N=2 Adjudication Principle explicitly excludes appositives)`
-- BoFM canon:38-39: `readers-bofm/private/01-method/colometry-canon.md:38` → `- **M1 bonded-pair list (verb pairs, corpus-attested):** ...M1 verb-pair protection fires only on N=2 verb-coordination per the N=2-only caveat in atu-method/docs/01-normative/framework.md §1.5. Detector reference: ...` and line 39 → `- **M1 nominal-pair canonical cases:** *grace and mercy*, *heaven and earth*, *dust and ashes*, ...`
+- BoFM canon:38-39: `readers-bofm/1-method/colometry-canon.md:38` → `- **M1 bonded-pair list (verb pairs, corpus-attested):** ...M1 verb-pair protection fires only on N=2 verb-coordination per the N=2-only caveat in atu-method/docs/01-normative/framework.md §1.5. Detector reference: ...` and line 39 → `- **M1 nominal-pair canonical cases:** *grace and mercy*, *heaven and earth*, *dust and ashes*, ...`
 - BoFM canon:148-156 (M1 listed in TIER 4): line 149 → `- **M1** Gorgianic Bonded Pair (N=2 synonymy/cognate/hendiadys merge)`
 - GNT canon:111-128 (M1 paraphrase-test scope) — verified above; line 113 explicit `Framework §1.5 M1`
 
@@ -886,7 +886,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 **Live-successor:** null — no live successor (verified above).
 
 **Consumers (verified):**
-- BoFM canon:747: `readers-bofm/private/01-method/colometry-canon.md:747` → `4. The third (or final) item in a compound object list carrying a trailing PP modifier — when the modifier attaches semantically to the joint object-set, M1 asymmetric-modifier sub-clause (framework §1.5 M1) keeps the modified item bonded with its co-objects; R10 still merges the entire object-set with the shared verb`
+- BoFM canon:747: `readers-bofm/1-method/colometry-canon.md:747` → `4. The third (or final) item in a compound object list carrying a trailing PP modifier — when the modifier attaches semantically to the joint object-set, M1 asymmetric-modifier sub-clause (framework §1.5 M1) keeps the modified item bonded with its co-objects; R10 still merges the entire object-set with the shared verb`
 - Additional consumer found: `scholarship/bofm/R10.md:56`: `- M1 asymmetric-modifier sub-clause (framework §1.5) treats the trailing PP *on the Lord* as semantically attaching to the joint object-set; the third item remains bonded with its co-objects.`
 
 **Consumers (FLAGGED):** none.
@@ -904,7 +904,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 **Consumers (verified):**
 - `scholarship/bofm/R10.md` multiple §1.5 hits — but the M2 reference there is structural-citation only (line 132 just says §1.5 M1, no M2). Grepping for "M2" in R10.md:
 - `scholarship/bofm/R26.md:165`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.2.2 (syntax forbids splits — complement integrity), §1.5 M2 (verb-object clause-nucleus bond, alias of complement-integrity); BoFM canon §3.5 Tier 3 (Complement integrity), §3.5.1 (the *that*-cluster sub-hierarchy)`
-- BoFM canon:148-156 (M2 entry at line 151): `readers-bofm/private/01-method/colometry-canon.md:151` → `- **M2** = R17 (alias)`
+- BoFM canon:148-156 (M2 entry at line 151): `readers-bofm/1-method/colometry-canon.md:151` → `- **M2** = R17 (alias)`
 - GNT canon:237 (M2 strict-application caveat at 237, but M2 section header at 239): `readers-gnt/private/01-method/colometry-canon.md:237` → `**M1 strict-application caveat:** When M1's bonded-pair grounds are withdrawn ("different semantic domains"), that does NOT by itself license a split. Before flipping to SPLIT, check: M2 (verb-object bond), M3 (bare-governor), M4 (fragmented atomic thought), R11 (speech-intro)...` — the M2 reference is at line 237, but the dedicated `### M2 — Verb-Object Clause-Nucleus Bond: GNT Cases` header is at line 239.
 - Tanakh H7 — **does NOT exist in the live tanakh canon** (`readers-tanakh/private/01-method/colometry-canon.md` grep for `H7` → No matches found). H7 only exists in the archived legacy canon at `readers-tanakh/_archive/2026-05-18-mechanical-first-rewrite/colometry-canon.md:161`: `2. **Layer 3 complement integrity.** When the matrix verb's or adjective's valence is unsatisfied without its clausal complement — e.g., אָמַר ... כִּי / לֵאמֹר + speech content; יָדַע ... כִּי + content; צִוָּה ... אֲשֶׁר + complement — the matrix is grammatically incomplete on its own; the complement must merge unless one of the long-complement exceptions in §5 Rule H7 fires.`
 
@@ -925,8 +925,8 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 
 **Consumers (verified):**
 - `scholarship/bofm/R19.md:134`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.1 (generative principle — cataphoric splits), §1.5 M3 (bare-governor indivisibility — anaphoric merges), §2.1 (punctuation has zero force — motivates UPOS-gated proxy)`
-- BoFM canon:152: `readers-bofm/private/01-method/colometry-canon.md:152` → `- **M3** Bare-Governor Indivisibility (extension: bare trailing participials)`
-- BoFM canon:1581: `readers-bofm/private/01-method/colometry-canon.md:1581` → `1. Bare participial without its own subject (subject-inheriting from matrix) — out of scope; routes to M3 (bare-governor indivisibility, framework §1.5 M3) including M3's bare-trailing-participial extension.`
+- BoFM canon:152: `readers-bofm/1-method/colometry-canon.md:152` → `- **M3** Bare-Governor Indivisibility (extension: bare trailing participials)`
+- BoFM canon:1581: `readers-bofm/1-method/colometry-canon.md:1581` → `1. Bare participial without its own subject (subject-inheriting from matrix) — out of scope; routes to M3 (bare-governor indivisibility, framework §1.5 M3) including M3's bare-trailing-participial extension.`
 - GNT canon:237 (M3 referenced in M1 strict-application caveat) → `..., check: M2 (verb-object bond), M3 (bare-governor), M4 (fragmented atomic thought)...`
 - GNT canon:245: `readers-gnt/private/01-method/colometry-canon.md:245` → `### M3 — Bare-Governor Indivisibility: GNT Cases`
 - `scholarship/bofm/R20.md:126`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1 (atomic-thought mission), §1.1 (generative principle — each proposition splits by default), §1.4 J1-J5 (the five structural justifications — referenced by Exemption 4), §1.5 M3 (bare-governor indivisibility — related "fragment fails atomic-thought" failure mode)`
@@ -951,8 +951,8 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - `scholarship/gnt/M4-GNT-1.md:190`: `- Universal framework: [`../../docs/01-normative/framework.md`](docs/01-normative/framework.md) §1.5 M4 (fragmented atomic thought-unit)`
 - M4-BoFM-1.md file body verified — full-bodied scholarship companion exists (line 1: `# M4-BoFM-1: Subject-Orphan Predicate Completion — Scholarship Companion`; line 13 statement of rule; ties to framework M4).
 - M4-GNT-1.md file body verified — full-bodied scholarship companion exists (line 1: `# M4-GNT-1: Subject-Orphan Predicate Completion (Greek Instantiation) — Scholarship Companion`; line 13 statement; ties to framework M4 via BoFM apparatus).
-- BoFM canon:148-156 (M4 at 153-154): `readers-bofm/private/01-method/colometry-canon.md:153` → `- **M4** Fragmented atomic thought-unit` + line 154 → `  - Does NOT fire on members of justification-1 series at N≥3 or justification-5 substantive adjuncts (§1 M4 SCOPE)`
-- BoFM canon §5 reference: `readers-bofm/private/01-method/colometry-canon.md:2653` → `**Framework anchor:** Corpus-specific operational instantiation of framework M4 (fragmented atomic thought-unit; see [`atu-method/docs/01-normative/framework.md §1.5`](docs/01-normative/framework.md)).` (this is the §5 M4-BoFM-1 entry header context at lines 2646-2653)
+- BoFM canon:148-156 (M4 at 153-154): `readers-bofm/1-method/colometry-canon.md:153` → `- **M4** Fragmented atomic thought-unit` + line 154 → `  - Does NOT fire on members of justification-1 series at N≥3 or justification-5 substantive adjuncts (§1 M4 SCOPE)`
+- BoFM canon §5 reference: `readers-bofm/1-method/colometry-canon.md:2653` → `**Framework anchor:** Corpus-specific operational instantiation of framework M4 (fragmented atomic thought-unit; see [`atu-method/docs/01-normative/framework.md §1.5`](docs/01-normative/framework.md)).` (this is the §5 M4-BoFM-1 entry header context at lines 2646-2653)
 - GNT canon:251-259: `readers-gnt/private/01-method/colometry-canon.md:251` → `### M4 — Fragmented Atomic Thought-Unit: GNT Cases` (block runs through 258).
 - GNT canon §3.18 line 1318: `readers-gnt/private/01-method/colometry-canon.md:1318` → `### 3.18 M4-GNT-1: Subject-Orphan Predicate Completion (Greek Instantiation)`
 
@@ -972,7 +972,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 **Live-successor:** null — no live successor (verified via Grep on live `framework.md`).
 
 **Consumers (verified):**
-- BoFM canon:34 pointer block: `readers-bofm/private/01-method/colometry-canon.md:34` → `...the four forces summary; the five-step decision procedure; the application-order step-by-step...is codified at [`atu-method/docs/01-normative/framework.md §1`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
+- BoFM canon:34 pointer block: `readers-bofm/1-method/colometry-canon.md:34` → `...the four forces summary; the five-step decision procedure; the application-order step-by-step...is codified at [`atu-method/docs/01-normative/framework.md §1`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
 - GNT canon:48 pointer block: `readers-gnt/private/01-method/colometry-canon.md:48` → `...the four forces summary; the five-step decision procedure; the application-order step-by-step...is codified at [`atu-method/docs/01-normative/framework.md §1`](docs/01-normative/framework.md). This canon does not duplicate that prose.`
 - demote-memory:26: `atu-method/memories/feedback_camera_angle_diagnostic_demote.md:26` → `4. **Framework-edit (this memory's load-bearing artifact):** framework §1.3 should be updated to caveat camera-angle as "deprecated; redundant with bidirectional atomic-thought test under §1.1 refinement (see [[atu-test-is-bidirectional]]). Invocation is a warning signal for bandwagon/aesthetic reasoning." §1.6 precedence tier-matrix should likewise demote image-diagnostic row or annotate it as deprecated.`
 - demote-memory:35: `atu-method/memories/feedback_camera_angle_diagnostic_demote.md:35` → `(Codified 2026-05-13 from Stan-verbatim observation during R7 motion-verb purpose-INF audit wave. Framework §1.3 + §1.6 edit pending.)`
@@ -1393,12 +1393,12 @@ BoFM canon hits (Dropbox/bom-reader-private/01-method/colometry-canon.md): lines
 - `atu-method/memories/feedback_rhetoric_figures_constrain_atu.md` (audit row claims **6 cites** to §1.3a): full file Read returns ZERO occurrences of `§1.3a`. The file cites `framework.md §1.1` (line 8 references §1.1) and `framework.md §1.2` (lines 12, 13, 16) — never §1.3a. Six §1.2 / §1.1 cites exist; the audit row appears to misattribute these to §1.3a.
 - `atu-method/memories/feedback_rule_proposal_gates.md`: NO match for `§1.3a`. Closest content (line 11): `Am I citing a surface feature (UD signature, rhetorical figure, punctuation, lexical pattern) as evidence?` — a generic rhetoric-as-surface-feature mention, NOT a §1.3a cite.
 - `atu-method/memories/feedback_no_fake_dilemmas.md`: NO match for `§1.3a`. Closest (line 36): `- `feedback_rhetoric_bandwagon.md` — meta-audit failure mode (judgment-handoff smuggling section)` — pointer to the bandwagon memory, NOT a §1.3a cite.
-- `readers-bofm/private/01-method/colometry-canon.md` Tier 0 mentions: not located by direct Grep within the offsets exercised; flagged as not ground-truthed in this verification pass (no specific line was supplied for the Tier 0 claim, and a Grep for `§1.3a` against the canon would be required to confirm).
+- `readers-bofm/1-method/colometry-canon.md` Tier 0 mentions: not located by direct Grep within the offsets exercised; flagged as not ground-truthed in this verification pass (no specific line was supplied for the Tier 0 claim, and a Grep for `§1.3a` against the canon would be required to confirm).
 
 ## §1.4 umbrella (Five Structural Justifications closed list)
 
-- `readers-bofm/private/01-method/colometry-canon.md:1581`: cites §1.5 M3, not §1.4. Mis-attributed.
-- `readers-bofm/private/01-method/colometry-canon.md:2653`: cites §1.5 M4, not §1.4. Mis-attributed.
+- `readers-bofm/1-method/colometry-canon.md:1581`: cites §1.5 M3, not §1.4. Mis-attributed.
+- `readers-bofm/1-method/colometry-canon.md:2653`: cites §1.5 M4, not §1.4. Mis-attributed.
 - `readers-gnt/private/01-method/colometry-canon.md:227-259`: this is the M1-M4 GNT-cases block (§1.5 territory), not §1.4. Mis-attributed.
 
 ## §1.5 umbrella — Four Merge-Override Conditions

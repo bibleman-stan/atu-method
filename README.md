@@ -152,7 +152,7 @@ This repository is consumed by per-corpus reader editions via sibling
 checkout, not via PyPI dependency resolution (until the package is
 published). Documents and code reference each other using relative paths
 like `../../atu-method/docs/01-normative/framework.md` (from a reader edition into
-this repo) and `readers-bofm/private/01-method/colometry-canon.md` (from
+this repo) and `readers-bofm/1-method/colometry-canon.md` (from
 this repo into the BoFM reader edition).
 
 Practical implication: cross-references resolve when both repositories are

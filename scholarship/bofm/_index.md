@@ -1,6 +1,6 @@
 # Scholarship — BoFM Per-Rule Companions
 
-This directory holds rationale, grammatical grounding, empirical evidence, and intellectual lineage for each rule in the readers-bofm operational canon (`readers-bofm/private/01-method/colometry-canon.md §5`).
+This directory holds rationale, grammatical grounding, empirical evidence, and intellectual lineage for each rule in the readers-bofm operational canon (`readers-bofm/1-method/colometry-canon.md §5`).
 
 Audience: the scholar — peer reviewer, dissertation reader, future researcher applying the apparatus to a new corpus, or future-Stan validating defensibility.
 
@@ -50,4 +50,4 @@ When a per-rule scholarship file cites a universal cross-cutting concept (M1 bon
 
 When a per-rule scholarship file cites another BoFM rule, it uses stable rule ID (R7, R17, R26, etc.). Section-position citations are forbidden.
 
-The operational canon entry for each rule lives in `readers-bofm/private/01-method/colometry-canon.md §5` and is the single source of truth for WHAT/HOW. The migration that consolidated the 25 operational drafts into the canon §5 entries completed 2026-05-04 (commit `a474fa1` in readers-bofm).
+The operational canon entry for each rule lives in `readers-bofm/1-method/colometry-canon.md §5` and is the single source of truth for WHAT/HOW. The migration that consolidated the 25 operational drafts into the canon §5 entries completed 2026-05-04 (commit `a474fa1` in readers-bofm).
