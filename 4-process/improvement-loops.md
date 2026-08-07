@@ -123,14 +123,18 @@ flowchart LR
 
 **Why it stalled — one hypothesis tested and REFUTED (2026-08-07).** A hostile audit proposed a second reading: perhaps the threshold is unreachable because the sub-pattern taxonomy is too fine-grained, so no three entries ever share both keys — in which case scheduling a cadence would fix nothing. That was worth testing, and the test says no. Grouping the logged entries by their own verbatim `Sub-pattern:` strings, and pooling across sibling repos exactly as the protocol permits ("The 3 strikes need not all come from one repo"):
 
-| Sub-pattern (verbatim key) | bofm | gnt | tanakh | pooled |
-|---|---|---|---|---|
-| `rhetorical-figure smuggling` | 2 | 2 | — | **4** |
-| `new-rule reflex` | 2 | 2 | — | **4** |
-| `whole-framework supersession` | 1 | 1 | 1 | **3** |
-| `"more elaboration assumed = more quality"` | 1 | 1 | 1 | **3** |
+| Sub-pattern (verbatim key) | distinct events | qualifies? |
+|---|---|---|
+| `rhetorical-figure smuggling` | **3** (2026-04-19 bofm, 04-23 bofm, 04-25 gnt) | yes |
+| `new-rule reflex` | **3** (2026-05-14 gnt, 05-14 bofm, 05-15 bofm) | yes |
+| `whole-framework supersession` | **1** (one canon rewrite, logged in 3 repos) | no |
+| `"more elaboration assumed = more quality"` | **1** (one retraction, logged in 3 repos) | no |
 
-**Four sub-patterns have already crossed the three-strike threshold on exact-match keys, and not one promotion fired.** The taxonomy is not the bug. The threshold is reachable, was reached, and nobody evaluated it — which upgrades the original diagnosis from "a cadence that was never scheduled" to "a cadence that was never scheduled *and is now measurably overdue, with named candidates.*"
+**Two sub-patterns have crossed the three-strike threshold and not one promotion fired.** The taxonomy is not the bug — the threshold is reachable, was reached, and nobody evaluated it.
+
+**Corrected 2026-08-07 (same day, before acting).** The first count here said *four*, from grepping sub-pattern strings and pooling across repos as the protocol permits. Extracting the actual `Sub-pattern:` fields showed two of those four were **one event logged three times**: all three `whole-framework supersession` entries share a date and title and cite the *same* atu-method commits (`f6e834a`, `82e20b8`), differing only in which repo's CLAUDE.md was trimmed.
+
+**That exposes a defect in the protocol itself, which matters more than the count.** "The 3 strikes need not all come from one repo" was written for genuinely independent recurrences — the same mistake made again in another corpus. But a cascaded canon change is logged in every affected repo *by design*, so pooling counts log entries rather than distinct events and inflates a single mistake up to threefold. Unevaluated, the loop's first firing would have promoted two disciplines on the strength of one mistake each, and they would have looked well-evidenced. Proposed amendment and both surviving drafts: [`draft-promotions-2026-08-07.md`](draft-promotions-2026-08-07.md).
 
 Nothing in the repo records a decision to stop; the logs simply stop on the day all three were last touched.
 
