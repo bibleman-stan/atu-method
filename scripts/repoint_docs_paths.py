@@ -33,8 +33,13 @@ TIERS = {
     "deployment-status.md": "05-status", "methodology-position.md": "05-status",
 }
 
+# NOTE (2026-08-06): "private" was originally in this set, which was a mistake —
+# the per-corpus colometry canons live under private/01-method/ and cite
+# atu-method docs heavily, so the first cascade left 103 dangling references
+# across three reader repos. Skip only the genuinely huge or non-prose subtrees.
 SKIP_PARTS = {"_old", ".archive", "_archive", ".git", "__pycache__",
-              "node_modules", "private", "data", "_attachments"}
+              "node_modules", "substrate", "04-sources", "data",
+              "_attachments", ".venv", "books", "audio"}
 EXTS = {".md", ".py", ".json", ".txt", ".cff", ".toml"}
 
 # `docs/` NOT already followed by a tier dir, then a known basename.
