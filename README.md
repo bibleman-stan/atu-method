@@ -121,7 +121,7 @@ from atu_method.infrastructure.tx_log import TxLog
 Editable mode means edits to `atu_method/` source files are picked up
 without reinstalling. Reader editions consume the package the same way; the
 per-repo modules wrap the universal primitives with corpus-specific layout
-glue (e.g., readers-bofm's `validators/parsing/line_mapping.py` adds a
+glue (e.g., readers-bofm's `readers-bofm/5-machinery/validators/parsing/line_mapping.py` adds a
 `book_paths()` resolver for the BoFM's `data/text-files/v2-mine/` layout).
 
 ## Attribution

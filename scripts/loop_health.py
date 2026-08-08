@@ -246,7 +246,7 @@ def check_dormancy() -> list:
 
 
 def check_pointers() -> list:
-    script = REPO / "scripts" / "check_broken_pointers.py"
+    script = REPO / "5-machinery" / "scripts" / "check_broken_pointers.py"
     if not script.exists():
         return [("WARN", "check_broken_pointers.py missing")]
     r = subprocess.run([sys.executable, str(script)], cwd=REPO,
