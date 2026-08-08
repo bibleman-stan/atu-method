@@ -4,10 +4,14 @@
       "Edit(~/.claude/skills/read-jsonl/**)",
       "Bash(git rm *)",
       "Bash(rm -rf .claude/skills)",
-      "Edit(~/.claude/skills/jsonl/**)"
+      "Edit(~/.claude/skills/jsonl/**)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m ' *)",
+      "Bash(git push *)"
     ],
     "additionalDirectories": [
-      "C:\\Users\\bibleman\\.claude"
+      "C:\\Users\\bibleman\\.claude",
+      "C:\\Users\\bibleman\\repos\\atu-method\\.claude\\skills\\jsonl"
     ]
   }
 }
