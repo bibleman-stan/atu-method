@@ -22,18 +22,19 @@ Loops 1–4 are described below because they exist, not to mirror the wiki's fou
 %%{init: {"flowchart": {"useMaxWidth": true}} }%%
 flowchart LR
     W["Work — Stan ↔ Claude"] -->|"① friction"| P["proposal"]
-    P -->|"② §7 gate"| C(("CANON<br/>docs + memories"))
+    P -->|"② §7 gate<br/>declared on 24%"| C(("CANON<br/>1-method + memories"))
     C -->|"③ floor rises"| W
+    W -->|"④ measure / consult"| EV["2-evidence/<br/>findings + observations"]
     W -.->|"retraction"| L["per-repo logs"]
     L -.->|"3× threshold<br/>NEVER FIRED"| C
-    W -.->|"cross-corpus answer"| S["docs/synthesis<br/>NEW, unrun"]
-    S -.-> C
-    C -.->|"weekly audit<br/>NEW, unrun"| A["findings"]
-    A -.-> C
-    linkStyle 0,1,2 stroke:#26A69A,stroke-width:2px
-    linkStyle 3,4 stroke:#E57373,stroke-width:2px
-    linkStyle 5,6,7,8 stroke:#9E9E9E,stroke-width:1.5px,stroke-dasharray:4
+    EV -.->|"⑤ nothing carries a<br/>finding into a rule"| C
+    C -->|"⑥ loop_health<br/>every session"| A["lint result"]
+    A -.->|"hostile half<br/>never run"| C
+    linkStyle 0,1,2,3,7 stroke:#26A69A,stroke-width:2px
+    linkStyle 4,5,6,8 stroke:#E57373,stroke-width:2px
 ```
+
+Colour key — **teal** runs; **red** is built and not turning. Edges ① ② ③ are the canon-amendment loop, the only one with a track record, though ② is self-declared on just 24% of canon-touching commits. ④ now runs: `2-evidence/` received its first file-backs on 2026-08-07. ⑤ is the break Stan identified — a measurement sitting in evidence never becomes a rule proposal, and nothing carries it. ⑥ runs mechanically at every session start; the hostile half of the audit has still never been performed.
 
 Colour key — **teal**: the one loop that demonstrably turns; **red**: the built-but-stalled retraction loop; **grey dashed**: the two loops adopted 2026-08-06 that have never executed a cycle.
 
@@ -49,8 +50,10 @@ Colour key — **teal**: the one loop that demonstrably turns; **red**: the buil
    [per-repo logs] ┄ 3× threshold: NEVER FIRED ┄┄┄┄┘    ┊     ┊
    31 entries, 0 promotions, frozen 2026-05-17          ┊     ┊
                                                         ┊     ┊
-   [docs/synthesis]  ┄ adopted 2026-08-06, never run ┄┄┄┘     ┊
-   [weekly audit]    ┄ adopted 2026-08-06, never run ┄┄┄┄┄┄┄┄┄┘
+   [2-evidence/]  ── ④ file-back RUNS (2 entries, 2026-08-07) ──┘     ┊
+        ┊ ⑤ but nothing carries a finding into a rule proposal       ┊
+   [loop_health] ── ⑥ mechanical lint every session ────────────────┘
+                    hostile half still never run
 ```
 
 ## Loop 1 — Canon amendment (RUNS, but the evidence is weaker than first claimed)
@@ -145,7 +148,7 @@ Nothing in the repo records a decision to stop; the logs simply stop on the day 
 flowchart LR
     Q["cross-corpus question"] -->|"default #5a: consult"| G["grep the sibling repos"]
     G --> A["answer"]
-    A -->|"#5c: file back<br/>docs/synthesis/"| K(("durable<br/>synthesis"))
+    A -->|"#5c: file back<br/>2-evidence/"| K(("durable<br/>synthesis"))
     K -->|"next session reads"| Q
     A -.->|"pre-2026-08-06 behaviour:<br/>answer dies in chat"| RD["re-derived by grep<br/>every time"]
     RD -.-> G
@@ -154,14 +157,16 @@ flowchart LR
 ```
 
 ```
-   question ──▶ consult siblings ──▶ answer ──▶ docs/synthesis ──▶ next session reads
+   question ──▶ consult siblings ──▶ answer ──▶ 2-evidence/ ──▶ next session reads
                       ▲                  ┊
                       └── re-derive ◀────┘  (the open edge, before 2026-08-06)
 ```
 
-**Designed, not proven.** Standing default #5 has mandated the *consult* half since long before this session — but the answer had nowhere to land, so each one was re-derived by grep on the next question. Standing default #5(c), adopted in `b4915b3`, closes the edge by requiring the answer to be written to `docs/synthesis/` in the same turn.
+**Designed, then run.** Standing default #5 has mandated the *consult* half since long before this session — but the answer had nowhere to land, so each one was re-derived by grep on the next question. Standing default #5(c), adopted in `b4915b3`, closes the edge by requiring the answer to be written in the same turn.
 
-**Status is honest, not hopeful:** `docs/synthesis/` does not yet contain a single page. This loop has completed zero cycles. Its failure branch is not hypothetical — it is the documented behaviour of every prior session.
+**Status updated 2026-08-07 — this loop now RUNS.** The destination moved from the originally-specified `docs/synthesis/` to [`../2-evidence/`](../2-evidence/) when the repo reorganized, and it received its first two entries the same day: [`finding-isaiah-cross-corpus-divergence.md`](../2-evidence/finding-isaiah-cross-corpus-divergence.md) and [`reader-observations.md`](../2-evidence/reader-observations.md), both of which would otherwise have stayed in conversation.
+
+**What is still open is the same edge Loop 5 is missing:** a filed answer is durable, but nothing consumes it. Neither entry has produced a rule proposal. Capture works; integration does not.
 
 ## Loop 4 — Audit (PARTIALLY IMPLEMENTED — session-triggered; the calendar trigger is still absent)
 
