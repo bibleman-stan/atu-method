@@ -72,12 +72,16 @@ Headlines only; full record + warrants at `_north_star.md` (mandatory orientatio
 
 ## Skills — on-demand procedure (do NOT inline these here)
 
-Procedure invoked *sometimes* lives in `.claude/skills/`, which loads on trigger; this file loads every turn and must stay lean. When a trigger below fires, invoke the skill — its content is deliberately not duplicated here.
+Procedure invoked *sometimes* lives in the skill portfolio at `~/.claude/skills/`, which loads on trigger; this file loads every turn and must stay lean. When a trigger below fires, invoke the skill — its content is deliberately not duplicated here.
+
+**Skills are Claude's, not the project's** (Stan, 2026-08-07: *"skills are skills… they can serve the project but they're only you"*). There is one portfolio, at user level, loading in every workspace. A skill may be entirely about atu-method and still live there — the subject matter does not determine the home. Do not create `.claude/skills/` inside this repo.
 
 | Skill | Fires when |
 |---|---|
 | `atu-audit-tier` | First wake of an ISO week; any wake after >7 quiet days; "audit the repo". Mechanical lint + hostile audit; findings convert to edits or they recur. |
 | `atu-compaction-resume` | "This session is being continued…", `isCompactSummary: true`, degraded context, or "continue \<named arc\>". Read the JSONL, re-enumerate from git, don't re-litigate settled decisions. |
+| `jsonl` | "JSONL: \<workspace\>" — read back another workspace's recent session verbatim. |
+| `repoint-paths-safely` | Any path change: moving a doc, renaming a folder, relocating canon. |
 
 ---
 
