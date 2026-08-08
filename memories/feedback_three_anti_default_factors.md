@@ -10,13 +10,13 @@ The 7 recurring correction patterns identified in the 2026-05-15 retrospective c
 
 Patterns 1 (grammatical-pattern-as-rule-source), 2 (rhetorical-figure / camera-angle smuggling), 5 (punctuation-as-evidence) compress here. When a salient surface feature is present, Claude defaults to treating the feature as evidentially load-bearing rather than running the bidirectional atomic-thought test. **Surface features are CONSTRAINTS, not DETERMINATIONS.**
 
-Source memories: `feedback_grammar_constrains_not_determines.md`, `feedback_rhetoric_figures_constrain_atu.md`, `feedback_camera_angle_diagnostic_demote.md`, `feedback_punctuation_not_evidence.md`, `feedback_rhetoric_bandwagon.md`.
+Source memories: [[memories/feedback_grammar_constrains_not_determines.md|feedback_grammar_constrains_not_determines.md]], [[memories/feedback_rhetoric_figures_constrain_atu.md|feedback_rhetoric_figures_constrain_atu.md]], [[memories/feedback_camera_angle_diagnostic_demote.md|feedback_camera_angle_diagnostic_demote.md]], [[memories/feedback_punctuation_not_evidence.md|feedback_punctuation_not_evidence.md]], `feedback_rhetoric_bandwagon.md`.
 
 ## Factor B — New-rule reflex over uniform-application
 
 Patterns 6 (application-consistency vs rule-coverage), 7 (principle-coverage ≠ mechanical coverage) compress here. When a counterexample appears, Claude proposes a new rule instead of asking whether the existing rule was applied uniformly. Sedimented inconsistency is the primary failure mode of long-codified methodology.
 
-Source memories: `feedback_application_consistency_vs_rule_coverage.md`, `feedback_principle_vs_mechanical_coverage.md`, `feedback_check_existing_tooling.md`, `feedback_over_structuring_disposition.md`.
+Source memories: [[memories/feedback_application_consistency_vs_rule_coverage.md|feedback_application_consistency_vs_rule_coverage.md]], [[memories/feedback_principle_vs_mechanical_coverage.md|feedback_principle_vs_mechanical_coverage.md]], [[memories/feedback_check_existing_tooling.md|feedback_check_existing_tooling.md]], [[memories/feedback_over_structuring_disposition.md|feedback_over_structuring_disposition.md]].
 
 ## Factor C — Sample-size discipline
 
@@ -26,7 +26,7 @@ Source: `change-protocol.md` §7.3 trigger #3 (spot-check-based proposals) + §7
 
 ## Closed — structural blind spot in the atomic-thought test itself
 
-Pattern 3 (backward-anaphoric blindness). `framework.md §1.1` was stated forward-only for ~13 months. Codified bidirectional 2026-05-13 from the Gen 22:1 *wayehi achar* Stan-verbatim correction. No longer a recurring default; cited for completeness of the retrospective.
+Pattern 3 (backward-anaphoric blindness). [[1-method/framework.md|framework.md §1.1]] was stated forward-only for ~13 months. Codified bidirectional 2026-05-13 from the Gen 22:1 *wayehi achar* Stan-verbatim correction. No longer a recurring default; cited for completeness of the retrospective.
 
 ## How to apply
 

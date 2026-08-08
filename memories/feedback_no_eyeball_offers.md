@@ -19,6 +19,6 @@ The hedge was unnecessary. The audit was the obvious next step (codified in cano
 5. **The phrase "stop here and let you review" is the smell.** When you're tempted to write that, ask: *is there a specific concern I'm naming, or am I just deferring decision-making?* If the latter, delete the offer and proceed.
 
 **Cross-reference:**
-- `feedback_no_fake_dilemmas.md` — broader anti-hedging discipline; this is a sub-case applied to corpus sweeps after audit
-- `feedback_commit_workflow.md` — Stan pushes, Claude commits; same trust pattern: the audit pipeline (or repo workflow) is the trust boundary, don't re-litigate at every step
+- [[memories/feedback_no_fake_dilemmas.md|feedback_no_fake_dilemmas.md]] — broader anti-hedging discipline; this is a sub-case applied to corpus sweeps after audit
+- [[memories/feedback_commit_workflow.md|feedback_commit_workflow.md]] — Stan pushes, Claude commits; same trust pattern: the audit pipeline (or repo workflow) is the trust boundary, don't re-litigate at every step
 - `feedback_hedging_discipline` (general) — applied here at the sweep-application layer

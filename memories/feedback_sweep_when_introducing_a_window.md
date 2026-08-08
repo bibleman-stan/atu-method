@@ -34,6 +34,6 @@ The window I introduced was simple: "for ~800ms after a verse-picker navigation,
 **Ports to other projects:** the same discipline applies to any "new flag with N readers" pattern — feature flags, loading states, animation-in-progress flags, dirty-state flags, lock flags. In the bofm codebase the trigger is `window._pendingVerseScroll`; in other codebases the analogue is whatever new flag the recent change introduced.
 
 **Pairs with:**
-- `feedback_check_existing_tooling.md` — before building new, sweep what's already there
-- `feedback_application_consistency_vs_rule_coverage.md` — same-rule-applied-inconsistently is the failure mode that creates incidents
-- `feedback_no_fake_dilemmas.md` — patching one of three is itself a fake-dilemma framing where the dilemma is "fix the one that's broken now"
+- [[memories/feedback_check_existing_tooling.md|feedback_check_existing_tooling.md]] — before building new, sweep what's already there
+- [[memories/feedback_application_consistency_vs_rule_coverage.md|feedback_application_consistency_vs_rule_coverage.md]] — same-rule-applied-inconsistently is the failure mode that creates incidents
+- [[memories/feedback_no_fake_dilemmas.md|feedback_no_fake_dilemmas.md]] — patching one of three is itself a fake-dilemma framing where the dilemma is "fix the one that's broken now"

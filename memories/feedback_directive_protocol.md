@@ -132,6 +132,6 @@ The pattern is structurally distinct from the overseer-of-trench-workers approac
 
 ## Aligns with
 
-- [[feedback_compaction_resume_protocol]] — vault-Claude's persistent state survives compaction via JSONL re-read; the directive queue's persistent state survives via git
+- [[memories/feedback_compaction_resume_protocol|feedback_compaction_resume_protocol]] — vault-Claude's persistent state survives compaction via JSONL re-read; the directive queue's persistent state survives via git
 - [[feedback_decisions_in_chat_not_files]] — Stan-decisions live in chat (with vault-Claude). Directive files are the directive surface (vault-Claude → repo-Claude). Reply files are the result surface (repo-Claude → vault-Claude). Decisions remain in chat between Stan and vault-Claude.
 - [[feedback_claude_commits_and_pushes]] — directive commits + reply commits both fall under the autonomous-commit discipline

@@ -30,4 +30,4 @@ When Stan gives a directive whose specifics are ambiguous — especially visual 
 - Re-guessing after a wrong guess instead of asking.
 - Disguising guessing as a "would you prefer A or B?" question.
 
-This memory pairs with `feedback_no_fake_dilemmas.md` (don't route mechanically-resolved cases through fake-borderline framings) and `feedback_over_structuring_disposition.md` (ask the diagnostic questions before adding structure). Same root: stop adding interpretation/structure Stan hasn't asked for.
+This memory pairs with [[memories/feedback_no_fake_dilemmas.md|feedback_no_fake_dilemmas.md]] (don't route mechanically-resolved cases through fake-borderline framings) and [[memories/feedback_over_structuring_disposition.md|feedback_over_structuring_disposition.md]] (ask the diagnostic questions before adding structure). Same root: stop adding interpretation/structure Stan hasn't asked for.

@@ -40,7 +40,7 @@ Have I run both:
 - **Forward grammatical closure** — head not awaiting complement; no dangling subordinator / preposition; predication complete
 - **Backward referential self-containment** — no unresolved deictic demonstratives, anaphoric particles, pronouns without on-line antecedent
 
-Anaphoric reference FAILS. Cataphoric reference (presentative + indefinite NP, "thus says X:") PASSES. Cite `framework.md §1.1` (not a merge-override mechanism — M3/M4 are deprecated under the bidirectional test framework, 2026-05-17) when invoking. The bidirectional test is INFORMATIONAL DIAGNOSTIC, not precedence override — validators fire on canon-encoded UD signatures, not on bidirectional-test outcome.
+Anaphoric reference FAILS. Cataphoric reference (presentative + indefinite NP, "thus says X:") PASSES. Cite [[1-method/framework.md|framework.md §1.1]] (not a merge-override mechanism — M3/M4 are deprecated under the bidirectional test framework, 2026-05-17) when invoking. The bidirectional test is INFORMATIONAL DIAGNOSTIC, not precedence override — validators fire on canon-encoded UD signatures, not on bidirectional-test outcome.
 
 ## If all four gates pass
 
@@ -54,4 +54,4 @@ The gate failure is itself the next investigation. **Do not** proceed by patchin
 
 Run these gates mentally before drafting any §5 rule entry, closed-list extension, scope claim, or precedence claim. When dispatching adversarial audits per §7.3, include the gate-status of the proposal in the dispatch prompt so the audit can verify rather than re-derive.
 
-Codified 2026-05-16 from the readiness-arc adversarial audit's identification of discipline-codification latency as the load-bearing 13-month cost. Cross-references: [`feedback_three_anti_default_factors.md`](feedback_three_anti_default_factors.md) (factor compression these gates operationalize); `framework.md §1.1` (bidirectional test); `change-protocol.md` §7.3 / §7.8 (audit triggers + adoption threshold).
+Codified 2026-05-16 from the readiness-arc adversarial audit's identification of discipline-codification latency as the load-bearing 13-month cost. Cross-references: [`feedback_three_anti_default_factors.md`](feedback_three_anti_default_factors.md) (factor compression these gates operationalize); [[1-method/framework.md|framework.md §1.1]] (bidirectional test); `change-protocol.md` §7.3 / §7.8 (audit triggers + adoption threshold).

@@ -10,7 +10,7 @@ When planning multi-phase work (migrations, cross-corpus ports, big-feature roll
 
 Stan's intervention: *"so let's stop: going down this rabbithole"* + *"the whole point was to leverage the work already done by the stepbible, right?"* — and finally *"describe to me what you think i want to see when this is done on the website."* The moment Stan forced the description of the end-state picture, the substrate question resolved itself.
 
-**Root cause:** procedural-first pending.md + rule-shaped memories ("port the swap-system") + CHECK-IN protocol that prioritizes canon/rules/git-log but not the picture-shaped architectural docs (`apparatus.md`, `architecture.md`). With no anchored picture, "STEPBible doesn't ship Tagged-KJV" → "find external Tagged-KJV" felt like a valid logical chain. With the picture present, the chain is obviously wrong.
+**Root cause:** procedural-first pending.md + rule-shaped memories ("port the swap-system") + CHECK-IN protocol that prioritizes canon/rules/git-log but not the picture-shaped architectural docs ([[3-implementation/apparatus.md|apparatus.md]], [[3-implementation/architecture.md|architecture.md]]). With no anchored picture, "STEPBible doesn't ship Tagged-KJV" → "find external Tagged-KJV" felt like a valid logical chain. With the picture present, the chain is obviously wrong.
 
 **How to apply:**
 

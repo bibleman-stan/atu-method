@@ -15,7 +15,7 @@ status: PROPOSED — analysis only. No canon edited. Retiring live allowances is
 
 ## The finding that reframes the rest: two phantom foundations
 
-Grepped 2026-08-06 across `framework.md`, `cross-corpus-principles.md`, `binding-rules-*.md`, `_old/`, and the BoFM + GNT per-corpus canons:
+Grepped 2026-08-06 across [[1-method/framework.md|framework.md]], [[1-method/cross-corpus-principles.md|cross-corpus-principles.md]], `binding-rules-*.md`, `_old/`, and the BoFM + GNT per-corpus canons:
 
 | Cited carve-out | Cited at | Defined |
 |---|---|---|

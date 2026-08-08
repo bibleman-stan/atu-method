@@ -10,7 +10,7 @@ Stan named this the "rhetoric bandwagon" and has had to correct it multiple time
 
 ## Why it's dangerous
 
-Our theoretical foundation is **psycholinguistic / cognitive**, not rhetorical or parallelism-structural. The grounding principle: *rhetoric constrains, atomic-thought determines* — `cross-corpus-principles.md` §0.1 (lens scope) + §1.3a, with the full statement in [[feedback_atu_and_rhetorical_lenses_distinct]]. (`feedback_sense_line_mission.md` carried this ground until it was demoted 2026-08-06; cite the live homes, not it.)
+Our theoretical foundation is **psycholinguistic / cognitive**, not rhetorical or parallelism-structural. The grounding principle: *rhetoric constrains, atomic-thought determines* — [[1-method/cross-corpus-principles.md#§0.1 Lens scope — ATU vs. rhetorical/discourse structure|cross-corpus-principles.md §0.1]] (lens scope) + §1.3a, with the full statement in [[feedback_atu_and_rhetorical_lenses_distinct]]. ([[memories/feedback_sense_line_mission.md|feedback_sense_line_mission.md]] carried this ground until it was demoted 2026-08-06; cite the live homes, not it.)
 
 Importing external frameworks wholesale:
 
@@ -77,6 +77,6 @@ Each failure has a named shape. When I find myself proposing something shape-mat
 
 ## Cross-reference
 
-- `feedback_over_structuring_disposition.md` (umbrella) — rhetoric-bandwagon is the "external-authority" sub-pattern
-- `cross-corpus-principles.md` §0.1 + §1.3a and [[feedback_atu_and_rhetorical_lenses_distinct]] — the psycholinguistic grounding we maintain against external frames (superseded `feedback_sense_line_mission.md`, demoted 2026-08-06)
-- `feedback_rhetorical_force.md` — rhetorical force alone never justifies a split (related anti-external-frame discipline)
+- [[memories/feedback_over_structuring_disposition.md|feedback_over_structuring_disposition.md]] (umbrella) — rhetoric-bandwagon is the "external-authority" sub-pattern
+- [[1-method/cross-corpus-principles.md#§0.1 Lens scope — ATU vs. rhetorical/discourse structure|cross-corpus-principles.md §0.1]] + §1.3a and [[feedback_atu_and_rhetorical_lenses_distinct]] — the psycholinguistic grounding we maintain against external frames (superseded [[memories/feedback_sense_line_mission.md|feedback_sense_line_mission.md]], demoted 2026-08-06)
+- [[memories/feedback_rhetorical_force.md|feedback_rhetorical_force.md]] — rhetorical force alone never justifies a split (related anti-external-frame discipline)

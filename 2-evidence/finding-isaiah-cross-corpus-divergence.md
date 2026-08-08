@@ -36,7 +36,7 @@
 
 **Stan's suspicion is supported.** BoFM's Isaiah is systematically under-broken relative to our own Hebrew edition of the same passage — consistent in direction and rough magnitude with the Skousen comparison (1.75×, 81% of verses under-broken) and with the cross-corpus word-per-line spread (BoFM 16.2 against 7–9 for every gold-substrate sibling). Three independent comparanda now agree on the direction.
 
-**It is also a cross-corpus convergence failure, which is the program's central thesis.** `feedback_cross_corpus_convergence.md` holds that ATUs should reveal common patterns across corpora because thought and language share structure. Here the *same text* in two corpora diverges by a third. Either the thesis needs qualification, or one substrate is wrong — and the substrate doctrine already predicts which: Stanza-on-EModE is the weak parse, BHSA is gold.
+**It is also a cross-corpus convergence failure, which is the program's central thesis.** [[memories/feedback_cross_corpus_convergence.md|feedback_cross_corpus_convergence.md]] holds that ATUs should reveal common patterns across corpora because thought and language share structure. Here the *same text* in two corpora diverges by a third. Either the thesis needs qualification, or one substrate is wrong — and the substrate doctrine already predicts which: Stanza-on-EModE is the weak parse, BHSA is gold.
 
 **But the Hebrew side is not clean either, and this is the part that complicates a simple "BoFM is too coarse" story.** MT Isaiah 9:1 renders as three lines, the first of which is `הָעָם֙` — "the people," a bare noun phrase, one word, no predication. That line **fails forward closure outright** under §2.1's own test. It is there because the te'amim disjoin at that point and BHSA's clause-atoms follow. So the Hebrew edition contains a defect in the *opposite* direction, produced by exactly the accent hierarchy the framework bars as a licensor while using it as a substrate.
 
@@ -48,4 +48,4 @@ One chapter, twenty verses, one book. Line counts, not boundary alignment — tw
 
 ## Bearing
 
-Feeds the §1/§2 reframe under discussion (Chafe / Givón / Fields / Louw / Marschall / Nässelqvist), and the non-finite predication ruling in `../Pending-Decisions.md`. Also a candidate first entry for a substrate loop, which `improvement-loops.md` Gap 3 records as missing.
+Feeds the §1/§2 reframe under discussion (Chafe / Givón / Fields / Louw / Marschall / Nässelqvist), and the non-finite predication ruling in `../Pending-Decisions.md`. Also a candidate first entry for a substrate loop, which [[4-process/improvement-loops.md|improvement-loops.md]] Gap 3 records as missing.

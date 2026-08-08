@@ -37,7 +37,7 @@ The PP-classification typology that taxonomizes *according to*'s complement-noun
 
 ### 2026-03-24 punctuation-dependency audit (origin event)
 
-EP-1's distinction was discovered during a corpus-wide audit testing the principle that punctuation is not a break signal (now formalized as `framework.md` §2.1, "Punctuation has ZERO force", and BoFM canon §1 Punctuation is not a break signal).
+EP-1's distinction was discovered during a corpus-wide audit testing the principle that punctuation is not a break signal (now formalized as [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1]], "Punctuation has ZERO force", and BoFM canon §1 Punctuation is not a break signal).
 
 The audit method: identify every existing v2-mine break that fell at a comma boundary, mentally strip the comma, and re-evaluate whether the break still held on purely grammatical/structural grounds. *According to* PPs were the densest cluster of comma-dependent breaks in the corpus — the orthographic comma before *according to* had been treated as a break-signal across hundreds of instances without per-case grammatical analysis.
 
@@ -68,7 +68,7 @@ EP-1's Tier-7 placement was confirmed during the 2026-05-10 UD-detector-framewor
 
 ### Punctuation-is-not-a-break-signal principle
 
-EP-1 is the working example that originally proved (and continues to demonstrate) the punctuation-is-not-a-break-signal principle. The 2026-03-24 audit's comma-stripping test was the methodological move that surfaced the manner-vs-source distinction; without that test, the punctuation-artifact breaks would have remained invisible. The principle was generalized from EP-1's specific case to all break-signal analysis (now `framework.md` §2.1, "Punctuation has ZERO force", and BoFM canon §1 Punctuation is not a break signal).
+EP-1 is the working example that originally proved (and continues to demonstrate) the punctuation-is-not-a-break-signal principle. The 2026-03-24 audit's comma-stripping test was the methodological move that surfaced the manner-vs-source distinction; without that test, the punctuation-artifact breaks would have remained invisible. The principle was generalized from EP-1's specific case to all break-signal analysis (now [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1]], "Punctuation has ZERO force", and BoFM canon §1 Punctuation is not a break signal).
 
 This methodological lineage is preserved in the BoFM `memories/feedback_punctuation_not_evidence.md`: "Punctuation is inherited text, not adjudication evidence."
 

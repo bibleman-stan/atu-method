@@ -1,8 +1,8 @@
 # canon-index-receipts.md — verification receipts for canon-index.md
 
-**Companion to `canon-index.md`** — produced 2026-06-06 in response to claudit's audit directive:
+**Companion to [[canon-index.md]]** — produced 2026-06-06 in response to claudit's audit directive:
 *"VERIFICATION RECEIPTS, not assertions: every home + every consumer backed by actual grep/read
-output."* This file backs every claim in `canon-index.md` with raw verbatim grep/Read output from
+output."* This file backs every claim in [[canon-index.md]] with raw verbatim grep/Read output from
 fresh in-turn verification. Receipts are organized per concept-family lane, matching the verifier
 workflow's five parallel scopes.
 
@@ -30,7 +30,7 @@ workflow's five parallel scopes.
 - Workflow `wasutgzgd` (5 parallel verifier lanes, 444k subagent tokens, 365 tool uses).
 - "FLAGGED" entries are NOT errors per se — they include cases where:
   - The cite was already repointed (Batch A1 §1.10 cites now read `§2.1`, not `§1.10`)
-  - The cite consumes the umbrella anchor not the granular sub-anchor (e.g. BoFM canon:26 cites `framework.md §0` covering §0.1/§0.2/§0.3/§0.4 collectively)
+  - The cite consumes the umbrella anchor not the granular sub-anchor (e.g. BoFM canon:26 cites [[1-method/framework.md|framework.md §0]] covering §0.1/§0.2/§0.3/§0.4 collectively)
   - The cite presents a semantic tension with the cited anchor (e.g. `feedback_rhetoric_bandwagon.md:13` framing "psycholinguistic / cognitive" is in tension with §0.3's "not derived from a cognitive theory")
   - Each FLAGGED entry surfaces something Stan + claudit should adjudicate; collected at the end of this file.
 - No FLAGGED entry indicates an unverifiable claim that should auto-fail the audit.
@@ -642,7 +642,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - (none of the audit-claimed consumers ground-truthed)
 
 **Consumers (FLAGGED):**
-- `atu-method/memories/feedback_rhetoric_figures_constrain_atu.md` (audit row claims **6 cites** to §1.3a): full file Read returns ZERO occurrences of `§1.3a`. The file cites `framework.md §1.1` (line 8 references §1.1) and `framework.md §1.2` (lines 12, 13, 16) — never §1.3a. Six §1.2 / §1.1 cites exist; the audit row appears to misattribute these to §1.3a.
+- `atu-method/memories/feedback_rhetoric_figures_constrain_atu.md` (audit row claims **6 cites** to §1.3a): full file Read returns ZERO occurrences of `§1.3a`. The file cites [[1-method/framework.md|framework.md §1.1]] (line 8 references §1.1) and [[1-method/framework.md|framework.md §1.2]] (lines 12, 13, 16) — never §1.3a. Six §1.2 / §1.1 cites exist; the audit row appears to misattribute these to §1.3a.
 - `atu-method/memories/feedback_rule_proposal_gates.md`: NO match for `§1.3a`. Closest content (line 11): `Am I citing a surface feature (UD signature, rhetorical figure, punctuation, lexical pattern) as evidence?` — a generic rhetoric-as-surface-feature mention, NOT a §1.3a cite.
 - `atu-method/memories/feedback_no_fake_dilemmas.md`: NO match for `§1.3a`. Closest (line 36): `- `feedback_rhetoric_bandwagon.md` — meta-audit failure mode (judgment-handoff smuggling section)` — pointer to the bandwagon memory, NOT a §1.3a cite.
 - `readers-bofm/1-method/colometry-canon.md` Tier 0 mentions: not located by direct Grep within the offsets exercised; flagged as not ground-truthed in this verification pass (no specific line was supplied for the Tier 0 claim, and a Grep for `§1.3a` against the canon would be required to confirm).
@@ -1116,13 +1116,13 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - `atu-method/2-evidence/scholarship/bofm/EP-1.md:40`: `... now formalized as \`framework.md\` §2.1, "Punctuation has ZERO force", and BoFM canon §1 Punctuation is not a break signal).` — REPOINTED.
 - `atu-method/2-evidence/scholarship/bofm/EP-1.md:71`: `The principle was generalized from EP-1's specific case ... (now \`framework.md\` §2.1, "Punctuation has ZERO force", and BoFM canon §1 Punctuation is not a break signal).` — REPOINTED.
 - `atu-method/2-evidence/scholarship/bofm/EP-1.md:153`: `- Universal framework: ... §2.1 (punctuation has zero force) + §7.0 (Category B editorial-judgment) + §1.5 J5 ...` — REPOINTED.
-- `Dropbox/bom-reader-private/01-method/colometry-canon.md:34`: pointer block (BoFM canon §1) — substance preserved: `the punctuation-not-a-signal and versification-not-a-signal stances ... is codified at [\`atu-method/1-method/framework.md §1\`]` (note: still cites `framework.md §1` umbrella, not §2.1 — POSSIBLE STALE POINTER).
+- `Dropbox/bom-reader-private/01-method/colometry-canon.md:34`: pointer block (BoFM canon §1) — substance preserved: `the punctuation-not-a-signal and versification-not-a-signal stances ... is codified at [\`atu-method/1-method/framework.md §1\`]` (note: still cites [[1-method/framework.md#§1 Purpose|framework.md §1]] umbrella, not §2.1 — POSSIBLE STALE POINTER).
 - `Dropbox/bom-reader-private/01-method/colometry-canon.md:114`: TIER 0 entry `- Punctuation is not a break signal (see §1)` (per-corpus body; no §1.10 token).
-- `Dropbox/gnt-reader-private/01-method/colometry-canon.md:48`: pointer block (GNT canon §1) — analogous to BoFM:34; still cites `framework.md §1` umbrella, not §2.1.
+- `Dropbox/gnt-reader-private/01-method/colometry-canon.md:48`: pointer block (GNT canon §1) — analogous to BoFM:34; still cites [[1-method/framework.md#§1 Purpose|framework.md §1]] umbrella, not §2.1.
 - `atu-method/memories/feedback_punctuation_not_evidence.md`: file exists (Glob verified); is the named feedback memory carrying the same principle.
 
 **Consumers (FLAGGED):**
-- BoFM canon:34 + GNT canon:48 pointer blocks still cite `framework.md §1` umbrella rather than `framework.md §2.1` — content survives via umbrella, but if §1 umbrella is later restructured these pointers will rot.
+- BoFM canon:34 + GNT canon:48 pointer blocks still cite [[1-method/framework.md#§1 Purpose|framework.md §1]] umbrella rather than [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1]] — content survives via umbrella, but if §1 umbrella is later restructured these pointers will rot.
 
 ---
 
@@ -1142,7 +1142,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 - `atu-method/_old/rule-equivalence-map.md:110`: `- Cross-verse continuity (H10 / §3.17 / §1.11) — port`
 
 **Consumers (FLAGGED):**
-- BoFM:34 and GNT:48 pointer blocks cite `framework.md §1` umbrella (not §1.11 token directly, not §3 v1.6 successor).
+- BoFM:34 and GNT:48 pointer blocks cite [[1-method/framework.md#§1 Purpose|framework.md §1]] umbrella (not §1.11 token directly, not §3 v1.6 successor).
 - Live consumer footprint is THIN — only pointer-block + the _old/rule-equivalence-map. The "§1.11 cited" by audit row in atu-method/memories returned no Grep matches.
 
 ---
@@ -1253,7 +1253,7 @@ Additional unsolicited: §1.2.3 also at `R1.md:17` ("syntax-veto case under fram
 ### ATU vs. rhetorical/discourse lens distinction (NEW 2026-06-06)
 **Receipts:**
 - `atu-method/memories/feedback_atu_and_rhetorical_lenses_distinct.md`: Glob CONFIRMED exists on disk.
-- `cross-corpus-principles.md §0.1` mentions it: `Grep "feedback_atu_and_rhetorical_lenses_distinct"` returned line 35: `[\`../memories/feedback_atu_and_rhetorical_lenses_distinct.md\`](../memories/feedback_atu_and_rhetorical_lenses_distinct.md)` — appears in §0.1 body. §0.1 header at line 18 verified: `### §0.1 Lens scope — ATU vs. rhetorical/discourse structure`.
+- [[1-method/cross-corpus-principles.md#§0.1 Lens scope — ATU vs. rhetorical/discourse structure|cross-corpus-principles.md §0.1]] mentions it: `Grep "feedback_atu_and_rhetorical_lenses_distinct"` returned line 35: `[\`../memories/feedback_atu_and_rhetorical_lenses_distinct.md\`](../memories/feedback_atu_and_rhetorical_lenses_distinct.md)` — appears in §0.1 body. §0.1 header at line 18 verified: `### §0.1 Lens scope — ATU vs. rhetorical/discourse structure`.
 
 ### Helaman 3:16 cliff precedent (BoFM-specific)
 **Receipts:** `Grep "Helaman 3:16"` over `C:/Users/bibleman/repos` returned 5 files:
@@ -1282,7 +1282,7 @@ BoFM canon hits (Dropbox/bom-reader-private/01-method/colometry-canon.md): lines
 **Receipts:**
 - `Grep "§3\.21"` over `atu-method/docs` returned NO matches.
 - `Grep "§3\.21"` over `_old/framework.md` returned NO matches.
-- `Grep "§3\.21"` over live `framework.md` returned NO matches.
+- `Grep "§3\.21"` over live [[1-method/framework.md|framework.md]] returned NO matches.
 - R10.md:31 CGEL Ch. 14 cite VERIFIED: `The compound-list-break-signals sub-rule of §1.4 J1 implements this coordination treatment ... This is CGEL Ch. 14's coordination-under-shared-predicator pattern instantiated as a colometric merge.`
 - R10.md:29 also contains the CGEL Ch. 14 §2 substantive cite: `- **CGEL Ch. 14 §2** on coordination — when a transitive verb takes a coordinate object series ...`
 - Confirms: any scanner hit for `§3.21` is a FALSE POSITIVE (the only `§...` token near R10.md:31 is `§1.4 J1`; CGEL `Ch. 14 §2` is a citation to the Cambridge Grammar of the English Language, NOT an atu-method §-anchor).
@@ -1307,7 +1307,7 @@ BoFM canon hits (Dropbox/bom-reader-private/01-method/colometry-canon.md): lines
 
 ## §0.3 Pragmatic stance
 
-- `atu-method/memories/feedback_rhetoric_bandwagon.md` — canon-index says "(1 cite)" but a `§0.3` Grep returns no matches in this file. The conceptual link goes through `feedback_sense_line_mission.md` referenced at line 13. **More importantly:** the memory's framing ("Our theoretical foundation is psycholinguistic / cognitive") is in semantic *tension* with §0.3's "not derived from a cognitive theory; no such claim is asserted" — the canon-index disposition `fold→§1 Purpose` glosses this tension. Surface to Stan.
+- `atu-method/memories/feedback_rhetoric_bandwagon.md` — canon-index says "(1 cite)" but a `§0.3` Grep returns no matches in this file. The conceptual link goes through [[memories/feedback_sense_line_mission.md|feedback_sense_line_mission.md]] referenced at line 13. **More importantly:** the memory's framing ("Our theoretical foundation is psycholinguistic / cognitive") is in semantic *tension* with §0.3's "not derived from a cognitive theory; no such claim is asserted" — the canon-index disposition `fold→§1 Purpose` glosses this tension. Surface to Stan.
 - BoFM/GNT canon pointer-block — same FLAG as §0.2: §0.3 sub-anchor is consumed only via umbrella `§0`; no verbatim §0.3 token in either canon.
 
 ## §0.4 Scope
@@ -1342,7 +1342,7 @@ BoFM canon hits (Dropbox/bom-reader-private/01-method/colometry-canon.md): lines
 ## §7.5 Audit-evidence in commit messages
 
 - Canon-index claims "all Stage 1 / Track A commit messages" — same shape as §7.4: git-log-only assertion not ground-truthed by disk grep. Verification-completeness flag.
-- Canon-index also names `feedback_claude_commits_and_pushes.md` + `feedback_never_skip_audit_gate.md`. Both confirmed above. Faithful.
+- Canon-index also names [[memories/operational/feedback_claude_commits_and_pushes.md|feedback_claude_commits_and_pushes.md]] + [[memories/operational/feedback_never_skip_audit_gate.md|feedback_never_skip_audit_gate.md]]. Both confirmed above. Faithful.
 
 ## §7.6 Self-test before commit
 
@@ -1358,7 +1358,7 @@ BoFM canon hits (Dropbox/bom-reader-private/01-method/colometry-canon.md): lines
 
 ## §7.9 Binding-rule design checklist
 
-- **Anchor reuse — live §7.9 semantic ≠ archived §7.9 semantic.** Archived `_old/2026-05-18-mechanical-first-rewrite/change-protocol.md:110` defined §7.9 as "Architecture-method alignment check"; live `1-method/framework.md:352` defines §7.9 as "Binding-rule design checklist". Any consumer pointer to "§7.9" written against the archived semantics is **silently semantically broken** in the live world. The `_old/canon-validator-alignment-protocol.md:49` cite is the demonstration: it cites §7.9 expecting the architecture-method-alignment-check semantics, which is no longer at §7.9. Canon-index row says "(no direct cites; preserves prior live `framework.md §7`)" — but it does NOT flag the §7.9 semantic-collision against the rewrite-stage archived §7.9. Surface to Stan: archived `_old/2026-05-18-mechanical-first-rewrite/` material reads as "current" to a naive grep, and §7.9's anchor was repurposed across the rewrite-stage. The `canon-validator-alignment-protocol.md` is archived and tombstoned, so the impact is contained, but the canon-index row's "(no direct cites)" claim glosses the archived-but-still-on-disk citer.
+- **Anchor reuse — live §7.9 semantic ≠ archived §7.9 semantic.** Archived `_old/2026-05-18-mechanical-first-rewrite/change-protocol.md:110` defined §7.9 as "Architecture-method alignment check"; live `1-method/framework.md:352` defines §7.9 as "Binding-rule design checklist". Any consumer pointer to "§7.9" written against the archived semantics is **silently semantically broken** in the live world. The `_old/canon-validator-alignment-protocol.md:49` cite is the demonstration: it cites §7.9 expecting the architecture-method-alignment-check semantics, which is no longer at §7.9. Canon-index row says "(no direct cites; preserves prior live [[1-method/framework.md#§7 Change discipline|framework.md §7]])" — but it does NOT flag the §7.9 semantic-collision against the rewrite-stage archived §7.9. Surface to Stan: archived `_old/2026-05-18-mechanical-first-rewrite/` material reads as "current" to a naive grep, and §7.9's anchor was repurposed across the rewrite-stage. The `canon-validator-alignment-protocol.md` is archived and tombstoned, so the impact is contained, but the canon-index row's "(no direct cites)" claim glosses the archived-but-still-on-disk citer.
 - Canon-index says §7.9 has no direct cites — confirmed for `2-evidence/scholarship/` and `memories/` live grep. Faithful in scope.
 
 ## §1.1 Generative principle
@@ -1390,7 +1390,7 @@ BoFM canon hits (Dropbox/bom-reader-private/01-method/colometry-canon.md): lines
 
 ## §1.3a rhetoric figures constrain
 
-- `atu-method/memories/feedback_rhetoric_figures_constrain_atu.md` (audit row claims **6 cites** to §1.3a): full file Read returns ZERO occurrences of `§1.3a`. The file cites `framework.md §1.1` (line 8 references §1.1) and `framework.md §1.2` (lines 12, 13, 16) — never §1.3a. Six §1.2 / §1.1 cites exist; the audit row appears to misattribute these to §1.3a.
+- `atu-method/memories/feedback_rhetoric_figures_constrain_atu.md` (audit row claims **6 cites** to §1.3a): full file Read returns ZERO occurrences of `§1.3a`. The file cites [[1-method/framework.md|framework.md §1.1]] (line 8 references §1.1) and [[1-method/framework.md|framework.md §1.2]] (lines 12, 13, 16) — never §1.3a. Six §1.2 / §1.1 cites exist; the audit row appears to misattribute these to §1.3a.
 - `atu-method/memories/feedback_rule_proposal_gates.md`: NO match for `§1.3a`. Closest content (line 11): `Am I citing a surface feature (UD signature, rhetorical figure, punctuation, lexical pattern) as evidence?` — a generic rhetoric-as-surface-feature mention, NOT a §1.3a cite.
 - `atu-method/memories/feedback_no_fake_dilemmas.md`: NO match for `§1.3a`. Closest (line 36): `- `feedback_rhetoric_bandwagon.md` — meta-audit failure mode (judgment-handoff smuggling section)` — pointer to the bandwagon memory, NOT a §1.3a cite.
 - `readers-bofm/1-method/colometry-canon.md` Tier 0 mentions: not located by direct Grep within the offsets exercised; flagged as not ground-truthed in this verification pass (no specific line was supplied for the Tier 0 claim, and a Grep for `§1.3a` against the canon would be required to confirm).
@@ -1408,7 +1408,7 @@ BoFM canon hits (Dropbox/bom-reader-private/01-method/colometry-canon.md): lines
 ## §1.8 application order
 
 - GNT canon:2316 cites range `§1.4–§1.9` not §1.8 by name; the cite is in a re-homing/pointer table for the GNT canon Section 2 rewrite, and the §1.8 inclusion is range-based rather than explicit.
-- demote-memory consumer claim for §1.8 — **not verified**; `feedback_camera_angle_diagnostic_demote.md` references §1.3 (line 26) and §1.6 (lines 26, 35) but **no §1.8 reference exists in the file**. Grep `§1\.8` against the file: no matches.
+- demote-memory consumer claim for §1.8 — **not verified**; [[memories/feedback_camera_angle_diagnostic_demote.md|feedback_camera_angle_diagnostic_demote.md]] references §1.3 (line 26) and §1.6 (lines 26, 35) but **no §1.8 reference exists in the file**. Grep `§1\.8` against the file: no matches.
 
 ## §1.9 — N=2 Adjudication Principle
 
@@ -1427,11 +1427,11 @@ BoFM canon hits (Dropbox/bom-reader-private/01-method/colometry-canon.md): lines
 
 ## §1.10 — Punctuation is not a break signal
 
-- BoFM canon:34 + GNT canon:48 pointer blocks still cite `framework.md §1` umbrella rather than `framework.md §2.1` — content survives via umbrella, but if §1 umbrella is later restructured these pointers will rot.
+- BoFM canon:34 + GNT canon:48 pointer blocks still cite [[1-method/framework.md#§1 Purpose|framework.md §1]] umbrella rather than [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1]] — content survives via umbrella, but if §1 umbrella is later restructured these pointers will rot.
 
 ## §1.11 — Versification is not a break signal
 
-- BoFM:34 and GNT:48 pointer blocks cite `framework.md §1` umbrella (not §1.11 token directly, not §3 v1.6 successor).
+- BoFM:34 and GNT:48 pointer blocks cite [[1-method/framework.md#§1 Purpose|framework.md §1]] umbrella (not §1.11 token directly, not §3 v1.6 successor).
 - Live consumer footprint is THIN — only pointer-block + the _old/rule-equivalence-map. The "§1.11 cited" by audit row in atu-method/memories returned no Grep matches.
 
 ## §1.12 — Parallel-List Uniformity Principle

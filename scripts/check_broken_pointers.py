@@ -22,6 +22,15 @@ Two failure classes, both of which have actually bitten this repo:
      phantom §-IDs the canon-xref arc tracks (e.g. glossary.md's framework.md
      §1.2 / §1.3, where live framework §1 has no sub-sections).
 
+  3. BROKEN WIKILINK — an Obsidian [[target]] / [[target#Heading|alias]] whose
+     basename resolves to no file, or to MORE than one. Added 2026-08-08 with
+     scripts/add_wikilinks.py, and added in the SAME pass for a specific reason:
+     link_canon_refs.py shipped a new link class with no validator and created
+     the broken-anchor class above. A link syntax the checker cannot read is a
+     link syntax that rots silently. Ambiguity counts as broken because Obsidian
+     resolves a duplicate basename to whichever file it likes, and a link that
+     lands on the wrong one of two files is worse than plain text.
+
 This is the mechanical half of the CLAUDE.md audit tier. It exists because the
 tool existing was never the problem — nothing ran it. Run it on the weekly audit
 wake, and before/after any file move.
@@ -78,6 +87,18 @@ PATH_RE = re.compile(
 LINK_RE = re.compile(r"\]\((<[^>\n]*>|[^)\s\n]*)\)")
 HEADING_RE = re.compile(r"^#{1,6}\s+(.+?)\s*$")
 FENCE_RE = re.compile(r"^\s*(```|~~~)")
+# Obsidian [[target]], [[target#Heading]], [[target|alias]], [[target#H|alias]]
+WIKI_RE = re.compile(r"\[\[([^\]|#]+?)(?:#([^\]|]+?))?(?:\|[^\]]*?)?\]\]")
+
+# Wikilink ambiguity must be judged the way OBSIDIAN judges it — over the whole
+# vault, including _old/. Skipping _old/ here was a real bug: it made this
+# checker report 0 broken wikilinks on a file Obsidian immediately flagged,
+# because _old/ shadows 7 live basenames (framework.md, apparatus.md,
+# architecture.md, glossary.md, retraction-log-protocol.md,
+# toolset-architecture.md, _index.md). Validating against our own index instead
+# of the resolver that actually runs is the same proxy-trust failure the repo
+# keeps finding elsewhere. Only truly non-vault dirs are skipped.
+INDEX_SKIP_PARTS = {".git", ".obsidian", "node_modules", "__pycache__"}
 
 SKIP_PATHS = {
     "example.md", "tmp/file.py", "10-colometry.md",
@@ -106,6 +127,17 @@ SEARCH_SUBDIRS = ["", "1-method", "2-evidence", "3-implementation", "4-process",
 
 def slugify(h: str) -> str:
     return re.sub(r"\s+", "-", re.sub(r"[^\w\s-]", "", h.lower()).strip())
+
+
+def build_vault_index():
+    """basename -> [paths]. Wikilinks resolve by basename, so ambiguity matters."""
+    import collections
+    names = collections.defaultdict(list)
+    for p in REPO_ROOT.rglob("*.md"):
+        if set(p.relative_to(REPO_ROOT).parts) & INDEX_SKIP_PARTS:
+            continue
+        names[p.name].append(p)
+    return names
 
 
 def scan_paths() -> list:
@@ -158,8 +190,9 @@ def main() -> int:
     args = ap.parse_args()
 
     files = scan_paths()
-    broken_paths, broken_anchors, advisory = [], [], []
+    broken_paths, broken_anchors, advisory, broken_wiki = [], [], [], []
     heading_cache = {}
+    vault = build_vault_index()
 
     for path in files:
         in_fence = False
@@ -181,6 +214,50 @@ def main() -> int:
                     # not failures, so the weekly signal stays actionable.
                     bucket = broken_paths if ref.endswith(".md") else advisory
                     bucket.append((path, i, ref, line.strip()[:110]))
+
+            for m in WIKI_RE.finditer(line):
+                tgt, frag = m.group(1).strip(), (m.group(2) or "").strip()
+                # A bare slug with no "/" and no ".md" is a MEMORY-style soft
+                # link. The memory spec makes those deliberately aspirational:
+                # "a [[name]] that doesn't match an existing memory yet is fine;
+                # it marks something worth writing later, not an error." So an
+                # unresolved bare slug under memories/ is signal, not rot.
+                # Anything naming a path or an extension is a file reference and
+                # is always validated.
+                is_file_ref = "/" in tgt or tgt.endswith(".md")
+                in_memories = "memories" in path.relative_to(REPO_ROOT).parts
+                base = tgt.split("/")[-1]
+                if not base.endswith(".md"):
+                    base += ".md"
+                # A path-qualified target ("memories/operational/foo") is how
+                # Obsidian disambiguates a duplicated basename, so resolve it as
+                # a path FIRST — otherwise the only available fix for an
+                # ambiguity would still report as ambiguous.
+                if "/" in tgt:
+                    rel = tgt if tgt.endswith(".md") else tgt + ".md"
+                    exact = REPO_ROOT / rel
+                    hits = [exact] if exact.exists() else []
+                else:
+                    hits = vault.get(base, [])
+                if not hits:
+                    if is_file_ref or not in_memories:
+                        broken_wiki.append((path, i, m.group(0),
+                                            "no such file in vault"))
+                    continue
+                if len(hits) > 1:
+                    where = ", ".join(h.relative_to(REPO_ROOT).as_posix()
+                                      for h in hits)
+                    broken_wiki.append((path, i, m.group(0),
+                                        f"ambiguous — {where}"))
+                    continue
+                if frag:
+                    target = hits[0]
+                    if target not in heading_cache:
+                        heading_cache[target] = headings_of(target)
+                    hs = heading_cache[target]
+                    if hs and frag not in hs and slugify(frag) not in hs:
+                        broken_wiki.append((path, i, m.group(0),
+                                            "heading not found in target"))
 
             for m in LINK_RE.finditer(line):
                 dest = m.group(1).strip("<>")
@@ -204,7 +281,16 @@ def main() -> int:
     print(f"\nFiles scanned: {len(files)}")
     print(f"  broken doc paths: {len(broken_paths)}")
     print(f"  broken anchors:   {len(broken_anchors)}")
+    print(f"  broken wikilinks: {len(broken_wiki)}")
     print(f"  advisory (non-.md, likely reader-repo): {len(advisory)}")
+
+    if broken_wiki:
+        print("\nBROKEN WIKILINKS")
+        for path, line, ref, why in broken_wiki[:30]:
+            print(f"  {path.relative_to(REPO_ROOT)}:{line}  {ref}")
+            print(f"    {why}")
+        if len(broken_wiki) > 30:
+            print(f"  ... +{len(broken_wiki) - 30} more")
 
     for label, items in (("BROKEN DOC PATHS", broken_paths),
                          ("BROKEN ANCHORS", broken_anchors),
@@ -224,7 +310,7 @@ def main() -> int:
             if not args.verbose and len(hits) > 3:
                 print(f"    ... +{len(hits) - 3} more")
 
-    if broken_paths or broken_anchors:
+    if broken_paths or broken_anchors or broken_wiki:
         print("\nFix the pointer, or add a genuinely-external ref to SKIP_PATHS /"
               " SKIP_PREFIXES.")
         return 1

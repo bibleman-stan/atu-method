@@ -12,7 +12,7 @@ Companion to: [`../../1-method/framework.md`](../../1-method/framework.md) (the 
 
 To be populated as scholarly content is extracted from per-repo canons. Each essay defends a specific framework component.
 
-- `framework.md` — WHY proposition-first generative + 5 structural justifications + 4 merge-overrides + decision procedure. Defends the choice of this framework over alternatives (rhetorical-parallelism-driven, prosodic-driven, breath-driven, etc.).
+- [[1-method/framework.md|framework.md]] — WHY proposition-first generative + 5 structural justifications + 4 merge-overrides + decision procedure. Defends the choice of this framework over alternatives (rhetorical-parallelism-driven, prosodic-driven, breath-driven, etc.).
 - `categories.md` — WHY Category A/B/C and the mechanical-rule-authority principle. Defends the asymmetric trust gradient.
 - `precedence.md` — WHY the precedence-hierarchy structure. Defends the tier ordering against drift.
 - `lineage.md` — Intellectual lineage: Skousen → BoFM → GNT → Tanakh. Stan's premise. Pragmatic stance versus cognitive-theoretic claims.

@@ -1,6 +1,6 @@
 # Deployment Status — single source of truth
 
-**This is the authoritative record of what is LIVE for each reader edition.** Do not infer deployment state from a per-repo `CLAUDE.md`, a README, or a memory — those have drifted stale. When in doubt, the tiebreaker is the **git log of the live corpus directory** in each repo (`git log -- <live-layer-path>`). Update THIS file whenever a corpus is re-deployed.
+**This is the authoritative record of what is LIVE for each reader edition.** Do not infer deployment state from a per-repo [[CLAUDE.md]], a README, or a memory — those have drifted stale. When in doubt, the tiebreaker is the **git log of the live corpus directory** in each repo (`git log -- <live-layer-path>`). Update THIS file whenever a corpus is re-deployed.
 
 ## All three readers run the mechanical-first pipeline (deploy-then-refine)
 

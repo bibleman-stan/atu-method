@@ -77,7 +77,7 @@ Drafts ready in [`4-process/draft-promotions-2026-08-07.md`](4-process/draft-pro
 
 **Corrected count.** I first reported four qualifying sub-patterns. Extracting the actual `Sub-pattern:` fields rather than grepping strings shows **two** qualify — `rhetorical-figure smuggling` (3 distinct events) and `new-rule reflex` (3). The other two were a single cascaded canon change logged in three repos, citing the same atu-method commits.
 
-**A protocol defect fell out of that, and it needs its own ruling.** `retraction-log-protocol.md` says "The 3 strikes need not all come from one repo," written for independent recurrences — but cascaded changes are logged in every repo by design, so pooling counts log entries rather than distinct events and can triple a single mistake. **Proposed amendment:** strikes count distinct retraction events (date + retracted claim), not log entries.
+**A protocol defect fell out of that, and it needs its own ruling.** [[4-process/retraction-log-protocol.md|retraction-log-protocol.md]] says "The 3 strikes need not all come from one repo," written for independent recurrences — but cascaded changes are logged in every repo by design, so pooling counts log entries rather than distinct events and can triple a single mistake. **Proposed amendment:** strikes count distinct retraction events (date + retracted claim), not log entries.
 
 **Cons of promoting:** Promotion 1 sits adjacent to `feedback_rhetoric_figures_constrain_atu` and could be called redundant; Promotion 2 adds real friction to every rule proposal and risks the opposite failure — suppressing a needed rule because the residue looked small, which is how the six underived §2.1 allowances arose from the other direction.
 

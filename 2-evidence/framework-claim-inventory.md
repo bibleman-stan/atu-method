@@ -2,7 +2,7 @@
 
 **Summary**: A read-only pass over [`framework.md`](../1-method/framework.md) enumerating its load-bearing assertions and typing each by epistemic status, so the citation project can be scoped before any source-hunting begins. Headline: the framework is **overwhelmingly `[OURS]`** — original normative construction, not compiled scholarship — which is what a specification *is*, and the honest output of the citation project is therefore mostly **labeling**, not a bibliography. The claims that most need external grounding are not the ones that look uncited; they are the theoretical load-bearers stated in a single clause and passed over. Two structural weaknesses surfaced: the framework's deepest assumption (grammatical closure as a *proxy* for thought) is asserted without support, and its headline empirical claim generalizes from four chapters.
 
-**Method**: full read of `framework.md` §1–§7 on 2026-08-06; assertions extracted by hand (a judgment task, deliberately not delegated). No citations were added and no claim was altered — this is an inventory, not an edit.
+**Method**: full read of [[1-method/framework.md#§1 Purpose|framework.md §1]]–§7 on 2026-08-06; assertions extracted by hand (a judgment task, deliberately not delegated). No citations were added and no claim was altered — this is an inventory, not an edit.
 
 **Last updated**: 2026-08-06
 
@@ -92,7 +92,7 @@ The `[CONVERGENT]` / `[SOURCED]` distinction is the safety-critical one. `feedba
 
 **The four highest-value targets, ranked — none of which look uncited at a glance:**
 
-1. **#4, the proxy claim.** "Grammatical closure is a proxy for thought" is the hinge the entire method turns on: it is what licenses a *syntactic* test to answer a *cognitive* question. It has no support, no hedge, and no cross-reference. This is where Chafe's idea units, Cresti's information units, and Langacker actually bear — and where `feedback_atu_and_rhetorical_lenses_distinct.md` has already done much of the comparative thinking, unlinked from the framework itself.
+1. **#4, the proxy claim.** "Grammatical closure is a proxy for thought" is the hinge the entire method turns on: it is what licenses a *syntactic* test to answer a *cognitive* question. It has no support, no hedge, and no cross-reference. This is where Chafe's idea units, Cresti's information units, and Langacker actually bear — and where [[memories/feedback_atu_and_rhetorical_lenses_distinct.md|feedback_atu_and_rhetorical_lenses_distinct.md]] has already done much of the comparative thinking, unlinked from the framework itself.
 2. **#34–35, the empirical base.** The headline "85–91%, genre-stable" generalizes from four chapters and is quoted downstream as though settled. It needs either a larger sample or an explicit `[MEASURED, n=4]` qualifier. The BoFM gold yardstick (33 stratified verses, F1 ≈ 0.67) already shows what happens when the sample gets harder.
 3. **#6, the (A)-vs-(B) ratio.** Trivial to compute from deployed output and never computed, yet "the overwhelming majority" is doing real rhetorical work in justifying (B)'s quarantine.
 4. **#11 / #18, the unmarked parameters.** "More than one ATU back" and "≥2 coordinated participials" read as criteria but are tuned values. Marking them `[TUNED]` is honest and costs nothing.

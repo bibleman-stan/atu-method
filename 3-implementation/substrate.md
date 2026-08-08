@@ -24,7 +24,7 @@ re-parse, and a merger — were all reshaped/killed at the §7.3 audit gate *bef
 
 ### 1a. Past-ceiling levers — the three ways through, in order
 
-Relocated here 2026-08-06 from `CLAUDE.md`, where it was the only copy. Once mechanical-first has done its work, only three levers move the ceiling:
+Relocated here 2026-08-06 from [[CLAUDE.md]], where it was the only copy. Once mechanical-first has done its work, only three levers move the ceiling:
 
 - **(a) Better *real-gold* substrate.** The strongest lever and the first to consider. **CLOSED for BoFM** via the manufactured-gold / parser-bootstrap route — a PCEEC-letters-trained parser lost a blind two-adjudicator gate to off-the-shelf Stanza 21–6, and the register gap is not closed by a stronger encoder. Do not reopen without genuinely new *in-register* gold.
 - **(b) Cross-corpus convergence-projection.** BHSA → alignment → target, for Hebrew-source corpora (LXX, Vulgate-OT). This is the **FIRST mechanical move for those corpora, not a v2 defer** — the substrate already exists and only needs projecting.

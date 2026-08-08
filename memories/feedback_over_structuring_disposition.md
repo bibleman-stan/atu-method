@@ -17,7 +17,7 @@ Before writing a new scanner, proposing a new rule, building infrastructure, or 
 
 4. **Did Stan specify a model, approach, or constraint I'm about to ignore?** (instruction-following check) — if Stan said "haiku minions," don't dispatch Sonnet. If Stan said "don't add rules, check existing ones," don't propose a new rule. Instructions in the current message supersede your default pattern.
 
-5. **What's the smallest version that would test the hypothesis?** (minimal-validate check) — almost always smaller than your first instinct. A 50-line scanner using tagged data is better than a 790-line heuristic reconstruction. A runbook is better than a Python SDK wrapper (see `feedback_dont_over_engineer_orchestration.md`).
+5. **What's the smallest version that would test the hypothesis?** (minimal-validate check) — almost always smaller than your first instinct. A 50-line scanner using tagged data is better than a 790-line heuristic reconstruction. A runbook is better than a Python SDK wrapper (see [[memories/feedback_dont_over_engineer_orchestration.md|feedback_dont_over_engineer_orchestration.md]]).
 
 If you answer any of (1), (2), (3), (4) affirmatively, **STOP and re-scope before building.**
 
@@ -28,7 +28,7 @@ Over-structuring is the ROOT disposition. Specific failure modes:
 - **Rule multiplication** — proposing a new rule for a pattern already latent in existing rules. Canonical in-repo case: the withdrawn "long interjection earns split" proposal (2026-04-18), where Stan's probe caught the overreach — "i just want to make sure we're identifying a rule and not making one up."
 - **Implementation-level over-structuring** — custom code re-deriving information that existing tools / tagged data already provide. Observed in GNT sibling 2026-04-19 (790-line scanner when MorphGNT tags would have sufficed in 50).
 - **Scope-expansion** — building new tooling when asked to test existing tooling.
-- **Default-splitting** — assuming general rules apply without checking canon exceptions. BofM trench has `feedback_goldilocks_refinement.md` for the subordinate-vs-coordinate version of this.
+- **Default-splitting** — assuming general rules apply without checking canon exceptions. BofM trench has [[memories/feedback_goldilocks_refinement.md|feedback_goldilocks_refinement.md]] for the subordinate-vs-coordinate version of this.
 - **Memory-based arguing** — arguing from vague recollection of canon rules instead of reading the canon fresh.
 - **Wavering under probing** — flipping positions when Stan asks a question, as if the question itself were a correction. The discipline: ground your position in the canon FIRST, then decide whether Stan's question changes it.
 - **Aesthetic reasoning over grammatical diagnostic** — reading for rhetorical force / em-dash / surface pattern instead of applying the delete-test / main-verb-test / camera-angle-test. Self-log of discipline failures 2026-04-17 (session note `2026-04-17-rule17-generalization-sweep`) caught four of these in one session with shared root cause: *"reaching for an aesthetic or pattern-match explanation before running the grammatical diagnostic."*
@@ -38,10 +38,10 @@ Over-structuring is the ROOT disposition. Specific failure modes:
 ## Cross-reference
 
 - `feedback_rhetoric_bandwagon.md` — specific external-authority sub-pattern (fires on classical rhetorical theory OR Hebrew-parallelism frameworks)
-- `feedback_dont_over_engineer_orchestration.md` — the three-question check against SDK-wrapping code, a direct cousin of this memory's five-question check against new rules/scanners
-- `feedback_goldilocks_refinement.md` — subordinate-vs-coordinate Goldilocks discipline; instance of the default-splitting sub-pattern
-- `feedback_rhetorical_force.md` — rhetorical force alone never justifies a split; a specific instance of the "aesthetic reasoning over grammatical diagnostic" sub-pattern
-- `feedback_application_consistency_vs_rule_coverage.md` — this memory's OPERATE-side twin: rule-multiplication is often the wrong response to an application-consistency problem
+- [[memories/feedback_dont_over_engineer_orchestration.md|feedback_dont_over_engineer_orchestration.md]] — the three-question check against SDK-wrapping code, a direct cousin of this memory's five-question check against new rules/scanners
+- [[memories/feedback_goldilocks_refinement.md|feedback_goldilocks_refinement.md]] — subordinate-vs-coordinate Goldilocks discipline; instance of the default-splitting sub-pattern
+- [[memories/feedback_rhetorical_force.md|feedback_rhetorical_force.md]] — rhetorical force alone never justifies a split; a specific instance of the "aesthetic reasoning over grammatical diagnostic" sub-pattern
+- [[memories/feedback_application_consistency_vs_rule_coverage.md|feedback_application_consistency_vs_rule_coverage.md]] — this memory's OPERATE-side twin: rule-multiplication is often the wrong response to an application-consistency problem
 
 ## Note on propagation
 

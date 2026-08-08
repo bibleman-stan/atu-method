@@ -1,58 +1,85 @@
-# atu-method/docs — Index
+# Start here — the atu-method vault map
 
-Top-level index for the atu-method documentation. Each doc has a distinct purpose; consult by purpose.
+**This is the front door.** Everything in the repo is reachable from here in one or two clicks. Organised by *what you are trying to do*, not by where the files happen to sit.
 
-Companion: [`../memories/_index.md`](00-start-here.md) indexes cross-corpus discipline memories.
-
----
-
-## Deployment state of record (read before asserting what's live)
-
-- [`deployment-status.md`](2-evidence/deployment-status.md) — **THE single source of truth for what is LIVE per reader edition** (which layer is deployed, on what method, anchoring commits; the source-text-sacred vs segmentation-regenerable distinction). Per-repo `CLAUDE.md`/READMEs drift stale and must NOT be trusted over this file.
-
-## Doctrine (read with framework.md)
-
-- [`substrate.md`](3-implementation/substrate.md) — **The Textual Fabric Doctrine (substrate before superstructure).** Established 2026-05-27. The framework is a Container, not an Originator; fabric quality bounds the claims. The **mechanical ceiling** (judgment-residuals — complement-vs-quote, parallel-cola — are not rule-decidable over a weak parse → use better substrate or v2 LLM-adjudication). Fabric-parity tiers per corpus, the GIGO guardrail, the hybrid annotation pipeline, the new-corpus START gate. BoFM is the worked example (v2-adjudication chosen).
-
-## Methodology specification
-
-- [`framework.md`](1-method/framework.md) — **The canonical methodology specification.** Bidirectional test, mechanical-first architecture, v0→v3 pipeline, validation status across four genres. Authoritative cross-corpus body. Read first.
-- [`cross-corpus-principles.md`](1-method/cross-corpus-principles.md) — **Cross-corpus universal principles companion.** Candidate-ATU substrate (§1.1), structural justifications J1/J2/J4/J5, merge-overrides M1/M4, application order (§1.8), N=2 Adjudication + N=3+ cliff (§1.9), rhetoric-figures-constrain (§1.3a). NOT break-licensors (those live at `[framework.md §2.1](<1-method/framework.md#§2.1 The bidirectional test (primary criterion)>)`/§2.2); this is the methodology layer above per-corpus rule catalogs.
-- [`apparatus.md`](3-implementation/apparatus.md) — **Scope statement.** What the apparatus is and what it produces. The KJV-anchored English layer (a separate concern from ATU segmentation). Cross-sibling end-state UX description.
-- [`toolset-architecture.md`](3-implementation/toolset-architecture.md) — **Pipeline implementation per stage.** Per-corpus parse layers, v1.5 binding-rule application, optional v2 LLM adjudication, v3 editorial review. Reference to the pilot scripts at `readers-tanakh/research/atu-pilot-mechanical-first/`.
-- [`architecture.md`](3-implementation/architecture.md) — **Four-plane technical architecture** (data / specification / tooling / delivery). Plane ownership: shared vs per-repo. Interface contracts.
-- [`glossary.md`](1-method/glossary.md) — **Universal term definitions.** ATU, bidirectional test, binding rule, BHSA clause-atom, etc.
-
-- [`../canon-index.md`](../canon-index.md) — **Canon-anchor navigation index.** One row per §-anchor / sub-clause / concept / doc; status (live/archived/superseded/CONTESTED/phantom) + live-successor + ALL consumers + (for in-flight migrations) proposed_disposition. Hand-built first generation; future regeneration via `build_canon_index.py`. Use to find "where does §X.Y live + who cites it."
-
-## Per-language binding-rule catalogs
-
-- [`binding-rules-hebrew.md`](1-method/binding-rules-hebrew.md) — **The 14 validated Hebrew binding rules** (B1-B14 with B4 retired). Each rule: trigger, justification, example, counter-example. Evaluation order and global same-verse guard.
-- [`binding-rules-lxx.md`](1-method/binding-rules-lxx.md) — **LXX-Greek catalog** (parked smoke-test artifact, 2026-05-27; integration target is the projection-v1 generator not yet wired live). GNT catalog still TODO (pending GNT pilot).
-- EME English catalog — TODO (pending BoFM pilot)
-- Latin catalog — TODO (pending LXX/Vulgate consideration)
-
-## Position documents
-
-- [`methodology-position.md`](4-process/methodology-position.md) — **Relationship to LDHB / discourse-grammar references.** "Lexham-consulted but not utilized" framing. Why the apparatus does not depend on LDHB at runtime.
-
-## Per-repo discipline
-
-- [`retraction-log-protocol.md`](4-process/retraction-log-protocol.md) — Per-repo retraction-log specification. File format, 3-strike promotion threshold, what counts as a retraction.
-
-## Legacy reference
-
-- [`_old/`](_old/) — Prior versions of all docs. Not authoritative. The 2026-05-18 mechanical-first rewrite is preserved under `_old/2026-05-18-mechanical-first-rewrite/`.
+> **If you are opening this to see where things stand, go to [[Current-Tasks.md]].** That is the in-flight board. This file is the map; that one is the state.
 
 ---
 
-## What got retired in the 2026-05-18 mechanical-first rewrite
+## The two files that answer "what now?"
 
-The following were tied to the legacy Stage 1 / Stage 2 / Stage 3 LLM-primary architecture with a 26-entry constraint catalog. Replaced by the mechanical-first pipeline + 14-rule binding catalog:
+| | |
+|---|---|
+| [[Current-Tasks.md]] | **What is in flight**, organised by what unblocks it: waiting on you / ruled-but-gated / mine / known-broken. |
+| [[Pending-Decisions.md]] | **What needs your ruling**, one entry per decision with a recommendation, why that one, and its cons. |
 
-- `change-protocol.md` — replaced by [`framework.md` §7](<1-method/framework.md#§7 Change discipline>) (shorter, scoped to binding-rule changes)
-- `canon-validator-alignment-protocol.md` — no longer needed; binding rules ARE the canon
-- `editorial-review-protocol.md` — replaced by the pilot's v3 comparison framework
-- `rule-template.md` — replaced by [`binding-rules-hebrew.md`](1-method/binding-rules-hebrew.md) format
-- `rule-equivalence-map.md` — TODO when Greek/EME/Latin catalogs land
-- `prompts/` — Stage 1 LLM rubrics; optional v2 may resurrect a narrow-task variant later
+---
+
+## 1-method — the canon
+
+The normative layer. Everything else is downstream of these.
+
+- [[1-method/framework.md|framework.md]] — **the canonical methodology specification.** The bidirectional test (§2.1), the explicit-marker license (§2.2), mechanical-first architecture, the v0→v3 pipeline, and the §7 change discipline that governs edits to itself. **Read first.**
+- [[1-method/cross-corpus-principles.md|cross-corpus-principles.md]] — the universal-principles companion. Candidate-ATU substrate, structural justifications J1/J2/J4/J5, merge-overrides M1/M4, application order, the N=2/N=3+ cliff, and the rhetoric-figures-constrain firewall. *Not* a break-licensor — those live in framework §2.1/§2.2.
+- [[1-method/binding-rules-hebrew.md|binding-rules-hebrew.md]] — the 14 validated Hebrew rules (B1–B14, B4 retired). Trigger, justification, example, counter-example, evaluation order.
+- [[1-method/binding-rules-lxx.md|binding-rules-lxx.md]] — LXX-Greek catalog. **PARKED** (2026-05-27 smoke-test artifact; not wired live).
+- [[1-method/glossary.md|glossary.md]] — universal term definitions. ATU, bidirectional test, binding rule, clause-atom.
+
+*Still to be written: EME English catalog (pending BoFM pilot), Latin catalog.*
+
+## 2-evidence — what we have actually measured
+
+Findings live here, filed in the same turn they are produced (standing default #5(c)).
+
+- [[2-evidence/deployment-status.md|deployment-status.md]] — **the single source of truth for what is LIVE per reader edition.** Per-repo CLAUDE.mds and READMEs drift; this file does not. Never assert deployment state from anything else.
+- [[2-evidence/framework-claim-inventory.md|framework-claim-inventory.md]] — all 37 framework assertions typed as OURS / SOURCED / CONVERGENT / MEASURED / UNPROVEN / TUNED. The hinge claim — that grammatical closure proxies for thought — is currently unsupported.
+- [[2-evidence/finding-isaiah-cross-corpus-divergence.md|finding-isaiah-cross-corpus-divergence.md]] — the same Isaiah, two of our editions, 34% apart. Hebrew breaks more often on identical content; BoFM is coarser in 13 of the 14 verses that differ.
+- [[2-evidence/finding-substrate-loop-diagnosis.md|finding-substrate-loop-diagnosis.md]] — the substrate loop is missing a *filter*, not an instrument. The Isaiah gold oracle exists, produced F1 0.561, and has been idle 73 days behind one unbuilt component.
+- [[2-evidence/reader-observations.md|reader-observations.md]] — Loop 6 capture channel. Your observations against verse references, so n=1 can become n=many.
+- [[2-evidence/PROJECT-BRIEF-2026-08-08.md|PROJECT-BRIEF-2026-08-08.md]] — dense machine-facing system brief with provenance tags. Written for another Claude to consume, not for reading.
+- [`2-evidence/scholarship/`](2-evidence/scholarship/) — the external literature, indexed at [`scholarship/_index.md`](2-evidence/scholarship/_index.md), with per-corpus subfolders (`bofm/`, `gnt/`, `methodology/`).
+
+## 3-implementation — how it is actually built
+
+- [[3-implementation/substrate.md|substrate.md]] — **the Textual Fabric Doctrine.** Substrate before superstructure; the framework is a Container, not an Originator; fabric quality bounds the claims. The mechanical ceiling and the three past-ceiling levers, fabric-parity tiers per corpus, the GIGO guardrail, the new-corpus START gate.
+- [[3-implementation/toolset-architecture.md|toolset-architecture.md]] — pipeline implementation per stage: parse layers, v1.5 binding-rule application, optional v2 LLM adjudication, v3 editorial review.
+- [[3-implementation/architecture.md|architecture.md]] — the four-plane technical architecture (data / specification / tooling / delivery) and which plane is shared vs per-repo.
+- [[3-implementation/apparatus.md|apparatus.md]] — scope statement: what the apparatus is, what it produces, and the KJV-anchored English layer as a concern separate from ATU segmentation.
+
+## 4-process — how the work governs itself
+
+- [[4-process/improvement-loops.md|improvement-loops.md]] — **the six loops and their measured status.** Four of six are reported broken. Read this before proposing process changes.
+- [[4-process/collapsed-maturation-loops.md|collapsed-maturation-loops.md]] — **PROPOSAL.** What the topology looks like with two conversation partners instead of four, drawn loop by loop with what is lost and how to hold it down.
+- [[4-process/retraction-log-protocol.md|retraction-log-protocol.md]] — per-repo retraction-log spec: format, the 3-strike promotion threshold, what counts as a retraction.
+- [[4-process/draft-promotions-2026-08-07.md|draft-promotions-2026-08-07.md]] — the two drafted promotions (**both denied**), the corrected count, and the protocol defect that fell out of it.
+- [[4-process/proposal-2026-08-06-criterion-reconstruction.md|proposal-2026-08-06-criterion-reconstruction.md]] — the §2.1 reconstruction; six allowances tested for derivability. Governs the non-finite-predication ruling.
+- [[4-process/methodology-position.md|methodology-position.md]] — relationship to LDHB and discourse-grammar references. Why the apparatus does not depend on LDHB at runtime.
+
+## Navigation and memory
+
+- [[canon-index.md]] — **one row per §-anchor / concept / doc**, with status (live / archived / superseded / CONTESTED / phantom), live-successor, and every consumer. Use it to answer "where does §X.Y live, and who cites it?"
+- [[canon-index-receipts.md]] — the raw grep/Read output backing every claim in the index.
+- [`memories/`](memories/) — 36 cross-corpus methodology memories, indexed at [`memories/_index.md`](memories/_index.md).
+- [`memories/operational/`](memories/operational/) — 70 operational memories: north-star, deferred queue, named arcs, feedback disciplines. **Recovered 2026-08-06** from a deleted namespace; state as of 2026-06-15, so treat entries as possibly stale until re-verified.
+- [[CLAUDE.md]] — my operating instructions for this repo: standing behavioral defaults, closed routes, mandatory orientation reads.
+- [`README.md`](README.md) · [[CHANGELOG.md]] — repo overview and change history. (`README.md` is a markdown link, not a wikilink: three files share that basename, so a wikilink cannot resolve it.)
+
+## Tooling
+
+Scripts live in [`scripts/`](scripts/). The ones that matter to you:
+
+| Script | What it does |
+|---|---|
+| `loop_health.py` | Mechanical staleness check across every loop. Runs on session start; warns, never blocks. |
+| `check_broken_pointers.py` | Pointer integrity — broken doc paths, broken anchors, broken wikilinks. |
+| `add_wikilinks.py` | Turns unlinked `doc.md §N` mentions into clickable wikilinks. Idempotent; dry-run by default. |
+
+Skills live in [`.claude/skills/`](.claude/skills/) — `atu-audit-tier`, `atu-compaction-resume`, `jsonl`. **Project skills belong in this folder**, never the global bucket, so they travel with the repo.
+
+---
+
+## Retired — kept as receipts, not authoritative
+
+[`_old/`](_old/) holds prior versions of every doc, including the 2026-05-18 mechanical-first rewrite under `_old/2026-05-18-mechanical-first-rewrite/`.
+
+Retired in that rewrite, and **deliberately not linked** because they are no longer in the vault: `change-protocol.md` (replaced by framework §7), `canon-validator-alignment-protocol.md` (binding rules *are* the canon), `editorial-review-protocol.md`, `rule-template.md`, `rule-equivalence-map.md`, and the Stage-1 `prompts/`. If you see one of these cited in prose, it is a historical reference, not a live pointer.

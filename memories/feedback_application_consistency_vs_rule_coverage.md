@@ -41,6 +41,6 @@ A **phrase-consistency scanner** orthogonal to the current pattern-scanner famil
 
 ## Cross-reference
 
-- `feedback_over_structuring_disposition.md` (this memory's ADD-side twin)
-- `feedback_goldilocks_refinement.md` — subordinate-vs-coordinate Goldilocks discipline
-- `feedback_rhetorical_force.md` — rhetorical force alone never justifies a split
+- [[memories/feedback_over_structuring_disposition.md|feedback_over_structuring_disposition.md]] (this memory's ADD-side twin)
+- [[memories/feedback_goldilocks_refinement.md|feedback_goldilocks_refinement.md]] — subordinate-vs-coordinate Goldilocks discipline
+- [[memories/feedback_rhetorical_force.md|feedback_rhetorical_force.md]] — rhetorical force alone never justifies a split

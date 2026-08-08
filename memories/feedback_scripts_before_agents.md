@@ -15,7 +15,7 @@ originSessionId: 5e934fd5-32e0-4958-9b1e-00dd9f0e6d19
 **How to apply:**
 - Word/phrase replacement → Python `str.replace` with safety check (contextual grep before + after).
 - Regex-matchable pattern → Python `re.sub` or `Grep` tool.
-- Rule with unambiguous mechanical trigger (per `CLAUDE.md` §Source Rules "rule-derivative changes are Category A") → script it.
+- Rule with unambiguous mechanical trigger (per [[CLAUDE.md]] §Source Rules "rule-derivative changes are Category A") → script it.
 - Agents → only when the rule requires contextual judgment the code can't encode.
 
 **Diagnostic.** If the agent prompt is "for each item, do X" and X is deterministic, you wanted a script. If X is "decide whether to do the thing," dispatch.

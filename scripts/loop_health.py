@@ -138,13 +138,28 @@ def check_yardstick() -> list:
 
 
 def check_fileback() -> list:
-    syn = REPO / "docs" / "synthesis"
-    if not syn.exists():
-        return [("WARN", "docs/synthesis/ does not exist — standing default "
-                         "#5(c) file-back has never executed")]
-    n = len(list(syn.glob("*.md")))
-    return [("WARN" if n == 0 else "ok",
-             f"docs/synthesis/: {n} pages")]
+    # Standing default #5(c) files a cross-corpus answer to 2-evidence/ in the
+    # same turn it is produced. The pre-2026-08-07 destination was
+    # docs/synthesis/, which the reorg removed; checking that path reported
+    # "never executed" against a loop that had in fact fired four times.
+    ev = REPO / "2-evidence"
+    if not ev.exists():
+        return [("FAIL", "2-evidence/ does not exist — file-back has no destination")]
+    pages = sorted(ev.glob("*.md"))
+    if not pages:
+        return [("WARN", "2-evidence/ is empty — standing default #5(c) "
+                         "file-back has never executed")]
+    # "Newest" is the SMALLEST age. Taking max() reported the oldest file and
+    # made a loop that fired today look 9999 days stale. Uncommitted pages have
+    # no git date; they are newer than anything committed, so treat them as 0.
+    ages = []
+    for p in pages:
+        d = _days_since(_git(REPO, "log", "-1", "--format=%ad", "--date=short",
+                             "--", str(p.relative_to(REPO))))
+        ages.append(0 if d is None else d)
+    newest = min(ages)
+    return [("WARN" if newest > 30 else "ok",
+             f"2-evidence/: {len(pages)} filed, newest {newest}d ago")]
 
 
 def check_queue() -> list:
@@ -246,18 +261,48 @@ def check_dormancy() -> list:
 
 
 def check_pointers() -> list:
-    script = REPO / "5-machinery" / "scripts" / "check_broken_pointers.py"
+    # 5-machinery/ is readers-bofm's layout, not this repo's; the path was
+    # copied across and reported "missing" against a script that exists.
+    script = REPO / "scripts" / "check_broken_pointers.py"
     if not script.exists():
-        return [("WARN", "check_broken_pointers.py missing")]
+        return [("WARN", f"{script.relative_to(REPO).as_posix()} missing")]
     r = subprocess.run([sys.executable, str(script)], cwd=REPO,
                        capture_output=True, text=True, encoding="utf-8",
                        errors="replace", timeout=120)
-    m = re.search(r"broken anchors:\s+(\d+)", r.stdout or "")
-    anchors = m.group(1) if m else "?"
-    m2 = re.search(r"broken doc paths:\s+(\d+)", r.stdout or "")
-    paths = m2.group(1) if m2 else "?"
-    flag = "FAIL" if anchors not in ("0", "?") else "ok"
-    return [(flag, f"pointers: {anchors} broken anchors, {paths} broken doc paths")]
+    def grab(label):
+        m = re.search(label + r":\s+(\d+)", r.stdout or "")
+        return m.group(1) if m else "?"
+    anchors, paths, wiki = (grab("broken anchors"), grab("broken doc paths"),
+                            grab("broken wikilinks"))
+    # Anchors and wikilinks are strict: both classes are ones we created and can
+    # keep at zero. Doc paths carry known external/retired noise, so they report.
+    flag = "FAIL" if {anchors, wiki} - {"0", "?"} else "ok"
+    return [(flag, f"pointers: {anchors} broken anchors, {wiki} broken "
+                   f"wikilinks, {paths} broken doc paths")]
+
+
+def check_current_tasks() -> list:
+    """The task board is only useful if it tracks reality — so check that it does.
+
+    A hand-maintained board rots exactly like every other loop in this repo, and
+    the failure is silent: it keeps rendering, it just stops being true. The
+    mechanical proxy is drift — commits landed in this repo since the board was
+    last touched. That cannot detect a *wrong* board, only a stale one, which is
+    the honest limit of a date check.
+    """
+    board = REPO / "Current-Tasks.md"
+    if not board.exists():
+        return [("WARN", "Current-Tasks.md missing — no consolidated in-flight state")]
+    rel = board.relative_to(REPO).as_posix()
+    age = _days_since(_git(REPO, "log", "-1", "--format=%ad", "--date=short",
+                           "--", rel))
+    since = _git(REPO, "log", "--oneline", f"--since=@{{{age or 0} days ago}}")
+    drift = len([ln for ln in (since or "").splitlines() if ln.strip()])
+    if age is None:
+        return [("WARN", "Current-Tasks.md never committed")]
+    if age > 14:
+        return [("WARN", f"Current-Tasks.md untouched {age}d ({drift} commits since)")]
+    return [("ok", f"Current-Tasks.md updated {age}d ago ({drift} commits since)")]
 
 
 def main() -> int:
@@ -273,6 +318,7 @@ def main() -> int:
         ("outcome instrument (gold yardstick)", check_yardstick),
         ("file-back loop", check_fileback),
         ("deferred queue", check_queue),
+        ("current-tasks board", check_current_tasks),
         ("pointer integrity", check_pointers),
     ]
 

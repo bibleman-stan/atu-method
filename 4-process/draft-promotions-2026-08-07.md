@@ -17,7 +17,7 @@ PROMOTED` block exists anywhere.
 ## Correction first — I said four qualify. Two do.
 
 On 2026-08-07 I reported that four sub-patterns had crossed the three-strike
-threshold, pooling across sibling logs as `retraction-log-protocol.md` permits.
+threshold, pooling across sibling logs as [[4-process/retraction-log-protocol.md|retraction-log-protocol.md]] permits.
 Extracting the actual `Sub-pattern:` fields rather than grepping for strings
 shows that was wrong twice over:
 
@@ -35,7 +35,7 @@ which repo's CLAUDE.md was trimmed.
 
 ## The protocol defect this exposes
 
-`retraction-log-protocol.md` says: *"The 3 strikes need not all come from one
+[[4-process/retraction-log-protocol.md|retraction-log-protocol.md]] says: *"The 3 strikes need not all come from one
 repo."* That rule was written for genuinely independent recurrences — the same
 mistake made again in a different corpus, which is real evidence of a pattern.
 But a **cascaded canon change is logged in every affected repo by design**, so
@@ -104,8 +104,8 @@ the response is to propose a *new* rule rather than to check whether the
 existing rule applied uniformly already covers them. All three were withdrawn
 after uniform application was tested.
 
-**Proposed discipline.** In `feedback_three_anti_default_factors.md` under
-Factor B, and as a gate refinement in `feedback_rule_proposal_gates.md`: *before
+**Proposed discipline.** In [[memories/feedback_three_anti_default_factors.md|feedback_three_anti_default_factors.md]] under
+Factor B, and as a gate refinement in [[memories/feedback_rule_proposal_gates.md|feedback_rule_proposal_gates.md]]: *before
 proposing any new rule, sub-rule, override, or precedence mechanism, run the
 existing rule-set uniformly over the motivating cases and report the residue. A
 proposal that does not state what uniform application leaves unresolved has not
@@ -131,8 +131,8 @@ is the same family as Promotion 1 with grammar substituted for rhetoric.
 
 ## If approved, what happens
 
-1. The two disciplines land in `feedback_three_anti_default_factors.md`, and
-   Promotion 2 also in `feedback_rule_proposal_gates.md`.
+1. The two disciplines land in [[memories/feedback_three_anti_default_factors.md|feedback_three_anti_default_factors.md]], and
+   Promotion 2 also in [[memories/feedback_rule_proposal_gates.md|feedback_rule_proposal_gates.md]].
 2. A `## 2026-08-07 — DISCIPLINE PROMOTED — <name>` block goes at the top of each
    reader log, citing the triggering retractions.
 3. The protocol amendment (distinct events, not log entries) gets its own ruling.

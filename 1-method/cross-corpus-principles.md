@@ -55,8 +55,8 @@ for the full statement + future-paper framing.
 - Categories A/B/C: `[framework.md §7.0](<framework.md#§7.0 Categories A / B / C>)`
 
 **This document DOES NOT HOST** (retired 2026-06-06):
-- Camera-angle test (§1.3 old) — RETIRED. See `canon-index.md` Stan's rulings.
-- Bare-governor indivisibility / M3 ([§1.5](<#§1.5 Merge-Override Conditions (M1, M4 — closed list; M2 lives at `framework.md §2.1`; M3 retired 2026-06-06)>) M3 old) — RETIRED. See `canon-index.md` Stan's rulings.
+- Camera-angle test (§1.3 old) — RETIRED. See [[canon-index.md]] Stan's rulings.
+- Bare-governor indivisibility / M3 ([§1.5](<#§1.5 Merge-Override Conditions (M1, M4 — closed list; M2 lives at `framework.md §2.1`; M3 retired 2026-06-06)>) M3 old) — RETIRED. See [[canon-index.md]] Stan's rulings.
 
 ---
 
@@ -232,7 +232,7 @@ bidirectional test and other applicable rules.
 implementing complement integrity (BoFM R17, GNT R8, Tanakh H7) cite `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)` as their
 universal anchor. M3 (bare-governor indivisibility) was retired 2026-06-06; the general
 bare-governor case is subsumed by `[framework.md §2.1](<framework.md#§2.1 The bidirectional test (primary criterion)>)`'s bidirectional test. Per-corpus citers
-referring to "M3" must update — see `canon-index.md`.
+referring to "M3" must update — see [[canon-index.md]].
 
 The list is extensible only by worked corpus example + adversarial validation under `[framework.md](framework.md)
 §7.3`.

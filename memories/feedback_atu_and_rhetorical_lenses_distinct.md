@@ -2,8 +2,8 @@
 
 **Principle (Stan, 2026-06-06).** ATUs and discourse/rhetorical structure are different lenses on
 the same text. They sometimes overlap, often don't. Naming the lens distinction explicitly —
-and choosing ATU as the primary criterion via `framework.md §2.1`/§2.2, with rhetoric a constraint
-not a determinant per `cross-corpus-principles.md §1.3a` — is itself a methodology contribution of
+and choosing ATU as the primary criterion via [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1]]/§2.2, with rhetoric a constraint
+not a determinant per [[1-method/cross-corpus-principles.md#§1.3a Rhetoric figures constrain — figures CONSTRAIN, atomic-thought DETERMINES|cross-corpus-principles.md §1.3a]] — is itself a methodology contribution of
 the segmentation/delimitation critical method.
 
 ## Statement
@@ -11,15 +11,15 @@ the segmentation/delimitation critical method.
 The apparatus's primary criterion is the **ATU lens**: the smallest cognitive unit the reader can
 process before needing the next. ATUs are determined by:
 
-- `framework.md §2.1` — the bidirectional test (forward grammatical closure + backward referential self-containment)
-- `framework.md §2.2` — the explicit-marker license (closed per-corpus registry)
+- [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1]] — the bidirectional test (forward grammatical closure + backward referential self-containment)
+- [[1-method/framework.md#§2.2 The explicit-marker license (secondary criterion)|framework.md §2.2]] — the explicit-marker license (closed per-corpus registry)
 - Default per `framework.md §2.2:116`: **KEEP-AS-IS unless (A) or (B) licenses a break.**
 
 The apparatus also recognizes a **rhetorical/discourse lens**: how the author organizes argument,
 contrast, climax, parallelism, periodic structure, chiasmus, and other suprasegmental moves.
 Rhetorical structure has default ATU dispositions (parallelism predicts SPLIT per J1, hendiadys
 predicts MERGE per M1, chiasmus has no force on ATU within members, etc. — see
-`cross-corpus-principles.md §1.3a`). These defaults are **hypotheses**, not determinations. The
+[[1-method/cross-corpus-principles.md#§1.3a Rhetoric figures constrain — figures CONSTRAIN, atomic-thought DETERMINES|cross-corpus-principles.md §1.3a]]). These defaults are **hypotheses**, not determinations. The
 bidirectional test always wins.
 
 **Sometimes the lenses overlap. Often they don't.** A rhetorical period may be one ATU or several.
@@ -56,7 +56,7 @@ When a reader's instinct (or a per-verse audit) proposes a break:
 
 1. **Name the claim.** Is it "this is a single cognitive bite" (ATU claim) or "these are distinct
    rhetorical moves" (rhetorical claim)?
-2. **For ATU claims:** run `framework.md §2.1` bidirectional test + §2.2 marker check. KEEP-AS-IS
+2. **For ATU claims:** run [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1]] bidirectional test + §2.2 marker check. KEEP-AS-IS
    default holds unless §2.1 or §2.2 licenses a break.
 3. **For rhetorical claims:** the observation is valid but does not license an ATU split by
    itself. Document separately (scholarship layer, annotation track, periscope index) without
@@ -71,7 +71,7 @@ The verse has 3 distinct rhetorical moves:
 
 > [1] mercy resolves justice → [2] contrast with unfaithful via "while" → [3] consequence for faithful via "therefore"
 
-Per `framework.md §2.1`: "And thus..." and "therefore..." fail backward containment per the
+Per [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1]]: "And thus..." and "therefore..." fail backward containment per the
 asymmetry section (discourse-anaphoric particles named verbatim at line 41); "while..."
 subordinates without an independent matrix. Per §2.2: BoFM marker registry lists `yea` and `or
 rather`, not `thus` / `therefore`. Net: KEEP-AS-IS, 1 ATU. Live rendering: 1 line.
@@ -105,9 +105,9 @@ Concretely:
 
 ## Aligns with
 
-- [[../1-method/framework.md §1 Purpose]] (NOT-list already names "Reveal rhetorical parallelism" as a separate scholarly layer; this memory expands on the principle)
-- [[../1-method/cross-corpus-principles.md §0.1]] (lens scope statement in the canonical companion)
-- [[../1-method/cross-corpus-principles.md §1.3a]] (rhetoric figures constrain, atomic-thought determines)
-- [[../1-method/framework.md §2.2:116]] (parallelism class adjudication excluded as primary break-license — the firewall the lens distinction operationalizes)
-- [[../1-method/framework.md §2.1 final paragraph]] (punctuation has zero force — same shape: editorial overlay is its own lens, not the ATU determinant)
-- [[../4-process/methodology-position.md]] (LDHB / discourse-grammar relationship — the framing here generalizes the position from a single named precedent to the principle)
+- [[1-method/framework.md#§1 Purpose|framework.md §1 Purpose]] (NOT-list already names "Reveal rhetorical parallelism" as a separate scholarly layer; this memory expands on the principle)
+- [[1-method/cross-corpus-principles.md#§0.1 Lens scope — ATU vs. rhetorical/discourse structure|cross-corpus-principles.md §0.1]] (lens scope statement in the canonical companion)
+- [[1-method/cross-corpus-principles.md#§1.3a Rhetoric figures constrain — figures CONSTRAIN, atomic-thought DETERMINES|cross-corpus-principles.md §1.3a]] (rhetoric figures constrain, atomic-thought determines)
+- [[1-method/framework.md#§2.2 The explicit-marker license (secondary criterion)|framework.md §2.2:116]] (parallelism class adjudication excluded as primary break-license — the firewall the lens distinction operationalizes)
+- [[1-method/framework.md#§2.1 The bidirectional test (primary criterion)|framework.md §2.1 final paragraph]] (punctuation has zero force — same shape: editorial overlay is its own lens, not the ATU determinant)
+- [[4-process/methodology-position.md|methodology-position.md]] (LDHB / discourse-grammar relationship — the framing here generalizes the position from a single named precedent to the principle)

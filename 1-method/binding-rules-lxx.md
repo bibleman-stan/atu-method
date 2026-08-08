@@ -106,7 +106,7 @@ syntax treebank in existence as of 2026-05-30). 1547 scored verses.
 | Justification | Direct port of Hebrew B5 (wayhi temporal frame). Hebrew `וַיְהִי` + temporal anchor renders into Koine as `καὶ ἐγένετο` + temporal phrase. The frame is anaphoric to prior narrative (deictic backward) and fails standalone backward containment; binds forward to the main clause it frames. Same pattern Stan recognized in BoFM "and it came to pass" (AICTP) frames. |
 | Provenance | Hebrew B5 (wayhi temporal frame) |
 | Confidence | HIGH on the trigger-pattern in Hebrew; the v1 smoke test demonstrated it does NOT transfer cleanly to UD-PTNK gold Greek. |
-| Risk lens | **Over-merge risk: HIGH against UD-PTNK gold.** v1 smoke (2026-05-30) had 2 helped / 16 hurt; gold treats the wayhi-frame as its own ATU even when temporally anchored. Analysis of the 2 helps (Gen 24:45 `πρὸ τοῦ συντελέσαι`, Gen 31:10 `ἡνίκα ἐνεκίσσων`) vs the 16 hurts (e.g. Gen 6:1 `ἡνίκα ἤρξαντο`, Gen 11:2 `ἐν τῷ κινῆσαι`, Gen 19:29 `ἐν τῷ ἐκτρῖψαι`, Gen 22:1 `μετὰ τὰ ῥήματα ταῦτα` — the *canonical* anchor!) revealed **no Greek-surface pattern that separates helps from hurts cleanly** — the same anchor tokens appear in both groups. Per `feedback_conformance_is_not_correctness.md`, this may reflect the gold-segmenter's behavior rather than methodological truth; revisit when v2 LLM adjudication is available. |
+| Risk lens | **Over-merge risk: HIGH against UD-PTNK gold.** v1 smoke (2026-05-30) had 2 helped / 16 hurt; gold treats the wayhi-frame as its own ATU even when temporally anchored. Analysis of the 2 helps (Gen 24:45 `πρὸ τοῦ συντελέσαι`, Gen 31:10 `ἡνίκα ἐνεκίσσων`) vs the 16 hurts (e.g. Gen 6:1 `ἡνίκα ἤρξαντο`, Gen 11:2 `ἐν τῷ κινῆσαι`, Gen 19:29 `ἐν τῷ ἐκτρῖψαι`, Gen 22:1 `μετὰ τὰ ῥήματα ταῦτα` — the *canonical* anchor!) revealed **no Greek-surface pattern that separates helps from hurts cleanly** — the same anchor tokens appear in both groups. Per [[memories/operational/feedback_conformance_is_not_correctness.md|feedback_conformance_is_not_correctness.md]], this may reflect the gold-segmenter's behavior rather than methodological truth; revisit when v2 LLM adjudication is available. |
 | Test cases (when re-enabled) | Gen 24:45 (helped in v1). Gen 31:10 (helped in v1). |
 | Counter-example | Per v1 data, virtually all temporally-anchored `καὶ ἐγένετο` openings — gold partitions the frame separately. |
 
@@ -156,7 +156,7 @@ syntax treebank in existence as of 2026-05-30). 1547 scored verses.
 | Justification | Port of Hebrew B11 (cognition + ki-complement). The ὅτι-clause is the OBJECT of the cognition (a complement, not a separate assertion). Translates directly: Hebrew `יָדַעְתִּי כִּי` → Greek `ἔγνωκα ὅτι`. |
 | Provenance | Hebrew B11 (cognition + ki-complement) |
 | Confidence | MEDIUM — this rule fires on lemma-list cognition without the Macula `that-VP` / `sub-CL` discriminator (framework §2.1 explicitly warns this can over-bind causal ὅτι: Matt 5:36, John 2:18, 1Cor 3:13 are the GNT counter-cases). LXX gold (UD-PTNK) does not expose the role/rule features; we cannot distinguish complement vs. causal ὅτι mechanically here. Deferred to v2 LLM. |
-| Risk lens | **Over-merge risk: medium** — causal-ὅτι false positives possible. KEEP-SEPARATE doctrine ("when in doubt KEEP separate" — `CLAUDE.md`) argues for either limiting the lemma list aggressively or punting this rule entirely. **Current default: rule is OFF in the applier (commented out) pending CenterBLC `that-VP`/`sub-CL` projection.** |
+| Risk lens | **Over-merge risk: medium** — causal-ὅτι false positives possible. KEEP-SEPARATE doctrine ("when in doubt KEEP separate" — [[CLAUDE.md]]) argues for either limiting the lemma list aggressively or punting this rule entirely. **Current default: rule is OFF in the applier (commented out) pending CenterBLC `that-VP`/`sub-CL` projection.** |
 | Test cases | Gen 8:11 `ἔγνω Νωε ὅτι κεκόπακεν τὸ ὕδωρ` — bind. Counter: Gen 1:4 `καὶ εἶδεν ὁ θεὸς τὸ φῶς` + `ὅτι καλόν` — the gold partitions this as ONE atom (so binding gives the right answer here); but `… οὐ φοβῇ τὸν θεόν, ὅτι …` (causal "because") would be over-bound. |
 
 ### LXX-B8 — Discourse particle δέ / γάρ / μέν / οὖν: NO-OP (clarification rule)
@@ -269,12 +269,12 @@ Length-dependent / discriminator-sensitive rules (B2 relative, B7 cognition-ὅ�
 
 ## Validation and red-line discipline
 
-Per `CLAUDE.md`: **Over-merge is Stan's RED LINE; validators are BLIND to it.**
+Per [[CLAUDE.md]]: **Over-merge is Stan's RED LINE; validators are BLIND to it.**
 
 Before any of these rules is *applied to deploy*, the standing audit gate requires:
 
 1. ≥ 2 parallel adversarial audits on disjoint lenses (over-merge + atomicity), per
-   `feedback_never_skip_audit_gate.md`.
+   [[memories/operational/feedback_never_skip_audit_gate.md|feedback_never_skip_audit_gate.md]].
 2. Source-parity verification against the v0 Rahlfs source (no text mutation).
 3. Index-parity regression check vs. current v1.5 partition.
 
@@ -361,7 +361,7 @@ near-flat (−0.0012, vs v1 −0.008 and vs the absolute target ≥ 0).
   B4: 5, B1: 3, B13: 2, B6: 1.
 - **NEW v2 pure over-merges not in v1**: 1 — `Gen 25:6` `ἔτι ζῶντος αὐτοῦ`
   (a genuine genitive absolute that gold treats as its own ATU). Per
-  `feedback_conformance_is_not_correctness.md`, framework §2 wants this
+  [[memories/operational/feedback_conformance_is_not_correctness.md|feedback_conformance_is_not_correctness.md]], framework §2 wants this
   bound (gen-abs is adverbial to matrix); UD-PTNK gold-segmenter splits it.
   Not a rule failure; documented as the residual.
 - **Fixed v1 pure over-merges**: 29 (out of v1's 39). The 10 still-persistent
@@ -387,7 +387,7 @@ near-flat (−0.0012, vs v1 −0.008 and vs the absolute target ≥ 0).
 
 4. **The 11-pure-over-merge floor is the audit-target** if this catalog moves
    toward deploy. Stan's RED LINE; the ≥2 parallel adversarial audits
-   (over-merge + atomicity lenses) per `CLAUDE.md` would need to clear these.
+   (over-merge + atomicity lenses) per [[CLAUDE.md]] would need to clear these.
 
 5. **Conformance ≠ correctness reminder still applies.** The 1 NEW v2
    over-merge (Gen 25:6) is a clean instance: methodologically correct per

@@ -45,7 +45,7 @@ Does NOT count: typo fixes; formatting cleanups; mechanical-implementation refin
 
 ## Cross-corpus propagation
 
-When a sub-pattern promotes on one repo's log, the discipline propagates to all sibling repos via the shared `feedback_three_anti_default_factors.md` and `feedback_rule_proposal_gates.md` files. Sibling repos do NOT duplicate the discipline — they inherit it via the shared memory references.
+When a sub-pattern promotes on one repo's log, the discipline propagates to all sibling repos via the shared [[memories/feedback_three_anti_default_factors.md|feedback_three_anti_default_factors.md]] and [[memories/feedback_rule_proposal_gates.md|feedback_rule_proposal_gates.md]] files. Sibling repos do NOT duplicate the discipline — they inherit it via the shared memory references.
 
 Sibling logs may cite each other's retractions when the pattern is genuinely shared: the GNT log's "grammatical-pattern smuggling" retractions count toward the same 3-strike threshold as Tanakh's, when they share the sub-pattern. The 3 strikes need not all come from one repo.
 

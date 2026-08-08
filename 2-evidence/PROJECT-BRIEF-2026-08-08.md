@@ -15,7 +15,7 @@ Produce colometric reading editions of canonical texts: each rendered line = one
 | EDITION | `repos/readers-{bofm,gnt,tanakh,lxx,vulgate,gnt-morph}`, `rev-reader` (public) | corpus, pipeline, validators, deploy | git [V] |
 | HUMAN | Stan | sole promoting authority (§7.1) | — |
 
-atu-method layout (reorganized 2026-08-07): `1-method/` (framework.md, cross-corpus-principles.md, glossary.md, binding-rules-hebrew.md, binding-rules-lxx.md), `2-evidence/` (scholarship/ per-rule rationale, framework-claim-inventory.md, deployment-status.md, findings), `3-implementation/`, `4-process/`, `_old/`, `canon-index.md` (264 lines, 119 file:line receipts), `Pending-Decisions.md`. [V]
+atu-method layout (reorganized 2026-08-07): `1-method/` (framework.md, cross-corpus-principles.md, glossary.md, binding-rules-hebrew.md, binding-rules-lxx.md), `2-evidence/` (scholarship/ per-rule rationale, framework-claim-inventory.md, deployment-status.md, findings), `3-implementation/`, `4-process/`, `_old/`, [[canon-index.md]] (264 lines, 119 file:line receipts), [[Pending-Decisions.md]]. [V]
 
 ## 3. METHOD
 
@@ -56,7 +56,7 @@ Three levers, preference order: (1) binding rules in the fabric; (2) UD correcti
 | 3 | consult→file-back | RUNS since 2026-08-07 (2 entries in `2-evidence/`); return edge open — nothing consumes a filed answer |
 | 4 | audit | PARTIAL. `loop_health.py` runs at SessionStart; trigger = 20 moves or 7 days + dormancy stamp; **hostile half never run** |
 | 5 | theory ↔ experiment (wiki↔canon↔edition) | findings→theory fired **once** (F-001); **findings→canon has NO channel** |
-| 6 | reader experience | capture edge opened 2026-08-07 (`reader-observations.md`); return edge absent |
+| 6 | reader experience | capture edge opened 2026-08-07 ([[2-evidence/reader-observations.md|reader-observations.md]]); return edge absent |
 | — | substrate improvement | **MISSING entirely** |
 
 **The two live breaks**: (a) theory was never audited against scholarship *from the canon side* — the wiki ran it, the result has not returned; (b) a measurement in `2-evidence/` never becomes a rule proposal; nobody carries it.
@@ -86,7 +86,7 @@ Blind spots [V]:
 
 ## 9. INCIDENTS (generalizable failure modes)
 
-1. **2026-08-06 memory loss**: user-home memory namespace (57 files incl. `_north_star.md`, declared "never optional") deleted ~mid-June, unnoticed ~6 weeks. Recovered from file-history + jsonl-archive: 52 full + 5 stubs. Signals ignored: dead mandatory-read paths; a migration flagged pending in 3 places since 2026-06-28; **a broken-pointer detector that already existed and no cadence ran**.
+1. **2026-08-06 memory loss**: user-home memory namespace (57 files incl. [[memories/operational/_north_star.md|_north_star.md]], declared "never optional") deleted ~mid-June, unnoticed ~6 weeks. Recovered from file-history + jsonl-archive: 52 full + 5 stubs. Signals ignored: dead mandatory-read paths; a migration flagged pending in 3 places since 2026-06-28; **a broken-pointer detector that already existed and no cadence ran**.
 2. **Shared blind spot**: a cross-repo path rewrite skipped `private/`; the integrity checker could not see what the rewriter refused to walk. Both reported clean while **103 canon citations dangled**. Fix pattern now used: independent enumeration with no skip list (surfaced a 9th repo the tool's hardcoded list omitted) + **verification by set-difference against a pre-move snapshot, never counts**.
 3. **Zero commits in July 2026** across all active repos ⇒ any activity-triggered audit fires zero times in the exact window it is needed.
 4. **Duplicate tooling**: two sessions independently shipped the same JSONL reader on the same day, unaware.

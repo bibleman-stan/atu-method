@@ -16,7 +16,7 @@
 **Pipeline embodiment:** v1 = read the grammatical node-layer (clauses); v1.5 = derive the ATU node-layer on top. The pipeline literally produces "the ATU layer of the fabric."
 
 ## Operationalization (from a Gemini exchange Stan banked, 2026-05-20) — the ATU as a formal node class
-Extends the framing above with concrete TF mechanics. Treat the *mechanics* as sound (this is how TF works); treat the proposed *features/taxonomy* as proposals to be earned by our criteria, not as established — and discount the flattery ("epiphany entirely correct"), per [[feedback_rhetoric_bandwagon]].
+Extends the framing above with concrete TF mechanics. Treat the *mechanics* as sound (this is how TF works); treat the proposed *features/taxonomy* as proposals to be earned by our criteria, not as established — and discount the flattery ("epiphany entirely correct"), per [[memories/feedback_rhetoric_bandwagon|feedback_rhetoric_bandwagon]].
 
 - **ATU node definition:** an `atu` node is an abstract id (e.g. 900001…) that lassos a contiguous OR non-contiguous set of slots — text-free, like any TF node. So an ATU can subdivide a single sentence into several cognitive units, or span a verse boundary, with zero structural friction (the "grain" + overlapping-hierarchy dilemmas dissolve).
 - **Custom features on atu nodes (proposed):** `atu_type` (cognitive function — propositional / parenthetical / connective / modifier), `atu_length` (slots enclosed = an empirical "grain size" / cognitive-density metric), `atu_core` (pointer to the slot/phrase that is the unit's semantic anchor / main assertion). These are useful operationalizations to define rigorously, not yet validated taxonomies.
