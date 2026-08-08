@@ -212,24 +212,28 @@ Stan's framing, 2026-08-06: *"synthesis of scholarly theory/my thesis → experi
 ```mermaid
 %%{init: {"flowchart": {"useMaxWidth": true}} }%%
 flowchart LR
-    T["THEORY<br/>atu-nlp-wiki<br/>(sources + thesis)"] -->|"operationalise"| S(("SPEC<br/>atu-method<br/>framework + rules"))
-    S -->|"deploy"| E["EXPERIMENT<br/>reader editions<br/>on real text"]
-    E -->|"result revises theory"| T
-    E -.->|"observed: results land in<br/>_north_star.md as settled<br/>decisions, not as revised theory"| D["theory unchanged<br/>lesson stays tacit"]
-    D -.-> S
-    linkStyle 0,1,2 stroke:#26A69A,stroke-width:2px
-    linkStyle 3,4 stroke:#E57373,stroke-width:2px
+    SCH["SCHOLARSHIP<br/>atu-nlp-wiki raw/"] -->|"a. synthesise"| T["THEORY<br/>wiki pages<br/>+ our thesis"]
+    T -->|"b. operationalise"| S(("CANON<br/>atu-method<br/>framework + rules"))
+    S -->|"c. deploy"| E["EDITION<br/>reader repos<br/>on real text"]
+    E -->|"d. measure"| F["FINDINGS<br/>2-evidence/ · findings/"]
+    F -->|"e. revises belief<br/>ONE cycle, F-001"| T
+    F -.->|"f. revises the rules<br/>NO CHANNEL"| S
+    T -.->|"never audited<br/>against its sources"| SCH
+    linkStyle 0,1,2,3,4 stroke:#26A69A,stroke-width:2px
+    linkStyle 5,6 stroke:#E57373,stroke-width:2px
 ```
 
 ```
-   THEORY (wiki) ──operationalise──▶ SPEC (atu-method) ──deploy──▶ EXPERIMENT (readers)
-        ▲                                                                │
-        └──────────────── result revises theory ─────────────────────────┘
-                                    ┊ observed short-circuit
-                                    ▼
-                     _north_star.md "settled decision"
-                     (spec updated, theory never restated)
+   SCHOLARSHIP ──a──▶ THEORY ──b──▶ CANON ──c──▶ EDITION ──d──▶ FINDINGS
+        ▲               ▲            ▲                              │  │
+        │               └──── e. revises belief (fired once) ───────┘  │
+        │               ✗ never audited      ✗ f. revises the rules ───┘
+        └─────────────────  against its sources    (NO CHANNEL)
 ```
+
+**Findings are a node, not an arrow — that is the correction.** Drawn as an arrow label, the diagram could not show that a finding has *two* destinations and that only one of them is wired. Edge **e** changes what we believe; edge **f** changes what the tool does. Edge **f** is the one that would alter the edition, and it does not exist: a measurement sitting in `2-evidence/` does not become a canon proposal, and nothing carries it. It is the seam between this loop and Loop 1, which begins at "friction" — with nothing connecting the two.
+
+The dashed edge back to SCHOLARSHIP is the second break, identified by Stan 2026-08-07: the theory has never been audited against the sources the wiki was built from. Both breaks are upstream of every rule we have.
 
 **The forward arc is evidenced.** Theory becomes specification becomes deployed edition: `framework.md` §2.1's bidirectional test is operationalised as per-corpus binding rules and runs live on three reader sites (`deployment-status.md`).
 
