@@ -72,9 +72,9 @@ Headlines only; full record + warrants at `_north_star.md` (mandatory orientatio
 
 ## Skills — on-demand procedure (do NOT inline these here)
 
-Procedure invoked *sometimes* lives in the skill portfolio at `~/.claude/skills/`, which loads on trigger; this file loads every turn and must stay lean. When a trigger below fires, invoke the skill — its content is deliberately not duplicated here.
+Procedure invoked *sometimes* lives in `./.claude/skills/<name>/SKILL.md` **inside this repo**, which loads on trigger; this file loads every turn and must stay lean. When a trigger below fires, invoke the skill — its content is deliberately not duplicated here.
 
-**Skills are Claude's, not the project's** (Stan, 2026-08-07: *"skills are skills… they can serve the project but they're only you"*). There is one portfolio, at user level, loading in every workspace. A skill may be entirely about atu-method and still live there — the subject matter does not determine the home. Do not create `.claude/skills/` inside this repo.
+**Skills for this project live in THIS folder. Never the global bucket.** (Stan, 2026-08-07.) Not `%USERPROFILE%\.claude\skills\`, not a parent directory's `.claude/`, and never a symlink pointing outside this folder. The reason is portability, and it is decisive: the global bucket is **machine state**. It does not travel when Stan copies or clones this folder to another machine, so a skill parked there silently vanishes from the project that needs it. A skill inside the folder is committed with the repo, or rides along with a plain folder copy — either way it stays with the work. **If a skill genuinely belongs at global or parent level, ask before creating it there.**
 
 | Skill | Fires when |
 |---|---|

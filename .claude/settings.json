@@ -3,7 +3,8 @@
     "allow": [
       "Edit(~/.claude/skills/read-jsonl/**)",
       "Bash(git rm *)",
-      "Bash(rm -rf .claude/skills)"
+      "Bash(rm -rf .claude/skills)",
+      "Edit(~/.claude/skills/jsonl/**)"
     ],
     "additionalDirectories": [
       "C:\\Users\\bibleman\\.claude"
