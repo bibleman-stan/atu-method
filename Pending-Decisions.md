@@ -14,6 +14,28 @@ Resolved entries move to the bottom with their date and outcome.
 
 ## Open
 
+### [2026-08-08] Cross-repo: retire the wiki's `findings/`, make atu-method the loop-closer — PROPOSED IN CHAT, NOT FILED ANYWHERE
+
+Worked out in the atu-nlp-wiki session 2026-08-08 and **recorded here because it exists only in that session's transcript**. Verified 2026-08-08: `findings/F-001-marschall-1ne3.md` is still present, `admin/maturation-loops.md` was never created, and the wiki's `Pending-Decisions.md` still carries only the original "codify `findings/` or leave it a pilot?" question. The design that closes the loops has not itself been filed — the failure both sessions keep diagnosing.
+
+**Stan's alternative, which that session judged better than its own proposal:** the wiki keeps improving from `raw/` alone and is **write-protected from the field entirely**; atu-method gets **read access** to the theory and becomes "the end of the loop on the measuring/modifying side." Two inputs to the wiki, no others: `raw/` (Stan curates) and synthesis grounded in `raw/`.
+
+**Why it beats the `findings/` exception:** self-containment is the wiki's trust anchor; `findings/` was a hole in it and ratifying it would have legalized the hole. This removes the hole instead. It also gives the orphaned **findings→canon** edge an owner — that session's words: atu-method "is the one layer with read access to both the theory and the measurements," so carrying a measurement into a rule change "is atu-method's job."
+
+**Third path, layered rather than competing:** a measurement that matures to publication rigor is admitted to `raw/` as an immutable source, needing no exception. Bar = the circularity guard: measured against an external standard, provenance-pinned and reproducible, scope-adequate, and **disconfirming findings admissible on equal footing**. F-001 fails it today (`status: pilot`, one chapter). Their framing: "a high bar with an empty shelf beats a low bar with a leak."
+
+**If ratified, what changes here:**
+1. Receive F-001 into `2-evidence/` (explicitly left for cross-repo coordination, i.e. this repo).
+2. Redraw Loop 5: the findings→theory edge **disappears** — field measurements never reach the wiki directly. Replaced by atu-method reading the wiki read-only and adjudicating locally, plus a `raw/`-graduation edge gated by Stan.
+3. Rename `4-process/improvement-loops.md` → maturation. *Improvement* implies monotonic accretion; the thesis matures by narrowing, retracting, and letting go, and the wiki's Purpose forbids the accretion reading ("adjudicate, **not** accrete support"). Four of six loops in that document are reported broken — that is maturation, not improvement.
+4. Record atu-method's assigned role as loop-closer.
+5. Add the **re-adjudication obligation**: a thesis-lens shift stales every adjudication made under the old lens. The wiki's version sweeps its Confirms/Collides; **ours is the rule-set audit** — rules derived under "syntactic closure is sole arbiter" go stale wholesale if the criterion moves to breath-bounded chunks. Same obligation, two sides.
+
+**Recommendation: ratify, then execute 1–5 in that order.** *Why:* it dissolves a constitutional problem rather than patching it, assigns the one edge that had no owner, and keeps the wiki's trust anchor intact. *Cons:* the wiki and atu-method will diverge on purpose — the wiki's thesis page will keep saying the grain is right while this repo knows the deployed grain runs coarse — and someone must keep straight which layer is which. It also leaves the wiki showing **no** field evidence until something graduates, which is honest but looks empty.
+
+**Also:** that session cites `atu-method/docs/04-process/improvement-loops.md`; there is no `docs/` since the 2026-08-07 reorg. Tell them.
+
+
 ### [2026-08-07] Framework §1's NOT-list — do the aural and rhetorical lenses stay excluded?
 
 `1-method/framework.md` §1 says the apparatus does NOT "produce typography or oral-delivery markup" and does NOT "reveal rhetorical parallelism." Stan's 2026-08-06 correction — *"the whole point of colometry is to SHOW how the different types of cola (rhetorical, aural, cognitive) reveal the meaning and sense"* — names both of those as in scope.
