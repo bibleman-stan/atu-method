@@ -23,7 +23,7 @@ Resolved entries move to the bottom with their date and outcome.
 - So the live reader has had a rule applied in Alma and not elsewhere **for 65 days**, undetected by 75 validators, 3 pre-commit hooks, and a "single source of truth" deployment record.
 - **Cause:** the deployed corpus is not the output of any runnable program. `apply_frame_merges.py` and 16 siblings mutate `data/text-files/v2/` in place, hand-run, in an order recorded nowhere (`run_all.py` discovers only `validate_*.py`).
 
-**This kills the behavioural-snapshot idea on the corpus that most needs it** — you cannot "capture every decision mechanically against code that already runs" when the deployed state is not that code's output. But it is survivable: **GNT reproduces 100%**, `build_book.py` reproduces deployed HTML byte-for-byte, and the generator is deterministic run-to-run. The failure is one corpus's segmentation stage, not the system.
+**This kills the behavioral-snapshot idea on the corpus that most needs it** — you cannot "capture every decision mechanically against code that already runs" when the deployed state is not that code's output. But it is survivable: **GNT reproduces 100%**, `build_book.py` reproduces deployed HTML byte-for-byte, and the generator is deterministic run-to-run. The failure is one corpus's segmentation stage, not the system.
 
 **Recommendation: build the reproducibility gate before deciding anything architectural.** For each corpus, regenerate from source and diff against deployed; emit one integer per corpus that should be zero.
 
