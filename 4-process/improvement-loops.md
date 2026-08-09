@@ -1,3 +1,8 @@
+---
+cssclasses:
+  - wide
+---
+
 # The atu-method Improvement Loops
 
 > **Plain-language version.** This document asks one question of six different feedback loops: *is it actually running?* A loop here means "we notice a problem → we fix the thing that caused it → the fix makes the next round better." Most of ours are not running. One has never run at all, one runs but files its results in the wrong place, one is overdue by its own rules, and one — the loop that would tell us whether real readers are helped — does not exist. Each section below opens with a plain summary of what the loop is for, whether it works, and what breaks when it doesn't.

@@ -1,0 +1,58 @@
+/* mermaid-large.css — make loop diagrams readable without a plugin.
+ *
+ * Enable once: Settings -> Appearance -> CSS snippets -> reload -> toggle on.
+ * This file is TRACKED (only workspace/graph/cache/plugins/themes are
+ * gitignored), so it travels with the repo to any machine.
+ *
+ * Two independent effects:
+ *   1. Diagrams fill the note width instead of rendering at a small natural
+ *      size, and scroll horizontally rather than shrinking when they are wider
+ *      than the note.
+ *   2. A note whose frontmatter carries `cssclasses: wide` breaks out of
+ *      Obsidian's readable-line-length limit, so the whole page — and the
+ *      diagram in it — uses the full window.
+ *
+ * This gets you BIGGER. It does not get you pan/zoom or click-to-expand; that
+ * needs a community plugin (see 4-process/improvement-loops.md notes or ask).
+ */
+
+/* ---- 1. diagrams use the available width ---- */
+
+.mermaid {
+  overflow-x: auto;          /* scroll a too-wide diagram, never squash it */
+  overflow-y: hidden;
+  text-align: center;
+}
+
+.mermaid svg {
+  max-width: none !important; /* beats the inline cap mermaid emits */
+  width: 100%;
+  height: auto;
+  min-height: 320px;          /* stop flowcharts collapsing to a thin strip */
+}
+
+/* Node label text scales with the SVG, but very wide graphs can still render
+   small type. Nudge it up slightly without distorting the layout. */
+.mermaid .nodeLabel,
+.mermaid .edgeLabel {
+  font-size: 1.02em;
+}
+
+/* ---- 2. `cssclasses: wide` notes use the full window ---- */
+
+.wide .markdown-preview-sizer,
+.wide .markdown-source-view.mod-cm6 .cm-sizer {
+  max-width: 100% !important;
+}
+
+/* Keep prose from becoming an unreadable single long line on a wide monitor,
+   while still letting the diagram itself span the full width. */
+.wide .markdown-preview-sizer > *:not(.mermaid-container):not(pre) {
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+.wide .mermaid,
+.wide pre {
+  max-width: 100%;
+}

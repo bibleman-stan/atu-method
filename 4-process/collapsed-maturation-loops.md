@@ -1,3 +1,8 @@
+---
+cssclasses:
+  - wide
+---
+
 # Collapsed maturation loops — the two-partner model
 
 > **Plain-language version.** Today you talk to three or four Claudes and carry messages between them. This document draws what happens if you talk to only two — the theory vault and this one — and the reader repos stop being conversation partners and become machines that this one drives. For each loop it says how it would work, what gets weaker, how to hold that weakness down, and what is simply lost.
