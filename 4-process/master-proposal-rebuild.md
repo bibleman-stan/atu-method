@@ -47,7 +47,31 @@ Measured 2026-08-09, receipts inline.
 | 9 | Record | ⚠️ **Half-built.** `atu_method/infrastructure/tx_log.py` already logs `{file, line, action, before, after}` per rule application, with rollback. It records *what changed*, never *why*. |
 | 10 | Governance | ⚠️ **Prose only.** framework §7 is real and unenforced — §7.5 declared on 24% of canon-touching commits. |
 
-**Five of ten absent or prose-only; three half-built.** And critically — **components 5 and 9 were started and stopped.** This is not a greenfield. It is finishing an abandoned direction, which is a materially different and cheaper proposition.
+**Five of ten absent or prose-only; three half-built.** And critically — **components 5 and 9 were started and stopped.** This is not a greenfield; it is finishing an abandoned direction.
+
+### ⚠ Retraction — "materially cheaper" was priced on one axis only
+
+An earlier version of this section ended *"which is a materially different and cheaper proposition."* Stan: *"it is worth noting that this might not be COGNITIVELY cheaper for me to wrap my head around, nor TIME cheaper if we have errors that we have to identify, undo, and remedy."* He is right, and the claim as written was engineering cost presented as total cost. Three axes, and completion only wins on one:
+
+| Cost axis | Greenfield | Finish the abandoned direction |
+|---|---|---|
+| **Engineering effort** | Higher — re-does substrate wiring, generators, deploys that work | **Lower** |
+| **Cognitive load on Stan** | **Lower** — one new thing, cleanly bounded; the old thing is frozen and can be ignored | **Higher** — a hybrid where some readers are sources and some are publish targets, two live models to hold at once, for as long as migration runs |
+| **Error discovery / rework** | Bounded and visible: everything is new, so everything is suspect and gets tested | **Unbounded and invisible**: inherits `atu_method`'s 21 unaudited modules and whatever the diverged builders encode, and the only regression control is 75 unverified validators on stale baselines |
+
+**On cognitive load specifically, this matters more than usual.** Stan has already said he is *"unable to process or navigate, causing me to defer to you on things I should have pushed back on."* A design that is cheaper for me to build and harder for him to hold is **the wrong trade for this project**, because his ability to push back is the main error-correction mechanism that exists.
+
+### What both paths share — and the move that de-risks them equally
+
+**Neither path escapes the missing-cases problem.** You cannot safely rebuild *or* migrate without knowing what the current system decides. Today nobody does: the 911 overrides carry no verdicts, and the diverged builders' behaviour is documented nowhere.
+
+**But "what" is recoverable even though "why" is not.** Run the current system across every corpus and capture **every decision it makes** — each rule firing, each override, each merge and split, with ref, rule, and outcome. That is a mechanical extraction against code that already runs, and it produces a **behavioural snapshot** that is:
+
+- the regression baseline neither path currently has,
+- the seed of the CASES component, missing its warrants but not its verdicts,
+- and **equally valuable to greenfield and to completion**, so it can be built before the choice is made.
+
+**Consequence for sequencing:** the expensive and irreversible part of this decision is not which path — it is that we cannot currently tell whether *any* change broke something. Removing that first is cheap, mechanical, and makes the greenfield-vs-completion choice low-stakes enough that it can be decided on **cognitive legibility**, which is Stan's call and not mine.
 
 ---
 
