@@ -5,7 +5,7 @@ cssclasses:
 
 # Compounding vs additive — what our loops actually are
 
-> **Plain-language version.** Stan asked whether I actually understand the Karpathy-inspired "compounding artifact" in `meta-wiki`, because the maturation-loops diagrams did not feel right. I read the source. They were not right, and the reason is a distinction the meta-wiki draws explicitly and I never carried over: **some loops compound and some merely add up.** Ours are mostly the second kind, which plateau. This page says how the compounding cycle works, where our project does and does not match it, and what would have to change to get an actually-accelerating loop.
+> **Plain-language version.** Stan asked whether I actually understand the Karpathy-inspired "compounding artifact" in `meta-wiki`, because the maturation-loops diagrams did not feel right. I read the source. The key idea is that **some loops compound and some merely add up** — and a loop that merely adds up eventually plateaus, which is fine, but it will never make the system smarter. My first draft of this page claimed our loop documents had missed that distinction. Checking showed one of them had it and the other didn't, so that claim is retracted below rather than quietly fixed. What survives is sharper: we have a layer here that *could* compound, a prior ruling that wrote it off, and a measurement showing we file findings without folding them into what we already wrote.
 
 **Written 2026-08-08** after reading `meta-wiki/wiki/`: `meta-wiki/wiki/compounding-artifact.md`, `meta-wiki/wiki/ops-improvement-loop.md`, `meta-wiki/wiki/schema-layer.md`, `meta-wiki/wiki/lint-workflow.md`, `meta-wiki/wiki/drift.md`, `meta-wiki/wiki/growth-curve.md`.
 
