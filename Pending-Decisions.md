@@ -14,7 +14,28 @@ Resolved entries move to the bottom with their date and outcome.
 
 ## Open
 
+### [2026-08-09] DO THIS FIRST — the reproducibility gate (supersedes the architecture question)
+
+**Four audits converged on the same conclusion: the architecture decision cannot be made yet, because we cannot regenerate what is deployed.** The migration-cost audit ran the current BoFM generator over all 15 books and diffed against the live corpus:
+
+- **789 of 23,112 deployed lines are not reproduced by the current code**, divergence running both directions.
+- **Alma and Words of Mormon are the only books at 0.0%** — the only two regenerated since 2026-06-03. Commit `726fa3a` reverted a rule and regenerated **one book of fifteen**.
+- So the live reader has had a rule applied in Alma and not elsewhere **for 65 days**, undetected by 75 validators, 3 pre-commit hooks, and a "single source of truth" deployment record.
+- **Cause:** the deployed corpus is not the output of any runnable program. `apply_frame_merges.py` and 16 siblings mutate `data/text-files/v2/` in place, hand-run, in an order recorded nowhere (`run_all.py` discovers only `validate_*.py`).
+
+**This kills the behavioural-snapshot idea on the corpus that most needs it** — you cannot "capture every decision mechanically against code that already runs" when the deployed state is not that code's output. But it is survivable: **GNT reproduces 100%**, `build_book.py` reproduces deployed HTML byte-for-byte, and the generator is deterministic run-to-run. The failure is one corpus's segmentation stage, not the system.
+
+**Recommendation: build the reproducibility gate before deciding anything architectural.** For each corpus, regenerate from source and diff against deployed; emit one integer per corpus that should be zero.
+
+**Why this first.** It is **path-independent** — greenfield, completion, and do-nothing all need it. It costs 1–2 days. It converts the architecture question from speculation into measurement, because a corpus that cannot be regenerated cannot be migrated *or* rebuilt safely. And it has already paid for itself by finding the 789-line defect in a single session.
+
+**Cons.** It delays the architecture decision by days (mild — nothing is burning). It will likely surface more divergence, which is discouraging and creates work that competes with the rebuild. It does not tell you *which* side of a divergence is correct — only that one exists — so each finding still needs adjudication, and without an external arbiter (Gate 0 is unresolved and te'amim are now disqualified) some may not be adjudicable at all.
+
+---
+
 ### [2026-08-08] Greenfield rebuild, or a new core with the old parts? — THE ARCHITECTURAL DECISION
+
+> **⚠ 2026-08-09 — the master proposal built on this entry is [[4-process/master-proposal-rebuild.md|WITHDRAWN]].** Its inventory was wrong on eight counts, including that a 62-spec YAML rule system already exists in `readers-tanakh/validators/specs/`. This entry's *question* stands; its framing of what exists does not. **Decide the reproducibility gate above first.**
 
 Stan: *"I fear we need to blow up the current system and build a greenfield… the current system seems too complex and dysfunctional to maintain; there was not enough forethought given to the engineering design workflow; there are a lot of good pieces, but they might not be from the right LEGO sets, or at least not assembled correctly."*
 

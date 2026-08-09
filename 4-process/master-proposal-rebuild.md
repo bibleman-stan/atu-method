@@ -7,7 +7,26 @@ cssclasses:
 
 > **Plain-language version.** Stan asked for the master plan: what does a properly-architected version of this whole program look like, given that we cannot currently trust our own gates and validators? This works from first principles — what components any system like this needs — then scores what we have against that list, answers his four specific questions (are validators skills? where does the web layer live? does each site need a repo? are the sites just manifestations of one engine?), and proposes a target with a gated migration. The headline finding is that **the rebuild is mostly finishing something that was already started and abandoned halfway**, which makes it far cheaper than a greenfield.
 
-**Status: PROPOSAL. Nothing adopted.** Written 2026-08-09. Supersedes nothing; sits above [[4-process/proposal-loop-1.md|proposal-loop-1.md]], [[4-process/proposal-loop-2.md|proposal-loop-2.md]] and [[4-process/proposal-loop-3.md|proposal-loop-3.md]], which argued the *loop*. This argues the *structure the loop runs on*.
+> # ⛔ WITHDRAWN AS A PLAN 2026-08-09 — retained as a record
+>
+> Four commissioned audits ([[4-process/audit-linguistic.md|linguistic]], [[4-process/audit-repo-architecture.md|repo-architecture]], [[4-process/audit-web-design.md|web]], [[4-process/audit-migration-cost.md|migration-cost]]) each independently found the proposal's evidence unsound. **Do not execute anything below.** Every claim listed here was verified by me before acceptance.
+>
+> | # | Claim in this document | What is actually true |
+> |---|---|---|
+> | 1 | "31 shared lines" proves rules diverged — the whole case for one engine | The two `build_books.py` files are **HTML renderers**; their docstrings say so. Zero binding rules. I measured component 7 and argued about component 3. |
+> | 2 | Component 3 (specification) is ❌, prose only, must be designed from scratch | `readers-tanakh/validators/specs/` holds **62 uniform YAML rule specs** with `trigger`/`guards`/`severity`, plus `validators/_shared/spec_runner.py`. The "one artifact, apply-face and check-face" already exists and runs. |
+> | 3 | Cross-corpus porting is "the single most informative experiment available" | **Already run 2026-05-30** and recorded in a file I cited: cardinality 44.1%→44.7%, mean Jaccard 0.6958→**0.6879 (worse)**; B5 off at 2 helped/16 hurt; B6 and B12 "no Greek analog". |
+> | 4 | Te'amim are a candidate external arbiter (Gate 0) | They **generate** the deployed Hebrew — `run_full_pipeline.py` step 2 is `parse_teamim.py` → `v1/he-baseline/`. Same circularity as the Isaiah oracle, one layer deeper. |
+> | 5 | "One cool idea → one edit → rebuild all" | **There is no build.** Nothing writes `index.html` anywhere; the shells are hand-maintained (3,155–5,121 lines each). |
+> | 6 | "~92 HTML files" | **1,045** tracked across the five readers. |
+> | 7 | Four live sites | **Five.** `vulgate-reader.com` returns 200 and is absent from the target diagram. |
+> | 8 | Readers become force-pushed thin publish targets | `readers-bofm` holds 856 irreplaceable LLM-corrected CoNLL-U files and **1.5 GB of paid audio**; and the engine **cannot push** — "sandbox can't push, 403 proxy error". |
+>
+> **The pattern, stated plainly: every architectural claim I did not verify against the artifact was wrong.** I proposed rebuilding a system I had not inventoried — which is the same "not enough forethought given to the engineering design workflow" failure this document was written to fix.
+>
+> **What replaces it:** not a plan but a **next step** — the reproducibility gate in [[Pending-Decisions.md]]. It is path-independent, costs 1–2 days, and already found a live 789-line defect. The architecture decision should not be made until it reports.
+
+**Status: WITHDRAWN.** Written 2026-08-09, withdrawn the same day. Sits above [[4-process/proposal-loop-1.md|proposal-loop-1.md]], [[4-process/proposal-loop-2.md|proposal-loop-2.md]] and [[4-process/proposal-loop-3.md|proposal-loop-3.md]], which argued the *loop*. This argued the *structure the loop runs on*, and argued it from an inventory that was wrong.
 
 ---
 
