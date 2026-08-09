@@ -21,7 +21,7 @@ Every organ — theory wiki, canon, reader repos, sub-agents, Stan — is a *kno
 
 ## 1. Why I landed somewhere other than a wiki
 
-Karpathy's construction compounds because in that setting **the deliverable *is* the prose synthesis**. The gist's own framing, fetched 2026-08-08 from <https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f>: raw sources are immutable, the wiki is the LLM-owned compiled layer, `index.md` catalogues it, `log.md` is an append-only parseable history, and lint health-checks for contradictions, stale claims, orphans and gaps. When the product you ship is understanding, a better-integrated page *is* a better product.
+Karpathy's construction compounds because in that setting **the deliverable *is* the prose synthesis**. The gist's own framing, fetched 2026-08-08 from <https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f>: raw sources are immutable, the wiki is the LLM-owned compiled layer, `index.md` catalogues it, [[4-process/log.md|log.md]] is an append-only parseable history, and lint health-checks for contradictions, stale claims, orphans and gaps. When the product you ship is understanding, a better-integrated page *is* a better product.
 
 That is not what this program ships. This program ships a function. Its own canon says so, verbatim:
 

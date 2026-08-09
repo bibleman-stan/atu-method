@@ -92,6 +92,65 @@ The paragraph that stood here argued greenfield is wasteful because it would reb
 
 **Cons of the flip, and one of them is about me.** I have now changed position on this question three times in one session, each time after Stan pushed. That pattern is itself a warning — but the reasoning here is chained to evidence rather than to his preference: carrying cost is low *by my own inventory*, the audit puts the architectural delta at ~20%, and cognitive load is decisive *because* his pushback is load-bearing. The substantive risks remain: a greenfield's live-site cutover is a real event with rollback needs that do not exist today; copied code can fail silently in a new context, which is exactly what Step 1's gate is for; and "contract first" is a discipline I have already failed once in this document's own ancestry.
 
+## 4b. The baseplate — added 2026-08-09 at Stan's direction
+
+**Audit of v2 against his asks, run before writing this section:** `lessons` 0 mentions, `lint` 0, folder layout 0, consolidation 0, `log` 4. **v2 did not meet them.** This section is the answer, and his `5-` instinct matches an existing convention — `readers-bofm` already uses `5-machinery/`.
+
+### The consolidation, stated plainly
+
+> *"we can then retire/delete those other repos and re-point the SITES (the real artifact we care about)"*
+
+**That is the correct ordering of what matters, and it resolves the exposure problem structurally rather than by patching.** The sites are the artifact. The repos are scaffolding that currently leaks — publishing the whole source tree, [[CLAUDE.md]], and tracked `private/` files on four live domains. A greenfield in `atu-method` with `sites/` as pure build output ends that by construction: there is no source in the served tree to leak.
+
+### The layout
+
+```
+atu-method/                     ← ONE repo
+  CLAUDE.md                     the schema — BUDGETED; amendments name what they displace
+  00-start-here.md              front door
+  Current-Tasks.md · Pending-Decisions.md
+
+  1-method/                     NORMATIVE — framework, rule catalogs (prose canon)
+  2-evidence/                   MEASURED — findings · decision-log.jsonl · growth-data.csv
+  3-implementation/             ARCHITECTURE — contracts, how it is built
+  4-process/                    GOVERNANCE — loops, protocols, log.md, lessons.md
+  5-machinery/                  CODE — the "architecture, building and maintenance bin"
+      engine/                   v0 → v1 → v1.5 → v2, one implementation
+      specs/                    YAML rules — one artifact, apply face + check face
+      lint/                     every checker, each with calibration assertions
+      app/                      one UI, per-corpus config
+      build/                    corpus → site
+  corpora/                      per-corpus data packages (substrates gitignored)
+  sites/                        BUILD OUTPUT ONLY, one dir per domain
+```
+
+`5-machinery/` absorbs today's `atu_method/`, `scripts/`, and the five repos' scattered validators. **Nothing but `sites/` is ever served.**
+
+### The three organs, and why they are three and not one
+
+Stan asked for a log, a lessons-learned file, and a lint. They are genuinely distinct, and merging any two would force different things to be treated as one — which the two-sided simplicity criterion forbids:
+
+| Organ | Location | Records | Cadence |
+|---|---|---|---|
+| **Operations log** | `4-process/log.md` | what **we** did — one line per operation, parseable `## [date] op \| title` | every operation |
+| **Decision log** | `2-evidence/decision-log.jsonl` | what the **system** decided — per-verse cases with `status` | every regeneration |
+| **Lessons** | `4-process/lessons.md` | **corrections** awaiting promotion into a rule or guard | captured always, **promoted only by audit** |
+
+The operations log is what makes lint *affordable* — it scopes a pass to what changed since the last one, instead of re-reading everything. The decision log is the case record, already built as `scripts/decision_log.py`. Lessons is the capture buffer whose failure mode is the worry-bead pattern: collecting corrections instead of promoting them. **The promotion step is the bearing** — without a periodic audit that promotes, lessons accumulate and behaviour never changes. That is the failure this very session performed, writing seven documents about a decision record while building none.
+
+### Lint, made structural rather than remembered
+
+`5-machinery/lint/` holds every checker, and **the runner refuses to report unless each checker's calibration assertions pass** — a known-good it must find, a known-bad it must not. Not a convention; a precondition. Four detectors were miscalibrated in one day (wikilink checker, link-density metric, USFM regex, and the audit that reproduced it), which is the evidence that a remembered rule is an unapplied rule. `scripts/decision_log.py` already implements this and passes three poles.
+
+### Nothing inherited is canonical
+
+Per Stan's reframe, carried material enters **provisional, not authoritative**:
+
+- `1-method/` prose canon is carried but marked provisional until re-derived under the new gate.
+- Every `decision-log.jsonl` row lands `status: unreviewed`.
+- The 911 `overrides.json` entries are carried as **claims**, not verdicts — they have no warrants and never did.
+- Agreement between old and new corroborates; divergence localises where the old work was wrong. **Divergence is the product, not the failure.**
+
 ## 5. Sequence
 
 **Step 0 — fix the public exposure.** Independent of everything else, cheap, and currently live. Move Pages to an orphan `gh-pages` branch or Pages-from-Actions so the repo root stops being served.
