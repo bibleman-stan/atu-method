@@ -22,6 +22,21 @@ Counts BOTH link syntaxes. This repo uses wikilinks and markdown links side by
 side, and counting only one would understate density by roughly half — the kind
 of miscalibration that makes a metric manufacture its own conclusion.
 
+CROSS-VAULT COMPARISON WARNING (added 2026-08-08 after a hostile audit caught it).
+The `links` column filters to targets ending in `.md`, which suits this repo
+(links are path-qualified) but SILENTLY PENALISES meta-wiki, whose pages write
+`[[drift]]` rather than `[[drift.md]]`. Measured both ways on both corpora:
+
+    metric                          meta-wiki   atu-method
+    all wikilinks only                  12.84         2.64
+    .md-only, both syntaxes (this col)   3.96         5.80
+    all wikilinks + .md markdown        12.84         5.80   <- neutral
+
+Under our own filter meta-wiki looks WORSE than us; under a neutral rule applied
+identically to both it is 12.84 against 5.80, i.e. we sit at ~45%. The neutral
+row is the only one comparable across vaults. `links_neutral` records it so the
+comparison can never again be made with the biased column.
+
     python scripts/growth_snapshot.py            # print, do not record
     python scripts/growth_snapshot.py --record   # append a row to the series
 """
@@ -52,23 +67,28 @@ MD_LINK = re.compile(r"\[[^\]]*\]\(<?([^)>#\s]+)")
 
 
 def collect(paths):
-    pages, words, links = [], 0, 0
+    pages, words, links, neutral = [], 0, 0, 0
     targets = collections.defaultdict(set)
     for p in paths:
         name = p.name
         pages.append(name)
         body = STRIP.sub("", p.read_text(encoding="utf-8", errors="replace"))
         words += len(body.split())
-        for rx in (WIKI_LINK, MD_LINK):
-            for m in rx.finditer(body):
-                t = m.group(1).strip().split("/")[-1]
-                if not t.endswith(".md"):
-                    continue
+        for m in WIKI_LINK.finditer(body):
+            t = m.group(1).strip().split("/")[-1]
+            neutral += 1                       # every wikilink, extension or not
+            if t.endswith(".md"):
                 links += 1
+                targets[t].add(name)
+        for m in MD_LINK.finditer(body):
+            t = m.group(1).strip().split("/")[-1]
+            if t.endswith(".md"):
+                links += 1
+                neutral += 1
                 targets[t].add(name)
     # An orphan is a page nothing else points at. Self-links do not count.
     orphans = [n for n in pages if not (targets.get(n, set()) - {n})]
-    return pages, words, links, targets, orphans
+    return pages, words, links, targets, orphans, neutral
 
 
 def gather():
@@ -89,8 +109,8 @@ def main() -> int:
     args = ap.parse_args()
 
     compiled, buffered = gather()
-    pages, words, links, targets, orphans = collect(compiled)
-    bpages, bwords, blinks, _, borphans = collect(buffered)
+    pages, words, links, targets, orphans, neutral = collect(compiled)
+    bpages, bwords, blinks, _, borphans, _bn = collect(buffered)
 
     density = round(links / max(1, len(pages)), 2)
     wpp = round(words / max(1, len(pages)))
@@ -102,6 +122,7 @@ def main() -> int:
         "words": words,
         "links": links,
         "links_per_page": density,
+        "links_neutral_per_page": round(neutral / max(1, len(pages)), 2),
         "words_per_page": wpp,
         "targets": len(targets),
         "orphans": len(orphans),

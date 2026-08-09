@@ -70,12 +70,14 @@ Findings about how language segments *should* compound: each measurement ought t
 | | atu-method | meta-wiki (2026-07-18) |
 |---|---|---|
 | pages | 61 | 46 |
-| **links per page** | **5.54** | **12.85** |
+| **links per page** (neutral metric) | **5.80** | **12.84** |
 | words per page | 1,907 | ~525 |
 | orphans | 0 | 0 |
 | schema chars | **18,410** | 9,497 |
 
-Our density is **43% of theirs**, our pages are **3.6× longer**, and our constitution is **nearly twice the size with no budget**. Rising words-per-page is the named signature of the append-only trap. *One snapshot is a baseline, not a curve — interpretation begins around five rows — and some of the page-length gap is genre, since [[1-method/framework.md|framework.md]] is a specification and their pages are synthesis notes. The direction is still the direction.*
+Our density is **~45% of theirs**, our pages are **3.6× longer**, and our constitution is **nearly twice the size with no budget**. Rising words-per-page is the named signature of the append-only trap.
+
+> **Metric corrected 2026-08-08.** The first version reported 5.54 from a filter that counted only `.md`-suffixed targets. meta-wiki writes `[[drift]]`, not `[[drift.md]]`, so that filter **silently penalised the comparator** — under it meta-wiki scores 3.96 and looks *worse* than us, which is the opposite conclusion from the same data. Applying one rule to both corpora gives 12.84 against 5.80. The direction survives; the original number was a miscalibrated detector of exactly the kind `meta-wiki/wiki/lint-workflow.md` warns about, published in the document that quotes that warning approvingly. `growth_snapshot.py` now records `links_neutral_per_page` so the biased column can never again be used for a cross-vault claim. *One snapshot is a baseline, not a curve — interpretation begins around five rows — and some of the page-length gap is genre, since [[1-method/framework.md|framework.md]] is a specification and their pages are synthesis notes. The direction is still the direction.*
 
 ### Verified: the findings did not integrate
 

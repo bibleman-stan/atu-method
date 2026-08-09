@@ -69,6 +69,14 @@ flowchart LR
         (independent, arbitrated against RAW)
 ```
 
+> ### ⚠ CORRECTION 2026-08-08 — the RAW arbiter claim does not hold as written
+>
+> [[4-process/proposal-loop-2.md|proposal-loop-2.md]] found this and **I verified it independently before accepting it.** `readers-tanakh/scripts/regenerate_english.py` is the canonical English-layer generator, and its own docstring says it distributes KJV words "to the right ATU cola" over `v2/heb` — i.e. the English gold's *line breaks come from our own binding rules*. So the Isaiah oracle compares **atu-method-on-BoFM against atu-method-on-Tanakh**. The edge label "vs RAW, never canon-vs-canon" is unearned.
+>
+> **What the oracle still legitimately measures.** The two sides hold the *rules* roughly constant and vary the *substrate* — BHSA gold clause atoms on one side, Stanza EModE on the other. So it is a valid instrument for **substrate quality**, which is exactly how [[2-evidence/finding-substrate-loop-diagnosis.md|finding-substrate-loop-diagnosis.md]] used it. What it cannot do is arbitrate whether the **rules** are right: if a rule is wrong, both sides are wrong identically and the comparison is silent.
+>
+> **This is the failure mode this page pre-registered** ("if no adequate arbiter exists, CANON cannot compound and the prior no-ingest-loop ruling was right"). It is now live, and the design must either find a genuine external arbiter or concede the point. **Candidates that are genuinely not rule-derived:** the Masoretic *te'amim*, Skousen's manuscript-tradition lineation, Marschall's syllable bands. Each is an external witness to segmentation that no binding rule of ours produced. Whether any is adequate is unresolved — and is now the load-bearing open question of this proposal.
+
 **The theory wiki** (`atu-nlp-wiki`) sits *upstream of RAW*: it compounds on its own scholarship layer, feeds CANON **read-only**, and is written to only by Stan curating its `raw/`. Nothing from the field writes back into it. A measurement that matures to publication rigor can be admitted to its `raw/` as a source — gated by Stan, needing no exception.
 
 **Sub-agents are not a node.** They are how LINT gets performed, because it cannot be performed by me (below).
@@ -124,7 +132,7 @@ This is the section the design lives or dies by. Four entry points, one shared s
 
 ## What changes, ranked by how far the improvement travels
 
-1. **Integration is part of filing.** A finding is not filed when a page appears in `2-evidence/`; it is filed when the pages it contradicts or refines have been revised in the same turn. *Travels furthest, costs nothing, and is the difference between depositing and earning.* Measured: **5.54 links per page against the meta-wiki's 12.85.**
+1. **Integration is part of filing.** A finding is not filed when a page appears in `2-evidence/`; it is filed when the pages it contradicts or refines have been revised in the same turn. *Travels furthest, costs nothing, and is the difference between depositing and earning.* Measured: **5.80 links per page against the meta-wiki's 12.84** — a neutral metric applied identically to both, after [[4-process/proposal-loop-2.md|proposal-loop-2.md]] correctly caught that the first figure (5.54) was stale *and* produced by a filter that penalised meta-wiki's link style. Under our own biased filter meta-wiki scored 3.96 and looked worse than us; under the neutral rule we are at **~45%** of their density, so the direction and rough magnitude survive but the original number did not deserve the confidence it was given.
 2. **Build the English bidirectional filter** — a `Workflow` over the ~503 Isaiah over-merge candidates. *Unstalls the only loop that can compound; fails cheap if the English test rejects most candidates.*
 3. **Scheduled independent semantic lint.** *The failure bearing. Cannot be me.*
 4. **Budget the schema; every amendment names what it displaces.** 18,410 chars against the meta-wiki's 9,497, growing monotonically. *It is the rate.*

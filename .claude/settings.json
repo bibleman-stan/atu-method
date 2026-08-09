@@ -7,7 +7,9 @@
       "Edit(~/.claude/skills/jsonl/**)",
       "Bash(git add *)",
       "Bash(git commit -q -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "WebFetch(domain:sites.ualberta.ca)",
+      "WebFetch(domain:courses.cs.duke.edu)"
     ],
     "additionalDirectories": [
       "C:\\Users\\bibleman\\.claude",
