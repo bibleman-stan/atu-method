@@ -95,7 +95,17 @@
       "WebFetch(domain:www.thoughtworks.com)",
       "WebFetch(domain:www.hillelwayne.com)",
       "WebFetch(domain:diataxis.fr)",
-      "WebFetch(domain:softwaremodernizationservices.com)"
+      "WebFetch(domain:softwaremodernizationservices.com)",
+      "WebFetch(domain:project-types.github.io)",
+      "WebFetch(domain:onlinelibrary.wiley.com)",
+      "WebFetch(domain:www.uber.com)",
+      "WebFetch(domain:andymatuschak.org)",
+      "WebFetch(domain:peerj.com)",
+      "WebFetch(domain:teamtopologies.com)",
+      "WebFetch(domain:publications.scss.tcd.ie)",
+      "WebFetch(domain:personal.utdallas.edu)",
+      "WebFetch(domain:www.opencommons.org)",
+      "WebFetch(domain:opencommons.org)"
     ],
     "additionalDirectories": [
       "C:\\Users\\bibleman\\.claude",
