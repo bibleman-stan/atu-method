@@ -14,6 +14,40 @@ Resolved entries move to the bottom with their date and outcome.
 
 ## Open
 
+### [2026-08-09] 🔴 LIVE EXPOSURE — `private/` content is published, and the repos are public
+
+**Stan asked whether `.gitignore` actually hid the `private/` folders. Verified this turn: the ignore rules are correct in all five reader repos, but `.gitignore` never untracks a file that was already committed — and files were.**
+
+**Currently tracked under `private/`, and serving HTTP 200 right now:**
+
+| File | Site |
+|---|---|
+| `private/01-method/scholarship/README.md` | tanakh-reader.com |
+| `private/03-sessions/2026-04-29-audit-waves/wave2-latter-prophets.md` | tanakh-reader.com |
+| `private/03-sessions/2026-04-29-audit-waves/wave4-former-prophets.md` | tanakh-reader.com |
+| `private/README.md` | lxx-reader.com |
+| `private/README.md` | vulgate-reader.com |
+
+**And the repos are public** — `github.com/bibleman-stan/readers-tanakh` and `readers-bofm` both return 200 unauthenticated. So **everything ever committed under `private/` is retrievable from git history**, including `private/01-method/colometry-canon.md` in the tanakh, bofm and gnt histories, plus eight GNT `private/01-method/audit-trail/*.md` files. Those return 404 on the sites — removed from HEAD — but they live in public history permanently.
+
+**The irony worth noting:** `lxx-reader.com/private/README.md` is itself publicly served and reads *"This repo is public. Everything in `private/` is gitignored (except this README) and is never published."* The document asserting the folder is never published is proof that it is.
+
+**Severity, stated accurately rather than alarmingly.** No credentials and no personal data are involved — the exposed material is methodology working notes and per-corpus method canon. But keeping the private method canon off public remotes is a standing project decision, and it has not held. This sits alongside the broader finding that [[CLAUDE.md]] and `Pending-Decisions.md` are served on every live domain.
+
+**Recommendation, three parts in order:**
+
+1. **Stop the live serving now** — `git rm --cached` the five tracked `private/` files, commit, push. Removes them from HEAD and from the sites within a Pages cycle. Cheap, reversible, no history rewrite.
+2. **Fix the root cause** — move Pages off the repo root to an orphan `gh-pages` branch or Pages-from-Actions, per [[4-process/audit-repo-architecture.md|audit-repo-architecture.md]]. This is the only change that stops the *whole source tree* being published, and it fixes the [[CLAUDE.md]] exposure at the same time.
+3. **Decide on history** — rewriting with `git-filter-repo` or BFG plus force-push is the only way to remove `colometry-canon.md` from public history. **This is your call, not mine.**
+
+**Why history rewrite is genuinely optional.** GitHub's own guidance is to treat anything committed to a public repo as already compromised: clones, forks, and caches may retain it, so a rewrite reduces but does not eliminate exposure. Weigh that against the cost — force-pushing rewritten history across three repos breaks every existing clone and every commit SHA cited in the canon, and this repo's documents cite reader-repo SHAs extensively.
+
+**Cons of acting.** Step 1 is safe. Step 2 changes the deploy path for five live sites and needs the reproducibility gate in place first, or a broken deploy will be indistinguishable from a broken build. Step 3 is destructive, invalidates cited SHAs across the documentation, and buys less protection than it appears to.
+
+**Note on execution:** I cannot push — `readers-bofm/4-process/04-deployment-infra.md` records *"sandbox can't push — gets 403 proxy error."* I can stage steps 1 and 2 locally for you to push.
+
+---
+
 ### [2026-08-09] DO THIS FIRST — the reproducibility gate (supersedes the architecture question)
 
 **Four audits converged on the same conclusion: the architecture decision cannot be made yet, because we cannot regenerate what is deployed.** The migration-cost audit ran the current BoFM generator over all 15 books and diffed against the live corpus:
