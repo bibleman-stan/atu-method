@@ -423,7 +423,7 @@ Applying Loop 1's own drop test ("removing it loses nothing but the part"):
 - **§"The three organs — and the RAG connection" (lines 78-88).** Three paragraphs mapping the organs onto RAG's failures. Nothing downstream depends on them; every operational claim in them is restated in the propagation table. It is motivation, not mechanism. **Drop or demote to one line.**
 - **"One circulation. Three organs. One store."** Two of the three are false (F9, F12).
 - **Circled edge numerals ①-⑤ with `linkStyle` colour assignments.** Referenced exactly once, at line 116 ("I perform ①②④ and dispatch ⑤"). Naming the edges in prose costs less than a colour key.
-- **Its own broken links.** `python scripts/check_broken_pointers.py` → 4 broken wikilinks, all in `proposal-loop-1.md:10,27,139`, to `proposal-loop-2.md` and `proposal-loop-3.md`. Forward references to unwritten documents; -3 stays broken after this file lands.
+- **Its own broken links.** `python scripts/check_broken_pointers.py` → 4 broken wikilinks, all in `proposal-loop-1.md:10,27,139`, to `proposal-loop-2.md` and [[4-process/proposal-loop-3.md|proposal-loop-3.md]]. Forward references to unwritten documents; -3 stays broken after this file lands.
 
 **What is NOT decoration and should be kept:** §"What this is most likely to have wrong." Pre-registering six falsifiers is the strongest thing in the document — four of them (F1, F4, F8, F3) turned out to be the real defects. Keep that section in every future proposal.
 

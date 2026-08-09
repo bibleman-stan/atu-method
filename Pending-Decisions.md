@@ -16,7 +16,11 @@ Resolved entries move to the bottom with their date and outcome.
 
 ### [2026-08-08] Cross-repo: retire the wiki's `findings/`, make atu-method the loop-closer — PROPOSED IN CHAT, NOT FILED ANYWHERE
 
-Worked out in the atu-nlp-wiki session 2026-08-08 and **recorded here because it exists only in that session's transcript**. Verified 2026-08-08: `findings/F-001-marschall-1ne3.md` is still present, `admin/maturation-loops.md` was never created, and the wiki's `Pending-Decisions.md` still carries only the original "codify `findings/` or leave it a pilot?" question. The design that closes the loops has not itself been filed — the failure both sessions keep diagnosing.
+Worked out in the atu-nlp-wiki session 2026-08-08 and originally **recorded here because it existed only in that session's transcript**.
+
+> **⚠ RE-VERIFIED 2026-08-08, later the same day — the paragraph below this one is now false and is kept only as a record of what changed.** The earlier text read: *"`findings/F-001-marschall-1ne3.md` is still present, `admin/maturation-loops.md` was never created."* Both clauses have since flipped. Re-checked in this turn: `ls -d findings` → **GONE**; `ls -la admin/maturation-loops.md` → **exists, 6,493 bytes, Aug 8 11:25**. The wiki session **executed D1 while this entry sat here claiming it hadn't.** Flagged independently by two sub-agents.
+>
+> **What this means for the decision:** D1 is no longer a proposal awaiting ratification on the wiki side — it is already done there, and this repo has not caught up. What remains open is *our* half: receiving F-001 into `2-evidence/`, redrawing Loop 5, the improvement→maturation rename, recording the loop-closer role, and the re-adjudication obligation. **It also demonstrates the exact failure it describes**: a dated verification claim about another workspace went stale within hours, and nothing here would have noticed.
 
 **Stan's alternative, which that session judged better than its own proposal:** the wiki keeps improving from `raw/` alone and is **write-protected from the field entirely**; atu-method gets **read access** to the theory and becomes "the end of the loop on the measuring/modifying side." Two inputs to the wiki, no others: `raw/` (Stan curates) and synthesis grounded in `raw/`.
 
