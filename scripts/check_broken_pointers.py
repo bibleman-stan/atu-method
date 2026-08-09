@@ -106,10 +106,24 @@ SKIP_PATHS = {
     "Welcome.md",
 }
 
+# Docs retired in the 2026-05-18 mechanical-first rewrite. They are NAMED IN
+# RETIREMENT NOTICES on purpose ("replaced by framework §7"), so a citation is
+# correct prose, not rot. Triaged 2026-08-08: these accounted for 22 of the 65
+# reported "broken paths", which is why the raw number was uninformative.
+# Per lint-workflow's rule — when a scan says most of the corpus is broken,
+# suspect the scan; never report a total the metric cannot support.
+RETIRED_DOCS = {
+    "structural-licenses.md", "change-protocol.md",
+    "canon-validator-alignment-protocol.md", "editorial-review-protocol.md",
+    "rule-template.md", "rule-equivalence-map.md",
+}
+
 SKIP_PREFIXES = (
     "C:/", "c:/", "/", "~",
     "readers-", "biblical-corpora/", "rev-reader/",   # sibling repos
-    "atu-nlp-wiki/",                                  # the theory vault (work/, not repos/)
+    "repos/",                                         # sibling repos, absolute-from-home form
+    "atu-nlp-wiki/", "meta-wiki/",                    # sibling vaults (work/, not repos/)
+    "findings/", "admin/",                            # wiki-internal dirs, cited cross-vault
     "private/",                                       # gitignored per-repo substrate
     "handoffs/",                                      # reader-repo convention
     "archive/", ".archive/",
@@ -164,7 +178,8 @@ def headings_of(path: Path) -> set:
 
 
 def is_skip(ref: str) -> bool:
-    return ref in SKIP_PATHS or ref.startswith(SKIP_PREFIXES)
+    return (ref in SKIP_PATHS or ref.startswith(SKIP_PREFIXES)
+            or ref.split("/")[-1] in RETIRED_DOCS)
 
 
 def resolve(ref: str, source: Path):
