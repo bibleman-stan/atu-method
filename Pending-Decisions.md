@@ -14,6 +14,65 @@ Resolved entries move to the bottom with their date and outcome.
 
 ## Open
 
+### [2026-08-08] Greenfield rebuild, or a new core with the old parts? — THE ARCHITECTURAL DECISION
+
+Stan: *"I fear we need to blow up the current system and build a greenfield… the current system seems too complex and dysfunctional to maintain; there was not enough forethought given to the engineering design workflow; there are a lot of good pieces, but they might not be from the right LEGO sets, or at least not assembled correctly."*
+
+**The forethought criticism is correct and I concede it without qualification.** The loops were written up on 2026-08-06 — *after* three years of accreted machinery. Nothing was designed against a workflow spec; it was assembled and then described.
+
+**But "too complex" is not what the measurement says.** Counted 2026-08-08, excluding `.venv/`, `private/`, `_old/`, and generated `data/` (the first count returned 9,441 scripts for `readers-bofm` — all but 153 were a vendored virtualenv, a miscalibrated scan of exactly the kind this repo keeps catching):
+
+| repo | authored .py | validators | prose .md | commits |
+|---|---|---|---|---|
+| atu-method | 42 | 0 | 183 | 143 |
+| readers-tanakh | 101 | 27 | 66 | 447 |
+| readers-bofm | 153 | 43 | 67 | 1,149 |
+| readers-gnt | 118 | 3 | 47 | 607 |
+| readers-lxx | 22 | 1 | 6 | 17 |
+| readers-vulgate | 34 | 1 | 5 | 19 |
+
+~470 authored scripts and ~374 prose files is a **medium** system, not a sprawling one. What is disproportionate is the **coordination surface** — 75 validators, 3 cascading [[CLAUDE.md]] files, 106 memories, 6 repos — relative to the product, which is 4 live sites.
+
+### The actual defect: one architectural omission with six symptoms
+
+Every dysfunction found today traces to a single missing thing — **there is no decision record**:
+
+| symptom | how it traces back |
+|---|---|
+| `overrides.json`: 911 keys, **all 911 values bare lists** (verified) | no verdict, rule, adjudicator, or date — so a rule change cannot be tested against past calls |
+| retraction→promotion has **never fired** in the program's history | no unit that counts as a distinct event; the protocol pools log entries instead |
+| findings don't integrate (5.80 vs 12.84 links/page) | no anchor for a finding to attach to |
+| validator baselines dead as controls | drift is a bare count, not a per-violation list |
+| **no external arbiter** — the Isaiah oracle turned out rule-derived | never designed in; discovered by audit, not by construction |
+| §7.5 declared on 24% of canon commits | the audit record is prose, not data |
+
+That is not six problems. It is one omission, and it is exactly what a "design the workflow first" pass would have produced.
+
+### The fact that decides greenfield-vs-rebuild
+
+**The past decisions are already lost.** Those 911 adjudications have no verdicts to recover; the reasoning is gone. So a greenfield does not *cost* us them — and equally, **we do not need a greenfield to start recording them properly.** The clean decision layer is available either way, because it does not exist yet in either world.
+
+Meanwhile the assets that look expensive are mostly **portable, not re-earned**: BHSA, Macula/N1904, and PROIEL→TF are external imports that re-import mechanically; the closed routes, the 14-rule Hebrew catalog, and the negative knowledge (parser training lost 21–6; genre is never a criterion; punctuation has zero force) are prose that copies. What genuinely does not port is the generators — `bofm_generate.py`, `build_books.py` — which encode instance-by-instance correctness earned over 1,149 commits, with **no live regression control**, since every baseline is stale.
+
+**Recommendation: greenfield the CORE, not the repo — and answer the arbiter question first.**
+
+1. **Settle the arbiter question before building anything.** Both sub-agents converged that we have no external arbiter. Candidates that are genuinely not rule-derived: Masoretic *te'amim*, Skousen's manuscript lineation, Marschall's syllable bands. **If none is adequate, no architecture fixes this** — the system would be additive by nature and should be run that way. This is cheap to answer and it gates everything.
+2. **Design the decision record from scratch**, with a real contract, as the new spine. Not retrofitted onto `overrides.json`'s shape — that shape is the defect.
+3. **Demote everything existing to inputs.** Substrates, corpora, rule catalogs, deployed editions become sources feeding the spine; nothing is authoritative until re-expressed as cases.
+4. **The live sites keep serving off the old path** while the spine is built.
+
+**Why this over a full greenfield:** the broken layer does not exist yet, so building it fresh costs the same either way — while a full rebuild also re-does substrate wiring, generators, and deploys that are *working*, and does it without regression control.
+
+**Why this over "just refactor":** refactoring in place has a specific known failure — you keep the dysfunction because it is load-bearing. The record has to be designed against a contract, not grown out of what is there.
+
+**Cons, stated plainly.**
+- **I am not neutral.** I built or touched much of what I am recommending we keep, and "rebuild the core, keep my parts" is exactly what a sunk-cost defence sounds like. Weigh this accordingly.
+- **Strangler-fig rebuilds stall.** The characteristic failure is two systems running forever, which is worse than either. If this is chosen it needs a date at which the old path is retired, decided in advance.
+- **It does not address the coordination surface** — 3 [[CLAUDE.md]]s, 106 memories, 75 validators — which is a real part of what feels unmaintainable and would survive untouched.
+- **If the arbiter question fails, step 1 is the whole answer** and steps 2–4 are wasted motion. That is a feature (it fails cheap) but it means this plan may terminate at step 1.
+- **A full greenfield has one advantage this forfeits**: it forces every convention to be re-justified, and some of ours — the five-tier scheme, per-repo naming drift, the memory namespace — have never been justified at all.
+
+
 ### [2026-08-08] Cross-repo: retire the wiki's `findings/`, make atu-method the loop-closer — PROPOSED IN CHAT, NOT FILED ANYWHERE
 
 Worked out in the atu-nlp-wiki session 2026-08-08 and originally **recorded here because it existed only in that session's transcript**.
