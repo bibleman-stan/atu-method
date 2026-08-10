@@ -20,7 +20,19 @@ Resolved entries move to the bottom with their date and outcome.
 
 **The first fact matters most: a Project is a view over items, and there are no items.** Create a board today and it is empty. So the question is not how to set one up — that is ten minutes — but what populates it.
 
-**Product facts** (GitHub Docs, fetched this turn): table / board / roadmap views; user- **or** org-owned; draft issues (items with no repo, which suits a solo backlog); field types date, number, single-select, text, iteration; **50 fields max**; built-in workflows set status to Done on close/merge, auto-archive, and **auto-add items from *a repository* matching a filter**. *Not confirmed: whether auto-add can be configured for several repositories at once — the docs phrase it in the singular and the detail page did not resolve it.*
+**Product facts** (GitHub Docs, fetched this turn): table / board / roadmap views; user- **or** org-owned; draft issues (items with no repo, which suits a solo backlog); field types date, number, single-select, text, iteration; **50 fields max**; built-in workflows set status to Done on close/merge, auto-archive, and auto-add items from a repository matching a filter.
+
+> **⚠ CORRECTED from the Zornek transcript** (`work/whispersync/transcripts/2026-08-09 Mike Zornek - Introduction to GitHub Projects (bUE846fGFec).md`), which Stan produced after I said I could not confirm the cross-repo question. **I was wrong to leave it open — the video states and demonstrates it:** *"you can use a GitHub project to manage multiple repos and multiple issues within different repos."* Projects live at the **profile or organisation level, not inside a repo**, which is exactly why they span.
+>
+> **Three mechanics the docs did not surface, and they change the on-ramp:**
+>
+> 1. **Items start as plain rows — no issue required.** *"Basically it is a spreadsheet-like view where you can create rows."* An item has a title, a description, an assignee and a status, and it *"lives on its own."*
+> 2. **Convert to Issue is a per-item button** that asks which repo to file into. So the board is populated first and issues are created only where they earn their keep — which **dissolves the empty-board objection I raised**: zero existing issues is not a blocker, it is the normal starting state.
+> 3. **A view can group by repository**, which is the literal "corral the repos" view Stan asked for.
+>
+> Also from the transcript: field visibility is per-card (show labels, linked PRs); linked PRs attach via the `closes #1` magic phrase and render on the board; the **item-added → set status To Do** workflow is off by default and Zornek recommends enabling it; charts/burndown exist but he judges them low-value solo; and there is an API for anything further.
+>
+> **Age caveat:** the video is from **2023-02-14**. Its "child tasks / epics, in beta" section has since shipped as sub-issues, so that part is stale — the mechanics above are not.
 
 **Recommendation: yes, but scoped to items with changing state — and do not duplicate `Pending-Decisions.md`.**
 
@@ -34,6 +46,15 @@ The seam that keeps them from rotting into two half-maintained surfaces:
 **Fields worth defining**, mapping our own design onto the board rather than inventing a new vocabulary: `Corpus` (tanakh/bofm/gnt/lxx/vulgate/cross) · `Phase` (requirements/design/implementation/deployment — Stan's SDLC framing) · `Blast radius` (skill/hook/autonomous — the consult's sequencing rule) · `Rules version` (for version-stamping) · `Status`.
 
 **Why now rather than after consolidation.** The cross-repo span is most valuable *during* migration — exactly when work crosses repos and when I am doing destructive things. Afterwards it degrades gracefully into a single-repo board rather than becoming waste.
+
+**Concrete setup, matched to our actual work** (his ~10 minutes in the browser; I cannot do it — `gh` absent, push blocked):
+
+1. Profile → **Projects** → New project → **Table**. Name it `atu-method`.
+2. Turn on the **item-added → To Do** workflow (⋯ → Workflows). Zornek's one recommended default.
+3. Add fields: `Corpus` (single select: tanakh/bofm/gnt/lxx/vulgate/cross) · `Phase` (single select: requirements/design/implementation/deployment) · `Blast radius` (single select: skill/hook/autonomous) · `Rules version` (number).
+4. **Type items straight in as plain rows** — no issues yet. Seed with what already exists: the five `private/` files to untrack, the per-corpus reproducibility runs, the BoFM divergence adjudications, the audio-over-1 GB decision.
+5. **Convert to Issue only when an item needs a repo** — a commit to link, a PR to close it.
+6. Add a second **view grouped by Repository**. That is the corral.
 
 **Cons, stated plainly.**
 - **It is a second surface, and the consult's own principle is that "things that require syncing by hand are the ones that rot."** Notion was called a trap for being disconnected from the repos; a Project is better because it sits where the commits are — but it still does not clone with the repo, and it is invisible in Obsidian.
