@@ -79,14 +79,73 @@ The seam that keeps them from rotting into two half-maintained surfaces:
 
 **Why now rather than after consolidation.** The cross-repo span is most valuable *during* migration — exactly when work crosses repos and when I am doing destructive things. Afterwards it degrades gracefully into a single-repo board rather than becoming waste.
 
-**Concrete setup, matched to our actual work** (his ~10 minutes in the browser; I cannot do it — `gh` absent, push blocked):
+## Step-by-step setup — `colometry-project`
 
-1. Profile → **Projects** → New project → **Table**. Name it `colometry-project`.
-2. Turn on the **item-added → To Do** workflow (⋯ → Workflows). Zornek's one recommended default.
-3. Add fields: `Corpus` (single select: tanakh/bofm/gnt/lxx/vulgate/cross) · `Phase` (single select: requirements/design/implementation/deployment) · `Blast radius` (single select: skill/hook/autonomous) · `Rules version` (number).
-4. **Type items straight in as plain rows** — no issues yet. Seed with what already exists: the five `private/` files to untrack, the per-corpus reproducibility runs, the BoFM divergence adjudications, the audio-over-1 GB decision.
-5. **Convert to Issue only when an item needs a repo** — a commit to link, a PR to close it.
-6. Add a second **view grouped by Repository**. That is the corral.
+*I cannot do this: `gh` is absent and this shell cannot push. **UI caveat:** GitHub moves labels around and the Zornek video is from 2023; where a button name differs, take the nearest equivalent and tell me — I will correct these steps.*
+
+### 1 · Create the board (2 min)
+
+1. Go to **`github.com/bibleman-stan?tab=projects`** — this is your *profile*, not a repo. Projects live at the profile level, which is exactly why one board can span all six repos.
+2. **New project** → choose the **Table** template (not Board — table first, board as a second view later).
+3. Name it **`colometry-project`** → **Create**.
+
+### 2 · Turn on the one workflow that matters (1 min)
+
+4. Top-right **⋯** → **Workflows**.
+5. Find **"Item added to project"** → enable it → set status to **To Do** → Save.
+
+*Two others are on by default — item closed → Done, PR merged → Done. Leave them. This third one is off out of the box and Zornek specifically recommends it; without it, every item you type in lands with no status and the board view shows a "No Status" column.*
+
+### 3 · Add the four fields (4 min)
+
+In the table, click **`+`** at the far right of the column headers → **New field**.
+
+| Field | Type | Options |
+|---|---|---|
+| `Corpus` | Single select | `tanakh` `bofm` `gnt` `lxx` `vulgate` `cross` `none` |
+| `Phase` | Single select | `requirements` `design` `implementation` `deployment` |
+| `Blast radius` | Single select | `skill` `hook` `autonomous` |
+| `Rules version` | Number | — |
+
+*`Status` already exists. Four custom fields against a 50-field ceiling leaves plenty of room.*
+
+### 4 · Seed it — type these straight in (10 min)
+
+**No issues required.** Click the empty row at the bottom of the table, type the title, press Enter. These are the real backlog, drawn from the eight surfaces consolidated in [[Current-Tasks.md]]:
+
+| Title | Corpus | Phase | Status |
+|---|---|---|---|
+| Untrack 5 `private/` files still served on 4 live domains | cross | deployment | To Do |
+| Decide: rewrite git history to purge `colometry-canon.md`? | cross | deployment | To Do |
+| Move Pages off repo root (stops publishing the source tree) | cross | deployment | To Do |
+| Fix Gate 10 bypass #1 — citation allowlist is a finite list | none | implementation | To Do |
+| Fix Gate 10 bypass #3 — file-edit regex misses `Write` | none | implementation | To Do |
+| Fix Gate 10 bypass #4 — paraphrase passes the "verbatim" demand | none | implementation | To Do |
+| Run approval log against GNT (expect 0 divergences) | gnt | design | To Do |
+| Run approval log against BoFM (expect ~789) | bofm | design | To Do |
+| Decide: 1.5 GB audio exceeds the 1 GB Pages ceiling | bofm | deployment | To Do |
+| Write the requirements phase — what is good colometry? | cross | requirements | To Do |
+| Decide: greenfield vs new core | cross | design | To Do |
+| Pin dependencies + back up the 1.87 GB substrate offsite | cross | design | To Do |
+| Framework §1 NOT-list ruling | cross | requirements | To Do |
+| Non-finite predication — §7.3 audit + yardstick | cross | implementation | To Do |
+| Triage the 43 parked items in [[memories/operational/_deferred_queue.md|_deferred_queue.md]] | cross | requirements | To Do |
+
+### 5 · Add the corral view (1 min)
+
+6. Click **`+`** next to the **View 1** tab → **New view** → **Board**.
+7. In that view: **⋯** → **Group by** → **Repository**.
+8. **Save changes** (views are per-view and do not persist until saved).
+
+*This view stays empty until items become issues — draft items have no repository. That is expected, and step 6 fills it.*
+
+### 6 · Convert only what needs a repo
+
+Open an item → **Convert to issue** → pick the repo. Do this when an item needs a commit or PR attached to it. The three Gate 10 fixes and the two approval-log runs are the natural first five.
+
+### What to tell me afterwards
+
+The project number from its URL (`/users/bibleman-stan/projects/N`). If you later install `gh`, that number lets me add and update items from a session instead of you typing them.
 
 **Cons, stated plainly.**
 - **It is a second surface, and the consult's own principle is that "things that require syncing by hand are the ones that rot."** Notion was called a trap for being disconnected from the repos; a Project is better because it sits where the commits are — but it still does not clone with the repo, and it is invisible in Obsidian.
