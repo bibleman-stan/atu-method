@@ -14,6 +14,33 @@ Resolved entries move to the bottom with their date and outcome.
 
 ## Open
 
+### [2026-08-09] Set up a GitHub Project to corral the repos?
+
+**Verified state, 2026-08-09.** All six repos have **0 open issues**, issues enabled, all **public**. `gh` is **not installed** on this machine. `readers-bofm` is **2.1 GB** (2,194,485 KB).
+
+**The first fact matters most: a Project is a view over items, and there are no items.** Create a board today and it is empty. So the question is not how to set one up — that is ten minutes — but what populates it.
+
+**Product facts** (GitHub Docs, fetched this turn): table / board / roadmap views; user- **or** org-owned; draft issues (items with no repo, which suits a solo backlog); field types date, number, single-select, text, iteration; **50 fields max**; built-in workflows set status to Done on close/merge, auto-archive, and **auto-add items from *a repository* matching a filter**. *Not confirmed: whether auto-add can be configured for several repositories at once — the docs phrase it in the singular and the detail page did not resolve it.*
+
+**Recommendation: yes, but scoped to items with changing state — and do not duplicate `Pending-Decisions.md`.**
+
+The seam that keeps them from rotting into two half-maintained surfaces:
+
+| Belongs in a **Project** | Belongs in **`Pending-Decisions.md`** |
+|---|---|
+| Items with a *status that changes* — the stale/rework queue, per-corpus migration phase, the adjudication backlog from the approval log, exposure remediation steps | Decisions needing *argument* — recommendation, why, cons |
+| Queryable state that survives my context loss | Prose that travels with the repo and reads in Obsidian |
+
+**Fields worth defining**, mapping our own design onto the board rather than inventing a new vocabulary: `Corpus` (tanakh/bofm/gnt/lxx/vulgate/cross) · `Phase` (requirements/design/implementation/deployment — Stan's SDLC framing) · `Blast radius` (skill/hook/autonomous — the consult's sequencing rule) · `Rules version` (for version-stamping) · `Status`.
+
+**Why now rather than after consolidation.** The cross-repo span is most valuable *during* migration — exactly when work crosses repos and when I am doing destructive things. Afterwards it degrades gracefully into a single-repo board rather than becoming waste.
+
+**Cons, stated plainly.**
+- **It is a second surface, and the consult's own principle is that "things that require syncing by hand are the ones that rot."** Notion was called a trap for being disconnected from the repos; a Project is better because it sits where the commits are — but it still does not clone with the repo, and it is invisible in Obsidian.
+- **It does not travel.** If this folder is copied to another machine, the board does not come with it. That is the same objection Stan raised about skills in the global bucket.
+- **I cannot create or populate it from here** — `gh` is not installed, and pushing is already blocked by the 403 proxy. Either he creates it in the browser and I draft the item bodies, or `gh` gets installed first.
+- **Empty-board risk is real.** If the stale queue and the approval-log backlog do not actually land on it, it becomes another dashboard nobody opens — which is precisely the failure Stan has already reported experiencing.
+
 ### [2026-08-09] 🔴 LIVE EXPOSURE — `private/` content is published, and the repos are public
 
 **Stan asked whether `.gitignore` actually hid the `private/` folders. Verified this turn: the ignore rules are correct in all five reader repos, but `.gitignore` never untracks a file that was already committed — and files were.**

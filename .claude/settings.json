@@ -105,7 +105,8 @@
       "WebFetch(domain:publications.scss.tcd.ie)",
       "WebFetch(domain:personal.utdallas.edu)",
       "WebFetch(domain:www.opencommons.org)",
-      "WebFetch(domain:opencommons.org)"
+      "WebFetch(domain:opencommons.org)",
+      "WebFetch(domain:www.youtube.com)"
     ],
     "additionalDirectories": [
       "C:\\Users\\bibleman\\.claude",
