@@ -300,6 +300,15 @@ def check_current_tasks() -> list:
     drift = len([ln for ln in (since or "").splitlines() if ln.strip()])
     if age is None:
         return [("WARN", "Current-Tasks.md never committed")]
+    # DRIFT, NOT DAYS. The original threshold was 14 days, which was calibrated
+    # to nothing. Demonstrated 2026-08-09: the board sat untouched for 1 day
+    # while 21 commits landed — genuinely stale, reported "ok", and would not
+    # have warned for another 13 days. The signal was already being computed and
+    # then thrown away. A repo that moves 13 commits in a day needs a
+    # commit-count trigger; days only matter when nothing is happening.
+    if drift > 10:
+        return [("WARN", f"Current-Tasks.md is {drift} commits behind "
+                         f"(last touched {age}d ago) — hand-maintained boards rot")]
     if age > 14:
         return [("WARN", f"Current-Tasks.md untouched {age}d ({drift} commits since)")]
     return [("ok", f"Current-Tasks.md updated {age}d ago ({drift} commits since)")]
