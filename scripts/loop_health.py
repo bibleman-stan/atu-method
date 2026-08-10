@@ -308,6 +308,52 @@ def check_private_tracked() -> list:
     return out
 
 
+def refresh_log() -> list:
+    """Regenerate the derived operations log. Runs every session, unprompted.
+
+    The hand-written log.md was built 2026-08-09 and was ten commits stale by
+    that evening. Deriving it from git removes the failure mode rather than
+    warning about it — there is no "remember to update the log" step left.
+    """
+    script = REPO / "scripts" / "build_log.py"
+    if not script.exists():
+        return [("WARN", "build_log.py missing — log.md is hand-written again")]
+    r = subprocess.run([sys.executable, str(script)], cwd=REPO,
+                       capture_output=True, text=True, encoding="utf-8",
+                       errors="replace", timeout=60)
+    msg = (r.stdout or "").strip().splitlines()[-1:] or ["no output"]
+    return [("ok" if r.returncode == 0 else "FAIL", f"log: {msg[0]}")]
+
+
+def check_lessons_capture() -> list:
+    """Corrections happened; were any written down?
+
+    lessons.md has a PROMOTION trigger but had no CAPTURE trigger, and the gap
+    showed: on 2026-08-09 two failures — a miscalibrated private/ check and a
+    .gitignore commit that silently did not land — went uncaptured while the
+    file sat at zero open entries.
+
+    The mechanical signal is correction-shaped commits since lessons.md last
+    changed. A commit saying `fix:` or `correct:` is a correction by its own
+    account; if none of them produced a lesson, the buffer is not being fed.
+    Heuristic, and deliberately loud rather than clever.
+    """
+    f = REPO / "4-process" / "lessons.md"
+    if not f.exists():
+        return [("WARN", "lessons.md missing — no capture buffer")]
+    since = _git(REPO, "log", "-1", "--format=%aI", "--", "4-process/lessons.md")
+    if not since:
+        return [("ok", "lessons.md never committed yet")]
+    log = _git(REPO, "log", f"--since={since}", "--format=%s")
+    corrections = [ln for ln in (log or "").splitlines()
+                   if re.match(r"^(fix|correct|revert|untrack|security):", ln)]
+    if not corrections:
+        return [("ok", "no uncaptured corrections since lessons.md last changed")]
+    shown = corrections[0][:60]
+    return [("WARN", f"{len(corrections)} correction commit(s) since lessons.md "
+                     f"last changed, 0 captured — e.g. \"{shown}\"")]
+
+
 def check_lessons() -> list:
     """Unpromoted lessons are worry-beads — so give promotion a mechanical trigger.
 
@@ -417,6 +463,8 @@ def main() -> int:
         ("private/ tracking", check_private_tracked),
         ("deferred queue", check_queue),
         ("current-tasks board", check_current_tasks),
+        ("log (derived)", refresh_log),
+        ("lessons <- capture", check_lessons_capture),
         ("lessons -> promotion", check_lessons),
         ("pointer integrity", check_pointers),
     ]

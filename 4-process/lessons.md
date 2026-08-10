@@ -35,6 +35,39 @@ precedence claim about the methodology.
 
 ## Open — captured, not yet promoted
 
+### [2026-08-09] A multi-path `git add` fails atomically — and the commit still succeeds
+
+`git add .gitignore private/README.md` staged **nothing**, because the README had
+already been deleted from disk and git treats an unmatched pathspec as fatal for
+the whole invocation. The subsequent `git commit` then captured only what a prior
+`git rm --cached` had staged, `git push` succeeded, and my own output printed
+"pushed". Every signal said done; the `.gitignore` change was not in `HEAD`.
+
+Caught by chance — I ran `git show HEAD:.gitignore` while investigating something
+else. **No check would have caught it**, which is the point.
+
+**Candidate guard:** after any commit, diff the intended file list against
+`git show --stat HEAD` and fail loudly on a mismatch. This is the mechanical form
+of standing default #7 — the rule already covers it in principle and did not
+prevent it in practice, because nothing enforced it.
+
+### [2026-08-09] I built a detector after promoting "calibrate detectors" — and did not calibrate it
+
+`check_private_tracked()` was written an hour after *"a detector is itself a
+claim — calibrate before sweeping"* went into standing default #6. It flagged
+five files as leaks. Three were; two were `!private/README.md` **negations** —
+deliberate publication decisions the check would have had Stan reverse.
+
+The miss was structural, not careless: `git check-ignore` silently skips tracked
+paths unless `--no-index` is passed, so it returned nothing for the tracked files
+and that reads exactly like *"no rule matches"*.
+
+**What actually caught it** was Stan's instruction to go repo by repo, not the
+rule I had just promoted. **Candidate guard:** a new checker may not be wired
+into `loop_health.py` until it carries in-file pole assertions, the way
+`decision_log.py` and `build_log.py` do. Remembering the rule demonstrably does
+not produce the calibration.
+
 ### [2026-08-09] The COUNTS-HEADLINE gate reads a year as a count
 
 The `Stop` discipline hook blocked an outgoing message for *"a bare integer 2023 not contextualized as a reference."* The integer was a **year** — "a 2023 transcript" — in a sentence that led with what changed, which is exactly what the rule asks for. The gate's own examples of valid context are "verse, chapter, line, word, file"; a four-digit year is not among them and so reads as a count.
