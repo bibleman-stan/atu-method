@@ -45,3 +45,18 @@ Filed: `2-evidence/growth-data.csv`.
 Greenfield in `atu-method`; sites become build output; `5-machinery/` as the code
 bin; log / lessons / lint as three distinct organs. First version argued from
 external evidence rather than from my own reasoning.
+
+## [2026-08-09] measure | workflow consult ingested
+
+Stan's claude.ai session on streamlining the reader workflow, read in full.
+Central critique: v3 is machinery a non-coder cannot debug. Adopted blast-radius
+phasing, save/undo, visual diffs, deploy previews, version-stamped chapters,
+touch-tax, rule reach. Flagged the plugin-vs-project-skills conflict.
+Filed: 2-evidence/external-practice.md §9
+
+## [2026-08-09] propose | SDLC reframe folded into v3
+
+Stan: this matches requirements -> design -> implementation -> deployment. The
+project has run implementation->deployment only. V-model makes the validator
+problem exact: 75 validators with nothing on the left to verify against.
+Gate 0 reframed from epistemology to requirements.

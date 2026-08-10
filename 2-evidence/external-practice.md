@@ -90,6 +90,60 @@ The linguistic audit found the project uses `cardinality match`, which **scores 
 
 ---
 
+## 9. The workflow consult — and its central critique of my v3
+
+**Source:** Stan's claude.ai conversation *Streamlining reader project development workflow*, 2026-08-09, exported to `~/Downloads/Claude-Streamlining reader project development workflow-20260809-1802.md`. Read in full 2026-08-09. Different from the audits: that session **knew Stan is not a coder**, and it walked back its own advice once it learned so.
+
+### The critique that lands on v3
+
+> *"The meta-repo, submodules, and scheduled GitHub Actions were advice for someone who can debug them at 11pm when they break. **Automation you can't diagnose isn't leverage — it's a new failure mode that stops your work cold.**"*
+
+**[[4-process/master-proposal-v3.md|v3]] proposes:** Actions-based deploys, content-hash lockfiles, a spec engine, a lint runner with calibration gates, an approval log with a review workflow, ADRs, DORA metrics, and WindowDiff. **That is a great deal of machinery Stan cannot diagnose**, and v3 never asks whether he can operate it. This is a genuine design defect, not a nuance.
+
+### The sequencing principle that fixes it
+
+> *"Phased by blast radius, not usefulness. A bad skill makes a bad suggestion — visible, ignorable. A bad hook fires at every session start and can block all three repos at once."*
+
+**Skills that suggest → hooks that enforce → autonomous workflows last.** The most valuable piece ships *last*, because you need a feel for the surface before something is allowed to stop your work. v3 orders its steps by dependency; it should order them by blast radius.
+
+### Mechanisms worth adopting
+
+| Mechanism | Why it matters here |
+|---|---|
+| **`save` / `undo` — two verbs, the whole git interface** | Directly answers "the sandbox cannot push" and Stan-as-operator. Everything else stays under the hood. |
+| **GitHub Desktop for visual diffs** | *"you can see that Claude touched 40 lines when it should have touched 4."* This is the missing check against **my** error rate — and against the 789-line drift nobody caught for 65 days. |
+| **Tag known-good states** | *"Restore the tag from before Mosiah"* beats reading commit hashes. One tag exists across ~2,400 commits today. |
+| **Deploy previews** (Cloudflare Pages / Netlify) | See the site before it is live. We have none, and this is the cheapest guardrail against both the exposure and regression problems. |
+| **Version-stamp each chapter with the rules version it was built under** | Staleness becomes a **computed fact, not a memory** — a far better answer to the BoFM drift than v3's regenerate-everything. |
+| **Touch tax + ratchet + one-stale-chapter-per-week** | Debt shrinks but can never grow; the queue drains through work you were doing anyway. |
+| **`forward-only` rules** | Not every refinement is worth retrofitting. *"A queue containing every refinement you ever made becomes noise within a month."* |
+| **Rules carry their reach — `R-014, applies-to: bom, gnt`** | Forces the propagation question at the one moment you are thinking clearly about it. Exactly what our cross-corpus problem needs, and cheap. |
+| **Claude Code plugins as the propagation product** | Bundles skills, hooks, and subagents; refine once, every repo picks it up next session. The real off-the-shelf answer to "change once, propagate everywhere." |
+
+### The success metric, which is better than the one I built
+
+> *"You re-explain your conventions to Claude less often each month. If you're still pasting the sense-line rules in every session a year from now, the loop isn't closed — you've just built an archive."*
+
+That measures the **return leg** directly. Link density measures integration of prose; this measures whether the loop actually pays. It should be the headline metric.
+
+### Provenance — three failure modes with distinct fixes
+
+**Laundering** (a Claude summary later read as the source) → origin tags that survive into a future agent's context. **Source mutation** (an agent "tidies" a transcript) → sources are append-only. **Circularity** (the wiki cites the wiki) → an evergreen note's citations must point *outside*.
+
+> *"Pick any claim at random and ask what happens if you pull the thread. If it terminates at a page you have actually read, the loop is sound. If it terminates at another note, which terminates at a session transcript — that's the rot, and it looks completely normal from the outside."*
+
+**That is a buildable lint**, and it is the sharpest thing in the document.
+
+### Three homes — which constrains the consolidation
+
+Repos are the home of **artifacts**; the wiki of **knowledge**; papers of **arguments**. The readers are a *source corpus*: *"if chapter HTML lived in the wiki it would eventually get read as evidence — a segmentation decision you made in 2025 becoming a claim about the text."* v3 is compatible with this (the wiki stays separate) — but it confirms the consolidation must stop at the readers and never absorb the theory vault.
+
+### One conflict I will not resolve silently
+
+The consult recommends `claude plugin init`, which scaffolds into **`~/.claude/skills/`** — the global bucket. **Stan's standing rule is the opposite:** skills for this project live in `./.claude/skills/`, never the global bucket, because *"those are machine state — they don't travel when I copy or clone this folder."* The plugin mechanism and that rule are in direct tension. **Flagged for Stan, not decided by me.**
+
+---
+
 ## What I have NOT verified
 
 Everything above is the auditors' sourcing. I verified the *repo-state* claims they made (see [[4-process/master-proposal-v2.md|master-proposal-v2]] §2) and **refuted one** of their findings. I have not independently re-read these external papers. They are recorded here as *reported*, with URLs so any of them can be checked before it is relied on.

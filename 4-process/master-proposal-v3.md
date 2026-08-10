@@ -11,6 +11,44 @@ cssclasses:
 
 **What is new in v3, and it is the point:** v1 and v2 argued from my reasoning. v3 argues from **evidence the audits went and got**. Where the literature contradicts what I proposed, the literature wins and I say so.
 
+> ## ⚠ AMENDED 2026-08-09 — two inputs that reorder this document
+>
+> ### A. Stan's reframe: this is an SDLC problem, and we have been running two phases of four
+>
+> > *"i am intrigued that i have not really thought of this as a software development problem, but it seems that it matches the software development cycle paradigm? to rebuild we need requirements → design → implementation → deployment?"*
+>
+> **Yes — and naming it exposes the actual defect more precisely than anything in the four audits.** This project has been running **implementation → deployment** for three years, with no requirements phase and no design phase. Everything diagnosed since 2026-08-06 is a symptom of those two absences:
+>
+> | Symptom | Missing phase |
+> |---|---|
+> | 75 validators and "no guarantee they are correct" | **Requirements** — a validator is only correct *relative to a stated requirement*, and none was ever written |
+> | 17 in-place mutators, order recorded nowhere | **Design** |
+> | Rules as prose, re-implemented per repo | **Design** — no specification artifact |
+> | No acceptance criterion for "is this segmentation right" | **Requirements** |
+> | Loops written up *after* the machinery accreted | Both — "assembled and then described" |
+>
+> **The V-model makes the validator problem exact.** Each development phase pairs with a verification level: requirements ↔ acceptance tests, design ↔ integration tests, implementation ↔ unit tests. We built the bottom-right (75 validators) with nothing on the left for them to verify *against*. **That is why they cannot be trusted, and why adding more would not help.**
+>
+> **And it reframes Gate 0 usefully.** "Is there an external arbiter?" has been treated as an epistemology problem. It is a **requirements** problem: *what does correct output look like, and who says so?* That is the first requirement of the system, it has never been written down, and it is Stan's to answer rather than mine to discover.
+>
+> **One honest qualification.** This is not an argument for waterfall — the audits' own evidence (Flyvbjerg's overrun distribution; ADRs failing at the hybrid boundary) favours iterating with gates. And research software has genuinely evolving requirements, since the correctness criterion here is contested. **But that is an argument for writing requirements down and versioning them, not for continuing without them.**
+>
+> ### B. The workflow consult: v3 is machinery Stan cannot debug
+>
+> From `~/Downloads/Claude-Streamlining reader project development workflow-20260809-1802.md`, logged at [[2-evidence/external-practice.md|external-practice.md §9]]. That session knew Stan is not a coder and walked back its own advice:
+>
+> > *"Automation you can't diagnose isn't leverage — it's a new failure mode that stops your work cold."*
+>
+> **v3 proposes Actions deploys, content-hash lockfiles, a spec engine, a calibrating lint runner, an approval workflow, ADRs, DORA metrics and WindowDiff — and never asks whether Stan can operate any of it.** That is a real design defect.
+>
+> **The fix is a sequencing rule: phase by BLAST RADIUS, not by dependency.** A bad skill makes an ignorable suggestion; a bad hook fires at every session start and can block every repo at once. So: **skills that suggest → hooks that enforce → autonomous workflows last.** §4's sequence below is ordered by dependency and should be re-ordered by blast radius.
+>
+> **Mechanisms adopted into the plan** (detail in §9 of external-practice): `save`/`undo` as the entire git interface · GitHub Desktop for visual diffs, which is the missing check against *my* error rate · tags on known-good states · **deploy previews**, the cheapest guardrail we lack · **version-stamping chapters with the rules version**, which turns staleness into a computed fact and is a better answer to the BoFM drift than regenerate-everything · touch-tax + ratchet so debt can shrink but never grow · `forward-only` rules · rules carrying their own reach (`applies-to: bom, gnt`).
+>
+> **A better headline metric than the one I built:** *"you re-explain your conventions to Claude less often each month."* That measures the return leg directly; link density only measures prose integration.
+>
+> **And one conflict I will not resolve silently:** the consult recommends `claude plugin init`, which scaffolds into the **global** `~/.claude/skills/`. Stan's standing rule is that project skills live in `./.claude/skills/` and never the global bucket, because machine state does not travel. **Flagged for him.**
+
 ---
 
 ## 1. The decision
