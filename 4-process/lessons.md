@@ -35,7 +35,19 @@ precedence claim about the methodology.
 
 ## Open — captured, not yet promoted
 
-*(none — cleared 2026-08-09. Full text of the five promoted captures is below, kept as the record of what the amendments were derived from.)*
+### [2026-08-09] The COUNTS-HEADLINE gate reads a year as a count
+
+The `Stop` discipline hook blocked an outgoing message for *"a bare integer 2023 not contextualized as a reference."* The integer was a **year** — "a 2023 transcript" — in a sentence that led with what changed, which is exactly what the rule asks for. The gate's own examples of valid context are "verse, chapter, line, word, file"; a four-digit year is not among them and so reads as a count.
+
+**Why this is worth capturing rather than bypassing.** It is the first live test of standing default #6's new clause — *a detector is itself a claim* — and the gate fails it: no known-bad case asserts that a year must NOT trigger. Bypassing with `<!-- counts-ok: -->` would spend an override on a defect and leave it in place for every future message.
+
+**Candidate fix:** exempt four-digit integers in `19xx`/`20xx` range, and integers immediately preceded or followed by a date-shaped token. Then assert both poles in the hook: a genuine count-headline must trigger; "a 2023 transcript" must not.
+
+**Blast radius: hook.** Per the sequencing rule this is the tier that can block every session, so it gets fixed carefully and tested, not patched in passing. The hook also lives in `~/.claude/hooks/` — the global bucket — so the fix does not travel with the repo, which is the same defect already flagged for Gate 10.
+
+---
+
+*(The five captures below were promoted 2026-08-09 and are kept as the record of what the amendments were derived from.)*
 
 ## Archive — the captures behind the 2026-08-09 promotions
 
