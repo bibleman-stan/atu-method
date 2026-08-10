@@ -14,6 +14,24 @@ Resolved entries move to the bottom with their date and outcome.
 
 ## Open
 
+### [2026-08-09] Name it `colometry-project` — and the consequence that falls out
+
+Stan: *"let's call the git project colometry-project; my thought being: ATUs may or may not survive under scrutiny, but colometry is one of my sites' 'value-added' propositions."*
+
+**Agreed, and it is not cosmetic — our own evidence backs it.** [[2-evidence/framework-claim-inventory.md|framework-claim-inventory.md]] line 38 types claim #4, *"grammatical closure is a proxy for thought"*, as **`[UNPROVEN]` — "the single most load-bearing theoretical claim in the document, asserted in one clause."** Naming the top-level container after the theory bets the label on the one claim we have flagged as unsupported. **Colometry is the observable deliverable; ATU is the contested explanation of it.** The sites deliver broken lines whether or not those lines turn out to be atomic thought units.
+
+The vocabulary split is already in the estate: `colometry` names 14 files and directories in the reader repos — including each corpus's `colometry-canon.md` and `5-machinery/validators/colometry/` — against 44 for `atu`. **Colometry is already the operational word at the implementation layer; ATU is the theory layer above it.**
+
+### The consequence: this partly rescues Gate 0
+
+*(My inference from [[4-process/audit-linguistic.md|audit-linguistic.md]], not the auditor's own conclusion.)* That audit disqualified all three candidate arbiters — and **every rejection was the same objection**: te'amim are *prosodic, not semantic*; Skousen's sense-lines are *his own editorial punctuation*; Marschall's côla are *syllable-bounded prosodic units*, ruled out by `feedback_external_unit_is_not_atu`.
+
+**All three failed because they measure colometry rather than cognition.** If the deliverable is *colometry*, that objection evaporates — they stop being disqualified arbiters and become the natural yardsticks, because they are witnesses to the same kind of thing we are producing.
+
+**What this does and does not fix.** It does **not** give us an arbiter for the ATU claim; that remains unproven and un-adjudicable. It **does** mean the requirements phase has an answerable acceptance criterion — *is this colometry good, measured against Skousen, Marschall, the Masoretic tradition, and reader use* — instead of an unanswerable one, *is this an atomic thought unit*. Given Stan's SDLC framing, that is the difference between a requirements phase we can write and one we cannot.
+
+**Cons.** The naming seam is real: the repo is `atu-method`, the framework is ATU, and the memories are full of it, so a `colometry-project` board sits slightly athwart its own repo. I judge that informative rather than confusing — it marks exactly where the deliverable ends and the hypothesis begins — but it is a seam, and if the theory later firms up the name will look like a hedge. There is also a risk of the rename being read as *retreating from* the ATU claim rather than *not betting on it*; the claim inventory should stay the place that says which it is.
+
 ### [2026-08-09] Set up a GitHub Project to corral the repos?
 
 **Verified state, 2026-08-09.** All six repos have **0 open issues**, issues enabled, all **public**. `readers-bofm` is **2.1 GB** (2,194,485 KB).
@@ -63,7 +81,7 @@ The seam that keeps them from rotting into two half-maintained surfaces:
 
 **Concrete setup, matched to our actual work** (his ~10 minutes in the browser; I cannot do it — `gh` absent, push blocked):
 
-1. Profile → **Projects** → New project → **Table**. Name it `atu-method`.
+1. Profile → **Projects** → New project → **Table**. Name it `colometry-project`.
 2. Turn on the **item-added → To Do** workflow (⋯ → Workflows). Zornek's one recommended default.
 3. Add fields: `Corpus` (single select: tanakh/bofm/gnt/lxx/vulgate/cross) · `Phase` (single select: requirements/design/implementation/deployment) · `Blast radius` (single select: skill/hook/autonomous) · `Rules version` (number).
 4. **Type items straight in as plain rows** — no issues yet. Seed with what already exists: the five `private/` files to untrack, the per-corpus reproducibility runs, the BoFM divergence adjudications, the audio-over-1 GB decision.
