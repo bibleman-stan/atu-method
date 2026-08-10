@@ -68,3 +68,9 @@ GitHub Desktop IS installed (AppData/Local/GitHubDesktop); gh CLI is not; git
 2.53.0. Consequence: the visual-diff guardrail is already on the machine and
 unused, and push is solved -- I stage, Stan reviews the diff and pushes.
 Desktop has no Projects UI, so the board is still browser work.
+
+## [2026-08-09] build | colometry-board skill
+
+Operating contract for the Project board. Projects v2 is GraphQL-only, no REST;
+scopes read:project / project; add-then-update is two calls per item minimum.
+gh not installed, so all commands marked unverified until first real run.

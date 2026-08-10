@@ -106,7 +106,8 @@
       "WebFetch(domain:personal.utdallas.edu)",
       "WebFetch(domain:www.opencommons.org)",
       "WebFetch(domain:opencommons.org)",
-      "WebFetch(domain:www.youtube.com)"
+      "WebFetch(domain:www.youtube.com)",
+      "Edit(/.claude/skills/colometry-board/**)"
     ],
     "additionalDirectories": [
       "C:\\Users\\bibleman\\.claude",
