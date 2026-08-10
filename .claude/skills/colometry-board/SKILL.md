@@ -95,6 +95,12 @@ Mutations: `addProjectV2DraftIssue` · `addProjectV2ItemById` · `updateProjectV
 
 **If IDs are ever needed, record them here on first lookup** — they are stable, opaque, and expensive to re-derive.
 
+## Sorting — option order, not alphabetical (verified 2026-08-09)
+
+**Single-select fields sort by the order the options were defined, not by name.** Tested on `Priority`: sort-ascending returns `now → next → later`, which is definition order. Alphabetical would have given `later → next → now`.
+
+**Consequence: no numeric prefixes are needed** — `1-now`, `2-next` would be pure noise on the card. **But it means option order is load-bearing at creation time.** When creating a single-select whose values have a natural order, pass `--single-select-options` in that order; fixing it afterwards means recreating the field, since type and option order are not editable in place the way names are.
+
 ## Our field vocabulary — what the values mean
 
 | Field | Values | Meaning |
