@@ -260,6 +260,34 @@ def check_dormancy() -> list:
     return out
 
 
+def check_private_tracked() -> list:
+    """Nothing under private/ may be tracked. Mechanical, because memory failed.
+
+    private/ is gitignored in every reader repo — but .gitignore never untracks a
+    file already committed, so anything added before the rule existed stays
+    tracked forever and, because Pages serves from the repo root, stays PUBLIC.
+
+    Found 2026-08-09: five files tracked across three repos, four of them
+    returning HTTP 200 on live domains. The rule was right; nothing checked it.
+    A folder that sits at the bottom of a listing is easy to forget, and this is
+    the check that makes forgetting impossible rather than merely unlikely.
+    """
+    out = []
+    for name in SIBLINGS:
+        root = REPO.parent / name
+        if not (root / ".git").exists():
+            continue
+        tracked = _git(root, "ls-files", "private")
+        files = [f for f in (tracked or "").splitlines() if f.strip()]
+        if files:
+            shown = ", ".join(files[:3]) + (" …" if len(files) > 3 else "")
+            out.append(("FAIL", f"{name}: {len(files)} file(s) TRACKED under "
+                                f"private/ — public if Pages serves the root ({shown})"))
+    if not out:
+        out.append(("ok", "private/ clean across all repos — 0 tracked files"))
+    return out
+
+
 def check_lessons() -> list:
     """Unpromoted lessons are worry-beads — so give promotion a mechanical trigger.
 
@@ -366,6 +394,7 @@ def main() -> int:
         ("validator baselines", check_baselines),
         ("outcome instrument (gold yardstick)", check_yardstick),
         ("file-back loop", check_fileback),
+        ("private/ tracking", check_private_tracked),
         ("deferred queue", check_queue),
         ("current-tasks board", check_current_tasks),
         ("lessons -> promotion", check_lessons),
