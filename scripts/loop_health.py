@@ -260,6 +260,36 @@ def check_dormancy() -> list:
     return out
 
 
+def check_lessons() -> list:
+    """Unpromoted lessons are worry-beads — so give promotion a mechanical trigger.
+
+    4-process/lessons.md exists because capturing a correction is not learning it;
+    promotion into CLAUDE.md or a guard is. That promotion step is the bearing of
+    the whole ops loop, and it has no trigger — which is how the file becomes the
+    thing it was built to prevent.
+
+    Demonstrated 2026-08-09: I wrote lessons.md with five entries, declared
+    promotion "the audit's job", and then did not run the audit in the same
+    session. Stan had to ask. A rule with no trigger is a rule nobody applies —
+    the same defect as a detector with no calibration.
+    """
+    f = REPO / "4-process" / "lessons.md"
+    if not f.exists():
+        return [("WARN", "4-process/lessons.md missing — no capture buffer")]
+    text = f.read_text(encoding="utf-8", errors="replace")
+    # Open entries are "### [date] title" that are not struck through (~~).
+    open_n = len([ln for ln in text.splitlines()
+                  if ln.startswith("### [") and "~~" not in ln])
+    if not open_n:
+        return [("ok", "lessons.md: nothing awaiting promotion")]
+    age = _days_since(_git(REPO, "log", "-1", "--format=%ad", "--date=short",
+                           "--", "4-process/lessons.md"))
+    flag = "WARN" if (open_n >= 5 or (age or 0) > 14) else "ok"
+    return [(flag, f"lessons.md: {open_n} captured, 0 promoted"
+                   f"{f' (oldest touch {age}d ago)' if age is not None else ''}"
+                   f"{' — promotion has no trigger; run the audit' if flag == 'WARN' else ''}")]
+
+
 def check_pointers() -> list:
     # 5-machinery/ is readers-bofm's layout, not this repo's; the path was
     # copied across and reported "missing" against a script that exists.
@@ -328,6 +358,7 @@ def main() -> int:
         ("file-back loop", check_fileback),
         ("deferred queue", check_queue),
         ("current-tasks board", check_current_tasks),
+        ("lessons -> promotion", check_lessons),
         ("pointer integrity", check_pointers),
     ]
 

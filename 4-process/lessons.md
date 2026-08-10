@@ -8,12 +8,36 @@ worry-beads, which is the documented failure mode of exactly this pattern.
 Promoted entries move to [[CLAUDE.md]] or `5-machinery/lint/` and are struck through
 here with the date and destination.
 
-**Nothing below is promoted.** Five corrections, five candidate rules, zero
-adopted.
+**Promotion audit run 2026-08-09** — the first time this loop has fired in the
+program's history. Five captures became **two amendments, no new numbered rules**,
+per the schema-budget principle that a constitution should compound discipline
+without compounding length. Stan can veto either; both are behavioural rules
+about my conduct, tightening existing defaults, and neither makes a scope or
+precedence claim about the methodology.
+
+| Captured | Disposition |
+|---|---|
+| proxy-trust · don't propose what was tried · don't architect uninventoried | **→ Standing default #7**, scope generalised from code-paths to *any artifact claim*. Displaces the old code-path-only wording. **Three captures, one amendment, net zero new rules.** |
+| a detector is a claim | **→ Standing default #6**, new clause. Displaces nothing. Reference implementation `scripts/decision_log.py --calibrate`. |
+| write the thing, not about the thing | **NOT promoted to prose — made mechanical instead.** `loop_health.py check_lessons()` now warns when captures accumulate unpromoted, which is the specific form this failure took. A rule with no trigger is a rule nobody applies. |
+
+---
+
+## Promoted
+
+- ~~**[2026-08-09] Proxy-trust — verify the artifact, never a stand-in**~~ → CLAUDE.md #7, 2026-08-09
+- ~~**[2026-08-09] Do not propose what the repo has already tried**~~ → CLAUDE.md #7 (same amendment), 2026-08-09
+- ~~**[2026-08-09] Do not architect from an uninventoried system**~~ → CLAUDE.md #7 (same amendment), 2026-08-09
+- ~~**[2026-08-09] A detector is a claim — assert both poles in the script**~~ → CLAUDE.md #6, 2026-08-09
+- ~~**[2026-08-09] Write the thing, not about the thing**~~ → `loop_health.py check_lessons()`, 2026-08-09
 
 ---
 
 ## Open — captured, not yet promoted
+
+*(none — cleared 2026-08-09. Full text of the five promoted captures is below, kept as the record of what the amendments were derived from.)*
+
+## Archive — the captures behind the 2026-08-09 promotions
 
 ### [2026-08-09] Proxy-trust — verify the artifact, never a stand-in for it
 
