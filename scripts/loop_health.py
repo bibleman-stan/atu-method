@@ -277,9 +277,19 @@ def check_lessons() -> list:
     if not f.exists():
         return [("WARN", "4-process/lessons.md missing — no capture buffer")]
     text = f.read_text(encoding="utf-8", errors="replace")
-    # Open entries are "### [date] title" that are not struck through (~~).
-    open_n = len([ln for ln in text.splitlines()
-                  if ln.startswith("### [") and "~~" not in ln])
+    # Count ONLY what sits under "## Open" — stop at the next H2. The first
+    # version counted every "### [" heading in the file and so read the five
+    # ARCHIVED captures as open, reporting 6 the moment one real item arrived.
+    # A checker that cannot tell open from closed is the same defect as a
+    # checker with no known-bad case; caught 2026-08-09, one hour after
+    # promoting "a detector is itself a claim" into CLAUDE.md #6.
+    open_n, in_open = 0, False
+    for ln in text.splitlines():
+        if ln.startswith("## "):
+            in_open = ln.startswith("## Open")
+            continue
+        if in_open and ln.startswith("### [") and "~~" not in ln:
+            open_n += 1
     if not open_n:
         return [("ok", "lessons.md: nothing awaiting promotion")]
     age = _days_since(_git(REPO, "log", "-1", "--format=%ad", "--date=short",
