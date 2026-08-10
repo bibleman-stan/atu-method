@@ -272,19 +272,39 @@ def check_private_tracked() -> list:
     A folder that sits at the bottom of a listing is easy to forget, and this is
     the check that makes forgetting impossible rather than merely unlikely.
     """
-    out = []
+    # CALIBRATION, added after this check's own first run was wrong. "Tracked
+    # under private/" is NOT the failure condition — readers-lxx and
+    # readers-vulgate carry `/private/*` plus `!/private/README.md`, an explicit
+    # negation making that one file deliberately public. Flagging it as a leak
+    # would have had Stan untracking a decision someone made on purpose.
+    #
+    # The real failure is a file that is tracked AND would be ignored if it
+    # were not — i.e. it predates the rule and only survives because .gitignore
+    # cannot untrack. `git check-ignore --no-index` distinguishes them; without
+    # --no-index git skips tracked paths entirely and reports nothing, which
+    # reads exactly like "no rule matches" and is the trap here.
+    out, deliberate = [], 0
     for name in SIBLINGS:
         root = REPO.parent / name
         if not (root / ".git").exists():
             continue
-        tracked = _git(root, "ls-files", "private")
-        files = [f for f in (tracked or "").splitlines() if f.strip()]
-        if files:
-            shown = ", ".join(files[:3]) + (" …" if len(files) > 3 else "")
-            out.append(("FAIL", f"{name}: {len(files)} file(s) TRACKED under "
-                                f"private/ — public if Pages serves the root ({shown})"))
+        files = [f for f in (_git(root, "ls-files", "private") or "").splitlines()
+                 if f.strip()]
+        leaked = []
+        for f in files:
+            rule = _git(root, "check-ignore", "-v", "--no-index", f)
+            if rule and ":!" not in rule.replace("\t", ""):
+                leaked.append(f)          # matched by a positive rule → accident
+            elif rule:
+                deliberate += 1           # matched by a `!` negation → intended
+        if leaked:
+            shown = ", ".join(x[len("private/"):] for x in leaked[:3])
+            out.append(("FAIL", f"{name}: {len(leaked)} file(s) tracked under "
+                                f"private/ that .gitignore would otherwise "
+                                f"exclude — live if Pages serves the root ({shown})"))
     if not out:
-        out.append(("ok", "private/ clean across all repos — 0 tracked files"))
+        out.append(("ok", f"private/ clean — 0 accidental, "
+                          f"{deliberate} deliberately un-ignored"))
     return out
 
 
