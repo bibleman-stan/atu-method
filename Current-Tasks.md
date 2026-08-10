@@ -1,63 +1,78 @@
-# Current Tasks — what is actually in flight
+# Current Tasks — the one place
 
-**The consolidated in-flight board.** Before this file existed, live state was split across my session todo list (which dies at compaction), [[Pending-Decisions.md]] (decisions only), `loop_health.py` output (mechanical only), and chat. Nothing held all of it, so the answer to *"what are we in the middle of?"* required reassembling it every time — and things fell through, which is how a whole-chapter hole in the Isaiah gold survived 73 days unnoticed.
+> **Plain-language version.** Stan: *"the problem has been you have had lots of places to hide the pending things; if there's only one place to look, I'll be able to catch up."* He is right. Pending work was spread across **eight** surfaces. This file now consolidates all of them, and it is the **seed for the GitHub Project board** — when that exists, this file is retired rather than maintained alongside it.
 
-**Organised by what unblocks it**, because that is the axis that matters when you open this file.
-
-- **Updated 2026-08-08.** `loop_health.py` warns if this board goes untouched more than 14 days while commits land — a date check catches a *stale* board, not a *wrong* one, which is its honest limit.
-- **Companion files**: [[Pending-Decisions.md]] holds the full argument for each decision (recommendation + why + cons); this board holds one line and a pointer. Settled things live in `memories/operational/_north_star.md` and do not appear here.
+**Rebuilt 2026-08-09.** The previous version went stale in 36 hours while I was working in the repo — 21 commits behind, and reported `ok` by a staleness check calibrated to 14 days. Both are now fixed; the check triggers on commit drift.
 
 ---
 
-## 1. Waiting on you — nothing moves until you rule
+## Where things were hiding, and what happened to each
 
-| # | Decision | Where the argument lives | If you say yes |
-|---|---|---|---|
-| D1 | **Cross-repo loop redesign** — retire the wiki's `findings/`, wiki becomes write-protected from the field, this repo becomes loop-closer with read access to theory | [[Pending-Decisions.md]] `[2026-08-08]` | 5 execution steps, in order; includes receiving F-001 here and renaming improvement→maturation |
-| D2 | **Framework §1 NOT-list** — do aural and rhetorical lenses stay excluded? | [[Pending-Decisions.md]] `[2026-08-07]` | Category B canon edit, cited from every reader repo |
-| D3 | **Retraction-protocol amendment** — strikes count *distinct events*, not log entries | [[Pending-Decisions.md]] `[2026-08-07]`, defect found in [[4-process/draft-promotions-2026-08-07.md|draft-promotions-2026-08-07.md]] | One-line edit to [[4-process/retraction-log-protocol.md|retraction-log-protocol.md]]; unblocks every future promotion count |
-| D4 | **Substrate loop — build the English bidirectional filter?** | [[2-evidence/finding-substrate-loop-diagnosis.md|finding-substrate-loop-diagnosis.md]] | A `Workflow` fan-out over ~503 candidate over-merges; the one unbuilt part of an otherwise complete loop |
-| D5 | **Collapse to two conversation partners?** | [[4-process/collapsed-maturation-loops.md|collapsed-maturation-loops.md]] | Reader Claudes retire; readers keep independently-authored gates. Non-negotiable condition stated in the doc |
-
-## 2. Ruled, but gated — you decided; a gate stands between the ruling and the edit
-
-| # | Item | Ruling | What must happen first |
-|---|---|---|---|
-| G1 | **Non-finite predication** — allow restoring a shared subject and modal, not only a gapped finite verb | Yours, 2026-08-07 | §7.3 adversarial audit (over-merge + atomicity, as a `Workflow`), **then** yardstick measurement with the change in and out. Survivors only; each retraction logged. Detail in [[4-process/proposal-2026-08-06-criterion-reconstruction.md|proposal-2026-08-06-criterion-reconstruction.md]] |
-
-## 3. In flight — mine, no decision needed
-
-| # | Item | State |
+| Surface | Items | Disposition |
 |---|---|---|
-| W1 | **Per-violation set-diff for validator baselines** | In progress. You ruled "build it" 2026-08-07. Turns a bare count-drift into a named list, so a baseline can be re-blessed knowingly |
-| W2 | **Loop 1 commit-message gate** — refuse a canon-touching commit with no §7.5 declaration | Not started. Mechanical replacement for a self-report currently running at 24% |
-| W3 | **Rule-set-vs-theory audit** — the second domino | Not started. You named it: nobody has audited the rule set against the theory, *or* the theory against the scholarship |
+| [[Pending-Decisions.md]] | 10 open | **Stays.** Decisions needing an argument — recommendation, why, cons. Titles only below. |
+| `Current-Tasks.md` (old) | 9 rows | **Replaced by this file.** |
+| [[4-process/lessons.md]] | 5 unpromoted | **Stays.** Capture buffer; promotion is a separate act. |
+| `loop_health.py` output | 11 warnings | **Listed below.** Runs at every session start. |
+| `memories/operational/_deferred_queue.md` | **43** | **Pointer below — NOT triaged today.** Untouched since 2026-08-07; content dates to ~2026-06. |
+| `4-process/audit-*.md` | 4 files | Summarised into decisions; **individual findings not itemised**. |
+| My session todo list | 6 | **Folded in below.** It dies at compaction and you could never see it. |
+| Commit messages | **6,120 words today** | The worst one. Findings, corrections and caveats went into a channel you do not read. **Stopping.** |
 
-## 4. Known broken, not scheduled — standing failures the health check reports every session
+---
 
-These are real and none is currently assigned. Listed so they stop being background noise.
+## 1. 🔴 Live — unresolved right now
 
-| Failure | Evidence |
-|---|---|
-| **Retraction→promotion loop has never fired** — 31 entries, 0 promotions, corpus-wide | `loop_health.py`; [[4-process/improvement-loops.md|improvement-loops.md]] Loop 2 |
-| **Validator baselines dead as controls** — gnt 2026-05-21 and tanakh 2026-06-02 both predate their newest corpus commit (2026-06-13); bofm likewise | `loop_health.py`; W1 addresses the diagnosis, not the re-blessing |
-| **Four readers have no retraction log** — lxx, vulgate, gnt-morph, rev-reader | `loop_health.py` |
-| **Gold yardstick 69 days old** | `loop_health.py`; the outcome instrument is not being re-run |
-| **Full hostile audit never recorded**, 188 moves accumulated | `loop_health.py`; run the `atu-audit-tier` skill to set the mark |
-| **65 broken doc paths** | `check_broken_pointers.py`. Mostly retired-doc mentions and sibling-repo paths, but not triaged — so the number is uninformative, which is its own defect |
-| **Substrate loop missing its filter** | [[2-evidence/finding-substrate-loop-diagnosis.md|finding-substrate-loop-diagnosis.md]] — D4 above |
+| | What | Where |
+|---|---|---|
+| L1 | **`private/` files served publicly** on four domains; repos are public, so history retains the rest | [[Pending-Decisions.md]] |
+| L2 | **Three HIGH gate-bypass findings** parked since ~2026-06 and never surfaced — Gate 10's citation allowlist is a finite list, its file-edit regex is enumerable, and a paraphrase passes its "verbatim" demand | [[memories/operational/_deferred_queue.md|_deferred_queue.md]] |
+| L3 | **BoFM: a rule applied to one book of fifteen for 65 days**; 789 of 23,112 lines unreproducible | [[Pending-Decisions.md]] |
+| L4 | **1.5 GB of audio over GitHub's 1 GB Pages ceiling**; the `readers-bofm` repo is 2.1 GB | audit-repo-architecture |
+
+**L2 is the one that should sting.** I spent today asking whether our validators can be trusted while three HIGH-severity findings about gate bypasses sat unread in a file I had access to the whole time.
+
+## 2. Waiting on you
+
+Ten open entries in [[Pending-Decisions.md]], each with recommendation / why / cons. Titles only, so this stays scannable:
+
+1. **GitHub Project** — set one up to corral the repos *(new today)*
+2. **Live exposure** — untrack `private/`, move Pages off the repo root, decide on history rewrite
+3. **Reproducibility gate first** — before any architectural decision
+4. **Greenfield vs new core** — the architecture question *(v1 withdrawn; v3 recommends greenfield)*
+5. **Cross-repo loop redesign (D1)** — the wiki already executed its half; ours is undone, and F-001 now has no home
+6. **Framework §1 NOT-list** — do the aural and rhetorical lenses stay excluded?
+7. **Non-finite predication** — ruled by you, gated on a §7.3 audit plus yardstick
+8. **Four validator regressions** — set-diff in progress
+9. **Retraction protocol amendment** — count distinct events, not log entries *(promotions denied)*
+10. **Repo reorganisation shape** — largely overtaken by the greenfield question
+
+## 3. Mine — in flight, no decision needed
+
+| | What | State |
+|---|---|---|
+| W1 | Per-violation set-diff for validator baselines | in progress |
+| W2 | Loop 1 commit-message gate requiring a §7.5 declaration | not started |
+| W3 | Rule-set-vs-theory audit — the second domino | not started |
+| W4 | §7.3 audit + yardstick before any §2.1 canon edit | blocked on 7 above |
+| W5 | Run the approval log across every corpus | ready — `scripts/decision_log.py`, calibrated |
+
+## 4. Known broken — reported every session, unassigned
+
+Retraction→promotion has **never fired** (31 entries, 0 promotions) · validator baselines dead as controls in gnt and tanakh · **four readers have no retraction log** · gold yardstick 69 days old · full hostile audit never recorded, 188 moves accumulated · 59 broken doc paths · substrate loop missing its filter · **this file was 20 commits behind** *(now fixed)*.
+
+## 5. Lessons captured, not promoted
+
+Five in [[4-process/lessons.md]], each with a candidate rule: proxy-trust · a detector is a claim, assert both poles in the script · do not propose what the repo already tried · do not architect from an uninventoried system · write the thing, not about the thing. **Promotion is the audit's job and your ratification.**
+
+## 6. Parked — 43 items, honestly not triaged
+
+[`memories/operational/_deferred_queue.md`](memories/operational/_deferred_queue.md) — untouched since 2026-08-07, content dating to ~2026-06. Contains the L2 gate bypasses above, the BHSA-canon migration, binding-engine extraction, cross-verse BoFM classes, and pointer-integrity findings. **I did not read all 43 today and am not pretending otherwise.** Triaging this queue is itself a task.
 
 ---
 
 ## How this file stays true
 
-1. **I update it in the same turn** a task changes state — the same discipline as file-back (standing default #5(c)).
-2. **`loop_health.py` checks it** on every session start and warns past 14 days of drift.
-3. **Decisions live in [[Pending-Decisions.md]]**, not here. This board points; it does not argue. When a decision resolves, it moves to that file's Resolved section and leaves this board.
-
-## Related
-
-- [[00-start-here.md]] — the vault map; start there if you are looking for a document rather than a task
-- [[Pending-Decisions.md]] — full argument, recommendation, and cons for every open decision
-- [[4-process/improvement-loops.md|improvement-loops.md]] — why these loops exist and which are measured broken
-- `memories/operational/_north_star.md` — settled decisions: closed routes, banked gold, parked work
+1. **It is the seed for the board, not a permanent fixture.** When the GitHub Project exists, this file is retired — not maintained in parallel.
+2. **`loop_health.py` now warns on commit drift**, not a 14-day clock that never fired.
+3. **Findings go in files, not commit messages.** 6,120 words in one day went somewhere you do not read.
