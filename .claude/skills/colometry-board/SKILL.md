@@ -41,7 +41,33 @@ gh auth refresh -s project     # add the mutation scope
 
 `gh` is **not installed** as of 2026-08-09 (verified: not on PATH, not in the standard Windows install dirs). Until it is, the board is browser-only and I can draft item text but not create items.
 
-## Commands *[unverified — from the gh manual, never run here]*
+## ⚠ CORRECTED 2026-08-09 on first real use
+
+**`gh` 2.97.0's `item-edit` takes IDs ONLY.** The claim below that recent `gh` accepts fields and options *by name* came from a search result and is **false for this version** — `gh project item-edit --help` lists `--field-id`, `--project-id`, `--single-select-option-id` and no name equivalents. So the ID table is required, not a fallback.
+
+**Resolved IDs — stable, recorded so they are never re-derived:**
+
+```
+PROJECT_ID   PVT_kwHOD78t2c4Bf4iM
+Corpus       PVTSSF_lAHOD78t2c4Bf4iMzhaIO78
+  tanakh 946ed6ed · bofm 841b8a6b · gnt 2c474d67 · lxx 0b9bc4b7
+  vulgate 81823e00 · cross f77f9cc4 · none ff3a1117
+Phase        PVTSSF_lAHOD78t2c4Bf4iMzhaIQ80
+  requirements 092b59be · design edbbff64 · implementation 999dae30 · deployment 707b1f31
+Blast radius PVTSSF_lAHOD78t2c4Bf4iMzhaIQ9s
+  skill bd1ffb90 · hook 70572b11 · autonomous 56492e7a
+Status       PVTSSF_lAHOD78t2c4Bf4iMzhaIKiw
+  Todo f75ad846 · In Progress 47fc9ee4 · Done 98236657
+```
+
+Live copy in `scripts/seed_board.py`. Re-query with:
+`gh api graphql -f query='{user(login:"bibleman-stan"){projectV2(number:1){id fields(first:30){nodes{... on ProjectV2SingleSelectField{id name options{id name}}}}}}}'`
+
+**Verified working:** `field-list`, `field-create --data-type SINGLE_SELECT --single-select-options`, `item-create --format json` (returns the item id), `item-edit --id --project-id --field-id --single-select-option-id`, `item-list --format json`. **Board seeded with 16 items, 0 missing field values.**
+
+**Note the auth gap this exposed:** `gh auth login` grants `gist, read:org, repo, workflow` — **not** `project`. `gh auth refresh -s project` is a required separate step, and without it the failure is a permissions error that does not name the missing scope.
+
+## Commands *[the by-name claim below is superseded — see the correction above]*
 
 ```
 gh project field-list   1 --owner bibleman-stan
