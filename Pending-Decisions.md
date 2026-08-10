@@ -16,7 +16,21 @@ Resolved entries move to the bottom with their date and outcome.
 
 ### [2026-08-09] Set up a GitHub Project to corral the repos?
 
-**Verified state, 2026-08-09.** All six repos have **0 open issues**, issues enabled, all **public**. `gh` is **not installed** on this machine. `readers-bofm` is **2.1 GB** (2,194,485 KB).
+**Verified state, 2026-08-09.** All six repos have **0 open issues**, issues enabled, all **public**. `readers-bofm` is **2.1 GB** (2,194,485 KB).
+
+> **⚠ Corrected — I conflated two tools.** I wrote "`gh` is not installed" in a way that implied the tooling is missing. It is not. Verified this turn:
+>
+> | Tool | State | What it does |
+> |---|---|---|
+> | **GitHub Desktop** (GUI) | ✅ **installed** — `AppData/Local/GitHubDesktop/GitHubDesktop.exe` | clone, branch, commit, **push**, **visual diff**, PRs |
+> | **`gh`** (GitHub CLI) | ❌ not on PATH, not in standard install dirs | scripting issues/projects from a terminal |
+> | **git** | ✅ 2.53.0 | — |
+>
+> **Three consequences, and the first is the important one.**
+>
+> 1. **The visual-diff guardrail the workflow consult recommended is already on this machine and unused.** *"You can see that Claude touched 40 lines when it should have touched 4."* That is the cheapest available check against my error rate and against the class of drift that went unnoticed for 65 days. It costs nothing to start using today.
+> 2. **Push is solved.** My "sandbox cannot push — 403 proxy" is about *this shell*, not about Stan. I stage changes; he reviews the diff in Desktop and pushes. That is strictly better than me pushing blind, because it inserts a human look at exactly the point where my errors have historically landed.
+> 3. **Desktop does not do Projects.** It is a git client with no Projects UI, so the board still has to be created in the browser. `gh` would only be needed for me to script the board — which is optional, not a blocker.
 
 **The first fact matters most: a Project is a view over items, and there are no items.** Create a board today and it is empty. So the question is not how to set one up — that is ten minutes — but what populates it.
 

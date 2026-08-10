@@ -60,3 +60,11 @@ Stan: this matches requirements -> design -> implementation -> deployment. The
 project has run implementation->deployment only. V-model makes the validator
 problem exact: 75 validators with nothing on the left to verify against.
 Gate 0 reframed from epistemology to requirements.
+
+## [2026-08-09] measure | tooling corrected — GitHub Desktop is installed
+
+I wrote "gh is not installed" in a way that implied the tooling is missing.
+GitHub Desktop IS installed (AppData/Local/GitHubDesktop); gh CLI is not; git
+2.53.0. Consequence: the visual-diff guardrail is already on the machine and
+unused, and push is solved -- I stage, Stan reviews the diff and pushes.
+Desktop has no Projects UI, so the board is still browser work.
