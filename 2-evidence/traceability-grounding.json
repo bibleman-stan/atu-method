@@ -1,0 +1,8 @@
+{
+  "_README": "Human judgments for the Grounding column of traceability-tanakh.md. Merged at build time by 5-machinery/scripts/build_traceability_index.py so regenerating the table never discards curation. Values: GROUNDED (source asserts the unit coheres AND that this bears on segmentation) | DESCRIBED (source establishes the phenomenon; the segmentation inference is ours) | PROJECT (no external source, a deliberate engineering decision) | UNGROUNDED (neither source nor rationale). Absent constraints render as UNVERIFIED. Only add an entry you can defend from the cited section itself -- a guess here is worse than a blank, because a blank is visibly a gap.",
+
+  "JM-cross-verse-continuity": {
+    "grounding": "PROJECT",
+    "note": "cites only Canon H10 and our own §1; the JM prefix implies Joüon but no section is given"
+  }
+}

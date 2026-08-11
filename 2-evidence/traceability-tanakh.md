@@ -2,10 +2,10 @@
 
 **Generated** by `5-machinery/scripts/build_traceability_index.py`. Regenerate rather than hand-edit the table; the Grounding column is the exception and is curated by hand.
 
-- Constraints in catalog: **23**
-- With a scholarly `Source`: **23/23**
-- With a name-matched validator: **14/23**
-- Validators with no matching constraint: **16**
+- Constraints in catalog: **26**
+- With a scholarly `Source`: **26/26**
+- With a name-matched validator: **17/26**
+- Validators with no matching constraint: **14**
 
 > The catalog is at `readers-tanakh/_archive/2026-05-18-mechanical-first-rewrite/`.
 > It is **archived**, marked `Status: DRAFT`, and the six live files in
@@ -23,6 +23,8 @@
 
 ## Constraints
 
+*Grounding judged: **1/26**. Curated in `2-evidence/traceability-grounding.json`, merged at build time so regenerating never discards it.*
+
 | Constraint | Source (scholarship) | Validator | Grounding |
 |---|---|---|---|
 | [[JM13-maqqef-group]] | Joüon §13; Layer 1 hebrew-break-legality.md row H1 | `validate_maqqef_integrity` | `UNVERIFIED` |
@@ -39,6 +41,9 @@
 | [[JM155-discourse-particle]] | Joüon §155; AC §4.5; canon H14 + M3 | `validate_bare_discourse_particle` | `UNVERIFIED` |
 | [[JM161-interrogative-particle]] | Joüon §161; canon M3 | `validate_interrogative_clause`<br>`validate_bare_discourse_particle` | `UNVERIFIED` |
 | [[JM156-casus-pendens]] | Joüon §156; WO §4.7; canon H15 | **— none —** | `UNVERIFIED` |
+| [[JM-oath-formula]] | Joüon §147 (oaths and adjurations); canon M4 + §1 formula integrity | `validate_oath_formula` | `UNVERIFIED` |
+| [[JM-cross-verse-continuity]] | Canon H10; §1 versification-is-not-a-break-signal | `validate_cross_verse_continuity` | `PROJECT` — cites only Canon H10 and our own §1; the JM prefix implies Joüon but no section is given |
+| [[JM-wayehi-fef-protasis]] | Joüon §155 / WO §33.1.1c; canon H16 | `validate_wayehi_protasis` | `UNVERIFIED` |
 | [[JM158-restrictive-relative]] | Joüon §158; WO §19.1 | **— none —** | `UNVERIFIED` |
 | [[JM158-nonrestrictive-relative]] | Joüon §158; WO §19.3 | **— none —** | `UNVERIFIED` |
 | [[JM168-purpose-clause]] | Joüon §168; WO §36.2.2; canon H7 extension | **— none —** | `UNVERIFIED` |
@@ -58,12 +63,10 @@ Each is either implementing a rule absent from the catalog, or implementing noth
 - `validate_blessed_cursed_chain`
 - `validate_canon_retirement_residue`
 - `validate_causal_ki`
-- `validate_cross_verse_continuity`
 - `validate_doc_pointers`
 - `validate_genealogy_uniformity`
 - `validate_line_final_tokens`
 - `validate_list_formula_uniformity`
-- `validate_oath_formula`
 - `validate_parallel_clause_split`
 - `validate_parallel_series_uniformity`
 - `validate_short_orphan_line`

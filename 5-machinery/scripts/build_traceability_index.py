@@ -33,18 +33,30 @@ guess.
 """
 
 import argparse
+import json
 import os
 import re
 import sys
 
 REPOS = os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__)))))
-CATALOG = os.path.join(REPOS, "readers-tanakh", "_archive",
-                       "2026-05-18-mechanical-first-rewrite",
+CATALOG = os.path.join(REPOS, "readers-tanakh", "1-method", "canon",
                        "constraint_catalog_v1.md")
 VAL_DIR = os.path.join(REPOS, "readers-tanakh", "5-machinery", "validators")
+# Human judgments live in a sidecar so the table stays regenerable. Hand-editing
+# the emitted markdown would lose the curation on the next run -- the same shape
+# of failure as every hand-maintained pointer this project has already lost.
+GROUNDING = os.path.join(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__)))),
+    "2-evidence", "traceability-grounding.json")
 
-ENTRY = re.compile(r"^### ((?:JM\d+[a-z]?|SJ\d+|M\d+|H\d+)-[a-z0-9-]+)", re.M)
+# Deliberately permissive. The first version required a section number after the
+# prefix (JM\d+) and silently dropped three entries: JM-oath-formula,
+# JM-cross-verse-continuity, JM-wayehi-fef-protasis. Those are the MOST
+# interesting rows, not the least -- a JM prefix with no Joüon section is
+# exactly the shape of a constraint that looks cited and is not. One of the
+# three cites only our own canon.
+ENTRY = re.compile(r"^### ((?:JM|SJ|M|H)\d*[a-z]?-[a-z0-9-]+)", re.M)
 SOURCE = re.compile(r"^\s*-?\s*\*\*Source\*\*:\s*(.+)$", re.M)
 
 # Tokens too generic to carry a match on their own. Without this, "clause"
@@ -137,6 +149,9 @@ def main() -> int:
 
     cat = load_catalog()
     vals = load_validators()
+    curated = {}
+    if os.path.exists(GROUNDING):
+        curated = json.load(open(GROUNDING, encoding="utf-8"))
     rows, unmatched_v = [], set(vals)
     for cid, src in cat:
         m = match(cid, vals)
@@ -166,11 +181,17 @@ def main() -> int:
     print("| `UNGROUNDED` | Neither source nor rationale — candidate for retirement |")
     print("| `UNVERIFIED` | Not yet judged by a human. The generator never guesses. |\n")
     print("## Constraints\n")
+    judged = sum(1 for cid, _, _ in rows if cid in curated)
+    print(f"*Grounding judged: **{judged}/{len(rows)}**. Curated in "
+          f"`2-evidence/traceability-grounding.json`, merged at build time so "
+          f"regenerating never discards it.*\n")
     print("| Constraint | Source (scholarship) | Validator | Grounding |")
     print("|---|---|---|---|")
     for cid, src, m in rows:
         v = "<br>".join(f"`{x}`" for x in m) if m else "**— none —**"
-        print(f"| [[{cid}]] | {src or '**— none —**'} | {v} | `UNVERIFIED` |")
+        c = curated.get(cid)
+        g = f"`{c['grounding']}`" + (f" — {c['note']}" if c.get("note") else "") if c else "`UNVERIFIED`"
+        print(f"| [[{cid}]] | {src or '**— none —**'} | {v} | {g} |")
 
     if unmatched_v:
         print("\n## Validators with no matching constraint\n")
