@@ -89,3 +89,37 @@ Escaping requires an external anchor, and there are exactly two kinds:
 2. **Empirical** — does the output match something we did not produce? **Missing.** That is the requirements-phase hole in [[2-evidence/finding-requirements-phase-hole.md]]: no gold, no yardstick, no acceptance criteria in the data plane.
 
 So the loop is open, not vicious. Half the closure material exists and is not connected; the other half has never been built.
+## Citation errors found in constraint_catalog_v1.md, 2026-08-11
+
+Checked the catalog's Joüon section numbers against the printed table of
+contents of Joüon–Muraoka, *A Grammar of Biblical Hebrew* (Rome: Pontificio
+Istituto Biblico, 2006), pp. xxi–xxxvi. No PDF required — the TOC alone
+falsifies five of them.
+
+| Constraint | Cited as | §  actually covers | Probable correct § |
+|---|---|---|---|
+| `JM-oath-formula` | Joüon §147 "oaths and adjurations" | **Pronominal substitutions** | **§165** Clause of curse and oath |
+| `JM147-vocative-extraclausal` | Joüon §147 "vocative and extra-clausal elements" | **Pronominal substitutions** | **§137g** Vocative |
+| `JM103-proclitic-stranding` | §137 "conjunction waw" | **Determination / the article** | **§104** Conjunction |
+| `JM174-gapped-verb` | Joüon §174 "gapping" | **Comparative clause** | **§125x** "Omission of the object from a second verb" |
+| `JM159e-conditional-protasis` | Joüon §159e | **§159 = Circumstantial clause** | **§167** Conditional clause |
+
+Note `JM-oath-formula` and `JM165` both appear: the catalog already cites §165
+correctly elsewhere, so §147 there is a transcription slip rather than a
+misunderstanding.
+
+**What this establishes.** "26/26 constraints carry a Source" was never a
+measure of grounding — it counted citation-shaped strings. Five of the section
+numbers do not survive contact with the table of contents, and no receipt was
+needed to discover that. The traceability table needs a value distinguishing
+*citation present* from *citation checked*.
+
+**Verified correct against the same TOC**: §13 Maqqef · §103 Preposition ·
+§121 Participle (§121c "Used as predicate") · §123 Infinitive absolute ·
+§125 Direct accusative · §129 Genitive and construct state (§129c "Length of a
+construct chain") · §133 Prepositions in particular · §154 Nominal clause ·
+§155 Verbal clause · §156 Casus pendens · §157 Substantival clause (§157ca
+"Genuine indirect speech") · §158 Relative clause (§158p "אֲשֶׁר cannot be used
+as non-restrictive relative pronoun") · §160 Negative clause · §161
+Interrogative sentence · §164 Asseverative clause · §165 Curse and oath ·
+§168 Final clause · §177 Syndesis and asyndesis.
