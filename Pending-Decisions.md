@@ -14,6 +14,24 @@ Resolved entries move to the bottom with their date and outcome.
 
 ## Open
 
+### [2026-08-10] Publish the Hardy-derived extractions, or keep them local?
+
+Surfaced while narrowing the `research/` ignore in `readers-bofm`. That folder held our own analysis, two copyrighted PDFs, and a third class: **extractions derived from those PDFs.** Our own work moved into the tiers; the PDFs stay ignored forever. The derived set is the open question:
+
+- `hardy_biblical_references.json` / `.xlsx`
+- `allusion_extractions_all.json`, `allusion_extractions_batch1_2.json`, `allusion_analysis.xlsx`
+- `bom_geographic_verses.xlsx` — provenance unconfirmed; grouped here rather than published on an assumption
+
+**Why it is a real question.** `readers-bofm` is public. A metric we computed ourselves is ours to publish. A complete extraction of Grant Hardy's annotation apparatus from *The Annotated Book of Mormon* (Oxford, 2023) is closer to redistributing the scholarly value of a copyrighted work in machine-readable form — and the more complete and better-structured our extraction, the more it substitutes for the book rather than pointing at it.
+
+**The precedent is already set, in the other direction.** `data/hardy_intertext.json` and `data/hardy_phrase_index.json` are **already tracked and already public**, along with `5-machinery/scripts/enrich_hardy_data.py`. So the repo already publishes Hardy-derived data. Keeping the `research/` extractions local while those stay public is not a coherent position — it is two answers to one question, decided by which folder a file happened to land in.
+
+**Recommendation: decide the class, then apply it to both places.** I lean toward publishing *derived indices* (verse-to-verse reference mappings — facts about which passages relate, which are not themselves copyrightable expression) while keeping *extracted prose* local (Hardy's notes, glosses, and commentary wording, which are his expression). That line is defensible and would let the already-public files stay public. But it needs a look at what the files actually contain, which I have not done — I listed them, I did not read them.
+
+**Cons of acting on the recommendation without that check:** if `hardy_intertext.json` turns out to carry Hardy's note text rather than bare references, the already-public files are the problem and the fix is a history question, not a gitignore question. **Cons of deferring:** the inconsistency persists in a public repo.
+
+**Blocked on Stan.** Recorded rather than acted on, per the rule that outward-facing publication is not mine to decide unilaterally.
+
 ### [2026-08-09] Name it `colometry-project` — and the consequence that falls out
 
 Stan: *"let's call the git project colometry-project; my thought being: ATUs may or may not survive under scrutiny, but colometry is one of my sites' 'value-added' propositions."*
