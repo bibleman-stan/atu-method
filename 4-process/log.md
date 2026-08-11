@@ -15,6 +15,26 @@ promotion. This records what **we did**.
 
 ---
 
+## [2026-08-11] decisions | ran the Hardy check -- no prose at risk, but no attribution either
+
+`b9b45ce`
+
+## [2026-08-10] decisions | Hardy-derived extractions -- publish or keep local
+
+`b61980e`
+
+## [2026-08-10] machinery | normalize_private_ignore.py -- track the stub, ignore the contents
+
+`af859b3`
+
+## [2026-08-10] build | per-violation set-diff for validator baselines — NOT yet wired, and why
+
+`672fe84`
+
+## [2026-08-10] schema | atu-method gains 5-machinery — the sixth and last repo
+
+`7aab681`
+
 ## [2026-08-10] build | reorg_reader.py — five-tier normalization, calibrated
 
 `4619d71`
@@ -314,23 +334,3 @@ promotion. This records what **we did**.
 ## [2026-06-06] canon-xref | Batch A3 §3.17 self-citation surgery + R25 cross-verse-defer ref
 
 `73112e4`
-
-## [2026-06-06] canon-xref | Batch A2 §3.x family repoints to per-corpus canon Rule Index
-
-`daa92b8`
-
-## [2026-06-06] canon-xref | Batch A1 clean repoints to live framework §1/§2.1/§7.0
-
-`86e1219`
-
-## [2026-06-05] — | canon(framework): extract §7.x change-protocol from _old/ into live §7
-
-`93d67f5`
-
-## [2026-06-04] substrate | add §10 — substrate vs. lens (vocabulary)
-
-`363b6e7`
-
-## [2026-06-03] — | Revert "docs: substrate Phase 0 — multi-lens protocol + feature catalog + lens template"
-
-`6e80c82`
