@@ -64,7 +64,13 @@ SKIP_DIRS = ("_archive", "_old", ".archive", "__pycache__", ".git",
 # while code silently broke. Prose is the only context where "the prefix is
 # wrong" can be decided from surrounding words, so prose is the only context
 # this script touches. The handful of genuine .py cases are fixed by hand.
-EXTS = (".md",)
+EXTS = (".md", ".py")
+
+# In .py files ONLY comment lines are eligible. A comment is prose and obeys the
+# same rules as markdown; a code line may contain a string literal that IS a path
+# and has no English grammar around it to judge by. That distinction is the whole
+# lesson of the first attempt, encoded.
+PY_COMMENT = re.compile(r"^\s*#")
 
 # Files whose SUBJECT is paths. Their correct content looks exactly like the
 # defect -- mapping tables, known-directory lists, worked examples of the
@@ -159,7 +165,11 @@ def run(repo: str, dry: bool):
                     in_fence = not in_fence
                     new.append(line)
                     continue
-                if in_fence or body.startswith("    "):
+                if in_fence or (fn.endswith(".md") and body.startswith("    ")):
+                    new.append(line)
+                    continue
+                # Python: comment lines only. Never a code line.
+                if fn.endswith(".py") and not PY_COMMENT.match(body):
                     new.append(line)
                     continue
                 fixed, n = fix_line(body)

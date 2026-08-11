@@ -327,7 +327,7 @@ def _comprehensive_perturbations(n_lines):
 #  - KJV rhetorical repetition (Mat 1:6 "David the king ... David begat")
 #
 # Synthetic but realistic: real Strong's IDs, real vpos sequences. The
-# Greek/Hebrew surface forms are placeholders since this only 5-machinery/tests the
+# Greek/Hebrew surface forms are placeholders since this only tests the
 # alignment property, not the surface output.
 
 FIXTURES = [

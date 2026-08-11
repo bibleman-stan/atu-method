@@ -54,7 +54,7 @@ METAV_DIR = _REPO_ROOT / "data" / "kjv-strongs"
 
 
 # ----------------------------------------------------------------------
-# Strong's normalization 5-machinery/tests
+# Strong's normalization tests
 # ----------------------------------------------------------------------
 
 
@@ -120,7 +120,7 @@ class TestStrongsNormalize(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# MetaV loader smoke 5-machinery/tests
+# MetaV loader smoke tests
 # ----------------------------------------------------------------------
 
 
@@ -160,7 +160,7 @@ class TestMetavLoader(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# End-to-end alignment 5-machinery/tests
+# End-to-end alignment tests
 # ----------------------------------------------------------------------
 
 
@@ -342,7 +342,7 @@ class TestEndToEndAlignment(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# Synthetic unit 5-machinery/tests for distribute (no MetaV needed)
+# Synthetic unit tests for distribute (no MetaV needed)
 # ----------------------------------------------------------------------
 
 
@@ -374,7 +374,7 @@ class TestDistributeUnit(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# Wave 7 regression 5-machinery/tests — positional-aware distribution
+# Wave 7 regression tests — positional-aware distribution
 # ----------------------------------------------------------------------
 
 
