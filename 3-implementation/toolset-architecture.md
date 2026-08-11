@@ -98,7 +98,7 @@ The mechanical signal should be the COARSEST reliable signal. Finer signals (te'
 
 ## Pilot artifacts
 
-The pilot 5-machinery/scripts at `readers-tanakh/research/atu-pilot-mechanical-first/` are the reference implementation:
+The pilot scripts at `readers-tanakh/research/atu-pilot-mechanical-first/` are the reference implementation:
 
 | Script | Stage |
 |---|---|
@@ -116,7 +116,7 @@ Each script reads from `pilot_config.py` for chapter-specific paths. To run on a
 
 ## Productization (TODO)
 
-The pilot 5-machinery/scripts are research-quality. Productizing for full-corpus rendering requires:
+The pilot scripts are research-quality. Productizing for full-corpus rendering requires:
 
 1. **Batching across chapters** — currently config is single-chapter; needs orchestration
 2. **Integration with `refresh_book.py` cascade** — automatic v0→v2/heb pipeline triggering

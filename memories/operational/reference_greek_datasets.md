@@ -19,7 +19,7 @@ The GNT ATU work has MULTIPLE Greek datasets. The engine currently sources only 
   - word-level **`person`** (first/second/third) + **`subjref`/`referent`** participant tracking — the **deixis test** (shared vs. shifted deictic center; person alone is insufficient, needs referent).
   - **`frame`** = PropBank-style semantic argument structure (A0/A1); plus `role`, `lemma`, `morph`, `domain`/`ln` (Louw-Nida), `gloss`, `after` (punctuation), `discontinuous`.
 - **Clause rules of colometric interest:** `Conj-CL`, `sub-CL`, `that-VP`, `ClCl`/`ClCl2`/`CLaCL`, `DetCL` (nominalized/relative). The DISCRIMINATING tag sits on the **immediate** wrapper around the ὅτι-clause, not the outer combination node.
-- **Helper 5-machinery/scripts (plumbing partly built):** `readers-gnt/scripts/macula_clauses.py`, `macula_predication.py`, `macula_valency.py`, `macula_wordgroups.py`, `audit_anaphoric_gen_abs_macula.py`.
+- **Helper scripts (plumbing partly built):** `readers-gnt/scripts/macula_clauses.py`, `macula_predication.py`, `macula_valency.py`, `macula_wordgroups.py`, `audit_anaphoric_gen_abs_macula.py`.
 
 ## sblgnt-lowfat — the THIN treebank (current LIVE v1 source)
 - **Path:** `C:\Users\bibleman\repos\biblical-corpora\greek-new-testament\syntax-trees\sblgnt-lowfat\xml\`.

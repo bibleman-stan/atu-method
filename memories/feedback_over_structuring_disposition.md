@@ -11,7 +11,7 @@ Before writing a new scanner, proposing a new rule, building infrastructure, or 
 
 1. **Is there already a scanner, rule, or tool for this?** (rule-multiplication check) — before writing `scan_foo.py`, check whether an existing scanner already catches the pattern. If yes, use it; if near-miss, extend it with a minimal delta; only write new if the existing tooling genuinely doesn't fit. Canon version: before proposing a new rule, check whether an existing "unless" case or rule already handles the trigger case. (Example from this repo 2026-04-18: the withdrawn "long interjection earns split" proposal, where existing "unless" case #1 already handled the valid case.)
 
-2. **Does the tagged data or existing tool already provide the signal I'm re-deriving?** (implementation-level check) — before writing custom regex / handcoded lookup tables / per-pattern exclusion lists, check whether existing corpus data or existing 5-machinery/scripts already provide what you need. In 90%+ of cases the existing tooling answers the question in 20–100 lines of glue, not 500–800 of re-implementation.
+2. **Does the tagged data or existing tool already provide the signal I'm re-deriving?** (implementation-level check) — before writing custom regex / handcoded lookup tables / per-pattern exclusion lists, check whether existing corpus data or existing scripts already provide what you need. In 90%+ of cases the existing tooling answers the question in 20–100 lines of glue, not 500–800 of re-implementation.
 
 3. **Am I answering the question Stan asked, or a different question?** (scope check) — when Stan asks for a thermometer / validation / minimal-check / spot-test, the response is to RUN the thermometer, not build new tooling around it. If the thermometer fails, *then* propose the minimal delta. "Build first, validate later" is over-structuring via scope expansion.
 
@@ -45,4 +45,4 @@ Over-structuring is the ROOT disposition. Specific failure modes:
 
 ## Note on propagation
 
-This memory was propagated into this trench from the overseer on 2026-04-19 because the disposition fires in any trench. Adaptation: Q2 references "existing corpus data or existing 5-machinery/scripts" (BofM doesn't have MorphGNT-style tagged data; the analogous resources are the v2-mine corpus + the settled-rules catalog + existing scanner outputs).
+This memory was propagated into this trench from the overseer on 2026-04-19 because the disposition fires in any trench. Adaptation: Q2 references "existing corpus data or existing scripts" (BofM doesn't have MorphGNT-style tagged data; the analogous resources are the v2-mine corpus + the settled-rules catalog + existing scanner outputs).

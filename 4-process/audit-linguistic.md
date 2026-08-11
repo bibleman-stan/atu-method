@@ -440,7 +440,7 @@ Even granting a unified engine, the proposal assumes the *specification* is corp
 | Discourse-particle attribution within reported speech | :72 | closed list "yea, behold, verily, lo, amen, yes" |
 | Discourse-particle amplification | :81 | 1 Ne 11:1 |
 | Cognition-frame participial allowance | :88 | "**Rare in BoFM (1 documented instance — Alma 33:1)**" |
-| Object-slot + deixis 5-machinery/tests for ὅτι | :48-50 | Macula-feature-sourced; **GNT only** |
+| Object-slot + deixis tests for ὅτι | :48-50 | Macula-feature-sourced; **GNT only** |
 | Explicit-marker Registry | §2.2:105-114 | "**registered per-corpus**" |
 
 Six of these are Early Modern English / Book of Mormon allowances written into the shared framework document, two are Greek-only and depend on a Greek-only feature source, and the §2.2 Marker Registry is per-corpus **by design** ("Each marker is registered per-corpus with its bidirectional-test status", :114).

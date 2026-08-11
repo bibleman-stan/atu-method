@@ -27,7 +27,7 @@ cssclasses:
 > | No acceptance criterion for "is this segmentation right" | **Requirements** |
 > | Loops written up *after* the machinery accreted | Both — "assembled and then described" |
 >
-> **The V-model makes the validator problem exact.** Each development phase pairs with a verification level: requirements ↔ acceptance 5-machinery/tests, design ↔ integration 5-machinery/tests, implementation ↔ unit 5-machinery/tests. We built the bottom-right (75 validators) with nothing on the left for them to verify *against*. **That is why they cannot be trusted, and why adding more would not help.**
+> **The V-model makes the validator problem exact.** Each development phase pairs with a verification level: requirements ↔ acceptance tests, design ↔ integration tests, implementation ↔ unit tests. We built the bottom-right (75 validators) with nothing on the left for them to verify *against*. **That is why they cannot be trusted, and why adding more would not help.**
 >
 > **And it reframes Gate 0 usefully.** "Is there an external arbiter?" has been treated as an epistemology problem. It is a **requirements** problem: *what does correct output look like, and who says so?* That is the first requirement of the system, it has never been written down, and it is Stan's to answer rather than mine to discover.
 >

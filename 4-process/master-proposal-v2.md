@@ -5,7 +5,7 @@ cssclasses:
 
 # Master proposal v2 — propagate the pattern that already works
 
-> **Plain-language version.** Version 1 of this proposal was withdrawn because almost every fact I asserted about our own system turned out wrong. Four audits established what is actually there. The headline: **a correct rule system already exists in one corner of the estate** — 62 YAML rule specs driven by a shared runner in `readers-tanakh` — and the thing that is genuinely broken is a set of 17 hand-run 5-machinery/scripts that edit the deployed text in place. So the move is neither "rebuild everything" nor "finish an abandoned direction." It is: **take the pattern that already works, propagate it, and delete the one that doesn't.**
+> **Plain-language version.** Version 1 of this proposal was withdrawn because almost every fact I asserted about our own system turned out wrong. Four audits established what is actually there. The headline: **a correct rule system already exists in one corner of the estate** — 62 YAML rule specs driven by a shared runner in `readers-tanakh` — and the thing that is genuinely broken is a set of 17 hand-run scripts that edit the deployed text in place. So the move is neither "rebuild everything" nor "finish an abandoned direction." It is: **take the pattern that already works, propagate it, and delete the one that doesn't.**
 
 **Status: PROPOSAL. Nothing adopted.** Written 2026-08-09, replacing the withdrawn [[4-process/master-proposal-rebuild.md|master-proposal-rebuild.md]].
 
@@ -157,7 +157,7 @@ Per Stan's reframe, carried material enters **provisional, not authoritative**:
 
 **Step 1 — the reproducibility gate. Built this turn.** `5-machinery/scripts/decision_log.py`, calibrated on three poles that must pass before it will report. Per corpus: regenerate, set-diff against deployed, emit each divergence as `status: unreviewed`. This is simultaneously the gate, the LOG organ, and the seed of CASES. **Path-independent** — greenfield, propagation, and do-nothing all need it.
 
-**Step 2 — prove the pattern on the hardest case.** Express **one** BoFM rule as a YAML spec under `spec_runner`, retire its in-place mutator, regenerate, diff. This 5-machinery/tests the load-bearing assumption — that a Hebrew-shaped spec runner can express an English rule — on the smallest surface that can falsify it. If it cannot, the propagation plan dies here, cheaply.
+**Step 2 — prove the pattern on the hardest case.** Express **one** BoFM rule as a YAML spec under `spec_runner`, retire its in-place mutator, regenerate, diff. This tests the load-bearing assumption — that a Hebrew-shaped spec runner can express an English rule — on the smallest surface that can falsify it. If it cannot, the propagation plan dies here, cheaply.
 
 **Step 3 — decide.** With Steps 1–2 reporting, greenfield versus propagation stops being a matter of opinion.
 

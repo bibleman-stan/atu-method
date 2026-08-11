@@ -148,7 +148,7 @@ https://bomreader.com/CLAUDE.md                    200   5364
 https://tanakh-reader.com/data/search_index.json   200
 ```
 
-**Finding P-0 (CONFIRMED, SERIOUS-in-favour-of-the-proposal):** [[CLAUDE.md]], build 5-machinery/scripts, and the full corpus data directory are served to the open internet from every reader domain. Separating build output from source is not just architectural hygiene here — it closes a live exposure. **This is the strongest argument in the proposal and it is not the one the proposal makes.**
+**Finding P-0 (CONFIRMED, SERIOUS-in-favour-of-the-proposal):** [[CLAUDE.md]], build scripts, and the full corpus data directory are served to the open internet from every reader domain. Separating build output from source is not just architectural hygiene here — it closes a live exposure. **This is the strongest argument in the proposal and it is not the one the proposal makes.**
 
 ### 2.2 Force-push is the wrong mechanism, and on one repo it is destructive
 
@@ -331,7 +331,7 @@ PROJECT-BRIEF-2026-08-08.md:71: `--baseline-check` is counts-only; offsetting er
 
 ### 6.2 Is the behavioural snapshot golden-master done right?
 
-The idea — *"Run the current system across every corpus and capture every decision it makes … each rule firing, each override, each merge and split, with ref, rule, and outcome"* — **is** characterization testing, correctly identified. Feathers' definition: *"instead of trying to uncover the behavior we simply assume that whatever is happening right now is exactly what should be happening and write 5-machinery/tests that assert this."* It is the standard, correct move before refactoring untested legacy code, and **the proposal deserves credit for reaching for it unprompted.**
+The idea — *"Run the current system across every corpus and capture every decision it makes … each rule firing, each override, each merge and split, with ref, rule, and outcome"* — **is** characterization testing, correctly identified. Feathers' definition: *"instead of trying to uncover the behavior we simply assume that whatever is happening right now is exactly what should be happening and write tests that assert this."* It is the standard, correct move before refactoring untested legacy code, and **the proposal deserves credit for reaching for it unprompted.**
 
 Two things about the *design* are right and one framing is dangerous:
 
@@ -345,14 +345,14 @@ Two things about the *design* are right and one framing is dangerous:
 
 | Failure mode | Present here? |
 |---|---|
-| **Locks in existing bugs.** Characterization 5-machinery/tests assert current behaviour including its defects. | **YES, and unavoidable.** Mitigation is labelling, not avoidance: every snapshot row must be `status: unreviewed` and must never satisfy a CASES query until a human has adjudicated it. |
+| **Locks in existing bugs.** Characterization tests assert current behaviour including its defects. | **YES, and unavoidable.** Mitigation is labelling, not avoidance: every snapshot row must be `status: unreviewed` and must never satisfy a CASES query until a human has adjudicated it. |
 | **Rubber-stamping / snapshot blindness.** *"Developers often update snapshots without looking at them."* Jest's own ESLint rule caps snapshots at 50 lines by default. | **HIGH RISK.** ~1,045 HTML outputs, 911 overrides, and an unknown number of rule firings across five corpora. One developer, no reviewer. The `--update-baseline` reflex that killed the current gates is the same reflex. [[CLAUDE.md]] already forbids `--update-baseline`; the snapshot needs the identical prohibition written into the tool, not the docs. |
 | **Nondeterminism.** Snapshots flake on unpinned inputs. | **HIGH RISK, unmeasured.** Zero lockfiles exist (§7 R-2). A Stanza or Text-Fabric version bump would diff the entire snapshot with no way to distinguish "engine changed" from "dependency changed." **Pinning must precede snapshotting or the snapshot is worthless.** |
 | **Temporary-measure drift.** *"A characterization test is a temporary measure … it's just there to get you out of a bind."* | **Proposal treats it as permanent** (it becomes CASES). That is a legitimate deviation *if* rows are progressively promoted from `unreviewed` to adjudicated — but the promotion mechanism is not specified. |
 
 **Verdict on the snapshot:** correct instinct, correct granularity, and it is the highest-value item in the whole plan because it is the only step that is *equally useful whichever path is chosen* — the proposal's own argument, and it holds. **But it has three hard prerequisites the proposal does not state:** (1) pin dependencies first; (2) snapshot rows are `unreviewed` and cannot satisfy a CASES query; (3) the diff must be a **set-diff**, never a count-diff, or it reproduces B-0.
 
-Sources: [Characterization test — Wikipedia](https://en.wikipedia.org/wiki/Characterization_test), [Characterization 5-machinery/tests or approval 5-machinery/tests? — Understand Legacy Code](https://understandlegacycode.com/blog/characterization-tests-or-approval-tests/), [Snapshot Testing — Jest](https://jestjs.io/docs/snapshot-testing), [Effective Snapshot Testing — Kent C. Dodds](https://kentcdodds.com/blog/effective-snapshot-testing), [What's wrong with snapshot 5-machinery/tests — Sapegin](https://blog.usejournal.com/whats-wrong-with-snapshot-tests-37fbe20dfe8e).
+Sources: [Characterization test — Wikipedia](https://en.wikipedia.org/wiki/Characterization_test), [Characterization tests or approval tests? — Understand Legacy Code](https://understandlegacycode.com/blog/characterization-tests-or-approval-tests/), [Snapshot Testing — Jest](https://jestjs.io/docs/snapshot-testing), [Effective Snapshot Testing — Kent C. Dodds](https://kentcdodds.com/blog/effective-snapshot-testing), [What's wrong with snapshot tests — Sapegin](https://blog.usejournal.com/whats-wrong-with-snapshot-tests-37fbe20dfe8e).
 
 ---
 
@@ -464,7 +464,7 @@ Ordered so that each step is independently valuable and none requires the archit
 
 **Survives intact:**
 
-- **The diagnosis.** Five of ten components absent or prose-only is the right reading, and the audit strengthened it: the estate is *already* a distributed monolith held together by `sys.path.insert(0, "../atu-method")` at `readers-gnt/scripts/build_books.py:35`, and the whole source tree — build 5-machinery/scripts, corpus data, [[CLAUDE.md]] — is served publicly on all five production domains. The proposal argues for consolidation on cleanliness grounds when it could have argued on coupling and exposure grounds and won harder.
+- **The diagnosis.** Five of ten components absent or prose-only is the right reading, and the audit strengthened it: the estate is *already* a distributed monolith held together by `sys.path.insert(0, "../atu-method")` at `readers-gnt/scripts/build_books.py:35`, and the whole source tree — build scripts, corpus data, [[CLAUDE.md]] — is served publicly on all five production domains. The proposal argues for consolidation on cleanliness grounds when it could have argued on coupling and exposure grounds and won harder.
 - **"Sites should stop having opinions."** Correct, and P-0 proves it.
 - **The monorepo direction.** For one engine, N datasets, N domains and **one developer**, the polyrepo case in the literature is almost entirely an organisational case worth zero here, while its documented failure mode — *"separate repositories that still have to deploy together"* — is this estate, verified.
 - **The behavioural snapshot as the first move.** Correct pattern, correctly identified as characterization testing, correctly captured at decision granularity rather than rendered-output granularity, and correctly argued to be path-independent. **The single highest-value item in the plan.**

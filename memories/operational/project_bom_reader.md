@@ -13,7 +13,7 @@ metadata:
 Web reading app for the Book of Mormon at bomreader.com. Repo at C:\Users\bibleman\repos\readers-bofm.
 
 **Why:** ESL readers, children, newcomers. Sense-line (cola) format for read-aloud delivery.
-**Stack:** Vanilla HTML/CSS/JS SPA, Python 3 build 5-machinery/scripts, GitHub Pages.
+**Stack:** Vanilla HTML/CSS/JS SPA, Python 3 build scripts, GitHub Pages.
 **How to apply:** Always read CLAUDE.md and handoffs/ before any substantive work. The handoffs are the authoritative state of the project.
 
 Key constraints:
@@ -26,7 +26,7 @@ Key constraints:
 Repo structure (as of 2026-03-21):
 - Root: 13 files (index.html, build_book.py, narration.js, annotations.js, sw.js, CLAUDE.md, etc.)
 - handoffs/: 14 documentation files (00-13)
-- 5-machinery/scripts/: 15 utility 5-machinery/scripts (colometric_analysis.py, senseline_reformat_v8.py, build_* 5-machinery/scripts)
+- 5-machinery/scripts/: 15 utility scripts (colometric_analysis.py, senseline_reformat_v8.py, build_* scripts)
 - data/: production assets only (indexes, glosses, source texts)
 - research/: SYMLINK to C:\vaults-nano\my_brain\10_Projects\BOM-Reader-Research\ — gitignored, not on public repo
 - books/: generated HTML (15 files, rebuilt from v2 sources)

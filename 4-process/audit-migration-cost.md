@@ -62,7 +62,7 @@ And the practitioner statement of the consequence, quoted in a peer-reviewed sys
 That review catalogues the drawbacks with frequencies across 50 analysed documents: fragility 28%, lack of context 22%, large snapshots 16%, manual verification 12%, flaky behaviour 6% (its Table 3). The named failure modes that land directly on this project:
 
 - **Bug lock-in.** "you may commit code with a bug and a snapshot that ensures that the bug is still there." — Artem Sapegin, <https://medium.com/@sapegin/whats-wrong-with-snapshot-tests-37fbe20dfe8e>
-- **Rubber-stamping.** "when 5-machinery/tests fail, it is very easy to update the snapshots without fixing the code and understanding the failure reason." (D34, JSS 2023). Jest's own documentation concedes the pull: it exists to "fight against the habit of regenerating snapshots when test suites fail instead of examining the root causes of their failure." <https://jestjs.io/docs/snapshot-testing>
+- **Rubber-stamping.** "when tests fail, it is very easy to update the snapshots without fixing the code and understanding the failure reason." (D34, JSS 2023). Jest's own documentation concedes the pull: it exists to "fight against the habit of regenerating snapshots when test suites fail instead of examining the root causes of their failure." <https://jestjs.io/docs/snapshot-testing>
 - **Nobody reads it.** "I've personally experienced this with a snapshot that's over 640 lines long. **Nobody reviews it.**" — Kent C. Dodds, <https://kentcdodds.com/blog/effective-snapshot-testing>. The proposed snapshot here is ~108,000 ATU lines.
 - **Non-determinism.** "one of the most frequent (issues) were non-deterministic JSON outputs... We were frequently facing failures." (D14, JSS 2023). The canonical mitigation is canonicalisation at capture time — "scrubbers" — not tolerance at compare time: <https://approvaltestscpp.readthedocs.io/en/latest/generated_docs/explanations/Scrubbers.html>
 
@@ -107,7 +107,7 @@ deployed lines not reproduced by current code: 789
 
 *(Honesty note: my first pass used positional line-by-line comparison and reported 66% divergence for Enos. That number was an alignment artefact — one inserted line shifts every subsequent line. The SequenceMatcher figures above are the correct ones. Correcting my own miscalibrated detector inside an audit that criticises miscalibrated detectors seemed worth stating rather than quietly fixing.)*
 
-**Why it cannot be reproduced.** The deployed corpus is not the output of `bofm_generate.py`. It is that output, plus an unrecorded sequence of in-place mutation 5-machinery/scripts:
+**Why it cannot be reproduced.** The deployed corpus is not the output of `bofm_generate.py`. It is that output, plus an unrecorded sequence of in-place mutation scripts:
 
 ```
 $ ls 5-machinery/validators/apply_*.py | wc -l
@@ -119,7 +119,7 @@ $ grep -n "CORPUS\|--apply" 5-machinery/validators/apply_frame_merges.py
 16:CORPUS = Path(__file__).resolve().parent.parent.parent / "data/text-files/v2"
 ```
 
-Seventeen 5-machinery/scripts that rewrite the deployed corpus in place. And nothing sequences them:
+Seventeen scripts that rewrite the deployed corpus in place. And nothing sequences them:
 
 ```
 $ grep -rn "apply_rule_06|apply_rule_29|apply_frame_merges" . \
@@ -292,7 +292,7 @@ The bug-for-bug trap is the specific hazard here, because the proposal's own pre
 
 1. **It cannot be built for BoFM at all** (§1.2) — the corpus with 911 overrides and the most judgment invested.
 2. **It is free for GNT** — `regenerate && git diff` today.
-3. **It does not exist for LXX or Vulgate in any form** — those two repos have zero validators, zero 5-machinery/tests, and are absent from the deployment record entirely.
+3. **It does not exist for LXX or Vulgate in any form** — those two repos have zero validators, zero tests, and are absent from the deployment record entirely.
 
 So the artefact's value ranges from *impossible* to *already free* across the five corpora. "Equally valuable" is not a defensible summary of that spread. **CONFIRMED. SERIOUS.**
 
@@ -315,7 +315,7 @@ So the artefact's value ranges from *impossible* to *already free* across the fi
 - the absence of CI (F12)
 - the unpinned substrate (F10)
 - the absent offsite backup (F11)
-- the 127 one-off 5-machinery/scripts and 37,821 LOC of dead weight
+- the 127 one-off scripts and 37,821 LOC of dead weight
 
 Every one of those is a defect today, is real regardless of the arbiter answer, and is fixable without answering it. Framing Gate 0 as able to "terminate the whole plan" is true only if "the plan" is exclusively about correctness-of-segmentation. But Parts 4–7 also promise to fix the record, the validators, and the presentation duplication. **Gate 0 gates none of those.** CONFIRMED. SERIOUS.
 
@@ -566,7 +566,7 @@ This is the single most applicable finding in the set. At 6–10 hours a week ac
 - A gate that outputs **five integers, all of which should be zero** (§10) is close to optimal — it re-establishes system state in one glance.
 - A "behavioural snapshot" of 108,000 lines is close to worst-case.
 - 106 memories, 10 [[CLAUDE.md]] files across the cascade, and 11 process documents in `4-process/` are resumption *tax*, not resumption *aid*.
-- 127 one-off 5-machinery/scripts (§9-C3) are pure extraneous load: they are navigable, greppable, and irrelevant.
+- 127 one-off scripts (§9-C3) are pure extraneous load: they are navigable, greppable, and irrelevant.
 
 **(c) Single-maintainer is the ecosystem norm, not a pathology.**
 
@@ -604,7 +604,7 @@ The second quote lands too. Decision documentation in this program is spread acr
 Concrete and ordered by measured leverage:
 
 1. **Make state readable in one glance.** Five integers, all zero (§10). Nothing else in this audit competes on resumption cost.
-2. **Delete 25% of the code** (§9-C3). Extraneous load is the reducible kind; 127 one-off 5-machinery/scripts are the purest example available.
+2. **Delete 25% of the code** (§9-C3). Extraneous load is the reducible kind; 127 one-off scripts are the purest example available.
 3. **Finish the decision records you already have.** [[Pending-Decisions.md]] is an ADR system in everything but name — decision, recommendation, why, cons, resolved-section. Its **Resolved section is empty**: *"(none yet — entries move here with date and outcome)"*. Six open entries, zero resolved. An ADR log that never resolves is a worry-bead. Nygard's value comes from the *Status* field moving.
 4. **One page per pipeline, verified by running it** (§9-C5). This audit's four biggest findings came from doing that for two of five.
 5. **Consolidate where decisions live.** Ahmeti et al.'s storage finding says the diffusion itself is costing comprehension, independent of content.
@@ -787,7 +787,7 @@ Rules of evidence cut both ways, so: I rejected several widely-circulated figure
 | Alternative | Elapsed | Stan-decisions |
 |---|---|---|
 | Reproducibility gate, all corpora (§10) | **1–2 days** | 1 |
-| Archive the 127 one-off 5-machinery/scripts (37,821 LOC, 25% of the codebase) | 1 day | 1 |
+| Archive the 127 one-off scripts (37,821 LOC, 25% of the codebase) | 1 day | 1 |
 | Pin dependencies + substrate versions | 1 day | 0 |
 | Offsite backup of the 1.9 GB unbacked substrate | half a day | 1 |
 | Add CI running the existing validators | 2–3 days | 1 |
@@ -813,7 +813,7 @@ Change nothing structural. Fix the 789-line drift, fix the audio, and keep shipp
 The `Pending-Decisions` diagnosis is that *one* thing is missing — a decision record — with six symptoms. If that diagnosis is right, then **the decision record is the whole intervention**, and Parts 3–8 of the proposal are a separate project that happens to be adjacent. The proposal itself concedes this: *"we do not need a greenfield to start recording them properly."* Nothing in the case for restructuring follows from the case-record diagnosis.
 
 ### C2 — Shrink scope by retiring corpora
-LXX and Vulgate have **1 validator each, 0 5-machinery/tests, 22 and 34 authored files**, are absent from the deployment record, and between them hold 1.84 GB of unbacked private substrate. Freezing them (leave the sites serving, stop developing) removes **2 of 5 sites from every future cascade** at zero cost to any current reader. That is a larger reduction in coordination surface than anything in Part 5, and it takes an afternoon.
+LXX and Vulgate have **1 validator each, 0 tests, 22 and 34 authored files**, are absent from the deployment record, and between them hold 1.84 GB of unbacked private substrate. Freezing them (leave the sites serving, stop developing) removes **2 of 5 sites from every future cascade** at zero cost to any current reader. That is a larger reduction in coordination surface than anything in Part 5, and it takes an afternoon.
 
 ### C3 — Delete the dead weight
 127 files / 37,821 LOC — **25% of the entire codebase** — are one-off scans, audits, diagnostics and probes (`scan_*`, `audit_*`, `diag_*`, `inspect_*`, `enumerate_*`, `extract_*`). Archiving them shrinks what any future maintainer must navigate by a quarter, cannot break anything (nothing imports them into a build path), and costs a day. Cognitive load is the decisive axis by the proposal's own argument; this is the single largest cognitive-load reduction available anywhere, and it requires no architectural decision.
@@ -909,7 +909,7 @@ That last row is the point. The proposal's artefact produces something Stan cann
 1. Pin the environment — one `requirements.txt` per repo, and record the three substrate HEADs plus the BHSA TF version in a file that the gate reads.
 2. Get the 1.9 GB of unbacked substrate offsite.
 3. Put the existing validators in CI, so the gates survive the machine.
-4. Archive the 127 one-off 5-machinery/scripts.
+4. Archive the 127 one-off scripts.
 5. Fix the drift: regenerate the 14 stale BoFM books, adjudicate the 789 lines, and decide the audio question.
 6. *Then* — with a working gate, a pinned environment, a backup, and a quarter less code — revisit the architecture. It will be a different and much easier conversation, and several of its premises will have changed.
 
@@ -1011,4 +1011,4 @@ He was right, he was right for a better reason than he gave, and the correct res
 
 ## If I were advising Stan in one paragraph
 
-You are being asked to choose between two large builds, and the honest finding is that **the choice barely matters compared to what it is distracting you from.** Both paths cost roughly a year of your part-time attention, both are dominated by the same ~100 rule-by-rule adjudications that only you can make, and neither of them fixes the thing that is actually wrong right now — which is that your Book of Mormon reader has been serving 789 lines that the code no longer produces, for 65 days, because a rule change was regenerated into one book out of fifteen and nobody noticed; and separately, three-quarters of the narration cues in Helaman point at line numbers that do not exist any more. Neither of those is an architecture problem. Both would have been caught by a ninety-second script that regenerates each corpus and diffs it against what is deployed, and that script is one to two days of work, is useful under every possible future including doing nothing, and produces exactly five integers for you to look at — all of which should be zero. Build that first, pin your dependencies, get the 1.9 GB of substrate that exists on one disk backed up, put your existing validators in CI so the gates survive your machine, and delete the quarter of your codebase that is one-off 5-machinery/scripts nobody will ever run again. That is under two weeks and it removes almost every risk in this audit. Then, before you decide anything architectural, look at `readers-tanakh/validators/specs/` — because the "rules as executable artifacts, one artifact with an apply face and a check face" that the proposal says is missing and proposes to design from scratch is **already built there, running, with 62 rules in it**, and you can read one of those YAML files in ninety seconds and understand the entire idea. If that pattern is right, the next move is not a rebuild; it is porting a thing you already own to two more corpora. Be sceptical of the cost table specifically: it gives the greenfield credit for freezing the old system while your five live sites keep running on it, and credit for being well-tested against a project with six test files and no CI — so the axis you were told is decisive was scored on two properties that are not real. And know that neither path currently meets its own entry conditions — a clean-sheet rebuild has nothing to check itself against until the reproducibility gate exists, and an incremental migration is documented not to converge unless you stop doing corpus work for about a year, which is the only part of this you actually enjoy. **Your instinct that this would not be cheaper for you was correct, and it was correct for a better reason than you gave**: the one empirical study of the standard remedy for a maintainer in your position finds that it works on everything except systems split across two architectures — which is the state both proposals would put you in, deliberately, for a year. So the honest recommendation is: fix the four measured defects, keep shipping corpus work, and let the architecture question wait until you have a gate that tells you when something breaks. If in six months the gate is green every week and you still feel the machinery is unmaintainable, that is a much better-informed moment to decide, and you will have lost nothing by waiting.
+You are being asked to choose between two large builds, and the honest finding is that **the choice barely matters compared to what it is distracting you from.** Both paths cost roughly a year of your part-time attention, both are dominated by the same ~100 rule-by-rule adjudications that only you can make, and neither of them fixes the thing that is actually wrong right now — which is that your Book of Mormon reader has been serving 789 lines that the code no longer produces, for 65 days, because a rule change was regenerated into one book out of fifteen and nobody noticed; and separately, three-quarters of the narration cues in Helaman point at line numbers that do not exist any more. Neither of those is an architecture problem. Both would have been caught by a ninety-second script that regenerates each corpus and diffs it against what is deployed, and that script is one to two days of work, is useful under every possible future including doing nothing, and produces exactly five integers for you to look at — all of which should be zero. Build that first, pin your dependencies, get the 1.9 GB of substrate that exists on one disk backed up, put your existing validators in CI so the gates survive your machine, and delete the quarter of your codebase that is one-off scripts nobody will ever run again. That is under two weeks and it removes almost every risk in this audit. Then, before you decide anything architectural, look at `readers-tanakh/validators/specs/` — because the "rules as executable artifacts, one artifact with an apply face and a check face" that the proposal says is missing and proposes to design from scratch is **already built there, running, with 62 rules in it**, and you can read one of those YAML files in ninety seconds and understand the entire idea. If that pattern is right, the next move is not a rebuild; it is porting a thing you already own to two more corpora. Be sceptical of the cost table specifically: it gives the greenfield credit for freezing the old system while your five live sites keep running on it, and credit for being well-tested against a project with six test files and no CI — so the axis you were told is decisive was scored on two properties that are not real. And know that neither path currently meets its own entry conditions — a clean-sheet rebuild has nothing to check itself against until the reproducibility gate exists, and an incremental migration is documented not to converge unless you stop doing corpus work for about a year, which is the only part of this you actually enjoy. **Your instinct that this would not be cheaper for you was correct, and it was correct for a better reason than you gave**: the one empirical study of the standard remedy for a maintainer in your position finds that it works on everything except systems split across two architectures — which is the state both proposals would put you in, deliberately, for a year. So the honest recommendation is: fix the four measured defects, keep shipping corpus work, and let the architecture question wait until you have a gate that tells you when something breaks. If in six months the gate is green every week and you still feel the machinery is unmaintainable, that is a much better-informed moment to decide, and you will have lost nothing by waiting.

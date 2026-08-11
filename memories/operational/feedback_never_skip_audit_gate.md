@@ -55,7 +55,7 @@ The 2026-05-17 audit found this memory was violated AGAIN ~3 hours after it was 
 
 The design file does not exist on disk until the audit clears. The file's first creation IS the post-audit landing. There is no "draft on disk" state.
 
-This is the same shape as a code commit gated on 5-machinery/tests passing: you don't commit and then run the 5-machinery/tests; you run the 5-machinery/tests and then commit. "Pre-build audit" works the same way: audit clears, then the artifact lands.
+This is the same shape as a code commit gated on tests passing: you don't commit and then run the tests; you run the tests and then commit. "Pre-build audit" works the same way: audit clears, then the artifact lands.
 
 Cross-reference: [[feedback_pre_output_checks]] gate #6.
 

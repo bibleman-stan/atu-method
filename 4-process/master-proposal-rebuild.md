@@ -216,7 +216,7 @@ Is there an external segmentation witness that our rules did not produce? Candid
 
 **Then, in order, each step provable before the next:**
 1. **Case schema**, plus backfill of whatever is recoverable. (Realistically little: the 911 overrides have no verdicts to recover.)
-2. **Lift ONE rule end-to-end on ONE corpus** — executable spec, generated check, cases as 5-machinery/tests, engine applies it. Prove the loop on the smallest possible surface.
+2. **Lift ONE rule end-to-end on ONE corpus** — executable spec, generated check, cases as tests, engine applies it. Prove the loop on the smallest possible surface.
 3. Migrate the remaining rules corpus by corpus.
 4. Unify the app; convert reader repos to publish targets **one at a time**, keeping each live site serving throughout.
 5. Retire the old path on a date decided **in advance**.

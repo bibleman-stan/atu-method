@@ -52,7 +52,30 @@ GUARD = re.compile(r"\b(in|at|under|from|to|see|within|inside|into|via|of)\s+$",
 
 SKIP_DIRS = ("_archive", "_old", ".archive", "__pycache__", ".git",
              "node_modules", "books", "data")
-EXTS = (".md", ".py", ".html", ".json", ".txt", ".sh")
+
+# MARKDOWN PROSE ONLY. The first version of this script also rewrote .py, .json
+# and .sh, and corrupted path-mapping tables in the reorg tooling:
+#
+#     ("5-machinery/scripts", "5-machinery/scripts") -> ("scripts", "scripts")
+#     "scholarship": "2-evidence/scholarship"        -> "scholarship": "scholarship"
+#
+# The preposition guard could not help: a quoted string literal has no English
+# grammar around it. Every calibration pole was a sentence, so every pole passed
+# while code silently broke. Prose is the only context where "the prefix is
+# wrong" can be decided from surrounding words, so prose is the only context
+# this script touches. The handful of genuine .py cases are fixed by hand.
+EXTS = (".md",)
+
+# Files whose SUBJECT is paths. Their correct content looks exactly like the
+# defect -- mapping tables, known-directory lists, worked examples of the
+# mangle. Includes this script and its detector, which rewrote their own
+# docstrings and calibration inputs on the first run.
+SKIP_FILES = {
+    "fix_reorg_mangles.py", "detect_reorg_mangles.py",
+    "fix_mangled_identifiers.py", "reorg_reader.py", "reorg_2026_08_07.py",
+    "check_broken_pointers.py", "anchor_repo_root.py", "repoint-paths-safely",
+    "validate_doc_pointers.py", "check_brenton_source_parity.py",
+}
 
 
 def fix_line(line: str):
@@ -118,7 +141,7 @@ def run(repo: str, dry: bool):
     for dirpath, dirnames, files in os.walk(root):
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
         for fn in files:
-            if not fn.endswith(EXTS):
+            if not fn.endswith(EXTS) or fn in SKIP_FILES:
                 continue
             full = os.path.join(dirpath, fn)
             try:
@@ -126,10 +149,19 @@ def run(repo: str, dry: bool):
             except (OSError, UnicodeDecodeError):
                 continue
             lines = text.splitlines(keepends=True)
-            new, n_file = [], 0
+            new, n_file, in_fence = [], 0, False
             for line in lines:
                 body = line.rstrip("\r\n")
                 tail = line[len(body):]
+                # A fenced block is code or a worked example. Both are contexts
+                # where the prefix may be correct and prose rules do not apply.
+                if body.lstrip().startswith("```"):
+                    in_fence = not in_fence
+                    new.append(line)
+                    continue
+                if in_fence or body.startswith("    "):
+                    new.append(line)
+                    continue
                 fixed, n = fix_line(body)
                 new.append(fixed + tail)
                 n_file += n

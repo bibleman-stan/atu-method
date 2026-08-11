@@ -21,7 +21,7 @@ python 5-machinery/scripts/check_broken_pointers.py            # add --verbose f
 
 Validates two failure classes: cited paths that do not resolve, and link anchors (`](<file.md#Heading>)`) whose fragment no longer matches a real heading. The second class matters because anchors rot silently the moment a heading is reworded, and a link landing on the wrong section is worse than plain text.
 
-Baseline as of 2026-08-06: **0 broken anchors, 61 broken doc paths, 81 advisory** (non-`.md`, overwhelmingly reader-repo 5-machinery/scripts this hub cannot see — advisory, not failures). A rise in broken anchors means link rot; a rise in broken doc paths means something moved without its citers.
+Baseline as of 2026-08-06: **0 broken anchors, 61 broken doc paths, 81 advisory** (non-`.md`, overwhelmingly reader-repo scripts this hub cannot see — advisory, not failures). A rise in broken anchors means link rot; a rise in broken doc paths means something moved without its citers.
 
 Then check, in order:
 

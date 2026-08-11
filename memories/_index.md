@@ -44,7 +44,7 @@ Originally accumulated in the readers-bofm session memory directory (`~/.claude/
 ## Dispatch and scaling discipline
 
 - [`feedback_parallel_horde_default.md`](feedback_parallel_horde_default.md) — when work decomposes, dispatch 4-8× the agent count intuition suggests. Per-dimension audits, per-cluster sweeps, pre-spawned next-wave verification.
-- [`feedback_scripts_before_agents.md`](feedback_scripts_before_agents.md) — before dispatching agents for a corpus sweep, ask if it can be done with grep/sed/regex/Python. Agents cost seconds and tokens; 5-machinery/scripts cost nothing. Agents only when the rule requires per-item judgment the code can't encode.
+- [`feedback_scripts_before_agents.md`](feedback_scripts_before_agents.md) — before dispatching agents for a corpus sweep, ask if it can be done with grep/sed/regex/Python. Agents cost seconds and tokens; scripts cost nothing. Agents only when the rule requires per-item judgment the code can't encode.
 - [`feedback_check_existing_tooling.md`](feedback_check_existing_tooling.md) — before writing a new scanner/validator, check the existing validator suite, syntax-reference, or a one-line Grep. The validator suite stays focused when extensions go to existing detectors rather than fork to new ones.
 - [`feedback_agent_sweep_filter.md`](feedback_agent_sweep_filter.md) — parallel sweep agents return detritus alongside signal. Filter each item through (level / provenance / redundancy) checks before codifying.
 - [`feedback_sweep_when_introducing_a_window.md`](feedback_sweep_when_introducing_a_window.md) — when introducing a flag/window with N readers, gate ALL N at once. Same-root-cause symptoms in different code paths are not separate bugs. Third-strike rule.

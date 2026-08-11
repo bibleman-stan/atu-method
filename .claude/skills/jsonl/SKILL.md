@@ -67,7 +67,7 @@ The sharpest lesson this skill exists to carry, learned 2026-08-07:
 
 - Two sessions shipped the same JSONL reader on the same day without seeing each
   other, producing competing `jsonl/` and `read-jsonl/` skills with different
-  instructions and different 5-machinery/scripts.
+  instructions and different scripts.
 - Later the same evening, this session "fixed" six paths that a sibling commit
   had just corrected — because it never ran `git log -3`. One command would have
   shown the commit sitting directly behind it with the answer in its subject.
