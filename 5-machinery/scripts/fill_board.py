@@ -10,8 +10,8 @@ Why fill before adding more fields: `Blast radius` and `Status` sat blank on all
 16 items, and a board with empty columns trains you to ignore columns. That is
 how Current-Tasks.md went stale in 36 hours.
 
-    python scripts/fill_board.py --dry-run
-    python scripts/fill_board.py
+    python 5-machinery/scripts/fill_board.py --dry-run
+    python 5-machinery/scripts/fill_board.py
 """
 
 import argparse

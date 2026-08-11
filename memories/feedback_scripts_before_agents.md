@@ -1,6 +1,6 @@
 ---
 name: Scripts before agents for mechanical corpus sweeps
-description: Before dispatching agents for a corpus-wide pattern, ask "can this be done with grep, sed, or a short Python script?" If yes, script it. Agents take minutes and tokens; scripts run in milliseconds. Dispatch agents only when the rule requires per-item judgment the script can't encode.
+description: Before dispatching agents for a corpus-wide pattern, ask "can this be done with grep, sed, or a short Python script?" If yes, script it. Agents take minutes and tokens; 5-machinery/scripts run in milliseconds. Dispatch agents only when the rule requires per-item judgment the script can't encode.
 type: feedback
 originSessionId: 5e934fd5-32e0-4958-9b1e-00dd9f0e6d19
 ---

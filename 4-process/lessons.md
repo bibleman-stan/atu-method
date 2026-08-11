@@ -18,7 +18,7 @@ precedence claim about the methodology.
 | Captured | Disposition |
 |---|---|
 | proxy-trust · don't propose what was tried · don't architect uninventoried | **→ Standing default #7**, scope generalised from code-paths to *any artifact claim*. Displaces the old code-path-only wording. **Three captures, one amendment, net zero new rules.** |
-| a detector is a claim | **→ Standing default #6**, new clause. Displaces nothing. Reference implementation `scripts/decision_log.py --calibrate`. |
+| a detector is a claim | **→ Standing default #6**, new clause. Displaces nothing. Reference implementation `5-machinery/scripts/decision_log.py --calibrate`. |
 | write the thing, not about the thing | **NOT promoted to prose — made mechanical instead.** `loop_health.py check_lessons()` now warns when captures accumulate unpromoted, which is the specific form this failure took. A rule with no trigger is a rule nobody applies. |
 
 ---
@@ -105,7 +105,7 @@ this very discipline reproduced that last one.
 
 **Candidate rule:** no checker may report unless a known-good it must find and a
 known-bad it must not are asserted in the file and pass. Implemented in
-`scripts/decision_log.py`; not yet general.
+`5-machinery/scripts/decision_log.py`; not yet general.
 
 ### [2026-08-09] Do not propose what the repo has already tried
 

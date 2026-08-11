@@ -25,8 +25,8 @@ Checks:
 Exit code is always 0: this reports, it does not block. Blocking belongs to
 pre-commit gates, which sit next to the corpus they protect.
 
-    python scripts/loop_health.py            # human-readable
-    python scripts/loop_health.py --brief    # one screen, for a hook
+    python 5-machinery/scripts/loop_health.py            # human-readable
+    python 5-machinery/scripts/loop_health.py --brief    # one screen, for a hook
 """
 
 import argparse
@@ -37,7 +37,22 @@ import subprocess
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
+
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+REPO = _find_repo_root()
 SIBLINGS = ["readers-bofm", "readers-gnt", "readers-tanakh", "readers-lxx",
             "readers-vulgate", "readers-gnt-morph", "rev-reader"]
 
@@ -315,7 +330,7 @@ def refresh_log() -> list:
     that evening. Deriving it from git removes the failure mode rather than
     warning about it — there is no "remember to update the log" step left.
     """
-    script = REPO / "scripts" / "build_log.py"
+    script = REPO / "5-machinery/scripts" / "build_log.py"
     if not script.exists():
         return [("WARN", "build_log.py missing — log.md is hand-written again")]
     r = subprocess.run([sys.executable, str(script)], cwd=REPO,
@@ -397,7 +412,7 @@ def check_lessons() -> list:
 def check_pointers() -> list:
     # 5-machinery/ is readers-bofm's layout, not this repo's; the path was
     # copied across and reported "missing" against a script that exists.
-    script = REPO / "scripts" / "check_broken_pointers.py"
+    script = REPO / "5-machinery/scripts" / "check_broken_pointers.py"
     if not script.exists():
         return [("WARN", f"{script.relative_to(REPO).as_posix()} missing")]
     r = subprocess.run([sys.executable, str(script)], cwd=REPO,
@@ -487,7 +502,7 @@ def main() -> int:
         print(f"loop-health: {len(bad)} item(s) need attention")
         for t, m in bad[:8]:
             print(f"  - {m}")
-        print("  (full: python scripts/loop_health.py)")
+        print("  (full: python 5-machinery/scripts/loop_health.py)")
         return 0
 
     print("=" * 72)

@@ -37,8 +37,8 @@ identically to both it is 12.84 against 5.80, i.e. we sit at ~45%. The neutral
 row is the only one comparable across vaults. `links_neutral` records it so the
 comparison can never again be made with the biased column.
 
-    python scripts/growth_snapshot.py            # print, do not record
-    python scripts/growth_snapshot.py --record   # append a row to the series
+    python 5-machinery/scripts/growth_snapshot.py            # print, do not record
+    python 5-machinery/scripts/growth_snapshot.py --record   # append a row to the series
 """
 
 import argparse
@@ -49,7 +49,22 @@ import re
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
+
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+REPO = _find_repo_root()
 DATA = REPO / "2-evidence" / "growth-data.csv"
 
 # The compiled layer — the pages that are supposed to integrate.

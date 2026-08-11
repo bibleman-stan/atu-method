@@ -5,7 +5,7 @@ cssclasses:
 
 # Master proposal v2 — propagate the pattern that already works
 
-> **Plain-language version.** Version 1 of this proposal was withdrawn because almost every fact I asserted about our own system turned out wrong. Four audits established what is actually there. The headline: **a correct rule system already exists in one corner of the estate** — 62 YAML rule specs driven by a shared runner in `readers-tanakh` — and the thing that is genuinely broken is a set of 17 hand-run scripts that edit the deployed text in place. So the move is neither "rebuild everything" nor "finish an abandoned direction." It is: **take the pattern that already works, propagate it, and delete the one that doesn't.**
+> **Plain-language version.** Version 1 of this proposal was withdrawn because almost every fact I asserted about our own system turned out wrong. Four audits established what is actually there. The headline: **a correct rule system already exists in one corner of the estate** — 62 YAML rule specs driven by a shared runner in `readers-tanakh` — and the thing that is genuinely broken is a set of 17 hand-run 5-machinery/scripts that edit the deployed text in place. So the move is neither "rebuild everything" nor "finish an abandoned direction." It is: **take the pattern that already works, propagate it, and delete the one that doesn't.**
 
 **Status: PROPOSAL. Nothing adopted.** Written 2026-08-09, replacing the withdrawn [[4-process/master-proposal-rebuild.md|master-proposal-rebuild.md]].
 
@@ -124,7 +124,7 @@ atu-method/                     ← ONE repo
   sites/                        BUILD OUTPUT ONLY, one dir per domain
 ```
 
-`5-machinery/` absorbs today's `atu_method/`, `scripts/`, and the five repos' scattered validators. **Nothing but `sites/` is ever served.**
+`5-machinery/` absorbs today's `atu_method/`, `5-machinery/scripts/`, and the five repos' scattered validators. **Nothing but `sites/` is ever served.**
 
 ### The three organs, and why they are three and not one
 
@@ -136,11 +136,11 @@ Stan asked for a log, a lessons-learned file, and a lint. They are genuinely dis
 | **Decision log** | `2-evidence/decision-log.jsonl` | what the **system** decided — per-verse cases with `status` | every regeneration |
 | **Lessons** | `4-process/lessons.md` | **corrections** awaiting promotion into a rule or guard | captured always, **promoted only by audit** |
 
-The operations log is what makes lint *affordable* — it scopes a pass to what changed since the last one, instead of re-reading everything. The decision log is the case record, already built as `scripts/decision_log.py`. Lessons is the capture buffer whose failure mode is the worry-bead pattern: collecting corrections instead of promoting them. **The promotion step is the bearing** — without a periodic audit that promotes, lessons accumulate and behaviour never changes. That is the failure this very session performed, writing seven documents about a decision record while building none.
+The operations log is what makes lint *affordable* — it scopes a pass to what changed since the last one, instead of re-reading everything. The decision log is the case record, already built as `5-machinery/scripts/decision_log.py`. Lessons is the capture buffer whose failure mode is the worry-bead pattern: collecting corrections instead of promoting them. **The promotion step is the bearing** — without a periodic audit that promotes, lessons accumulate and behaviour never changes. That is the failure this very session performed, writing seven documents about a decision record while building none.
 
 ### Lint, made structural rather than remembered
 
-`5-machinery/lint/` holds every checker, and **the runner refuses to report unless each checker's calibration assertions pass** — a known-good it must find, a known-bad it must not. Not a convention; a precondition. Four detectors were miscalibrated in one day (wikilink checker, link-density metric, USFM regex, and the audit that reproduced it), which is the evidence that a remembered rule is an unapplied rule. `scripts/decision_log.py` already implements this and passes three poles.
+`5-machinery/lint/` holds every checker, and **the runner refuses to report unless each checker's calibration assertions pass** — a known-good it must find, a known-bad it must not. Not a convention; a precondition. Four detectors were miscalibrated in one day (wikilink checker, link-density metric, USFM regex, and the audit that reproduced it), which is the evidence that a remembered rule is an unapplied rule. `5-machinery/scripts/decision_log.py` already implements this and passes three poles.
 
 ### Nothing inherited is canonical
 
@@ -155,9 +155,9 @@ Per Stan's reframe, carried material enters **provisional, not authoritative**:
 
 **Step 0 — fix the public exposure.** Independent of everything else, cheap, and currently live. Move Pages to an orphan `gh-pages` branch or Pages-from-Actions so the repo root stops being served.
 
-**Step 1 — the reproducibility gate. Built this turn.** `scripts/decision_log.py`, calibrated on three poles that must pass before it will report. Per corpus: regenerate, set-diff against deployed, emit each divergence as `status: unreviewed`. This is simultaneously the gate, the LOG organ, and the seed of CASES. **Path-independent** — greenfield, propagation, and do-nothing all need it.
+**Step 1 — the reproducibility gate. Built this turn.** `5-machinery/scripts/decision_log.py`, calibrated on three poles that must pass before it will report. Per corpus: regenerate, set-diff against deployed, emit each divergence as `status: unreviewed`. This is simultaneously the gate, the LOG organ, and the seed of CASES. **Path-independent** — greenfield, propagation, and do-nothing all need it.
 
-**Step 2 — prove the pattern on the hardest case.** Express **one** BoFM rule as a YAML spec under `spec_runner`, retire its in-place mutator, regenerate, diff. This tests the load-bearing assumption — that a Hebrew-shaped spec runner can express an English rule — on the smallest surface that can falsify it. If it cannot, the propagation plan dies here, cheaply.
+**Step 2 — prove the pattern on the hardest case.** Express **one** BoFM rule as a YAML spec under `spec_runner`, retire its in-place mutator, regenerate, diff. This 5-machinery/tests the load-bearing assumption — that a Hebrew-shaped spec runner can express an English rule — on the smallest surface that can falsify it. If it cannot, the propagation plan dies here, cheaply.
 
 **Step 3 — decide.** With Steps 1–2 reporting, greenfield versus propagation stops being a matter of opinion.
 

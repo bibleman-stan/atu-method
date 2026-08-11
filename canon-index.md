@@ -2,7 +2,7 @@
 
 **Permanent navigation artifact** for every §-anchor / named sub-clause / concept / doc the atu-method
 methodology references. Hand-built first generation, 2026-06-06, established as part of the §-renumber
-migration (Track B). Schema is permanent. Future regeneration via `scripts/build_canon_index.py`
+migration (Track B). Schema is permanent. Future regeneration via `5-machinery/scripts/build_canon_index.py`
 (claudit productionization, pending). Until that exists, this file is hand-maintained.
 
 The temporary `proposed_disposition` column exists ONLY for the in-flight §-renumber migration and
@@ -21,7 +21,7 @@ One row per anchor. Every cell carries a `file:line` receipt or an explicit abse
 | **authoritative home** | `<file>:<line-range>` of the canonical definition. |
 | **status** | `live` (definition lives in unarchived canon) / `archived(_old)` (definition lives only under `_old/`) / `superseded→<anchor>` / `CONTESTED` (live-cited AND archived — needs Stan ruling) / `phantom(nowhere)` (cited but defined nowhere). |
 | **live-successor** | The live anchor that substantively does the same work, OR `null` if none, OR `<see migration>` if pending. |
-| **ALL consumers** | Every file:line that cites this anchor across `atu-method/docs/`, `atu-method/2-evidence/scholarship/`, `atu-method/memories/`, per-corpus colometry-canons (BoFM/GNT/Tanakh), reader-repo `scripts/` + `validators/` + `retraction-log.md`, workspace `~/CLAUDE.md`, user `~/.claude/CLAUDE.md`. Compact format: `<short-name>:<line>`. |
+| **ALL consumers** | Every file:line that cites this anchor across `atu-method/docs/`, `atu-method/2-evidence/scholarship/`, `atu-method/memories/`, per-corpus colometry-canons (BoFM/GNT/Tanakh), reader-repo `5-machinery/scripts/` + `validators/` + `retraction-log.md`, workspace `~/CLAUDE.md`, user `~/.claude/CLAUDE.md`. Compact format: `<short-name>:<line>`. |
 | **proposed_disposition (TEMP)** | Migration-only column: `supersede→<live anchor>` / `restore-universal→<doc/section>` / `per-corpus` / `fold→<section>` / `loud-CONTESTED-tombstone`. |
 | **rationale (TEMP)** | One-sentence justification per the hard constraints below. |
 
@@ -43,11 +43,11 @@ and confirmed in-turn by Lane 1 receipts. Every disposition below honors these:
 5. **§1.12 and §1.13 have FULL self-contained per-corpus bodies.** BoFM canon TIER-0 (lines 116-117 + Moroni 10:8-17 sweep at line 45); GNT R28 §3.7 (lines 741-753, cited by R12/R13/R14). Restoring universal duplicates the per-corpus body.
 6. **§1.9 (N=2 + N=3+ cliff) IS genuinely universal and missing.** Body at `_old/framework.md:282-297`; collision-adjudicator role, NOT a break-licensor (so the §2.2:116 firewall does not apply); cited 30+ times across BoFM + GNT scholarship.
 7. **`_old/framework.md` §1.10 / §1.11 / §1.3a EXIST and are live-cited** (BoFM canon Tier 0 lines 114-115 + multiple memories). Cannot be silently dropped.
-8. **Camera-angle §1.3 and M3 are LIVE-CITED in mechanized merge tests** (BoFM R27 condition-3 + GNT R25 condition-3; BoFM canon TIER 7 line 201 + R27 line 1959; BoFM canon TIER 4 line 152 for M3; GNT canon line 245 for M3). The demote-memory says camera-angle "is never the determinant" — directly contradicting the active R27/R25 condition. Supersede-to-memory breaks the rule's cited definition.
+8. **Camera-angle §1.3 and M3 are LIVE-CITED in mechanized merge 5-machinery/tests** (BoFM R27 condition-3 + GNT R25 condition-3; BoFM canon TIER 7 line 201 + R27 line 1959; BoFM canon TIER 4 line 152 for M3; GNT canon line 245 for M3). The demote-memory says camera-angle "is never the determinant" — directly contradicting the active R27/R25 condition. Supersede-to-memory breaks the rule's cited definition.
 9. **Tanakh canon is a thin 55-line stub with NO §-citation reference table.** Only filename-routing prose at lines 11-16. Anything depending on "add to all three reader canon reference tables" must specify a concrete Tanakh mechanism.
 10. **Sub-anchor granularity is load-bearing.** Live citers anchor to `§1.2.1` / `§1.2.2` / `§1.2.3` directly (R1.md:106, R13a.md:49, R11.md:47, R16.md:112, R10.md:17, R17.md:19) AND to NAMED-BUT-UNNUMBERED sub-clauses: J1 "compound-list break signals" (GNT canon:56 adds 5th), M1 "asymmetric-modifier sub-clause" (BoFM canon:747), §1.9 "N=3+ cliff SCOPE" predications-vs-objects distinction (R10.md:60). Restoring the umbrella without preserving sub-clauses verbatim strands the sub-cites.
 11. **[[1-method/framework.md#§2 The criterion — what licenses a standalone ATU|framework.md §2]] (Categories A/B/C) was MOVED to `§7.0` in Stage 1.** Citers to "framework.md §2 (Category B editorial-judgment)" now repoint to `§7.0`. Watch for old §2 conflations in pre-existing scholarship.
-12. **Stranded cites span reader-repo `scripts/` + `validators/` + `retraction-log.md` + `atu-method/memories/`.** Migration destination rules must enumerate these, not just docs.
+12. **Stranded cites span reader-repo `5-machinery/scripts/` + `validators/` + `retraction-log.md` + `atu-method/memories/`.** Migration destination rules must enumerate these, not just docs.
 13. **Companion-doc pattern proven viable when indexed.** [[1-method/binding-rules-hebrew.md|binding-rules-hebrew.md]] is cited in 28 places across 15 files including per-reader CLAUDE.mds — restoration into a new `atu-method/docs/<companion>.md` works IF added to [[00-start-here.md]] AND cited from per-corpus canons or their references.
 14. **`structural-licenses.md` does NOT YET exist** and would need `00-start-here.md:25-30` per-language section entry to avoid born-orphan status at the docs-index level.
 
@@ -252,7 +252,7 @@ Stan ruled all four CONTESTED concepts. Execution plan:
 | **B2** | Excise camera-angle: drop `no camera shift` condition from BoFM R27 + GNT R25 + scholarship + canon (TIER 7 / R27 condition 3 / R25 conditions) + demote-memory cleanup | §7.3 trigger #6 (mechanical signature change under settled rule) | YES — decide condition-3 disposition (drop entirely / replace with §2.1 backward-containment / other) + sanity-check on rule output delta |
 | **B3** | Excise M3: drop M3 framing from BoFM canon:152/1581 + GNT canon:237/245 + scholarship; resolve 4-carve-out disposition (fold into §2.1 / per-corpus rename / drop) | §7.3 trigger #6 | YES — decide 4-carve-out disposition |
 | **B4** | Pointer-block updates across all three per-corpus canons (BoFM:22-28 §0→§1, BoFM:34 §1 block rewrite, GNT:25-43 + :48 same shape, Tanakh:11-16 add row); clean repoints for §0.x straggler + §1.2.x + §1.4 J3 + §1.5 M2 + §1.7 + §1.11 + §1.12 + §1.13 | §7.4 audit-skippable (cross-reference updates) — partly; some entries are claim repoints that go through §7.3 | Probably NOT (mechanical) |
-| **B5** | Stranded cites in reader-repo scripts / validators / memories / retraction-log | §7.4 audit-skippable | NO |
+| **B5** | Stranded cites in reader-repo 5-machinery/scripts / validators / memories / retraction-log | §7.4 audit-skippable | NO |
 | **Final** | canon-index.md regeneration with `proposed_disposition` column dropped; build_canon_index.py productionization (claudit) | n/a | n/a |
 
 **Next action:** B1 — drafting [[1-method/cross-corpus-principles.md|cross-corpus-principles.md]].

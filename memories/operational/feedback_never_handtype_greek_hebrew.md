@@ -9,7 +9,7 @@ metadata:
 
 > **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (`bdb0f65c-d87a-4887-94b8-0f8e6422aa6d/fd46d550c221470e@v2`); state as of 2026-05-26 (snapshot mtime); possibly stale — re-verify before relying.
 
-When editing files that contain Greek or Hebrew (atu-method/docs, per-corpus colometry-canon.md, the generator engines, commit messages), **never hand-type the non-Latin script**. Typing it character-by-character silently mixes scripts — a Greek `ν` for Hebrew `נ`, a Latin `E` for Greek `ε` — producing corrupt tokens (`וַיֹּאμεр`, `ὥστE`). Stan: "that's unacceptable." In a fidelity-governing apparatus this is the cardinal error; in an **engine closed-list** a mixed-script lemma silently fails to match and breaks the rule with no error.
+When editing files that contain Greek or Hebrew (atu-method/docs, per-corpus colometry-canon.md, the generator engines, commit messages), **never hand-type the non-Latin script**. Typing it character-by-character silently mixes 5-machinery/scripts — a Greek `ν` for Hebrew `נ`, a Latin `E` for Greek `ε` — producing corrupt tokens (`וַיֹּאμεр`, `ὥστE`). Stan: "that's unacceptable." In a fidelity-governing apparatus this is the cardinal error; in an **engine closed-list** a mixed-script lemma silently fails to match and breaks the rule with no error.
 
 **Why:** the whole apparatus exists to preserve source-text fidelity. Hand-typing defeats it invisibly. (2026-05-26: three corruptions introduced this session — one shipped in a commit before being caught.)
 

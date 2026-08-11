@@ -274,7 +274,7 @@ The real sequence is: **write a templating layer → decompose ~8,400 lines of h
 `readers-gnt/index.html:2060-2064`
 ```js
   // Fast path: prebuilt index (data/search_index.json, from
-  // scripts/build_search_index.py). Avoids fetching + DOMParser-parsing all
+  // 5-machinery/scripts/build_search_index.py). Avoids fetching + DOMParser-parsing all
   // 27 interlinear book files on the main thread, which froze the UI for
   // seconds. ...
   const resp = await fetch('data/search_index.json');
@@ -707,7 +707,7 @@ The proposal presents a binary: five diverging repos, or one app in the engine w
 
 1. **`atu_method/app/`** — Jinja2 partials: `shell.html.j2`, `topbar`, `search`, `settings`, `nav`, plus `base.css.j2` and `search.js.j2`. Sourced from the gnt/lxx intersection, which is already 92–95% identical and needs no reconciliation.
 2. **`atu_method/app/corpora/<slug>.toml`** — the genuinely config-shaped axes measured in Finding 2.1: `lang`, `dir`, text-layer class, font stack, layer list, feature flags (`audio`, `swaps`, `translit`, `interlinear`), book list, routing granularity.
-3. **Each reader repo gains a 20-line `scripts/build_shell.py`** that renders `index.html` from the shared templates plus its own config. `index.html` becomes generated output for the first time — which is the actual precondition for the proposal's "one edit plus rebuild."
+3. **Each reader repo gains a 20-line `5-machinery/scripts/build_shell.py`** that renders `index.html` from the shared templates plus its own config. `index.html` becomes generated output for the first time — which is the actual precondition for the proposal's "one edit plus rebuild."
 4. **Reader repos stay repos.** CNAME unchanged, Pages unchanged, history unchanged, BoFM's 1.5 GB of audio unchanged and un-force-pushed. Independent pre-commit gates — which Part 9 correctly calls *"the strongest argument against the whole proposal"* — survive intact.
 5. **BoFM adopts the shared shell last, or never.** It gets the shared partials it can use and keeps `narration.js`, `annotations.js`, Firebase, and its own search until there is a reason to converge.
 

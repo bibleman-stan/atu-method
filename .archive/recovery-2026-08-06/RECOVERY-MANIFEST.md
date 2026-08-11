@@ -20,7 +20,7 @@ provenance is the table in the original manifest (file-history, newest `@vN` per
 states 2026-06-01 – ~June). Add headers at landing time.
 **Treat ALL content as `recovered, possibly stale` until re-verified against live repos/gates.**
 
-## Recovery tiers (method scripts are in this dir; keep with the archive)
+## Recovery tiers (method 5-machinery/scripts are in this dir; keep with the archive)
 
 | Tier | Script | Source | Yield |
 |---|---|---|---|

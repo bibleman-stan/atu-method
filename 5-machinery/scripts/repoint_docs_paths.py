@@ -10,8 +10,8 @@ Runs over this repo AND the sibling reader repos, which cite atu-method canon by
 path (measured 2026-08-06: 7 files in readers-bofm, 12 in readers-gnt, others
 unmeasured). Per the atomic-ship doctrine the cascade is one operation.
 
-    python scripts/repoint_docs_paths.py                 # dry run, this repo
-    python scripts/repoint_docs_paths.py --apply --all-repos
+    python 5-machinery/scripts/repoint_docs_paths.py                 # dry run, this repo
+    python 5-machinery/scripts/repoint_docs_paths.py --apply --all-repos
 """
 
 import argparse
@@ -19,7 +19,22 @@ import re
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
+
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+REPO = _find_repo_root()
 SIBLINGS = ["readers-bofm", "readers-gnt", "readers-tanakh", "readers-lxx",
             "readers-vulgate", "readers-gnt-morph", "rev-reader"]
 

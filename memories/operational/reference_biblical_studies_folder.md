@@ -39,7 +39,7 @@ Root: `C:\Users\bibleman\Dropbox\03-Biblical_Studies\`
 
 ## Top-level resources
 - `poetry/` — Alter, Berlin, Kugel + hebrew-poetry-notes (cross-language poetry, not Greek- or Hebrew-specific)
-- `Hebrew-and-Greek-alphabets-MASTER.pdf` — single master at top because it covers both scripts
+- `Hebrew-and-Greek-alphabets-MASTER.pdf` — single master at top because it covers both 5-machinery/scripts
 
 ## Filing conventions
 - Cryptic 2021-style filenames get renamed to author-keyword pattern: `Author-Short-Title.ext`

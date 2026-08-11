@@ -88,7 +88,7 @@ Source-language token (TAGNT or TAHOT)  →  Strong's number(s)
 
 **The asymmetry:** Grammar (UD deprels, syntactic categories, formula integrity, complement integrity) gives PROHIBITIONS on where ATU breaks CAN'T go — Layer 1 vetoes, head-complement bonds, indivisible idioms, restrictive-relative bonds. Grammar does NOT give PRESCRIPTIONS for where breaks SHOULD go.
 
-The DETERMINATION engine is atomic-thought: the generative principle (each proposition splits by default), the five structural justifications (J1–J5), the image/camera-angle/period tests. The force is propositional/psycholinguistic, not grammatical.
+The DETERMINATION engine is atomic-thought: the generative principle (each proposition splits by default), the five structural justifications (J1–J5), the image/camera-angle/period 5-machinery/tests. The force is propositional/psycholinguistic, not grammatical.
 
 This asymmetry governs closed-list extensions (e.g., `R19_OBLIGATORY_REF_NOUN_HEADS` in BoFM canon): the threshold for inclusion is "is the head referentially content-empty without the relative such that breaking here leaves a line with no atomic thought?" — the atomic-thought-failure test, applied THROUGH grammar-as-constraint. The closed-list is the operationalization of where atomic-thought-failure fires under specific grammatical conditions; it is NOT a grammatical-pattern catalog.
 

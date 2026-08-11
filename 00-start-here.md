@@ -66,7 +66,7 @@ Findings live here, filed in the same turn they are produced (standing default #
 
 ## Tooling
 
-Scripts live in [`scripts/`](scripts/). The ones that matter to you:
+Scripts live in [`5-machinery/scripts/`](5-machinery/scripts/). The ones that matter to you:
 
 | Script | What it does |
 |---|---|

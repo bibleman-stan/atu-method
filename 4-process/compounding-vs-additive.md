@@ -65,7 +65,7 @@ Findings about how language segments *should* compound: each measurement ought t
 
 ### The evidence — measured, not asserted
 
-`scripts/growth_snapshot.py` ports the meta-wiki instrument. Its key choice of metric is the contribution: **links-per-page, not pages.** Page count tracks effort; link density tracks integration.
+`5-machinery/scripts/growth_snapshot.py` ports the meta-wiki instrument. Its key choice of metric is the contribution: **links-per-page, not pages.** Page count tracks effort; link density tracks integration.
 
 | | atu-method | meta-wiki (2026-07-18) |
 |---|---|---|

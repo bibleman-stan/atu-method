@@ -1,7 +1,7 @@
 """Convenience high-level API.
 
 Composes the metav_loader and distribute steps for the common single-verse
-alignment call. Wave 5c consumer scripts (readers-gnt + readers-tanakh
+alignment call. Wave 5c consumer 5-machinery/scripts (readers-gnt + readers-tanakh
 regenerate_english_kjv.py) call into this.
 """
 

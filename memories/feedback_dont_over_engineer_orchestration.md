@@ -1,5 +1,5 @@
 ---
-name: Don't over-engineer orchestration — prefer runbooks over scripts
+name: Don't over-engineer orchestration — prefer runbooks over 5-machinery/scripts
 description: Before building Python/TS that wraps the Anthropic SDK, check whether a markdown runbook delivers the same "consistent across sessions" property without separate API billing
 type: feedback
 ---

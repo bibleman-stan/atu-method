@@ -235,7 +235,7 @@ Four structural carve-outs keep certain bare trailing participials on their own 
 
 **Test.** Read each proposed resulting line aloud as a standalone unit. Does it constitute one focused-attention chunk with bounded information? If any resulting line fails, the split is over-fragmenting.
 
-**Scope discipline — prospective not retroactive.** M4 fires ONLY when evaluating a PROPOSED split. **M4 is NOT a retrospective merge generator.** When an existing split shows both fragments individually passing atomic-thought, M4 does not fire, even if the two events are causally, narratively, or rhetorically linked. "Narrative completion" and "atomic-thought failure" are different tests; conflating them is a documented failure mode (see [`../memories/feedback_rhetorical_force.md`](../memories/feedback_rhetorical_force.md)).
+**Scope discipline — prospective not retroactive.** M4 fires ONLY when evaluating a PROPOSED split. **M4 is NOT a retrospective merge generator.** When an existing split shows both fragments individually passing atomic-thought, M4 does not fire, even if the two events are causally, narratively, or rhetorically linked. "Narrative completion" and "atomic-thought failure" are different 5-machinery/tests; conflating them is a documented failure mode (see [`../memories/feedback_rhetorical_force.md`](../memories/feedback_rhetorical_force.md)).
 
 **Precedence over structural justifications.** M4 fires ONLY when splitting produces a fragment that **fails** the atomic-thought test. A fragment that PASSES atomic-thought via another structural justification's cognitive prong does NOT fail. Specifically:
 - **J1 members** of a 3+ member series pass cognitive-prong via shared-predicate recovery. M4 does NOT fire on J1 series members.

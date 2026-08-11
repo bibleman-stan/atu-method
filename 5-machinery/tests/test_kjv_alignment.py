@@ -1,9 +1,9 @@
 """Self-tests for atu_method.kjv_alignment.
 
 Run as:
-    pytest tests/test_kjv_alignment.py -v
+    pytest 5-machinery/tests/test_kjv_alignment.py -v
 or:
-    python tests/test_kjv_alignment.py
+    python 5-machinery/tests/test_kjv_alignment.py
 from the atu-method repo root.
 
 Each test case is end-to-end: actual MetaV CSVs on disk + synthesised
@@ -19,7 +19,22 @@ import unittest
 from pathlib import Path
 
 # Make the repo root importable when running this file directly.
-_REPO_ROOT = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
+
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+_REPO_ROOT = _find_repo_root()
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -39,7 +54,7 @@ METAV_DIR = _REPO_ROOT / "data" / "kjv-strongs"
 
 
 # ----------------------------------------------------------------------
-# Strong's normalization tests
+# Strong's normalization 5-machinery/tests
 # ----------------------------------------------------------------------
 
 
@@ -105,7 +120,7 @@ class TestStrongsNormalize(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# MetaV loader smoke tests
+# MetaV loader smoke 5-machinery/tests
 # ----------------------------------------------------------------------
 
 
@@ -145,7 +160,7 @@ class TestMetavLoader(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# End-to-end alignment tests
+# End-to-end alignment 5-machinery/tests
 # ----------------------------------------------------------------------
 
 
@@ -327,7 +342,7 @@ class TestEndToEndAlignment(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# Synthetic unit tests for distribute (no MetaV needed)
+# Synthetic unit 5-machinery/tests for distribute (no MetaV needed)
 # ----------------------------------------------------------------------
 
 
@@ -359,7 +374,7 @@ class TestDistributeUnit(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# Wave 7 regression tests — positional-aware distribution
+# Wave 7 regression 5-machinery/tests — positional-aware distribution
 # ----------------------------------------------------------------------
 
 
@@ -518,7 +533,7 @@ class TestWave7Regression(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# Entry point: allow `python tests/test_kjv_alignment.py`
+# Entry point: allow `python 5-machinery/tests/test_kjv_alignment.py`
 # ----------------------------------------------------------------------
 
 

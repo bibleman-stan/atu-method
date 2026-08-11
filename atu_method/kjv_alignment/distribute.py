@@ -97,7 +97,7 @@ _SENTENCE_PUNCT = {".", "!", "?", ";", ":"}
 # anchored, force backward attachment in Pass C — these words trail their
 # governing verb's English flow (verb-complement integrity), so they must
 # stay on the verb's cola line, not jump forward to the next clause.
-# Audited 2026-05-12; see scripts/verify_kjv_distribution.py for fixture.
+# Audited 2026-05-12; see 5-machinery/scripts/verify_kjv_distribution.py for fixture.
 # Excludes possessive pronouns (my/his/her/their/our/your/thy/etc.) which
 # attach forward to their noun-head, not backward to a verb.
 _TRAILING_COMPLEMENT = {

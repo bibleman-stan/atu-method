@@ -63,7 +63,7 @@ Stan wants you to understand — and then document — your own improvement loop
 
 ## DISPOSITION (2026-08-06, atu-method session)
 
-- **A — EXECUTED.** All directive claims verified true. Full recovery: 52 full + 5 marked stubs (all 57 index targets accounted for), landed at `memories/operational/`; broken-pointer script at `scripts/check_broken_pointers.py`; CLAUDE.md dead paths repointed; provenance + method archive at `.archive/recovery-2026-08-06/`. Unrecoverable: project_session_durability, project_wallace_summaries, feedback_canon_citation_requires_verbatim_read, feedback_preserve_formatting, feedback_read_source_carefully (stubs carry the surviving index one-liners).
+- **A — EXECUTED.** All directive claims verified true. Full recovery: 52 full + 5 marked stubs (all 57 index targets accounted for), landed at `memories/operational/`; broken-pointer script at `5-machinery/scripts/check_broken_pointers.py`; CLAUDE.md dead paths repointed; provenance + method archive at `.archive/recovery-2026-08-06/`. Unrecoverable: project_session_durability, project_wallace_summaries, feedback_canon_citation_requires_verbatim_read, feedback_preserve_formatting, feedback_read_source_carefully (stubs carry the surviving index one-liners).
 - **B — PROPOSED** to Stan (audit-tier graft: calendar-triggered mechanical lint + hostile audit); awaiting ratification.
 - **C — PROPOSED** to Stan (file-back to `docs/synthesis/`); awaiting ratification.
 - **D — QUEUED** (read meta-wiki loop docs, author `docs/improvement-loops.md`) after B/C land.

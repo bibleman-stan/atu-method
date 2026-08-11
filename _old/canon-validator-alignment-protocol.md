@@ -1,8 +1,8 @@
 # Canon-Validator Alignment Protocol
 
-This document specifies the **structural alignment check** that per-repo canon-validator alignment scripts MUST implement. The check is mechanical and structural-only — it verifies that what canon §5 entries *name* actually *exists* in the validator code. It does NOT verify semantic alignment (whether validator predicate logic implements the test the canon prose claims) — that would require formal verification and is out of scope.
+This document specifies the **structural alignment check** that per-repo canon-validator alignment 5-machinery/scripts MUST implement. The check is mechanical and structural-only — it verifies that what canon §5 entries *name* actually *exists* in the validator code. It does NOT verify semantic alignment (whether validator predicate logic implements the test the canon prose claims) — that would require formal verification and is out of scope.
 
-Codified 2026-05-16 from the readiness-arc adversarial audit's finding that current canon-validator alignment is asserted rather than enforced; the audit identified per-repo structural alignment scripts as the right shape (small, repo-specific, runnable as CI gate) rather than one cross-corpus meta-validator (which would have to handle three divergent canon §5 formats).
+Codified 2026-05-16 from the readiness-arc adversarial audit's finding that current canon-validator alignment is asserted rather than enforced; the audit identified per-repo structural alignment 5-machinery/scripts as the right shape (small, repo-specific, runnable as CI gate) rather than one cross-corpus meta-validator (which would have to handle three divergent canon §5 formats).
 
 ## Why this exists
 
@@ -25,7 +25,7 @@ For each rule entry in canon §5:
 
 ## Search-scope requirements
 
-To avoid false-positive verdicts, per-repo alignment scripts MUST handle two scope cases the original spec did not enumerate. These were surfaced 2026-05-16 by the Tanakh implementation, which found that ~half the non-ALIGNED verdicts in its first run were false positives traceable to scope narrowness in these two dimensions.
+To avoid false-positive verdicts, per-repo alignment 5-machinery/scripts MUST handle two scope cases the original spec did not enumerate. These were surfaced 2026-05-16 by the Tanakh implementation, which found that ~half the non-ALIGNED verdicts in its first run were false positives traceable to scope narrowness in these two dimensions.
 
 ### Search across `validators/_shared/` in addition to named-detector files
 
@@ -82,7 +82,7 @@ Sort by verdict severity: NO_IMPL first, then DRIFT, then PARTIAL, then EDITORIA
 
 ## Per-repo implementation guidance
 
-Each repo writes its own short structural-alignment script targeting its own canon §5 format. Don't try to write one cross-corpus parser — the three canons' §5 formats genuinely diverge, and per-repo scripts can be small (~50-150 lines).
+Each repo writes its own short structural-alignment script targeting its own canon §5 format. Don't try to write one cross-corpus parser — the three canons' §5 formats genuinely diverge, and per-repo 5-machinery/scripts can be small (~50-150 lines).
 
 Suggested locations:
 

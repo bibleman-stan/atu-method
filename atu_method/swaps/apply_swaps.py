@@ -232,7 +232,7 @@ if __name__ == "__main__":
 
     print()
     if failures == 0:
-        print(f"All tests passed.")
+        print(f"All 5-machinery/tests passed.")
     else:
         print(f"{failures} test(s) FAILED.")
         sys.exit(1)

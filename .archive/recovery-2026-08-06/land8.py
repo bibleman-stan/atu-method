@@ -1,9 +1,9 @@
 """Pass 8: land the recovered set (Mandate A remainder).
 - memories/operational/  <- all 70 recovered .md (adds provenance headers to the
   six meta-wiki-staged files that lack one; banner line atop MEMORY.md)
-- scripts/check_broken_pointers.py  <- recovered audit tool (per
-  feedback_scratch_belongs_in_repo: reusable dev scripts live tracked in scripts/)
-- .archive/recovery-2026-08-06/  <- manifest + recover_*.py method scripts
+- 5-machinery/scripts/check_broken_pointers.py  <- recovered audit tool (per
+  feedback_scratch_belongs_in_repo: reusable dev 5-machinery/scripts live tracked in 5-machinery/scripts/)
+- .archive/recovery-2026-08-06/  <- manifest + recover_*.py method 5-machinery/scripts
 - session memory namespace gets a pointer MEMORY.md
 - staging dir contents removed (dir deleted by caller after this script)
 """
@@ -12,7 +12,7 @@ import os, io, shutil
 REPO = r"c:\Users\bibleman\repos\atu-method"
 STAGE = os.path.join(REPO, ".recovery-2026-08-06")
 OPS = os.path.join(REPO, "memories", "operational")
-SCRIPTS = os.path.join(REPO, "scripts")
+SCRIPTS = os.path.join(REPO, "5-machinery/scripts")
 ARCH = os.path.join(REPO, ".archive", "recovery-2026-08-06")
 SESSMEM = os.path.expanduser(
     r"~\.claude\projects\c--Users-bibleman-repos-atu-method\memory")
@@ -39,7 +39,7 @@ for fn in sorted(os.listdir(STAGE)):
         continue
     if fn == "check_broken_pointers.py":
         shutil.copy2(src, os.path.join(SCRIPTS, fn))
-        print("scripts/ <-", fn)
+        print("5-machinery/scripts/ <-", fn)
         continue
     if not fn.endswith(".md"):
         continue

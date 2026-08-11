@@ -214,7 +214,7 @@ Stan: *"I fear we need to blow up the current system and build a greenfield… t
 
 **The forethought criticism is correct and I concede it without qualification.** The loops were written up on 2026-08-06 — *after* three years of accreted machinery. Nothing was designed against a workflow spec; it was assembled and then described.
 
-**But "too complex" is not what the measurement says.** Counted 2026-08-08, excluding `.venv/`, `private/`, `_old/`, and generated `data/` (the first count returned 9,441 scripts for `readers-bofm` — all but 153 were a vendored virtualenv, a miscalibrated scan of exactly the kind this repo keeps catching):
+**But "too complex" is not what the measurement says.** Counted 2026-08-08, excluding `.venv/`, `private/`, `_old/`, and generated `data/` (the first count returned 9,441 5-machinery/scripts for `readers-bofm` — all but 153 were a vendored virtualenv, a miscalibrated scan of exactly the kind this repo keeps catching):
 
 | repo | authored .py | validators | prose .md | commits |
 |---|---|---|---|---|
@@ -225,7 +225,7 @@ Stan: *"I fear we need to blow up the current system and build a greenfield… t
 | readers-lxx | 22 | 1 | 6 | 17 |
 | readers-vulgate | 34 | 1 | 5 | 19 |
 
-~470 authored scripts and ~374 prose files is a **medium** system, not a sprawling one. What is disproportionate is the **coordination surface** — 75 validators, 3 cascading [[CLAUDE.md]] files, 106 memories, 6 repos — relative to the product, which is 4 live sites.
+~470 authored 5-machinery/scripts and ~374 prose files is a **medium** system, not a sprawling one. What is disproportionate is the **coordination surface** — 75 validators, 3 cascading [[CLAUDE.md]] files, 106 memories, 6 repos — relative to the product, which is 4 live sites.
 
 ### The actual defect: one architectural omission with six symptoms
 

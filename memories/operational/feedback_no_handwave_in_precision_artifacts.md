@@ -23,9 +23,9 @@ the relevant|whatever fits|as appropriate|or analogous)
 
 **The specific incident (2026-05-17):** I composed a trigger message for Stan to paste into Tanakh-Claude initiating Torah render (directive 1700). My v2 of the trigger contained:
 
-> "Run the full cascade: scripts/regenerate_english.py for the batch's chapters → scripts/build_books.py → check_cascade_alignment.py (or whatever Tanakh's three-check equivalents are; discover from CLAUDE.md/scripts/ on wake)."
+> "Run the full cascade: 5-machinery/scripts/regenerate_english.py for the batch's chapters → 5-machinery/scripts/build_books.py → check_cascade_alignment.py (or whatever Tanakh's three-check equivalents are; discover from CLAUDE.md/scripts/ on wake)."
 
-The actual correct precision is one Bash command away. Tanakh's pre-commit hook is at `validators/hooks/pre-commit` and invokes `scripts/refresh_book.py --book <NN-book> --build`, which sequentially runs `apply_validators.py → propagate_editorial_layers.py → regenerate_english.py → build_books.py`. The hook auto-stages derived layers, then `validators/run_all.py --baseline-check` enforces the regression gate. That's the concrete cascade. Hand-waving "or whatever" instead of looking that up was the failure.
+The actual correct precision is one Bash command away. Tanakh's pre-commit hook is at `validators/hooks/pre-commit` and invokes `5-machinery/scripts/refresh_book.py --book <NN-book> --build`, which sequentially runs `apply_validators.py → propagate_editorial_layers.py → regenerate_english.py → build_books.py`. The hook auto-stages derived layers, then `validators/run_all.py --baseline-check` enforces the regression gate. That's the concrete cascade. Hand-waving "or whatever" instead of looking that up was the failure.
 
 **How to apply:**
 

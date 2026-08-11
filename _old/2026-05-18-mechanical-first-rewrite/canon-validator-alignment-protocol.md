@@ -1,6 +1,6 @@
 # Canon-Validator Alignment Protocol
 
-This document specifies the structural alignment check that per-repo canon-validator alignment scripts MUST implement. The check is mechanical and structural-only — it verifies that what canon §5 constraint entries *name* actually *exists* in the audit-stage validator code. It does NOT verify semantic alignment (whether validator predicate logic implements the test the canon prose claims) — that would require formal verification and is out of scope.
+This document specifies the structural alignment check that per-repo canon-validator alignment 5-machinery/scripts MUST implement. The check is mechanical and structural-only — it verifies that what canon §5 constraint entries *name* actually *exists* in the audit-stage validator code. It does NOT verify semantic alignment (whether validator predicate logic implements the test the canon prose claims) — that would require formal verification and is out of scope.
 
 ## What the check verifies (four classes)
 
@@ -13,7 +13,7 @@ For each constraint entry in canon §5:
 
 ## Search-scope requirements
 
-To avoid false-positive verdicts, per-repo alignment scripts MUST handle two scope cases.
+To avoid false-positive verdicts, per-repo alignment 5-machinery/scripts MUST handle two scope cases.
 
 ### Search across `validators/_shared/` in addition to named-detector files
 
@@ -64,7 +64,7 @@ Sort by verdict severity: NO_IMPL first, then DRIFT, then PARTIAL, then EDITORIA
 
 ## Per-repo implementation guidance
 
-Each repo writes its own short structural-alignment script targeting its own canon §5 format. Don't try to write one cross-corpus parser — the three canons' §5 formats genuinely diverge, and per-repo scripts can be small (~50–150 lines).
+Each repo writes its own short structural-alignment script targeting its own canon §5 format. Don't try to write one cross-corpus parser — the three canons' §5 formats genuinely diverge, and per-repo 5-machinery/scripts can be small (~50–150 lines).
 
 Suggested locations:
 

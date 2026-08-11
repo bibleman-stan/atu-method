@@ -27,7 +27,7 @@ cssclasses:
 > | No acceptance criterion for "is this segmentation right" | **Requirements** |
 > | Loops written up *after* the machinery accreted | Both — "assembled and then described" |
 >
-> **The V-model makes the validator problem exact.** Each development phase pairs with a verification level: requirements ↔ acceptance tests, design ↔ integration tests, implementation ↔ unit tests. We built the bottom-right (75 validators) with nothing on the left for them to verify *against*. **That is why they cannot be trusted, and why adding more would not help.**
+> **The V-model makes the validator problem exact.** Each development phase pairs with a verification level: requirements ↔ acceptance 5-machinery/tests, design ↔ integration 5-machinery/tests, implementation ↔ unit 5-machinery/tests. We built the bottom-right (75 validators) with nothing on the left for them to verify *against*. **That is why they cannot be trusted, and why adding more would not help.**
 >
 > **And it reframes Gate 0 usefully.** "Is there an external arbiter?" has been treated as an epistemology problem. It is a **requirements** problem: *what does correct output look like, and who says so?* That is the first requirement of the system, it has never been written down, and it is Stan's to answer rather than mine to discover.
 >
@@ -90,7 +90,7 @@ atu-method/                     ← ONE repo
   sites/                        BUILD OUTPUT ONLY — published by GitHub Actions
 ```
 
-`5-machinery/` absorbs today's `atu_method/`, `scripts/`, and the five repos' scattered validators — Stan's "architecture, building and maintenance bin", and the name `readers-bofm` already uses.
+`5-machinery/` absorbs today's `atu_method/`, `5-machinery/scripts/`, and the five repos' scattered validators — Stan's "architecture, building and maintenance bin", and the name `readers-bofm` already uses.
 
 ### The three organs, kept distinct because merging them merges different things
 
@@ -102,7 +102,7 @@ atu-method/                     ← ONE repo
 
 The operations log is what makes lint affordable — it scopes a pass to what changed. Lessons' failure mode is the worry-bead pattern: collecting corrections instead of promoting them, which is what this session did by writing seven documents about a decision record while building none.
 
-**Renamed from "decision log" to APPROVAL LOG, on the literature's advice.** Emily Bache's argument is that "snapshot" implies no duty of care while "approval" foregrounds that a human approved the content. Given Stan's reframe — the deployed corpus may be wrong — **bug lock-in is not a risk here, it is the expected state**, so rows must land `unreviewed` and require an explicit verdict. `scripts/decision_log.py` already writes `status: unreviewed`; it gets renamed and gains a review path.
+**Renamed from "decision log" to APPROVAL LOG, on the literature's advice.** Emily Bache's argument is that "snapshot" implies no duty of care while "approval" foregrounds that a human approved the content. Given Stan's reframe — the deployed corpus may be wrong — **bug lock-in is not a risk here, it is the expected state**, so rows must land `unreviewed` and require an explicit verdict. `5-machinery/scripts/decision_log.py` already writes `status: unreviewed`; it gets renamed and gains a review path.
 
 ### Lint as a precondition, not a habit
 

@@ -16,7 +16,7 @@ Two failure classes, both of which have actually bitten this repo:
 
   2. BROKEN ANCHOR — a link destination `file.md#Heading` whose fragment matches
      no heading in the target. This class was created 2026-08-06 when
-     scripts/link_canon_refs.py made section citations clickable: an anchor
+     5-machinery/scripts/link_canon_refs.py made section citations clickable: an anchor
      silently stops resolving the moment a heading is reworded, and a link that
      lands on the wrong section is worse than plain text. Also catches the
      phantom §-IDs the canon-xref arc tracks (e.g. glossary.md's framework.md
@@ -24,7 +24,7 @@ Two failure classes, both of which have actually bitten this repo:
 
   3. BROKEN WIKILINK — an Obsidian [[target]] / [[target#Heading|alias]] whose
      basename resolves to no file, or to MORE than one. Added 2026-08-08 with
-     scripts/add_wikilinks.py, and added in the SAME pass for a specific reason:
+     5-machinery/scripts/add_wikilinks.py, and added in the SAME pass for a specific reason:
      link_canon_refs.py shipped a new link class with no validator and created
      the broken-anchor class above. A link syntax the checker cannot read is a
      link syntax that rots silently. Ambiguity counts as broken because Obsidian
@@ -38,8 +38,8 @@ wake, and before/after any file move.
 Exit code: 0 clean, 1 if anything is broken.
 
 Usage:
-    python scripts/check_broken_pointers.py
-    python scripts/check_broken_pointers.py --verbose
+    python 5-machinery/scripts/check_broken_pointers.py
+    python 5-machinery/scripts/check_broken_pointers.py --verbose
 """
 
 import argparse
@@ -47,8 +47,22 @@ import re
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
 
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+REPO_ROOT = _find_repo_root()
 SCAN_GLOBS = [
     "CLAUDE.md",
     "README.md",
@@ -66,7 +80,7 @@ SCAN_GLOBS = [
 
 # memories/operational/ is deliberately NOT path-linted. It is the recovered
 # cross-repo archive (2026-08-06): its citations point at sibling reader repos,
-# reader-repo scripts, and ~/.claude paths that this repo neither owns nor can
+# reader-repo 5-machinery/scripts, and ~/.claude paths that this repo neither owns nor can
 # resolve, so linting it reports noise rather than rot.
 
 # _old/ is retired canon kept as a historical receipt; its internal pointers
@@ -133,10 +147,10 @@ SKIP_PREFIXES = (
 # Memory files are cited bare by filename across the canon; they live in
 # memories/ or memories/operational/ and resolve() finds them there.
 SEARCH_SUBDIRS = ["", "1-method", "2-evidence", "3-implementation", "4-process",
-                  "memories", "memories/operational", "scripts",
+                  "memories", "memories/operational", "5-machinery/scripts",
                   "2-evidence/scholarship", "2-evidence/scholarship/bofm",
                   "2-evidence/scholarship/gnt", "2-evidence/scholarship/methodology",
-                  "data", "atu_method", "tests"]
+                  "data", "atu_method", "5-machinery/tests"]
 
 
 def slugify(h: str) -> str:
@@ -225,7 +239,7 @@ def main() -> int:
                     continue
                 if resolve(ref, path) is None:
                     # Code files named in canon prose are overwhelmingly
-                    # reader-repo scripts this hub cannot see; they are advisory,
+                    # reader-repo 5-machinery/scripts this hub cannot see; they are advisory,
                     # not failures, so the weekly signal stays actionable.
                     bucket = broken_paths if ref.endswith(".md") else advisory
                     bucket.append((path, i, ref, line.strip()[:110]))

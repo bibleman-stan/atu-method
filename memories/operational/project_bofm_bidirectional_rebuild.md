@@ -9,7 +9,7 @@ metadata:
 
 > **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (`87af68a0-0291-4910-962f-d0913b5722e6/66b717437d73b01c@v5`); state as of 2026-06-06 (snapshot mtime); possibly stale — re-verify before relying.
 
-**2026-05-22 — the BoFM pure-method edition was rebuilt against the bidirectional ATU test** (after the "98% conformant" claim was found to be canon-conformance, not correctness — see [[feedback-conformance-is-not-correctness]]). Repo `~/repos/readers-bofm`, draft at `data/text-files/v2-puremethod-draft/`, measured by `scripts/bofm_bidir_gate.py` (structural proxy) + periodic genre-spread agent samples (ground truth).
+**2026-05-22 — the BoFM pure-method edition was rebuilt against the bidirectional ATU test** (after the "98% conformant" claim was found to be canon-conformance, not correctness — see [[feedback-conformance-is-not-correctness]]). Repo `~/repos/readers-bofm`, draft at `data/text-files/v2-puremethod-draft/`, measured by `5-machinery/scripts/bofm_bidir_gate.py` (structural proxy) + periodic genre-spread agent samples (ground truth).
 
 **Validated result (idea-unit bar, 5-genre human-judgment agents):** weighted line-failure ~51% → **~20% (≈80% pass)**. Per chapter: 1Ne1 47→15.6, Enos1 37→19.5, 2Ne8 44→21.6, Alma5 55→14.4, Moroni7 61→31.7.
 
@@ -21,7 +21,7 @@ metadata:
 
 **What changed (all committed, main):**
 1. Five binding rules re-derived on the unifying principle *bind anything that can't stand alone, split only independent predications*: coordinate-verb on the **own-subject floor** (retired the BoFM canon §3.5.2 N≥3 count cliff + own_args gate — 2-lens audit confirmed Hebrew B7 binds on bareness not count); **R19 cataphoric retired** (relatives always bind); **R6/R7 break retired** (marked subordinate clauses bind, incl. advmod-tagged when/after); verbless-fragment detector precision.
-2. **Archaic-morphology parse normalization** (`scripts/archaic_normalize.py`): stanza mis-tagged 51% of EME -eth/-est verbs as NOUN, cascading into fractures + wrong heads. Normalize archaic->modern FOR PARSING ONLY (1:1 token map, render original surface). **Sources its map from `build_book.py`'s swap lexicon** (SIMPLE_SWAPS + KNOWN_ETH — the modern-mode toggle's single source of truth) so parse-layer and display-layer can't drift.
+2. **Archaic-morphology parse normalization** (`5-machinery/scripts/archaic_normalize.py`): stanza mis-tagged 51% of EME -eth/-est verbs as NOUN, cascading into fractures + wrong heads. Normalize archaic->modern FOR PARSING ONLY (1:1 token map, render original surface). **Sources its map from `build_book.py`'s swap lexicon** (SIMPLE_SWAPS + KNOWN_ETH — the modern-mode toggle's single source of truth) so parse-layer and display-layer can't drift.
 3. **Batched parser** (tokenize per-verse for offsets, ONE pretokenized parse per book) — ~6x faster (Alma 7.5min not 46min). Parse cache committed.
 
 **The METHODOLOGY DECISIONS that govern (Stan):**
@@ -36,11 +36,11 @@ metadata:
 
 ## 2026-05-22/23 refinement + adjudication session (extensive, ALL SHIPPED to bomreader.com)
 
-Long verse-by-verse refinement pass driven by Stan. Rules added to `scripts/bofm_v1_fabric.py` (each diagnosed→sized→audited→measured→shipped):
+Long verse-by-verse refinement pass driven by Stan. Rules added to `5-machinery/scripts/bofm_v1_fabric.py` (each diagnosed→sized→audited→measured→shipped):
 - **Class A**: coordinator-led participial ground (having/being + leading and/yea/nevertheless) opens its own ATU; exclusions adnominal / marked-subordinate / coordinate-of-gerund. Cured 1Ne1:1.
 - **M1**: EME causal **for** + own subject splits as a complete causal ATU.
 - **M2**: direct-speech **ccomp under verbum dicendi RELEASES** (quote gets own line); indirect "say THAT X" binds (R17). Dropped the inverted-guard that blocked VOCATIVE speech (enos 1:5/1:7/1:10).
-- **R-INV** (`scripts/parse_repair.py`, NEW load-time parse-repair layer): re-attaches postposed subject of inverted "thus saith the Lord" (PROPN-only).
+- **R-INV** (`5-machinery/scripts/parse_repair.py`, NEW load-time parse-repair layer): re-attaches postposed subject of inverted "thus saith the Lord" (PROPN-only).
 - **AICTP "and"-form**: empty "(it) came to pass" frame binds its DISPLACED MAIN clause (first finite parataxis/conj child), not subsequent coordinates (1Ne1:6) or participial parentheticals (1Ne1:4). 533 and / 367 that — split is a KJV translation artifact (banked: vault z/data zettel + `project_fef_aictp_paper`).
 - **yea-B**: a "yea"-led segment with no independent predication merges back; clause-leading "yea" stays its own ATU.
 

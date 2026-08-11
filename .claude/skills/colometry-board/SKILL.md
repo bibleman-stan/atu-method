@@ -60,7 +60,7 @@ Status       PVTSSF_lAHOD78t2c4Bf4iMzhaIKiw
   Todo f75ad846 · In Progress 47fc9ee4 · Done 98236657
 ```
 
-Live copy in `scripts/seed_board.py`. Re-query with:
+Live copy in `5-machinery/scripts/seed_board.py`. Re-query with:
 `gh api graphql -f query='{user(login:"bibleman-stan"){projectV2(number:1){id fields(first:30){nodes{... on ProjectV2SingleSelectField{id name options{id name}}}}}}}'`
 
 **Verified working:** `field-list`, `field-create --data-type SINGLE_SELECT --single-select-options`, `item-create --format json` (returns the item id), `item-edit --id --project-id --field-id --single-select-option-id`, `item-list --format json`. **Board seeded with 16 items, 0 missing field values.**

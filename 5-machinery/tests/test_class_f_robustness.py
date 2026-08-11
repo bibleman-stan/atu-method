@@ -25,9 +25,9 @@ fails. The deployed tanakh-reader.com + gnt-reader.com Class F
 guarantee is locked in here.
 
 Run:
-    python tests/test_class_f_robustness.py
+    python 5-machinery/tests/test_class_f_robustness.py
 or:
-    pytest tests/test_class_f_robustness.py -v
+    pytest 5-machinery/tests/test_class_f_robustness.py -v
 """
 from __future__ import annotations
 
@@ -35,7 +35,22 @@ import sys
 import unittest
 from pathlib import Path
 
-_REPO_ROOT = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
+
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+_REPO_ROOT = _find_repo_root()
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -312,7 +327,7 @@ def _comprehensive_perturbations(n_lines):
 #  - KJV rhetorical repetition (Mat 1:6 "David the king ... David begat")
 #
 # Synthetic but realistic: real Strong's IDs, real vpos sequences. The
-# Greek/Hebrew surface forms are placeholders since this only tests the
+# Greek/Hebrew surface forms are placeholders since this only 5-machinery/tests the
 # alignment property, not the surface output.
 
 FIXTURES = [

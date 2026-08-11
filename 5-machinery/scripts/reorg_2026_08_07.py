@@ -25,8 +25,8 @@ dangled. Therefore:
     file's NEW home rather than string-patched;
   * verification is a set difference against a pre-move snapshot, not a count.
 
-    python scripts/reorg_2026_08_07.py            # dry run
-    python scripts/reorg_2026_08_07.py --apply
+    python 5-machinery/scripts/reorg_2026_08_07.py            # dry run
+    python 5-machinery/scripts/reorg_2026_08_07.py --apply
 """
 
 import argparse
@@ -36,7 +36,22 @@ import subprocess
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
+
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+REPO = _find_repo_root()
 PARENT = REPO.parent
 
 # From the independent enumeration, not from memory.

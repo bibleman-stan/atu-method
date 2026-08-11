@@ -28,8 +28,8 @@ writes "§2.1 The bidirectional test", substrate.md writes "1. The mechanical
 ceiling". If no heading matches the §-id, the file still gets linked and the
 §-id stays as plain text — a partial win, never a broken anchor.
 
-    python scripts/add_wikilinks.py            # dry run, shows every change
-    python scripts/add_wikilinks.py --apply
+    python 5-machinery/scripts/add_wikilinks.py            # dry run, shows every change
+    python 5-machinery/scripts/add_wikilinks.py --apply
 """
 
 import argparse
@@ -38,8 +38,22 @@ import re
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
 
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+REPO = _find_repo_root()
 # Where prose lives. memories/operational/ is deliberately excluded for the same
 # reason check_broken_pointers.py excludes it: it is the recovered cross-repo
 # archive and its mentions point at sibling repos this vault cannot resolve.

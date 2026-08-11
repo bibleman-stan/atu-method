@@ -88,7 +88,7 @@ atu-method/
 │   └── change-protocol.md   §7.3 mandatory-audit triggers, audit-evidence rules
 ├── memories/                Cross-project discipline lessons (~17 captured patterns)
 ├── 2-evidence/scholarship/             Per-rule rationale and grammatical-grounding companions
-└── tests/                   Unit tests for the Python package
+└── 5-machinery/tests/                   Unit 5-machinery/tests for the Python package
 ```
 
 ## Installation
@@ -141,7 +141,7 @@ under the licenses; we ask only that credit be preserved.
 
 ## License
 
-- **Code** (the `atu_method/` package, `tests/`, configuration files):
+- **Code** (the `atu_method/` package, `5-machinery/tests/`, configuration files):
   MIT — see [LICENSE](LICENSE).
 - **Documentation** (`docs/`, `memories/`, `2-evidence/scholarship/`, all Markdown
   outside the package): CC-BY-4.0 — see [LICENSE-DOCS](LICENSE-DOCS).

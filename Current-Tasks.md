@@ -55,7 +55,7 @@ Ten open entries in [[Pending-Decisions.md]], each with recommendation / why / c
 | W2 | Loop 1 commit-message gate requiring a §7.5 declaration | not started |
 | W3 | Rule-set-vs-theory audit — the second domino | not started |
 | W4 | §7.3 audit + yardstick before any §2.1 canon edit | blocked on 7 above |
-| W5 | Run the approval log across every corpus | ready — `scripts/decision_log.py`, calibrated |
+| W5 | Run the approval log across every corpus | ready — `5-machinery/scripts/decision_log.py`, calibrated |
 
 ## 4. Known broken — reported every session, unassigned
 

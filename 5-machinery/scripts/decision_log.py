@@ -37,10 +37,10 @@ link style; and a USFM scan that "found" 28,829 markers which were `\\n` and
 nobody applies, so both poles are asserted IN THIS FILE and `--calibrate` runs
 them. If they fail, the tool refuses to report.
 
-    python scripts/decision_log.py --calibrate
-    python scripts/decision_log.py --corpus bofm --against <regenerated-dir>
-    python scripts/decision_log.py --corpus bofm --regenerate
-    python scripts/decision_log.py --report
+    python 5-machinery/scripts/decision_log.py --calibrate
+    python 5-machinery/scripts/decision_log.py --corpus bofm --against <regenerated-dir>
+    python 5-machinery/scripts/decision_log.py --corpus bofm --regenerate
+    python 5-machinery/scripts/decision_log.py --report
 """
 
 import argparse
@@ -52,7 +52,22 @@ import tempfile
 from datetime import date
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
+
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+REPO = _find_repo_root()
 REPOS = REPO.parent
 LOG = REPO / "2-evidence" / "decision-log.jsonl"
 

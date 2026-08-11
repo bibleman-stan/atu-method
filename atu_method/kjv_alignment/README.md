@@ -70,7 +70,7 @@ docstring (read that for invariants and edge cases). High-level summary:
 Correctness invariants per verse:
 - Every KJV word appears on exactly one ATU line (no loss, no duplication).
 - KJV verse-position order is preserved within each line.
-- Tests in `tests/test_kjv_alignment.py` lock the Wave 7 behaviour
+- Tests in `5-machinery/tests/test_kjv_alignment.py` lock the Wave 7 behaviour
   (`test_gen_1_2_no_upon_leakage`, `test_sentence_boundary_attachment`,
   `test_over_supplied_strongs_positional`).
 

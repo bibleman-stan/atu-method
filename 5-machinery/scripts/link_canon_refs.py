@@ -30,9 +30,9 @@ other document's numbering — inferring the target would be a guess, so it is l
 alone and counted in the report.
 
 Usage:
-    python scripts/link_canon_refs.py              # dry run, prints the report
-    python scripts/link_canon_refs.py --apply
-    python scripts/link_canon_refs.py --apply --anchor-style none
+    python 5-machinery/scripts/link_canon_refs.py              # dry run, prints the report
+    python 5-machinery/scripts/link_canon_refs.py --apply
+    python 5-machinery/scripts/link_canon_refs.py --apply --anchor-style none
 """
 
 import argparse

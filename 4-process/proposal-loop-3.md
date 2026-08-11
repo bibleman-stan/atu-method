@@ -66,7 +66,7 @@ $ python -c "import json; d=json.load(open('private/substrate/emode-substrate/bo
 1nephi 13:18 SPRAY_PARALLEL_STACK
 ```
 
-Ref, genre, gold lines. No criterion cited, no adjudicator, no date, no link to the rule the case tests.
+Ref, genre, gold lines. No criterion cited, no adjudicator, no date, no link to the rule the case 5-machinery/tests.
 
 **The richest feature extraction in the program has no verdict column.**
 
@@ -80,9 +80,9 @@ has verdict: False
 **And nothing anywhere replays.** Verified negative, this turn:
 
 ```
-$ cd atu-method && grep -rn "_generate\.py\|build_books" scripts/ atu_method/ ; echo "(exit $?)"
+$ cd atu-method && grep -rn "_generate\.py\|build_books" 5-machinery/scripts/ atu_method/ ; echo "(exit $?)"
 (exit 0)          # zero matches — atu-method has never invoked a reader generator
-$ grep -rln "replay\|case-ledger\|case_ledger" scripts/ 1-method/ 2-evidence/ 3-implementation/ 4-process/
+$ grep -rln "replay\|case-ledger\|case_ledger" 5-machinery/scripts/ 1-method/ 2-evidence/ 3-implementation/ 4-process/
                   # zero matches
 ```
 
@@ -193,9 +193,9 @@ Three commands replace the three organs. Each is a real script with a real exit 
 
 | Verb | Script | What it does | Cadence |
 |---|---|---|---|
-| **`replay`** | `scripts/replay.py <corpus>` | Regenerate from current rules; for every case emit `AGREE` / `FLIP` / `UNREACHED`. Exit non-zero on any FLIP against an `authority: stan` case. | Every canon-touching commit; nightly per corpus |
-| **`docket`** | `scripts/docket.py --budget 20` | Select the N unresolved sites whose resolution resolves the most other sites. Writes `Current-Docket.md`. | Weekly |
-| **`promote`** | `scripts/promote.py` | Turn a resolved docket into cases; turn a repeated flip-class into a rule proposal; turn a 3-strike `sub_pattern` into a discipline promotion. | On docket close |
+| **`replay`** | `5-machinery/scripts/replay.py <corpus>` | Regenerate from current rules; for every case emit `AGREE` / `FLIP` / `UNREACHED`. Exit non-zero on any FLIP against an `authority: stan` case. | Every canon-touching commit; nightly per corpus |
+| **`docket`** | `5-machinery/scripts/docket.py --budget 20` | Select the N unresolved sites whose resolution resolves the most other sites. Writes `Current-Docket.md`. | Weekly |
+| **`promote`** | `5-machinery/scripts/promote.py` | Turn a resolved docket into cases; turn a repeated flip-class into a rule proposal; turn a 3-strike `sub_pattern` into a discipline promotion. | On docket close |
 
 **`replay` is the loop.** Everything else in this design exists to feed it or read it.
 
@@ -276,7 +276,7 @@ $ ls C:/Users/bibleman/work/atu-nlp-wiki/admin/maturation-loops.md
 
 Where I differ: Proposal 1 puts the wiki "upstream of RAW" and treats the coupling as a read pipe. I think a read pipe is too weak, because it gives a theory claim no way to be wrong. My coupling is `2-evidence/claims.jsonl` — seeded from the 37 rows already inventoried — mapping *framework assertion ↔ wiki theory page ↔ cases*. No write ever enters the wiki. But a theory claim that names no cases is marked **inert**, and a claim whose cases now flip is marked **stale**. The wiki keeps its self-containment; the theory acquires a falsification surface it does not currently have. This is the atu-method side of the wiki's own re-adjudication obligation, and it is the honest reading of what "atu-method is the loop-closer" has to mean if it means anything.
 
-**`atu-method` — the blackboard and the control component.** Holds `cases/`, `claims.jsonl`, the three scripts, and the canon. It is the only node with read access to both theory and measurements, which is why the ledger lives here and not in a reader repo.
+**`atu-method` — the blackboard and the control component.** Holds `cases/`, `claims.jsonl`, the three 5-machinery/scripts, and the canon. It is the only node with read access to both theory and measurements, which is why the ledger lives here and not in a reader repo.
 
 **Me — control, never oracle.** I schedule, dispatch, integrate, and run replays. **I am forbidden from writing an `authority: stan` case**, and I may not adjudicate a docket I selected. This is stronger than Proposal 1's "integrator, never instrument," and it is stronger for a specific reason: the author-blindness result is not about semantic lint in particular, it is about *any* verdict issued by the party that framed the question. Making it a field constraint (`authority` is set by the writer, and I cannot write that value) turns a discipline into a schema rule.
 
@@ -290,9 +290,9 @@ Where I differ: Proposal 1 puts the wiki "upstream of RAW" and treats the coupli
 
 Deliberately three items, deliberately smaller than they look, because everything is backfill.
 
-1. **`scripts/case_ledger.py`** — backfill from the six sources in §3. No new judgment; a transcription. Output: `2-evidence/cases/{bofm,tanakh,gnt,lxx,vulgate}.jsonl`. *Failure is cheap and informative:* if the 911 overrides cannot be recovered into sites and verdicts by diffing v2 against v2-adjudicated, the ledger's whole premise is weaker than claimed and we learn that in a day.
-2. **`scripts/replay.py bofm`** — one corpus first, over the existing `bofm_generate.py`. Emits the flip report; wired as a pre-commit gate on canon paths. This is the loop; nothing else matters until it runs once.
-3. **`scripts/docket.py --budget 20`** — the committee dispatch and the selection. Its first docket should be drawn from the 503 Isaiah over-merge candidates, which makes build 3 and the substrate loop's missing filter the same piece of work.
+1. **`5-machinery/scripts/case_ledger.py`** — backfill from the six sources in §3. No new judgment; a transcription. Output: `2-evidence/cases/{bofm,tanakh,gnt,lxx,vulgate}.jsonl`. *Failure is cheap and informative:* if the 911 overrides cannot be recovered into sites and verdicts by diffing v2 against v2-adjudicated, the ledger's whole premise is weaker than claimed and we learn that in a day.
+2. **`5-machinery/scripts/replay.py bofm`** — one corpus first, over the existing `bofm_generate.py`. Emits the flip report; wired as a pre-commit gate on canon paths. This is the loop; nothing else matters until it runs once.
+3. **`5-machinery/scripts/docket.py --budget 20`** — the committee dispatch and the selection. Its first docket should be drawn from the 503 Isaiah over-merge candidates, which makes build 3 and the substrate loop's missing filter the same piece of work.
 
 **Explicitly deferred:** the other four corpora (replay tanakh next, since it has gold substrate and the strongest transfer-coefficient signal); `promote.py` (until the ledger has enough flips to group); and any topology change. On topology I differ from Proposal 1's deferral by having a reason rather than a wait: **under this design the two-partner question loses most of its force**, because the message Stan currently carries between sessions becomes a docket file and a replay report. Decide topology after build 2, when the message volume is observable.
 
@@ -343,7 +343,7 @@ Four refusals is more complexity than Proposal 1's three organs. I think each ea
 - **The sample may be too thin to be informative.** A few thousand seeded cases against 16,004 BoFM ATU nodes plus four other corpora is a small fraction, weighted toward Isaiah and toward whatever the yardstick sampled. Flip counts on a biased sample can be confidently wrong in the way the meta-wiki's lossy-summary drift is confidently wrong.
 - **I have not verified that the reader generators are invocable from the hub.** I verified only that they exist and that atu-method has never called one. Substrate is gitignored per-repo (`private/substrate/`), and a replay that cannot reconstruct inputs is not a replay. This is the single biggest unverified assumption in the proposal and it should be tested before anything else is built.
 - **The committee's independence may be as weak as Proposal 1 fears.** Fresh context is not a different mind; three agents from the same model with the same schema may agree wrongly and *in unison*, which would make low disagreement a false all-clear — worse than no signal, because it looks like consensus.
-- **This design adds machinery, and machinery is what this repo is already drowning in.** Three scripts, two new file types, a weekly cadence — against a repo whose own board lists seven standing failures nobody is assigned to. The honest risk is that the ledger becomes the eighth.
+- **This design adds machinery, and machinery is what this repo is already drowning in.** Three 5-machinery/scripts, two new file types, a weekly cadence — against a repo whose own board lists seven standing failures nobody is assigned to. The honest risk is that the ledger becomes the eighth.
 
 ## 14. What Proposal 1 gets right that this does not
 

@@ -10,7 +10,7 @@ Three Opus passes use the per-language prompt; agreement scoring across passes d
 
 ## Per-corpus deployment
 
-Per-repo pipelines copy or symlink the relevant prompt to their `scripts/atu_pipeline/prompts/` directory. The atu-method version is canonical; per-repo copies may add corpus-specific calibration items but should NOT modify the rubric's structural discipline (no cognitive-unity gate, no parallelism categories, no genre anchors).
+Per-repo pipelines copy or symlink the relevant prompt to their `5-machinery/scripts/atu_pipeline/prompts/` directory. The atu-method version is canonical; per-repo copies may add corpus-specific calibration items but should NOT modify the rubric's structural discipline (no cognitive-unity gate, no parallelism categories, no genre anchors).
 
 ## Versioning
 

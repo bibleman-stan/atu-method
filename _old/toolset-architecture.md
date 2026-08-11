@@ -39,7 +39,7 @@ Per-instance judgment within bounded rule scope. Operates on the REVIEW residue 
 - Agreement-scoring across multiple runs surfaces resolver self-consistency
 - Auto-apply gate (unanimous-all-high-confidence-STRONG-MERGE) extracts mechanical wins from the LLM's judgment
 
-Status: demonstrated via BoFM R19 work (`scripts/resolve_review_required.py`). 75-case calibration showed ~87% unanimous agreement; ~73% auto-applicable at the unanimous-all-high gate. Pattern extends to any rule with a defined ambiguity surface.
+Status: demonstrated via BoFM R19 work (`5-machinery/scripts/resolve_review_required.py`). 75-case calibration showed ~87% unanimous agreement; ~73% auto-applicable at the unanimous-all-high gate. Pattern extends to any rule with a defined ambiguity surface.
 
 ### Leg 4 — LLM passage-level audit over rendered output
 

@@ -1,6 +1,6 @@
 # Finding — the same Isaiah, two editions, 34% apart
 
-**Measured 2026-08-07.** Stan: *"I am also suspicious we have not done right by Isaiah and his bicola and tricola intentions."* This tests that against the one place the program has a genuine natural experiment.
+**Measured 2026-08-07.** Stan: *"I am also suspicious we have not done right by Isaiah and his bicola and tricola intentions."* This 5-machinery/tests that against the one place the program has a genuine natural experiment.
 
 **The setup.** BoFM quotes Isaiah verbatim (2 Nephi 12–24 = Isaiah 2–14), and `readers-tanakh` publishes the Hebrew of the same chapters. So the *same text* exists in two of our editions, segmented by two different substrates: BHSA gold clause-atoms with te'amim available on the Hebrew side, Stanza EModE on the BoFM side. Any divergence is ours, not the text's.
 

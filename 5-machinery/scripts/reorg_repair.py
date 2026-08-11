@@ -17,8 +17,8 @@ exposed. Recorded because both are generic traps:
    over one combined alternation, longest-first, so no output is ever re-read
    as input.
 
-    python scripts/reorg_repair.py            # dry run
-    python scripts/reorg_repair.py --apply
+    python 5-machinery/scripts/reorg_repair.py            # dry run
+    python 5-machinery/scripts/reorg_repair.py --apply
 """
 
 import argparse
@@ -26,7 +26,22 @@ import re
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+def _find_repo_root():
+    """Repo root by MARKER, not by counting parents.
+
+    Counting encodes this file's depth in the tree, so moving the file silently
+    breaks it and no text-based check notices. Anchoring on .git survives any
+    move. Added 2026-08-10 after a reorg broke three different counted idioms.
+    """
+    from pathlib import Path as _P
+    _here = _P(__file__).resolve()
+    for _p in _here.parents:
+        if (_p / ".git").exists():
+            return _p
+    return _here.parent
+
+
+REPO = _find_repo_root()
 PARENT = REPO.parent
 REPOS = ["atu-method", "readers-bofm", "readers-gnt", "readers-tanakh",
          "readers-tanakh-morph", "readers-gnt-morph", "readers-lxx",

@@ -17,8 +17,8 @@ Result: every reader repo carries the same three lines, nothing under private/ i
 tracked anywhere, and `loop_health.check_private_tracked` has no exceptions to
 reason about.
 
-    python scripts/normalize_private_ignore.py --dry-run
-    python scripts/normalize_private_ignore.py
+    python 5-machinery/scripts/normalize_private_ignore.py --dry-run
+    python 5-machinery/scripts/normalize_private_ignore.py
 """
 
 import argparse

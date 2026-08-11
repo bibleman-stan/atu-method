@@ -5,7 +5,7 @@ status: PROPOSED — analysis only. No canon edited. Retiring live allowances is
 
 # Proposal — deconstruct and rebuild §2.1's allowance apparatus
 
-**Summary**: [`framework.md`](../1-method/framework.md) §2.1 is **18,828 bytes elaborating a 1,352-byte criterion** — roughly fourteen to one — and six of its named allowances landed in a single day (2026-06-02, commits `4413af1`, `5398066`, `be73423`, `d39999b`, plus the serial-circumstantial chain). This document tests each allowance against the question the criterion actually asks: *does it derive from (A) forward closure + backward containment, or from its siblings?* Result: **two derive, three do not, and one collides with a firewall**. The three that do not derive rest on two carve-outs — the "participial-predication allowance" and the "legal-casuistic protasis carve-out" — that are **cited as existing and defined nowhere**.
+**Summary**: [`framework.md`](../1-method/framework.md) §2.1 is **18,828 bytes elaborating a 1,352-byte criterion** — roughly fourteen to one — and six of its named allowances landed in a single day (2026-06-02, commits `4413af1`, `5398066`, `be73423`, `d39999b`, plus the serial-circumstantial chain). This document 5-machinery/tests each allowance against the question the criterion actually asks: *does it derive from (A) forward closure + backward containment, or from its siblings?* Result: **two derive, three do not, and one collides with a firewall**. The three that do not derive rest on two carve-outs — the "participial-predication allowance" and the "legal-casuistic protasis carve-out" — that are **cited as existing and defined nowhere**.
 
 **Status: PROPOSED.** Nothing here is applied. These allowances are deployed and generate live line breaks on three reader sites.
 

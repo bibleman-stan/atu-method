@@ -1,13 +1,13 @@
 ---
 name: feedback_workflow_data_passing_and_loud_failure
-description: Workflow scripts — pass upstream results to synthesis agents via FILE-ON-DISK (or string concatenation), never `${'$'}{...}` template escapes (renders literal, starves the agent); AND every synthesis prompt must instruct FAIL-LOUDLY-IF-DATA-MISSING — a starved agent may silently improvise its own analysis and ship it with false provenance.
+description: Workflow 5-machinery/scripts — pass upstream results to synthesis agents via FILE-ON-DISK (or string concatenation), never `${'$'}{...}` template escapes (renders literal, starves the agent); AND every synthesis prompt must instruct FAIL-LOUDLY-IF-DATA-MISSING — a starved agent may silently improvise its own analysis and ship it with false provenance.
 metadata:
   type: feedback
 ---
 
 > **PROVENANCE**: recovered 2026-08-06 from Claude Code file-history (`c62fff60-202d-4161-9983-60f9dc2b11a2/cd78d392a5e56da0@v2`); state as of 2026-06-09 (snapshot mtime); possibly stale — re-verify before relying.
 
-Two coupled defects found 2026-06-09 in claudit's own Workflow scripts.
+Two coupled defects found 2026-06-09 in claudit's own Workflow 5-machinery/scripts.
 
 **Defect 1 — the interpolation bug.** Embedding upstream results in a synthesis prompt with
 `${'$'}{JSON.stringify(results)}` inside a template literal renders the LITERAL text `${JSON.stringify(results)}`

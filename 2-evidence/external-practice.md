@@ -13,13 +13,13 @@ cssclasses:
 
 ## 1. Characterization / snapshot testing — it has documented failure modes, and a better name
 
-This bears directly on `scripts/decision_log.py` and on the whole "capture what the system currently does" idea.
+This bears directly on `5-machinery/scripts/decision_log.py` and on the whole "capture what the system currently does" idea.
 
 | Finding | Source |
 |---|---|
 | The technique is standard for legacy systems whose behaviour is undocumented | Feathers, *Characterization Testing* — <https://michaelfeathers.silvrback.com/characterization-testing> |
 | **Bug lock-in** — "you may commit code with a bug and a snapshot that ensures that the bug is still there" | Sapegin — <https://medium.com/@sapegin/whats-wrong-with-snapshot-tests-37fbe20dfe8e> |
-| **Rubber-stamping** — "when tests fail, it is very easy to update the snapshots without fixing the code" | Gazzinelli Cruz, Rocha & Valente, *JSS* 204 (2023) 111797, D34 |
+| **Rubber-stamping** — "when 5-machinery/tests fail, it is very easy to update the snapshots without fixing the code" | Gazzinelli Cruz, Rocha & Valente, *JSS* 204 (2023) 111797, D34 |
 | **Nobody reads it** — "a snapshot that's over 640 lines long. Nobody reviews it" | Kent C. Dodds — <https://kentcdodds.com/blog/effective-snapshot-testing> |
 | **Non-determinism** is the most frequent practical problem; mitigation is canonicalisation at capture | Fujita, Kashiwa, Lin & Iida, IEEE ICSME 2023; JSS 2023 D14 |
 | **Naming changes behaviour**: "snapshot" implies no duty of care; "approval" foregrounds that a human approved it | Emily Bache, via *Understand Legacy Code* — <https://understandlegacycode.com/blog/characterization-tests-or-approval-tests/> |

@@ -41,7 +41,7 @@ substrate doctrine. See [[reference_emode_substrate]] and [[feedback_no_fly_swat
 
 ## TF + substrate build — EXECUTED/underway (2026-05-27, same session)
 
-- **Text-Fabric v0.1 BUILT + committed** (`readers-bofm/data/tf/`, `scripts/build_tf.py`): book→chapter→
+- **Text-Fabric v0.1 BUILT + committed** (`readers-bofm/data/tf/`, `5-machinery/scripts/build_tf.py`): book→chapter→
   verse→**atu**→word, 302,624 slots, 16,004 ATU nodes (each spans one DEPLOYED ATU line → queryable BY
   atomic-thought-unit), BHSA-ecosystem format = the cross-corpus convergence Container. v0.1 carries the
   PROVISIONAL weak-Stanza deprel/head; layers upgrade in place.

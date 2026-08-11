@@ -14,8 +14,8 @@ Source of the items: Current-Tasks.md, which consolidated the eight surfaces
 where pending work was hiding. This is the same list, typed once, in the shape
 the board wants.
 
-    python scripts/seed_board.py --dry-run
-    python scripts/seed_board.py
+    python 5-machinery/scripts/seed_board.py --dry-run
+    python 5-machinery/scripts/seed_board.py
 """
 
 import argparse
@@ -60,7 +60,7 @@ ITEMS = [
      "eliminate exposure — and it breaks every clone and every cited SHA."),
     ("Move Pages off repo root (stops publishing the source tree)", "cross", "deployment",
      "Root CNAME per repo means GitHub Pages serves the whole working tree — "
-     "CLAUDE.md and scripts/ included. Orphan gh-pages branch or actions/deploy-pages."),
+     "CLAUDE.md and 5-machinery/scripts/ included. Orphan gh-pages branch or actions/deploy-pages."),
     ("Fix Gate 10 bypass #1 — citation allowlist is a finite list", None, "implementation",
      "HIGH, parked since ~2026-06 in _deferred_queue.md, never surfaced. Misses any "
      "§-number outside [12], binding-rules-*.md, apparatus/substrate/toolset docs."),
@@ -71,7 +71,7 @@ ITEMS = [
      "HIGH. No mechanical paraphrase detector; a paraphrase threading the firewall's "
      "key tokens passes self-attestation."),
     ("Run approval log against GNT (expect 0 divergences)", "gnt", "design",
-     "scripts/decision_log.py, calibrated on 3 poles. GNT reportedly reproduces 100%."),
+     "5-machinery/scripts/decision_log.py, calibrated on 3 poles. GNT reportedly reproduces 100%."),
     ("Run approval log against BoFM (expect ~789 divergences)", "bofm", "design",
      "789 of 23,112 deployed lines not reproducible. Alma + Words of Mormon are the "
      "only books at 0.0% — the only two regenerated since 2026-06-03."),
@@ -97,7 +97,7 @@ ITEMS = [
     ("Triage the 43 parked items in _deferred_queue.md", "cross", "requirements",
      "Untouched since 2026-08-07, content dating to ~2026-06. Contains the three HIGH "
      "Gate 10 bypasses above, BHSA-canon migration, binding-engine extraction."),
-    ("Create 5-machinery/, move scripts+tests, repoint the SessionStart hook", None,
+    ("Create 5-machinery/, move 5-machinery/scripts+5-machinery/tests, repoint the SessionStart hook", None,
      "design",
      "Stan's fifth-folder ask. atu_method/ cannot move yet — three reader repos import "
      "it by path and the fixes cannot be pushed from the sandbox."),

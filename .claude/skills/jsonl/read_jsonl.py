@@ -10,7 +10,7 @@ These transcripts are the durable record: the context window degrades at
 compaction, the JSONL does not.
 
 Merged 2026-08-07 from two independently-built versions — readers-bofm's
-scripts/dump_session_tail.py and a user-level one — after each session shipped
+5-machinery/scripts/dump_session_tail.py and a user-level one — after each session shipped
 the same tool the same day without seeing the other. Keeps the flag interface,
 adds --grep and gzipped-archive reading.
 

@@ -2,7 +2,7 @@
 
 This document specifies the Stage 3 editorial-review surface for the ATU rendering pipeline. After Stage 1 (Opus 3-pass with agreement scoring) and Stage 2 (constraint catalog audit), non-unanimous verses + constraint-violation flags surface to a structured review file. The editor adjudicates the surface; final renderings are committed only after editorial sign-off.
 
-This protocol is consumed by per-repo pipeline scripts (`scripts/atu_pipeline/run_pipeline.py`) and by the editor's review workflow.
+This protocol is consumed by per-repo pipeline 5-machinery/scripts (`5-machinery/scripts/atu_pipeline/run_pipeline.py`) and by the editor's review workflow.
 
 ---
 
@@ -22,7 +22,7 @@ E.g., `directives/replies/2026-05-17-1700-torah-batch-genesis-01-10.md` for chap
 # Editorial Review — <book> chapters <NN>–<MM>
 
 **Directive:** <slug>
-**Pipeline version:** <git SHA of pipeline scripts>
+**Pipeline version:** <git SHA of pipeline 5-machinery/scripts>
 **Constraint catalog version:** <SHA>
 **Generated:** <YYYY-MM-DD>
 

@@ -1,6 +1,6 @@
 ---
 name: scratch-belongs-in-repo-not-tmp
-description: Do NOT use C:\tmp as a scratch dump. Reusable scripts -> the relevant repo's tracked scripts/ or research/; true throwaway -> the repo's gitignored scratch/ (or work\_scratch\ for cross-corpus). Promote keepers immediately.
+description: Do NOT use C:\tmp as a scratch dump. Reusable 5-machinery/scripts -> the relevant repo's tracked 5-machinery/scripts/ or research/; true throwaway -> the repo's gitignored scratch/ (or work\_scratch\ for cross-corpus). Promote keepers immediately.
 metadata:
   type: feedback
 ---
@@ -13,15 +13,15 @@ nothing ever cleans it (it's outside the `cleanupPeriodDays` mechanism — that 
 `~/.claude` session logs).
 
 **Where work goes instead (two tiers — the distinction matters):**
-1. **Reusable / archival dev scripts** (e.g. `build_rN_workflow.py`, `apply_class_*.py`,
-   rule-application scripts) → the relevant repo's **tracked** `scripts/` or `research/`.
+1. **Reusable / archival dev 5-machinery/scripts** (e.g. `build_rN_workflow.py`, `apply_class_*.py`,
+   rule-application 5-machinery/scripts) → the relevant repo's **tracked** `5-machinery/scripts/` or `research/`.
    These ARE dev history; they belong in git, not a tarball or a gitignored dir.
 2. **True one-shot throwaway** (a quick probe you'll never reuse) → the repo's **gitignored
    `scratch/`** dir. For cross-corpus orchestrator work that isn't one repo's, use
    `C:\Users\bibleman\work\_scratch\` (gitignored).
 
 **How to apply:**
-- Before writing a script to `C:\tmp`, ask: "reusable/has-an-artifact?" → repo `scripts/`
+- Before writing a script to `C:\tmp`, ask: "reusable/has-an-artifact?" → repo `5-machinery/scripts/`
   or `research/` from the start. "Genuine one-shot?" → gitignored `scratch/`.
 - **Promote keepers immediately** — don't let a real script age into anonymous tmp scratch.
 - When a task ends, leave nothing important in `C:\tmp`; it is being phased out and

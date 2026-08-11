@@ -199,7 +199,7 @@ flowchart LR
                                           └─ finding left as prose ──▶ recurs
 ```
 
-**Created because its absence had a cost.** This loop did not exist until 2026-08-06. Its evidence is the incident that prompted it: the user-home memory namespace — 57 files including [[memories/operational/_north_star.md|_north_star.md]], which [`../CLAUDE.md`](../CLAUDE.md) called "never optional" — was deleted and nobody noticed for roughly six weeks. Three separate signals were sitting in plain sight: dead mandatory-read paths in the constitution, a migration flagged "pending" in three places since 2026-06-28, and `scripts/check_broken_pointers.py` — a broken-pointer detector that already existed and that no cadence ever ran.
+**Created because its absence had a cost.** This loop did not exist until 2026-08-06. Its evidence is the incident that prompted it: the user-home memory namespace — 57 files including [[memories/operational/_north_star.md|_north_star.md]], which [`../CLAUDE.md`](../CLAUDE.md) called "never optional" — was deleted and nobody noticed for roughly six weeks. Three separate signals were sitting in plain sight: dead mandatory-read paths in the constitution, a migration flagged "pending" in three places since 2026-06-28, and `5-machinery/scripts/check_broken_pointers.py` — a broken-pointer detector that already existed and that no cadence ever ran.
 
 **The generalisable lesson, and the reason this loop is calendar-triggered rather than activity-triggered:** the tool was never the missing piece. Drift accumulates *fastest* when nothing is happening, so a trigger that depends on activity cannot fire during the exact window it is needed. First run of the retargeted checker (2026-08-06) found 0 broken anchors and 57 broken doc paths.
 
@@ -207,7 +207,7 @@ flowchart LR
 
 So the honest status is *partially implemented*. What exists:
 
-- **`scripts/loop_health.py`** — real, mechanical, and it works: on first run it found that **every** reader repo's validator baseline had gone stale against its own corpus (bofm 2026-05-29 vs 2026-08-06; gnt 2026-05-21 vs 2026-06-13; tanakh 2026-06-02 vs 2026-06-13), a cross-repo fact no single repo could see about itself.
+- **`5-machinery/scripts/loop_health.py`** — real, mechanical, and it works: on first run it found that **every** reader repo's validator baseline had gone stale against its own corpus (bofm 2026-05-29 vs 2026-08-06; gnt 2026-05-21 vs 2026-06-13; tanakh 2026-06-02 vs 2026-06-13), a cross-repo fact no single repo could see about itself.
 - **A dormancy stamp** (added 2026-08-07). The checker records each run and reports the gap since the previous one, escalating past 7 and 30 days. This does not detect drift *during* silence — but it makes the silence **visible at the moment it ends**, which is the signal that was missing in June–July. The first session back would have said "63 days since the last check."
 
 What is still missing: an **out-of-session scheduler** (Windows Task Scheduler or equivalent) that fires into silence and leaves its report where the next session reads it. Until that exists, this loop degrades from "periodic audit" to "audit at the end of a dormancy," which is better than nothing and is not what the loop claims.

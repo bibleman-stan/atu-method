@@ -128,7 +128,7 @@ Recorded: **62 pages, 5.74, 1,905 words/page.** Prose (both in Loop 1 and in `co
 
 That is a small error. The next one is not.
 
-**CONFIRMED — the two sides of the comparison are computed by different metrics, and the sign of the result depends on which you pick.** `scripts/growth_snapshot.py:50-51,62-67` counts wikilinks **and** markdown links but only when the target ends `.md`. `meta-wiki/admin/growth-snapshot.py:17,28` counts wikilinks only, with **no** extension filter. The meta-wiki writes `[[drift]]`, not `[[drift.md]]`. Applying each metric to both corpora:
+**CONFIRMED — the two sides of the comparison are computed by different metrics, and the sign of the result depends on which you pick.** `5-machinery/scripts/growth_snapshot.py:50-51,62-67` counts wikilinks **and** markdown links but only when the target ends `.md`. `meta-wiki/admin/growth-snapshot.py:17,28` counts wikilinks only, with **no** extension filter. The meta-wiki writes `[[drift]]`, not `[[drift.md]]`. Applying each metric to both corpora:
 
 ```
 corpus           metric        pages  words   links  links/page  w/page
@@ -366,7 +366,7 @@ The 103 figure itself is CONFIRMED only as a repeated self-report — `collapsed
 **And the load-bearing condition is already failing.** Running the LINT organ this turn:
 
 ```
-$ python scripts/loop_health.py --brief
+$ python 5-machinery/scripts/loop_health.py --brief
   - readers-gnt: baseline 2026-05-21 predates newest corpus/parse commit 2026-06-13 — the gate has stopped controlling
   - readers-tanakh: baseline 2026-06-02 predates newest corpus/parse commit 2026-06-13 — the gate has stopped controlling
   - readers-lxx / readers-vulgate / readers-gnt-morph / rev-reader: no retraction-log.md
@@ -423,7 +423,7 @@ Applying Loop 1's own drop test ("removing it loses nothing but the part"):
 - **§"The three organs — and the RAG connection" (lines 78-88).** Three paragraphs mapping the organs onto RAG's failures. Nothing downstream depends on them; every operational claim in them is restated in the propagation table. It is motivation, not mechanism. **Drop or demote to one line.**
 - **"One circulation. Three organs. One store."** Two of the three are false (F9, F12).
 - **Circled edge numerals ①-⑤ with `linkStyle` colour assignments.** Referenced exactly once, at line 116 ("I perform ①②④ and dispatch ⑤"). Naming the edges in prose costs less than a colour key.
-- **Its own broken links.** `python scripts/check_broken_pointers.py` → 4 broken wikilinks, all in `proposal-loop-1.md:10,27,139`, to `proposal-loop-2.md` and [[4-process/proposal-loop-3.md|proposal-loop-3.md]]. Forward references to unwritten documents; -3 stays broken after this file lands.
+- **Its own broken links.** `python 5-machinery/scripts/check_broken_pointers.py` → 4 broken wikilinks, all in `proposal-loop-1.md:10,27,139`, to `proposal-loop-2.md` and [[4-process/proposal-loop-3.md|proposal-loop-3.md]]. Forward references to unwritten documents; -3 stays broken after this file lands.
 
 **What is NOT decoration and should be kept:** §"What this is most likely to have wrong." Pre-registering six falsifiers is the strongest thing in the document — four of them (F1, F4, F8, F3) turned out to be the real defects. Keep that section in every future proposal.
 

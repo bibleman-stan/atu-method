@@ -29,6 +29,6 @@ Stan (thebibleman77@gmail.com) is a Hebrew Bible scholar / serious enthusiast wo
 - **Wrap calls:** Stan decides when to wrap — don't self-declare wrap done. Report state and ask "what else?".
 - **Validator findings:** Layer 1 (generic Hebrew syntax), Layer 3 (Tanakh-specific editorial methodology). STRONG findings feed work queue; REVIEW-REQUIRED items go to per-item editorial judgment. ≥80% adoption gate governs when STRONG is trusted as Category A.
 
-**Repo layout:** `private/01-method/colometry-canon.md` (authoritative methodology), `private/03-sessions/` (session notes + handoffs), `data/text-files/` (v0 prose / v1 te'amim-baseline / v2 editorial), `scripts/` (ingest, parse, build cascade), `validators/` (Layer 1 / Layer 3 gates), `books/` (built HTML chapters). Never edit v0 or source text; all editorial work in v2/he/.
+**Repo layout:** `private/01-method/colometry-canon.md` (authoritative methodology), `private/03-sessions/` (session notes + handoffs), `data/text-files/` (v0 prose / v1 te'amim-baseline / v2 editorial), `5-machinery/scripts/` (ingest, parse, build cascade), `validators/` (Layer 1 / Layer 3 gates), `books/` (built HTML chapters). Never edit v0 or source text; all editorial work in v2/he/.
 
 Co-Authored-By footer: `Claude Opus 4.7 (1M context) <noreply@anthropic.com>`

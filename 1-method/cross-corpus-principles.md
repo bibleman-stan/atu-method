@@ -297,7 +297,7 @@ over-fragmenting.
 split. **M4 is NOT a retrospective merge generator.** When an existing split shows both fragments
 individually passing the bidirectional test, M4 does not fire, even if the two events are causally,
 narratively, or rhetorically linked. "Narrative completion" and "atomic-thought failure" are
-different tests; conflating them is a documented failure mode.
+different 5-machinery/tests; conflating them is a documented failure mode.
 
 **Precedence over structural justifications.** M4 fires ONLY when splitting produces a fragment
 that **fails** the bidirectional test. A fragment that PASSES via another structural justification's
