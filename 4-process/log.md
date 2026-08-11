@@ -15,6 +15,26 @@ promotion. This records what **we did**.
 
 ---
 
+## [2026-08-11] measure | point traceability at the restored catalog; curate grounding in a sidecar
+
+`06e2e6d`
+
+## [2026-08-11] measure | Tanakh traceability -- the grounding is orphaned, not missing
+
+`c71cca8`
+
+## [2026-08-11] lessons | a zero from an uncalibrated probe is not evidence of absence
+
+`7cc1d68`
+
+## [2026-08-11] claude | split machine-local paths out of the tracked settings.json
+
+`28b5f78`
+
+## [2026-08-11] log | regenerate from git history
+
+`c167ff2`
+
 ## [2026-08-11] decisions | ran the Hardy check -- no prose at risk, but no attribution either
 
 `b9b45ce`
@@ -314,23 +334,3 @@ promotion. This records what **we did**.
 ## [2026-08-06] vault | track stable Obsidian config, ignore volatile workspace state
 
 `fe9a132`
-
-## [2026-08-06] recovery | land recovered memory at memories/operational/ + repoint CLAUDE.md (Mandate A complete)
-
-`3920810`
-
-## [2026-08-06] recovery | complete lost memory-namespace recovery — 52 full + 5 stubs staged
-
-`ee7b309`
-
-## [2026-06-15] build | fix terminology elision -> ellipsis (ATU gapped-verb concept)
-
-`854d2e8`
-
-## [2026-06-06] build | commit binding-rules-lxx.md + index entry; mark PARKED
-
-`ba04629`
-
-## [2026-06-06] canon-xref | Batch A3 §3.17 self-citation surgery + R25 cross-verse-defer ref
-
-`73112e4`
