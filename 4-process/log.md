@@ -15,6 +15,10 @@ promotion. This records what **we did**.
 
 ---
 
+## [2026-08-11] measure | claim #6 measured -- the marker license produces 1.16% of lines
+
+`6ab51b4`
+
 ## [2026-08-11] build | restore nouns the reorg turned into paths (prose only)
 
 `68e5a2d`
@@ -330,7 +334,3 @@ promotion. This records what **we did**.
 ## [2026-08-06] wip | commit in-flight canon-xref work to establish a baseline
 
 `5420f08`
-
-## [2026-08-06] build | author improvement-loops.md — the four loops and their unequal states
-
-`72da242`
