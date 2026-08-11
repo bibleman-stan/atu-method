@@ -15,6 +15,10 @@ promotion. This records what **we did**.
 
 ---
 
+## [2026-08-11] measure | claim #4 is grounded -- the inventory and the grounding never met
+
+`daf5de2`
+
 ## [2026-08-11] measure | claim #6 measured -- the marker license produces 1.16% of lines
 
 `6ab51b4`
@@ -330,7 +334,3 @@ promotion. This records what **we did**.
 ## [2026-08-06] build | finish canon cross-reference linking (remaining 4 docs)
 
 `467bb60`
-
-## [2026-08-06] wip | commit in-flight canon-xref work to establish a baseline
-
-`5420f08`

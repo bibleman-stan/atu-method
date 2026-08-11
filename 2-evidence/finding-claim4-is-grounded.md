@@ -20,7 +20,11 @@ And §2: *"The ATU is this apparatus's **operationalization** — via the bidire
 
 Named sources: Langacker, *Foundations of Cognitive Grammar* (1987/1991) and "Discourse in Cognitive Grammar" (2001); Givón, *Topic Continuity in Discourse* (1983).
 
-**2. In `atu-nlp-wiki`** — which the inventory's own type system names as the receipt store for `[SOURCED]`. `wiki/clause-as-information-unit.md` (updated 2026-07-11) carries the near-exact proposition:
+**2. In `atu-nlp-wiki`** — which the inventory's own type system names as the receipt store for `[SOURCED]`. `wiki/clause-as-information-unit.md` (updated 2026-07-11) carries the near-exact proposition.
+
+> **VERIFIED AGAINST THE PRIMARY SOURCE, 2026-08-11.** The Givón-1983 quote below was checked against `atu-nlp-wiki/raw/Givon-1983.pdf`, book page 7 (PDF page 3 — the scan carries a 4-page front-matter offset), section *"2. The 'paragraph' strand: Macro traditions"*. It matches verbatim, page number included. The wiki's paraphrase of pp.7–8 is also accurate: p.8 has *"the grammar/syntax, which is primarily (though not exclusively) a clause-level coding instrument."*
+>
+> This check was run because a quote relayed from a wiki page is a second-hand citation, and second-hand citations are where hallucination hides. **The receipt store makes the check cheap: 77 PDFs in `raw/`, including Givón 1975/1983/1984/1995, Chafe ×2, Lambrecht, Scheppers, Quirk, Shopen, Jurafsky, Louw.** Of the nine sources cited on the clause page, eight have a receipt; only Hiippala does not.
 
 > "The clause ('sentence') is the basic information processing unit in human discourse. A word may have 'meaning', but only the proposition — grammaticalized as clause — carries information." — Givón-1983, p.7
 
@@ -46,6 +50,23 @@ The wiki page is dated **2026-07-11**; the inventory calling the claim unsupport
 It moves claim #4 off `[UNPROVEN]`. It does **not** move it to *proven*, and the inventory's own safety rule says why: `[CONVERGENT]` means *"we derived it independently; an external parallel exists. **Cite as comparison, never as warrant.**"* `feedback_rhetoric_bandwagon.md` names misframing convergence as authorization a listed danger. Givón makes the claim non-arbitrary and locates it in a real research tradition. He does not make it true for Hebrew, Greek, or EME English.
 
 The correct retype is `[CONVERGENT]` — possibly `[SOURCED]` if `methodology-position.md` records the framework actually reasoning *from* Langacker/Givón rather than arriving alongside them. That is a documentary question about authorship order, answerable and unanswered.
+
+## The citation protocol this establishes
+
+Stan, 2026-08-11: *"we need to anchor these theoretical foundations in a footnote citation/quote that can be checked so as to make sure you are not hallucinating."*
+
+The infrastructure for that already exists and was unused. `atu-nlp-wiki/raw/` holds 77 source PDFs, and the inventory's `[SOURCED]` type already says *"a receipt into `atu-nlp-wiki/raw/` should exist."* The gap was never the receipts — it was that nothing required opening them.
+
+**Rule, from here: no grounding claim without all four of —**
+
+1. the **verbatim quote**, not a paraphrase;
+2. the **page number** as printed in the source, not the PDF page;
+3. the **receipt path** under `raw/`;
+4. a **checked-on date**, recording that someone opened the PDF this turn.
+
+A citation relayed from a wiki page is second-hand, and second-hand is exactly where a fabricated page number survives unchallenged. The check costs one `Read` call. **The Givón quote above went through it; every row in the traceability tables should too.**
+
+Where no receipt exists — Hiippala on the clause page, and every Joüon/Waltke-O'Connor citation in `constraint_catalog_v1.md`, none of which have a PDF in `raw/` — the claim is **unverified**, and should be labelled that way rather than silently trusted because it looks like a citation.
 
 ## The live challenger, which matters more than the support
 
