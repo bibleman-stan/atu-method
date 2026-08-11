@@ -15,6 +15,22 @@ promotion. This records what **we did**.
 
 ---
 
+## [2026-08-11] build | restore nouns the reorg turned into paths (prose only)
+
+`68e5a2d`
+
+## [2026-08-11] build | restore nouns the reorg turned into paths (atu-method, prose only)
+
+`9d7c9b2`
+
+## [2026-08-11] machinery | detect and fix reorg word-boundary damage
+
+`423157d`
+
+## [2026-08-11] measure | the data plane and the requirements phase are one hole
+
+`75033da`
+
 ## [2026-08-11] measure | point traceability at the restored catalog; curate grounding in a sidecar
 
 `06e2e6d`
@@ -318,19 +334,3 @@ promotion. This records what **we did**.
 ## [2026-08-06] build | author improvement-loops.md — the four loops and their unequal states
 
 `72da242`
-
-## [2026-08-06] canon | demote sense-line-mission memory; adopt audit tier + file-back discipline
-
-`b4915b3`
-
-## [2026-08-06] vault | track reproducible Obsidian config, ignore plugin code and view state
-
-`44c5a1f`
-
-## [2026-08-06] build | make canon cross-references clickable (9 clean docs)
-
-`8752ac0`
-
-## [2026-08-06] vault | track stable Obsidian config, ignore volatile workspace state
-
-`fe9a132`
