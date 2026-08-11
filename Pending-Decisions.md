@@ -26,11 +26,26 @@ Surfaced while narrowing the `research/` ignore in `readers-bofm`. That folder h
 
 **The precedent is already set, in the other direction.** `data/hardy_intertext.json` and `data/hardy_phrase_index.json` are **already tracked and already public**, along with `5-machinery/scripts/enrich_hardy_data.py`. So the repo already publishes Hardy-derived data. Keeping the `research/` extractions local while those stay public is not a coherent position — it is two answers to one question, decided by which folder a file happened to land in.
 
-**Recommendation: decide the class, then apply it to both places.** I lean toward publishing *derived indices* (verse-to-verse reference mappings — facts about which passages relate, which are not themselves copyrightable expression) while keeping *extracted prose* local (Hardy's notes, glosses, and commentary wording, which are his expression). That line is defensible and would let the already-public files stay public. But it needs a look at what the files actually contain, which I have not done — I listed them, I did not read them.
+### The check, run 2026-08-11
 
-**Cons of acting on the recommendation without that check:** if `hardy_intertext.json` turns out to carry Hardy's note text rather than bare references, the already-public files are the problem and the fix is a history question, not a gitignore question. **Cons of deferring:** the inconsistency persists in a public repo.
+**No Hardy prose exists in any of these files.** Every text field is either KJV or Book of Mormon, both public domain. The prose/indices line I proposed is therefore moot — there is no expression being withheld, and nothing to decide on that axis.
 
-**Blocked on Stan.** Recorded rather than acted on, per the rule that outward-facing publication is not mine to decide unilaterally.
+| File | Contents | Status |
+|---|---|---|
+| `data/hardy_intertext.json` | **1,615** entries: `{bom verse → bible_ref, type}` | **public** |
+| `data/hardy_phrase_index.json` | 809 verses, 1,109 spans, 689 distinct phrases — all BoM text with *our* computed character offsets | **public** |
+| `research/hardy_biblical_references.json` | **1,785** entries, same shape, plus a legend describing Hardy's typographic conventions | local |
+| `research/allusion_extractions_all.json` | 616 records: KJV text, BoM text, *our* `extracted_phrase` and `match_type`. `notes` non-empty in **0** of 616 | local |
+
+**The decisive number: 1,615 of 1,785 is already public — 90.5% of Hardy's apparatus.** The local file is the same index with 170 more entries. **Keeping `research/` local protects nothing.** The live question was never whether to publish those files; it is whether the 1,615 already published should be.
+
+**What is actually at stake is compilation, not expression.** Facts are not copyrightable, but a compilation can be protected in its *selection and arrangement* where those are original. Which verbal parallels rise to the level of an allusion is scholarly judgment — that selection is precisely Hardy's contribution, and 1,785 machine-readable rows reproduce it exactly. That is a materially stronger claim than a directory of facts, and it is a legal judgment I am not in a position to settle.
+
+**The one finding that needs no decision: the public files carry no attribution at all.** Neither has a `source`, `citation`, or license key — top-level keys go straight to `1nephi`, `mosiah`. The only tracked file in the repo that credits Hardy is the `research/README.md` written on 2026-08-10. The *local* file has a proper `source` line naming the book and pages; the *published* ones do not. **1,615 entries of a named scholar's apparatus are public with zero credit, and that is wrong on every reading of the underlying question.**
+
+**Recommendation, in two parts.** Fix attribution now, independent of the larger call: add a `source` block to both public files naming Hardy, the book, and pp. 722–771, and credit him in the reader's about page. Then decide the class as one question, applying the same answer to `data/` and `research/`. If publishing stands, the local files should join `data/` rather than sit ignored; if it does not, the fix is removing the 1,615 from a public repo, which is a history question, not a gitignore one.
+
+**Blocked on Stan** for the publication call. The attribution gap I would fix on your word alone — it is a defect under either outcome.
 
 ### [2026-08-09] Name it `colometry-project` — and the consequence that falls out
 
