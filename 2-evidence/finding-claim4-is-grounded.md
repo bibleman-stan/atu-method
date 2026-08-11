@@ -94,7 +94,28 @@ So the loop is open, not vicious. Half the closure material exists and is not co
 Checked the catalog's Joüon section numbers against the printed table of
 contents of Joüon–Muraoka, *A Grammar of Biblical Hebrew* (Rome: Pontificio
 Istituto Biblico, 2006), pp. xxi–xxxvi. No PDF required — the TOC alone
-falsifies five of them.
+produces five discrepancies.
+
+> **EDITION CAVEAT, added 2026-08-11 after Stan pointed it out.** That TOC is
+> the **revised English edition of 2006** (Subsidia Biblica 27) — its front
+> matter lists four separate prefaces: original French, English, corrected
+> second printing, revised English. **Joüon–Muraoka renumbers across editions**;
+> the 2006 TOC is visibly full of `aa` / `ba` / `fa` / `nb` sub-letters that are
+> revision-era insertions.
+>
+> So the five rows below are discrepancies **against the 2006 edition**, not
+> proven errors. If the catalog was written against the 1991 two-volume English
+> edition or the 1993 corrected printing, some may be correct there.
+>
+> **And that ambiguity is itself the finding.** `constraint_catalog_v1.md`
+> names no edition anywhere — every citation reads "Joüon §129" with nothing to
+> resolve it against. A section number without an edition is under-specified for
+> a work that renumbers, so these citations are *unresolvable* independently of
+> whether they are *wrong*. Waltke–O'Connor (1990) has a single edition and is
+> unaffected.
+>
+> **Consequence for the protocol:** the four required elements are now five —
+> verbatim quote, printed page, **edition**, receipt path, checked-on date.
 
 | Constraint | Cited as | §  actually covers | Probable correct § |
 |---|---|---|---|
