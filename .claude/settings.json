@@ -108,13 +108,6 @@
       "WebFetch(domain:opencommons.org)",
       "WebFetch(domain:www.youtube.com)",
       "Edit(/.claude/skills/colometry-board/**)"
-    ],
-    "additionalDirectories": [
-      "C:\\Users\\bibleman\\.claude",
-      "C:\\Users\\bibleman\\repos\\atu-method\\.claude\\skills\\jsonl",
-      "C:\\Users\\bibleman\\.claude\\projects\\c--Users-bibleman-repos-atu-method\\adb46348-855c-46cc-a167-b963b94e170d\\tool-results",
-      "c:\\Users\\bibleman\\repos\\readers-vulgate\\1-method",
-      "c:\\Users\\bibleman\\repos\\readers-vulgate\\4-process"
     ]
   }
 }

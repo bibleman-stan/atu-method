@@ -1,3 +1,11 @@
+# Claude Code personal overrides. settings.json IS tracked — its 107 allow rules
+# are project config worth sharing. settings.local.json holds the machine-local
+# half (absolute Windows paths, including per-session tool-results dirs), which
+# has no business in a public repo and was riding along as churn in ten
+# unrelated commits before the split.
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
 # Python
 __pycache__/
 *.py[cod]
