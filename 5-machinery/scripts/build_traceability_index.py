@@ -179,6 +179,7 @@ def main() -> int:
     print("| `DESCRIBED` | Source establishes the phenomenon; the segmentation inference is ours |")
     print("| `PROJECT` | No external source — a deliberate engineering decision |")
     print("| `UNGROUNDED` | Neither source nor rationale — candidate for retirement |")
+    print("| `MISCITED` | The section named does not cover the claim. A defect in the **citation**, not a verdict on the rule. |")
     print("| `UNVERIFIED` | Not yet judged by a human. The generator never guesses. |\n")
     print("## Constraints\n")
     judged = sum(1 for cid, _, _ in rows if cid in curated)

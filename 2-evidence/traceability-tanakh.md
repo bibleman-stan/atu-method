@@ -19,11 +19,12 @@
 | `DESCRIBED` | Source establishes the phenomenon; the segmentation inference is ours |
 | `PROJECT` | No external source — a deliberate engineering decision |
 | `UNGROUNDED` | Neither source nor rationale — candidate for retirement |
+| `MISCITED` | The section named does not cover the claim. A defect in the **citation**, not a verdict on the rule. |
 | `UNVERIFIED` | Not yet judged by a human. The generator never guesses. |
 
 ## Constraints
 
-*Grounding judged: **2/26**. Curated in `2-evidence/traceability-grounding.json`, merged at build time so regenerating never discards it.*
+*Grounding judged: **3/26**. Curated in `2-evidence/traceability-grounding.json`, merged at build time so regenerating never discards it.*
 
 | Constraint | Source (scholarship) | Validator | Grounding |
 |---|---|---|---|
@@ -47,7 +48,7 @@
 | [[JM158-restrictive-relative]] | Joüon §158; WO §19.1 | **— none —** | `UNVERIFIED` |
 | [[JM158-nonrestrictive-relative]] | Joüon §158; WO §19.3 | **— none —** | `UNVERIFIED` |
 | [[JM168-purpose-clause]] | Joüon §168; WO §36.2.2; canon H7 extension | **— none —** | `UNVERIFIED` |
-| [[JM159e-conditional-protasis]] | Joüon §159e; WO §38.1 | `validate_wayehi_protasis` | `UNVERIFIED` |
+| [[JM159e-conditional-protasis]] | Joüon §159e; WO §38.1 | `validate_wayehi_protasis` | `MISCITED` ✓2026-08-11 — §159 is 'Circumstantial clause'; conditional clauses are §167. Verified against the 2006 text, not just the TOC. |
 | [[JM174-gapped-verb]] | Joüon §174 (gapping); WO §8.3.2 | `validate_verb_object_bond` | `UNVERIFIED` |
 | [[JM157-ki-recitativum]] | Joüon §157.3; WO §39.3.4; canon H7 complement integrity | **— none —** | `UNVERIFIED` |
 | [[JM123-inf-abs-predicate]] | Joüon §123; WO §35.3 | **— none —** | `UNVERIFIED` |
@@ -57,6 +58,17 @@
 ## Verified against the source
 
 Each entry below was judged only after opening the receipt. Quote is verbatim; page is as printed in the source, not the PDF page.
+
+### JM159e-conditional-protasis — `MISCITED`
+
+> e — Verbal clause: Gn 18.13 הַאַף אָמְנָם אֵלֵד וַאֲנִי זָקַנְתִּי is it that I shall truly give birth, being old as I am?
+
+- **Page**: 567 (§159e, immediately preceding the §160 heading)
+- **Edition**: Joüon–Muraoka, A Grammar of Biblical Hebrew, revised English edition, Roma: Pontificio Istituto Biblico, 2006
+- **Receipt**: `atu-nlp-wiki/raw/Jouon-2006.pdf (PDF p.85)`
+- **Checked**: 2026-08-11
+
+The constraint cites 'Joüon §159e' for a conditional protasis. §159 is Circumstantial clause, and §159e is a circumstantial VERBAL clause — the Gn 18.13 example above is a rhetorical question with a concessive circumstantial, not a protasis. Conditional clauses are §167 ('Conditional clause. [a Use of juxtaposition; b Expressed by Waw; c אִם, לוּ and כִּי; g Tenses; k Unreal condition ...]'). The §167 route also has the WO cross-reference the constraint pairs with. This says nothing about whether the constraint itself is right — only that its warrant points at the wrong section. Suspected from the TOC earlier the same day; now confirmed by reading the page, which matters because the TOC alone cannot show what §159e actually contains.
 
 ### JM129-construct-chain — `DESCRIBED`
 
