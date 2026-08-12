@@ -15,6 +15,30 @@ promotion. This records what **we did**.
 
 ---
 
+## [2026-08-11] grounding | JM156-casus-pendens is the best-warranted row yet; JM125 cautioned
+
+`ccb0645`
+
+## [2026-08-11] grounding | JM159e miscited — §159 is Circumstantial, not Conditional
+
+`bb406ce`
+
+## [2026-08-11] grounding | first row verified against the source — JM129-construct-chain
+
+`3543b75`
+
+## [2026-08-11] correction | the Joüon check was edition-specific and the catalog names no edition
+
+`7b6cd2d`
+
+## [2026-08-11] measure | five Joüon citations falsified by the printed TOC alone
+
+`dbfbdcb`
+
+## [2026-08-11] measure | verify the Givon quote against the PDF; establish the citation protocol
+
+`d3be2e6`
+
 ## [2026-08-11] measure | claim #4 is grounded -- the inventory and the grounding never met
 
 `daf5de2`
@@ -310,27 +334,3 @@ promotion. This records what **we did**.
 ## [2026-08-07] tooling | loop_health.py — mechanical staleness checks across all stakeholders
 
 `6cc509a`
-
-## [2026-08-06] fix | repointer skipped private/, leaving 103 dangling canon citations
-
-`0d69a96`
-
-## [2026-08-06] propose | deconstruct §2.1's allowance apparatus — 2 derive, 3 don't, 1 collides
-
-`5d1084a`
-
-## [2026-08-06] build | inventory framework.md's load-bearing claims and type each
-
-`764654f`
-
-## [2026-08-06] — | docs+skills: add the theory<->experiment loop; begin the CLAUDE.md skills split
-
-`4369ce0`
-
-## [2026-08-06] build | restructure into a numbered reading hierarchy (cross-repo cascade)
-
-`a76b5c5`
-
-## [2026-08-06] build | finish canon cross-reference linking (remaining 4 docs)
-
-`467bb60`

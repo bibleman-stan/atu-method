@@ -199,7 +199,12 @@ def main() -> int:
                 g += f" — {c['note']}"
         else:
             g = "`UNVERIFIED`"
-        print(f"| [[{cid}]] | {src or '**— none —**'} | {v} | {g} |")
+        # NOT a wikilink. These IDs are HEADINGS inside another repo's
+        # constraint_catalog_v1.md, not notes in this vault, so `[[JM129-...]]`
+        # can never resolve — it emitted 26 broken pointers on 2026-08-11 and
+        # the checker caught every one. A code span says "identifier" without
+        # promising a target.
+        print(f"| `{cid}` | {src or '**— none —**'} | {v} | {g} |")
 
     # A judged row carrying the five protocol fields is a CHECKED citation; a
     # judged row without them is an opinion. The distinction is the whole point,

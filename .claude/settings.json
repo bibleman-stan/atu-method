@@ -108,6 +108,9 @@
       "WebFetch(domain:opencommons.org)",
       "WebFetch(domain:www.youtube.com)",
       "Edit(/.claude/skills/colometry-board/**)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\bibleman\\work\\atu-nlp-wiki"
     ]
   }
 }

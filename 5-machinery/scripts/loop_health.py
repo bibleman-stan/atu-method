@@ -431,36 +431,42 @@ def check_pointers() -> list:
 
 
 def check_current_tasks() -> list:
-    """The task board is only useful if it tracks reality — so check that it does.
+    """Current-Tasks.md is RETIRED. Check that it stays a pointer, not a board.
 
-    A hand-maintained board rots exactly like every other loop in this repo, and
-    the failure is silent: it keeps rendering, it just stops being true. The
-    mechanical proxy is drift — commits landed in this repo since the board was
-    last touched. That cannot detect a *wrong* board, only a stale one, which is
-    the honest limit of a date check.
+    It was always meant to die. Its own header: "it is the seed for the GitHub
+    Project board — when that exists, this file is retired rather than
+    maintained alongside it." The board went live 2026-08-09 with 16 items.
+
+    The drift check that used to live here was correct and kept firing — 23
+    commits behind on 2026-08-11 — but it was measuring the wrong thing. Chasing
+    that warning by updating the file would have restored the exact defect the
+    board was built to end: two places to look for pending work, disagreeing.
+    Stan's words: "the problem has been you have had lots of places to hide the
+    pending things; if there's only one place to look, I'll be able to catch up."
+
+    So the check inverts. Staleness is now EXPECTED and silent. What is reported
+    is the file growing back into a board — because that, not age, is the
+    failure. The board itself is not checkable from here; it lives in GitHub and
+    `gh` may be absent or unauthenticated, so this deliberately verifies the
+    local half only and says so.
     """
     board = REPO / "Current-Tasks.md"
     if not board.exists():
-        return [("WARN", "Current-Tasks.md missing — no consolidated in-flight state")]
-    rel = board.relative_to(REPO).as_posix()
-    age = _days_since(_git(REPO, "log", "-1", "--format=%ad", "--date=short",
-                           "--", rel))
-    since = _git(REPO, "log", "--oneline", f"--since=@{{{age or 0} days ago}}")
-    drift = len([ln for ln in (since or "").splitlines() if ln.strip()])
-    if age is None:
-        return [("WARN", "Current-Tasks.md never committed")]
-    # DRIFT, NOT DAYS. The original threshold was 14 days, which was calibrated
-    # to nothing. Demonstrated 2026-08-09: the board sat untouched for 1 day
-    # while 21 commits landed — genuinely stale, reported "ok", and would not
-    # have warned for another 13 days. The signal was already being computed and
-    # then thrown away. A repo that moves 13 commits in a day needs a
-    # commit-count trigger; days only matter when nothing is happening.
-    if drift > 10:
-        return [("WARN", f"Current-Tasks.md is {drift} commits behind "
-                         f"(last touched {age}d ago) — hand-maintained boards rot")]
-    if age > 14:
-        return [("WARN", f"Current-Tasks.md untouched {age}d ({drift} commits since)")]
-    return [("ok", f"Current-Tasks.md updated {age}d ago ({drift} commits since)")]
+        return [("ok", "Current-Tasks.md retired — board is the single surface")]
+    text = board.read_text(encoding="utf-8", errors="replace")
+    # A pointer is short and names the board. A board has task structure:
+    # checkboxes, or many headed sections.
+    checkboxes = len(re.findall(r"^\s*[-*]\s*\[[ xX]\]", text, re.M))
+    sections = len(re.findall(r"^#{2,3}\s", text, re.M))
+    points_at_board = bool(re.search(r"projects?/1\b|colometry-project|Project board",
+                                     text, re.I))
+    if checkboxes or sections > 3:
+        return [("WARN", f"Current-Tasks.md has regrown into a board "
+                         f"({checkboxes} checkboxes, {sections} sections) — "
+                         f"pending work belongs on the project board, not here")]
+    if not points_at_board:
+        return [("WARN", "Current-Tasks.md is retired but does not point at the board")]
+    return [("ok", "Current-Tasks.md is a pointer to the board, as intended")]
 
 
 def main() -> int:
