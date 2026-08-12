@@ -1,8 +1,21 @@
 {
   "_README": "Human judgments for the Grounding column of traceability-tanakh.md. Merged at build time by 5-machinery/scripts/build_traceability_index.py so regenerating the table never discards curation. Values: GROUNDED (source asserts the unit coheres AND that this bears on segmentation) | DESCRIBED (source establishes the phenomenon; the segmentation inference is ours) | PROJECT (no external source, a deliberate engineering decision) | UNGROUNDED (neither source nor rationale). Absent constraints render as UNVERIFIED. Only add an entry you can defend from the cited section itself -- a guess here is worse than a blank, because a blank is visibly a gap.",
 
+  "_PROTOCOL": "A row may only be judged after opening the source. Five required fields: quote (verbatim, not paraphrase), page (as PRINTED in the source, not the PDF page), edition (Jouon-Muraoka renumbers across its 1923/1991/1993/2006 states, so a bare section number is unresolvable), receipt (path under atu-nlp-wiki/raw/), checked (date the file was actually opened). Established 2026-08-11 after the Givon-1983 quote was relayed from a wiki page before anyone had opened the PDF.",
+
   "JM-cross-verse-continuity": {
     "grounding": "PROJECT",
     "note": "cites only Canon H10 and our own §1; the JM prefix implies Joüon but no section is given"
+  },
+
+  "JM129-construct-chain": {
+    "grounding": "DESCRIBED",
+    "note": "strongest DESCRIBED in the catalog — Joüon asserts the construct chain is indissoluble in the language's own terms, but never addresses line boundaries; converting syntactic inseparability into a segmentation rule is our step",
+    "quote": "for the construct state בְּנֵי would be separated from its resting point: it would be constructed, as it were, in cantilever and would not lean on a resting point",
+    "page": "435 (§129a); chain length at 436 (§129c)",
+    "edition": "Joüon–Muraoka, A Grammar of Biblical Hebrew, revised English edition, Roma: Pontificio Istituto Biblico, 2006",
+    "receipt": "atu-nlp-wiki/raw/Jouon-2006.pdf (PDF pp. 20-21)",
+    "checked": "2026-08-11",
+    "assessment": "The citation is CORRECT and the support is strong. §129 is 'Genitive and construct state' as cited, and §129a states that a nomen regens separated from its nomen rectum would stand 'in cantilever' with no resting point — an assertion of impossibility, not merely of cohesion. §129c independently confirms the edge case the constraint handles: chains run to 4 nouns (Gn 41.10) and 6 (Is 21.17), and all levels hold together. §129d calls them 'two mutually dependent nouns'. WHY NOT GROUNDED: Joüon describes SYNTACTIC inseparability — you cannot construct the phrase otherwise, you cannot insert material between the terms. He nowhere discusses where a line ends in a written edition. Our rule converts 'cannot stand alone syntactically' into 'must not be divided by a line break', and that inference is ours. Note also that Joüon himself uses 'break' for a syntactic alternative — 'sometimes a ל can break the chain of genitives' (§129c, §130c) — which is a different operation from a typographic break and should not be read as licence for one."
   }
 }

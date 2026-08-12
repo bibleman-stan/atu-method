@@ -23,14 +23,14 @@
 
 ## Constraints
 
-*Grounding judged: **1/26**. Curated in `2-evidence/traceability-grounding.json`, merged at build time so regenerating never discards it.*
+*Grounding judged: **2/26**. Curated in `2-evidence/traceability-grounding.json`, merged at build time so regenerating never discards it.*
 
 | Constraint | Source (scholarship) | Validator | Grounding |
 |---|---|---|---|
 | [[JM13-maqqef-group]] | Joüon §13; Layer 1 hebrew-break-legality.md row H1 | `validate_maqqef_integrity` | `UNVERIFIED` |
 | [[JM103-proclitic-stranding]] | Joüon §103 (prepositions), §137 (conjunction waw), §125 (object marker), §160 (negation) | **— none —** | `UNVERIFIED` |
 | [[JM103e-compound-prep-object]] | Joüon §103e | `validate_compound_preposition_object` | `UNVERIFIED` |
-| [[JM129-construct-chain]] | Joüon §129; WO §9.3, §9.5; canon H2 | `validate_construct_chain`<br>`validate_bare_construct_head` | `UNVERIFIED` |
+| [[JM129-construct-chain]] | Joüon §129; WO §9.3, §9.5; canon H2 | `validate_construct_chain`<br>`validate_bare_construct_head` | `DESCRIBED` ✓2026-08-11 — strongest DESCRIBED in the catalog — Joüon asserts the construct chain is indissoluble in the language's own terms, but never addresses line boundaries; converting syntactic inseparability into a segmentation rule is our step |
 | [[JM125-verb-object-bond]] | Joüon §125; WO §10.2.1; canon M2 | `validate_verb_object_bond` | `UNVERIFIED` |
 | [[JM125-coordinated-objects]] | Joüon §125; WO §10.2.1; canon M2 + SJ1 | `validate_coordinated_object` | `UNVERIFIED` |
 | [[JM157-complement-integrity]] | Joüon §157; WO §38.3; canon H7 | `validate_complement_integrity` | `UNVERIFIED` |
@@ -53,6 +53,22 @@
 | [[JM123-inf-abs-predicate]] | Joüon §123; WO §35.3 | **— none —** | `UNVERIFIED` |
 | [[JM147-vocative-extraclausal]] | Joüon §147 (vocative and extra-clausal elements); WO §4.7; canon H4 | **— none —** | `UNVERIFIED` |
 | [[JM160-negation-scope]] | Joüon §160 (לֹא / אַל / אֵין); WO §39.3.3 | **— none —** | `UNVERIFIED` |
+
+## Verified against the source
+
+Each entry below was judged only after opening the receipt. Quote is verbatim; page is as printed in the source, not the PDF page.
+
+### JM129-construct-chain — `DESCRIBED`
+
+> for the construct state בְּנֵי would be separated from its resting point: it would be constructed, as it were, in cantilever and would not lean on a resting point
+
+- **Page**: 435 (§129a); chain length at 436 (§129c)
+- **Edition**: Joüon–Muraoka, A Grammar of Biblical Hebrew, revised English edition, Roma: Pontificio Istituto Biblico, 2006
+- **Receipt**: `atu-nlp-wiki/raw/Jouon-2006.pdf (PDF pp. 20-21)`
+- **Checked**: 2026-08-11
+
+The citation is CORRECT and the support is strong. §129 is 'Genitive and construct state' as cited, and §129a states that a nomen regens separated from its nomen rectum would stand 'in cantilever' with no resting point — an assertion of impossibility, not merely of cohesion. §129c independently confirms the edge case the constraint handles: chains run to 4 nouns (Gn 41.10) and 6 (Is 21.17), and all levels hold together. §129d calls them 'two mutually dependent nouns'. WHY NOT GROUNDED: Joüon describes SYNTACTIC inseparability — you cannot construct the phrase otherwise, you cannot insert material between the terms. He nowhere discusses where a line ends in a written edition. Our rule converts 'cannot stand alone syntactically' into 'must not be divided by a line break', and that inference is ours. Note also that Joüon himself uses 'break' for a syntactic alternative — 'sometimes a ל can break the chain of genitives' (§129c, §130c) — which is a different operation from a typographic break and should not be read as licence for one.
+
 
 ## Validators with no matching constraint
 

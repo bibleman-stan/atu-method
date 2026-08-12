@@ -190,8 +190,34 @@ def main() -> int:
     for cid, src, m in rows:
         v = "<br>".join(f"`{x}`" for x in m) if m else "**— none —**"
         c = curated.get(cid)
-        g = f"`{c['grounding']}`" + (f" — {c['note']}" if c.get("note") else "") if c else "`UNVERIFIED`"
+        if c:
+            g = f"`{c['grounding']}`"
+            if c.get("checked"):
+                g += f" ✓{c['checked']}"
+            if c.get("note"):
+                g += f" — {c['note']}"
+        else:
+            g = "`UNVERIFIED`"
         print(f"| [[{cid}]] | {src or '**— none —**'} | {v} | {g} |")
+
+    # A judged row carrying the five protocol fields is a CHECKED citation; a
+    # judged row without them is an opinion. The distinction is the whole point,
+    # so print the receipts rather than leaving them in the sidecar.
+    verified = [(cid, c) for cid, c in curated.items()
+                if isinstance(c, dict) and c.get("quote")]
+    if verified:
+        print("\n## Verified against the source\n")
+        print("Each entry below was judged only after opening the receipt. "
+              "Quote is verbatim; page is as printed in the source, not the PDF page.\n")
+        for cid, c in verified:
+            print(f"### {cid} — `{c['grounding']}`\n")
+            print(f"> {c['quote']}\n")
+            print(f"- **Page**: {c.get('page','?')}")
+            print(f"- **Edition**: {c.get('edition','— not recorded —')}")
+            print(f"- **Receipt**: `{c.get('receipt','— none —')}`")
+            print(f"- **Checked**: {c.get('checked','never')}\n")
+            if c.get("assessment"):
+                print(f"{c['assessment']}\n")
 
     if unmatched_v:
         print("\n## Validators with no matching constraint\n")
