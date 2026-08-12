@@ -24,7 +24,7 @@
 
 ## Constraints
 
-*Grounding judged: **3/26**. Curated in `2-evidence/traceability-grounding.json`, merged at build time so regenerating never discards it.*
+*Grounding judged: **5/26**. Curated in `2-evidence/traceability-grounding.json`, merged at build time so regenerating never discards it.*
 
 | Constraint | Source (scholarship) | Validator | Grounding |
 |---|---|---|---|
@@ -32,7 +32,7 @@
 | [[JM103-proclitic-stranding]] | Joüon §103 (prepositions), §137 (conjunction waw), §125 (object marker), §160 (negation) | **— none —** | `UNVERIFIED` |
 | [[JM103e-compound-prep-object]] | Joüon §103e | `validate_compound_preposition_object` | `UNVERIFIED` |
 | [[JM129-construct-chain]] | Joüon §129; WO §9.3, §9.5; canon H2 | `validate_construct_chain`<br>`validate_bare_construct_head` | `DESCRIBED` ✓2026-08-11 — strongest DESCRIBED in the catalog — Joüon asserts the construct chain is indissoluble in the language's own terms, but never addresses line boundaries; converting syntactic inseparability into a segmentation rule is our step |
-| [[JM125-verb-object-bond]] | Joüon §125; WO §10.2.1; canon M2 | `validate_verb_object_bond` | `UNVERIFIED` |
+| [[JM125-verb-object-bond]] | Joüon §125; WO §10.2.1; canon M2 | `validate_verb_object_bond` | `UNVERIFIED` ✓2026-08-11 — PARTIAL — adjacent evidence found that CAUTIONS against a strong bond; §125 itself not yet read in full |
 | [[JM125-coordinated-objects]] | Joüon §125; WO §10.2.1; canon M2 + SJ1 | `validate_coordinated_object` | `UNVERIFIED` |
 | [[JM157-complement-integrity]] | Joüon §157; WO §38.3; canon H7 | `validate_complement_integrity` | `UNVERIFIED` |
 | [[JM177-bonded-pair]] | Joüon §177; WO §4.6.5; canon M1 | `validate_bonded_pair` | `UNVERIFIED` |
@@ -41,7 +41,7 @@
 | [[JM133-verb-pp-complement]] | Joüon §133; WO §11.4.1; canon H18.3 / M2 | `validate_verb_object_bond`<br>`validate_complement_integrity` | `UNVERIFIED` |
 | [[JM155-discourse-particle]] | Joüon §155; AC §4.5; canon H14 + M3 | `validate_bare_discourse_particle` | `UNVERIFIED` |
 | [[JM161-interrogative-particle]] | Joüon §161; canon M3 | `validate_interrogative_clause`<br>`validate_bare_discourse_particle` | `UNVERIFIED` |
-| [[JM156-casus-pendens]] | Joüon §156; WO §4.7; canon H15 | **— none —** | `UNVERIFIED` |
+| [[JM156-casus-pendens]] | Joüon §156; WO §4.7; canon H15 | **— none —** | `DESCRIBED` ✓2026-08-11 — best-warranted DESCRIBED so far — Joüon asserts DETACHMENT ('stand aloof', 'suspended'), which is the direction a SPLIT rule needs, but still says nothing about line boundaries |
 | [[JM-oath-formula]] | Joüon §147 (oaths and adjurations); canon M4 + §1 formula integrity | `validate_oath_formula` | `UNVERIFIED` |
 | [[JM-cross-verse-continuity]] | Canon H10; §1 versification-is-not-a-break-signal | `validate_cross_verse_continuity` | `PROJECT` — cites only Canon H10 and our own §1; the JM prefix implies Joüon but no section is given |
 | [[JM-wayehi-fef-protasis]] | Joüon §155 / WO §33.1.1c; canon H16 | `validate_wayehi_protasis` | `UNVERIFIED` |
@@ -59,6 +59,17 @@
 
 Each entry below was judged only after opening the receipt. Quote is verbatim; page is as printed in the source, not the PDF page.
 
+### JM125-verb-object-bond — `UNVERIFIED`
+
+> The cohesion between the verb and its internal or cognate object as in (1) שָׁמוֹעַ שָׁמַעְתִּי appears to be much less than that between the finite verb and the infinitive absolute, as in (2). This is shown by the fact that in (1) the two constituents are often separated by various elements, whereas in (2) such a separation occurs extremely rarely
+
+- **Page**: 549 (§155o) — NOT §125, which is the cited section
+- **Edition**: Joüon–Muraoka, A Grammar of Biblical Hebrew, revised English edition, Roma: Pontificio Istituto Biblico, 2006
+- **Receipt**: `atu-nlp-wiki/raw/Jouon-2006.pdf (PDF p.202)`
+- **Checked**: 2026-08-11
+
+LEFT UNVERIFIED DELIBERATELY. The quote above is from §155o, not the cited §125, and it concerns the INTERNAL or COGNATE object (שָׁמוֹעַ שָׁמַעְתִּי), while the constraint targets the direct object resolved from Macula frame-arg A1. So it is adjacent evidence, not decisive — and typing the row off it would be exactly the sloppiness this column exists to prevent. It is recorded because it cuts AGAINST the rule: Joüon observes that verb and internal object are 'often separated by various elements', which is a poor foundation for a bind. Two things make that less alarming than it looks: the constraint is already demoted to ADVISORY (v1.1, per a §7.3 retroactive audit), and §125a — read at p.411 — does state that the accusative 'is subordinated to the verb', a genuine dependency claim. Resolving this needs §125 read through its object-order subsections (§125p-t) and the WO §10.2.1 half, for which there is no receipt.
+
 ### JM159e-conditional-protasis — `MISCITED`
 
 > e — Verbal clause: Gn 18.13 הַאַף אָמְנָם אֵלֵד וַאֲנִי זָקַנְתִּי is it that I shall truly give birth, being old as I am?
@@ -69,6 +80,17 @@ Each entry below was judged only after opening the receipt. Quote is verbatim; p
 - **Checked**: 2026-08-11
 
 The constraint cites 'Joüon §159e' for a conditional protasis. §159 is Circumstantial clause, and §159e is a circumstantial VERBAL clause — the Gn 18.13 example above is a rhetorical question with a concessive circumstantial, not a protasis. Conditional clauses are §167 ('Conditional clause. [a Use of juxtaposition; b Expressed by Waw; c אִם, לוּ and כִּי; g Tenses; k Unreal condition ...]'). The §167 route also has the WO cross-reference the constraint pairs with. This says nothing about whether the constraint itself is right — only that its warrant points at the wrong section. Suspected from the TOC earlier the same day; now confirmed by reading the page, which matters because the TOC alone cannot show what §159e actually contains.
+
+### JM156-casus-pendens — `DESCRIBED`
+
+> A noun or a pronoun is often placed at the head of a clause in such a way as to stand aloof from what follows, and then resumed by means of a retrospective pronoun. The noun is thus suspended, so to speak, hence it is termed casus pendens.
+
+- **Page**: 552 (§156a); poetic parallelism at 552-553 (§156aa)
+- **Edition**: Joüon–Muraoka, A Grammar of Biblical Hebrew, revised English edition, Roma: Pontificio Istituto Biblico, 2006
+- **Receipt**: `atu-nlp-wiki/raw/Jouon-2006.pdf (PDF pp. 205-206)`
+- **Checked**: 2026-08-11
+
+Citation is correct: §156 is 'APPENDIX: Casus pendens before a nominal or verbal clause', exactly as named. The support is the strongest yet found. The constraint is a SPLIT — the casus pendens should occupy its own line — and Joüon supplies detachment language rather than cohesion language: the noun 'stands aloof from what follows' and is 'suspended'. That is the inverse of the construct-chain case, where Joüon asserts cohesion and we infer do-not-break; here he asserts detachment and we infer do-break. The direction matches the rule. Footnote 1 adds an information-structure warrant: 'the topic would correspond to what is, in traditional Hebrew grammars, called casus pendens, and the comment to what follows it' — two units, not one. §156aa is a bonus for this program specifically: 'in many cases poetic parallelism appears to lead to the use of the casus pendens', which places the construction where colometry matters most. WHY STILL NOT GROUNDED: Joüon is describing syntax and information structure, not text layout. He nowhere says the suspended noun should be written on a separate line. The step from 'syntactically aloof' to 'typographically separate' remains ours — better motivated than any other row so far, but ours.
 
 ### JM129-construct-chain — `DESCRIBED`
 
