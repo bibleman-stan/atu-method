@@ -30,6 +30,7 @@ pre-commit gates, which sit next to the corpus they protect.
 """
 
 import argparse
+import json
 import datetime as _dt
 import os
 import re
@@ -469,10 +470,70 @@ def check_current_tasks() -> list:
     return [("ok", "Current-Tasks.md is a pointer to the board, as intended")]
 
 
+def in_family(cwd: str) -> bool:
+    """Is the invoking directory part of this program's repo family?
+
+    Family, not repo: a readers-bofm session SHOULD open knowing atu-method's
+    state, which is the whole point of the cross-repo checks. So the gate admits
+    atu-method, every entry in SIBLINGS, and biblical-corpora.
+    """
+    if not cwd:
+        return False
+    norm = cwd.replace("\\", "/").lower()
+    names = ["atu-method", "biblical-corpora", *SIBLINGS]
+    return any(f"/{n}" in norm or norm.endswith(n) for n in (x.lower() for x in names))
+
+
+def _hook_cwd() -> str:
+    """Read the invoking directory Claude Code passes as JSON on stdin.
+
+    Same shape as ~/.claude/hooks/check_bash_discipline.py, which already does
+    `data = json.loads(sys.stdin.read())` then `data.get("cwd", "")`. Copied
+    rather than reinvented.
+
+    Returns "" when there is no stdin payload — i.e. a human ran the script by
+    hand — and a hand run is never gated.
+    """
+    if sys.stdin is None or sys.stdin.isatty():
+        return ""
+    try:
+        raw = sys.stdin.read()
+    except Exception:
+        return ""
+    if not raw.strip():
+        return ""
+    try:
+        return (json.loads(raw) or {}).get("cwd", "") or ""
+    except Exception:
+        return ""
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--brief", action="store_true")
     args = ap.parse_args()
+
+    # SCOPE GATE. This script is registered as a USER-level SessionStart hook, so
+    # it runs in every workspace on the machine — and it reports on atu-method
+    # plus SIBLINGS regardless of where it was called from, because REPO anchors
+    # on the script's own location and nothing ever read the caller's directory.
+    #
+    # The cost was never tokens. turkish-wiki resumed from a compaction, received
+    # nine findings about reader-repo baselines, and correctly answered "not this
+    # workspace — ignoring it." Training unrelated sessions to ignore
+    # SessionStart output, at a compaction resume when context is scarcest, is
+    # how an alarm stops working everywhere. Silent exit, because a "not
+    # applicable here" message is still noise.
+    #
+    # Same category error as a project skill in the global bucket: the test is
+    # "does this serve every workspace, or one family?"
+    # An EMPTY cwd means no hook payload — a human ran this by hand — and a hand
+    # run is never gated. Only gate when we actually received a directory and it
+    # is outside the family. Getting this backwards silenced the family repos
+    # and the hand run too, which is a worse failure than the noise it fixes.
+    _cwd = _hook_cwd()
+    if args.brief and _cwd and not in_family(_cwd):
+        return 0
 
     sections = [
         ("dormancy since last check", check_dormancy),
